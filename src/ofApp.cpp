@@ -1,8 +1,10 @@
 #include "ofApp.h"
+#include "ofxDatGui.h";
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+	ofxDatGui* myGui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
+	myGui->setTheme(new ofxDatGuiThemeCharcoal());
 }
 
 //--------------------------------------------------------------
