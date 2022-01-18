@@ -187,6 +187,7 @@
     <ClCompile Include="..\..\..\..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\console.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h" />
     <ClInclude Include="..\..\..\..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h" />
