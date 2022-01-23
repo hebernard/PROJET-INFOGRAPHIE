@@ -19,13 +19,13 @@
 		<ClCompile Include="src\ofApp.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
-		<ClCompile Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp">
+		<ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp">
 			<Filter>addons\ofxDatGui-master\src\core</Filter>
 		</ClCompile>
-		<ClCompile Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp">
+		<ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp">
 			<Filter>addons\ofxDatGui-master\src\libs\ofxSmartFont</Filter>
 		</ClCompile>
-		<ClCompile Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\ofxDatGui.cpp">
+		<ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp">
 			<Filter>addons\ofxDatGui-master\src</Filter>
 		</ClCompile>
 	</ItemGroup>
@@ -89,67 +89,67 @@
 		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiControls.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiControls.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiFRM.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiFRM.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiGroups.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiGroups.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiLabel.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiLabel.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiMatrix.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiMatrix.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiScrollView.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiScrollView.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiSlider.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiSlider.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiTextInput.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiTextInput.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiTextInputField.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiTextInputField.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\components\ofxDatGuiTimeGraph.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiTimeGraph.h">
 			<Filter>addons\ofxDatGui-master\src\components</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.h">
 			<Filter>addons\ofxDatGui-master\src\core</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\core\ofxDatGuiConstants.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiConstants.h">
 			<Filter>addons\ofxDatGui-master\src\core</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\core\ofxDatGuiEvents.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiEvents.h">
 			<Filter>addons\ofxDatGui-master\src\core</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\core\ofxDatGuiIntObject.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiIntObject.h">
 			<Filter>addons\ofxDatGui-master\src\core</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.h">
 			<Filter>addons\ofxDatGui-master\src\libs\ofxSmartFont</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\ofxDatGui.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.h">
 			<Filter>addons\ofxDatGui-master\src</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h">
 			<Filter>addons\ofxDatGui-master\src\themes</Filter>
 		</ClInclude>
-		<ClInclude Include="..\..\..\..\..\of_v0.11.2_vs2017_release\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
+		<ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
 			<Filter>addons\ofxDatGui-master\src\themes</Filter>
 		</ClInclude>
 	</ItemGroup>
