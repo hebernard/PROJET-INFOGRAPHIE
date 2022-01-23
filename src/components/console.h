@@ -32,6 +32,7 @@ public:
         window = new ofxDatGui();
         header = window->addHeader(name, false);
         header->setEnabled(false);
+        header->setLabelUpperCase(false);
 
         clearButton = new ofxDatGuiButton("Clear");
         clearButton->setStripeVisible(false);
@@ -187,14 +188,10 @@ public:
     {
         ofPushStyle();
         ofFill();
-        // draw a background behind the fbo //
-        ofSetColor(ofColor::black);
-        ofDrawRectangle(mRect);
-        // draw into the fbo //
         mView.begin();
         ofClear(255, 255, 255, 0);
         ofSetColor(mBackground);
-        ofDrawRectangle(0, 0, mRect.width, mRect.height);
+        ofDrawRectRounded(0, 0, mRect.width, mRect.height, 0);
         for (auto i : mItems) i->draw();
         mView.end();
         // draw the fbo of list content //

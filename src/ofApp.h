@@ -2,13 +2,17 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "console.h"
+#include "./components/console.h"
+#include "./components/menuBar.h"
+#include "./components/dock.h"
 
 class ofApp : public ofBaseApp
 {
 private:
 	ofImage image;
-	console* csl;
+	/*console* csl;
+	menuBar* menu;*/
+	dock* d;
 
 public:
 	void setup();

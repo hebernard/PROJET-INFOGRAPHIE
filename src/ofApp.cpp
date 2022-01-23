@@ -2,12 +2,16 @@
 
 void ofApp::setup()
 {
-	csl = new console("Console");
+	/*csl = new console("Console");
+
+	menu = new menuBar();
 
 	ofxDatGui* import = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
 	ofxDatGuiFolder* importFolder = import->addFolder("Importer", ofColor::yellow);
 	ofxDatGuiButton* importButton = importFolder->addButton("Importer une image");
-	importButton->onButtonEvent(this, &ofApp::onImportButtonClicked);
+	importButton->onButtonEvent(this, &ofApp::onImportButtonClicked);*/
+
+	d = new dock();
 }
 
 void ofApp::onImportButtonClicked(ofxDatGuiButtonEvent e)
@@ -20,7 +24,7 @@ void ofApp::onImportButtonClicked(ofxDatGuiButtonEvent e)
 	}
 	else
 	{
-		csl->log("Une erreur est survenue, veillez reessayer", ofLogLevel::OF_LOG_ERROR);
+		//csl->log("Une erreur est survenue, veillez reessayer", ofLogLevel::OF_LOG_ERROR);
 	}
 }
 
@@ -35,7 +39,7 @@ void ofApp::processOpenFileSelection(ofFileDialogResult openFileResult)
 		if (fileExtension == "JPG" || fileExtension == "PNG")
 		{
 			image.load(openFileResult.getPath());
-			csl->log("Load " + file.getFileName());
+			//csl->log("Load " + file.getFileName());
 			if (image.getWidth() > ofGetWidth() || image.getHeight() > ofGetHeight())
 			{
 				image.resize(image.getWidth() / 2, image.getHeight() / 2);
@@ -43,7 +47,7 @@ void ofApp::processOpenFileSelection(ofFileDialogResult openFileResult)
 		}
 		else
 		{
-			csl->log("Mauvais format, veillez choisir JPG ou PNG", ofLogLevel::OF_LOG_ERROR);
+			//csl->log("Mauvais format, veillez choisir JPG ou PNG", ofLogLevel::OF_LOG_ERROR);
 		}
 	}
 
@@ -52,7 +56,10 @@ void ofApp::processOpenFileSelection(ofFileDialogResult openFileResult)
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	csl->update();
+	//csl->update();
+	//menu->update();
+
+	d->update();
 }
 
 //--------------------------------------------------------------
@@ -63,7 +70,10 @@ void ofApp::draw()
 		image.draw(0, 0);
 	}
 
-	csl->draw();
+	/*csl->draw();
+	menu->draw();*/
+
+	d->draw();
 }
 
 //--------------------------------------------------------------
@@ -78,7 +88,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+	d->onMouseMoved(x, y);
 }
 
 //--------------------------------------------------------------
@@ -98,7 +108,6 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseEntered(int x, int y){
-
 }
 
 //--------------------------------------------------------------
