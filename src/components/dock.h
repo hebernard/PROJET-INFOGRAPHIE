@@ -18,8 +18,8 @@ public:
 		dockButton* test4 = new dockButton("images\\icons\\airplane.png");
 		dockButtons.push_back(test);
 		dockButtons.push_back(test2);
-		//dockButtons.push_back(test3);
-		//dockButtons.push_back(test4);
+		dockButtons.push_back(test3);
+		dockButtons.push_back(test4);
 
 		mRect.width = 50;
 		//mRect.height = dockButtons.size() * dockButtons.front()->getWidth() + ((dockButtons.size() + 1) * 10);
@@ -39,10 +39,17 @@ public:
 	void update()
 	{
 		setPosition(xOffset, ofGetHeight() / 2 - mRect.height / 2);
+
+		for (auto i : dockButtons)
+		{
+			i->update();
+		}
 	}
 
 	void draw()
 	{
+		ofPushStyle();
+		ofFill();
 		// dark border
 		ofSetColor(ofColor(223, 223, 223));
 		ofDrawRectRounded(mRect.x - 4, mRect.y - 4, mRect.width + 8, mRect.height + 8, 14);
@@ -58,6 +65,7 @@ public:
 		{
 			i->draw();
 		}
+		ofPopStyle();
 	}
 
 	void setPosition(int x, int y)
@@ -71,14 +79,6 @@ public:
 		for (int i = 0; i < dockButtons.size(); i++)
 		{
 			dockButtons[i]->setPosition(x + offsetX, y + (spacing * (i + 1)) + (i * buttonWidth));
-		}
-	}
-
-	void onMouseMoved(int x, int y)
-	{
-		for (auto i : dockButtons)
-		{
-			i->onMouseMoved(x, y);
 		}
 	}
 

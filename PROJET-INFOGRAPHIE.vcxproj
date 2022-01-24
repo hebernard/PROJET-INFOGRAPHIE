@@ -183,7 +183,6 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\components\label.cpp" />
-    <ClCompile Include="src\components\menuBar.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
@@ -194,7 +193,6 @@
     <ClInclude Include="src\components\dock.h" />
     <ClInclude Include="src\components\dockButton.h" />
     <ClInclude Include="src\components\label.h" />
-    <ClInclude Include="src\components\menuBar.h" />
     <ClInclude Include="src\fonts\fontNormal.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h" />

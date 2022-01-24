@@ -4,8 +4,6 @@ void ofApp::setup()
 {
 	/*csl = new console("Console");
 
-	menu = new menuBar();
-
 	ofxDatGui* import = new ofxDatGui(ofxDatGuiAnchor::TOP_LEFT);
 	ofxDatGuiFolder* importFolder = import->addFolder("Importer", ofColor::yellow);
 	ofxDatGuiButton* importButton = importFolder->addButton("Importer une image");
@@ -56,9 +54,6 @@ void ofApp::processOpenFileSelection(ofFileDialogResult openFileResult)
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	//csl->update();
-	//menu->update();
-
 	d->update();
 }
 
@@ -69,9 +64,6 @@ void ofApp::draw()
 	{
 		image.draw(0, 0);
 	}
-
-	/*csl->draw();
-	menu->draw();*/
 
 	d->draw();
 }
@@ -88,7 +80,6 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-	d->onMouseMoved(x, y);
 }
 
 //--------------------------------------------------------------

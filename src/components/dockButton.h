@@ -2,26 +2,44 @@
 
 #include "ofxDatGuiComponent.h"
 
+class dockButtonTheme : public ofxDatGuiTheme
+{
+public:
+	dockButtonTheme()
+	{
+		layout.width = 40;
+		layout.height = 40;
+		init();
+	}
+};
+
 class dockButton : public ofxDatGuiButton
 {
 public:
 	dockButton(string iconPath) : ofxDatGuiButton("dockButton")
 	{
 		mType = ofxDatGuiType::BUTTON;
-		ofxDatGuiComponent::setWidth(40, 1);
-		height = 40;
 
 		icon.load(iconPath);
 		icon.resize(24, 24);
+		setTheme(new dockButtonTheme());
+	}
+
+	void setTheme(const ofxDatGuiTheme* theme)
+	{
+		setComponentStyle(theme);
+		ofxDatGuiComponent::setWidth(theme->layout.width, theme->layout.labelWidth);
 	}
 
 	void draw()
 	{
-		if (hovered)
+		ofPushStyle();
+		ofFill();
+		if (mFocused && mMouseDown)
 		{
 			ofSetColor(ofColor(227, 227, 227));
 		}
-		else if (mMouseDown)
+		else if (mMouseOver)
 		{
 			ofSetColor(ofColor(238, 238, 238));
 		}
@@ -32,6 +50,12 @@ public:
 		{
 			icon.draw(x + (getWidth() / 2 - icon.getWidth() / 2), y + (getHeight() / 2 - icon.getHeight() / 2));
 		}
+		ofPopStyle();
+	}
+
+	void update()
+	{
+		ofxDatGuiComponent::update();
 	}
 
 	void setPosition(int newX, int newY)
@@ -42,24 +66,10 @@ public:
 
 	int getHeight()
 	{
-		return height;
-	}
-
-	void onMouseMoved(int x, int y)
-	{
-		hovered = isInBounds(x, y);
+		return mStyle.height;
 	}
 
 private:
 	ofImage icon;
-	int height;
-
-	bool hovered = false;
-	bool selected = false;
-
-	bool isInBounds(int eX, int eY)
-	{
-		return eX >= x && eX <= x + getWidth() && eY >= y && eY <= y + getHeight();
-	}
 };
 
