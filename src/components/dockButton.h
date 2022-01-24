@@ -47,14 +47,7 @@ public:
 
 	void onMouseMoved(int x, int y)
 	{
-		if (isInBounds(x, y))
-		{
-			hovered = true;
-		}
-		else
-		{
-			hovered = false;
-		}
+		hovered = isInBounds(x, y);
 	}
 
 private:
