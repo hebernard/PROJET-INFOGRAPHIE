@@ -7,9 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\label.cpp">
-      <Filter>src\components</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -24,6 +21,12 @@
     </ClCompile>
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui-master\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\dockButton.cpp">
+      <Filter>src\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\dock.cpp">
+      <Filter>src\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,16 +68,10 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\console.h">
-      <Filter>src\components</Filter>
-    </ClInclude>
     <ClInclude Include="src\components\dock.h">
       <Filter>src\components</Filter>
     </ClInclude>
     <ClInclude Include="src\components\dockButton.h">
-      <Filter>src\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\components\label.h">
       <Filter>src\components</Filter>
     </ClInclude>
     <ClInclude Include="src\fonts\fontNormal.h">
