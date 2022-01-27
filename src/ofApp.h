@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "./components/console.h"
 #include "./components/dock.h"
 
 class ofApp : public ofBaseApp
