@@ -180,11 +180,11 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="label.cpp" />
-    <ClCompile Include="panelButton.cpp" />
-    <ClCompile Include="src\components\dock.cpp" />
-    <ClCompile Include="src\components\dockButton.cpp" />
-    <ClCompile Include="src\components\importPanel.cpp" />
+    <ClCompile Include="src\UI\label.cpp" />
+    <ClCompile Include="src\UI\panelButton.cpp" />
+    <ClCompile Include="src\UI\dock.cpp" />
+    <ClCompile Include="src\UI\dockButton.cpp" />
+    <ClCompile Include="src\UI\importPanel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
@@ -192,13 +192,13 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\components\importPanel.h" />
-    <ClInclude Include="src\components\label.h" />
-    <ClInclude Include="src\components\panelButton.h" />
+    <ClInclude Include="src\UI\importPanel.h" />
+    <ClInclude Include="src\UI\label.h" />
+    <ClInclude Include="src\UI\panelButton.h" />
     <ClInclude Include="src\ofApp.h" />
-    <ClInclude Include="src\components\dock.h" />
-    <ClInclude Include="src\components\dockButton.h" />
-    <ClInclude Include="src\fonts\fontNormal.h" />
+    <ClInclude Include="src\UI\dock.h" />
+    <ClInclude Include="src\UI\dockButton.h" />
+    <ClInclude Include="src\UI\fonts\fontNormal.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h" />

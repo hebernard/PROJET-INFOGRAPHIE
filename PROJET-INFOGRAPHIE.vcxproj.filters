@@ -22,19 +22,19 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui-master\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\dockButton.cpp">
+    <ClCompile Include="src\UI\dockButton.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\dock.cpp">
+    <ClCompile Include="src\UI\dock.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\importPanel.cpp">
+    <ClCompile Include="src\UI\importPanel.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="label.cpp">
+    <ClCompile Include="src\UI\label.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="panelButton.cpp">
+    <ClCompile Include="src\UI\panelButton.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,18 +72,21 @@
     <Filter Include="addons\ofxDatGui-master\src\themes">
       <UniqueIdentifier>{BF9E2353-5CF3-048A-5AFE-2C54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\UI">
+      <UniqueIdentifier>{e00f50a8-f520-4c35-8d21-1e9e3841bd38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\dock.h">
+    <ClInclude Include="src\UI\dock.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\dockButton.h">
+    <ClInclude Include="src\UI\dockButton.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\fonts\fontNormal.h">
+    <ClInclude Include="src\UI\fonts\fontNormal.h">
       <Filter>src\fonts</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
@@ -152,13 +155,13 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui-master\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\importPanel.h">
+    <ClInclude Include="src\UI\importPanel.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\label.h">
+    <ClInclude Include="src\UI\label.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\panelButton.h">
+    <ClInclude Include="src\UI\panelButton.h">
       <Filter>src\components</Filter>
     </ClInclude>
   </ItemGroup>
