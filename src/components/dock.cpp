@@ -1,7 +1,8 @@
 #include "dock.h"
 #include "dockButton.h"
+#include "importPanel.h"
 
-dock::dock() : ofxDatGuiComponent("dock"), mRect(), openedRect(), roundness(10), isOpened(false), dockButtons(), currentToggled(-1)
+dock::dock() : ofxDatGuiComponent("dock"), mRect(), openedRect(), roundness(10), isOpened(false), dockButtons(), currentToggled(-1), m_importPanel(new importPanel())
 {
 	dockButton* btn = new dockButton(0, "images/icons/airplane.png", *this);
 	dockButtons.push_back(btn);
@@ -40,6 +41,11 @@ void dock::update()
 	for (auto i : dockButtons)
 	{
 		i->update();
+	}
+
+	if (currentToggled == 0)
+	{
+		m_importPanel->update();
 	}
 }
 
@@ -91,6 +97,11 @@ void dock::drawOpened()
 	for (auto i : dockButtons)
 	{
 		i->draw();
+	}
+
+	if (currentToggled == 0)
+	{
+		m_importPanel->draw(openedRect.x, openedRect.y);
 	}
 
 	ofPopStyle();

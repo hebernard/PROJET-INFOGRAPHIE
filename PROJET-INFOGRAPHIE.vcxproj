@@ -180,8 +180,11 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="label.cpp" />
+    <ClCompile Include="panelButton.cpp" />
     <ClCompile Include="src\components\dock.cpp" />
     <ClCompile Include="src\components\dockButton.cpp" />
+    <ClCompile Include="src\components\importPanel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
@@ -189,6 +192,9 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\importPanel.h" />
+    <ClInclude Include="src\components\label.h" />
+    <ClInclude Include="src\components\panelButton.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\components\dock.h" />
     <ClInclude Include="src\components\dockButton.h" />

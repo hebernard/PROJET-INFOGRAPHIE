@@ -28,6 +28,15 @@
     <ClCompile Include="src\components\dock.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\importPanel.cpp">
+      <Filter>src\components</Filter>
+    </ClCompile>
+    <ClCompile Include="label.cpp">
+      <Filter>src\components</Filter>
+    </ClCompile>
+    <ClCompile Include="panelButton.cpp">
+      <Filter>src\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -142,6 +151,15 @@
     </ClInclude>
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui-master\src\themes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\importPanel.h">
+      <Filter>src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\label.h">
+      <Filter>src\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\panelButton.h">
+      <Filter>src\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

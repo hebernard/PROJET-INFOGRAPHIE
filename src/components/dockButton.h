@@ -21,7 +21,6 @@ public:
 	int index;
 
 	dockButton(int index, std::string iconPath, dock& dock);
-	bool operator != (const dockButton& other);
 
 	void onToggled(ofxDatGuiToggleEvent e);
 	void setTheme(const ofxDatGuiTheme* theme);
@@ -29,7 +28,6 @@ public:
 	void draw();
 	void update();
 
-	void setPosition(int newX, int newY);
 	int getHeight();
 
 private:

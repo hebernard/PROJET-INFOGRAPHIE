@@ -12,11 +12,6 @@ dockButton::dockButton(int index, string iconPath, dock& dock) : ofxDatGuiToggle
 	onToggleEvent(this, &dockButton::onToggled);
 }
 
-bool dockButton::operator!=(const dockButton& other)
-{
-	return x != other.x || y != other.y;
-}
-
 void dockButton::onToggled(ofxDatGuiToggleEvent e)
 {
 	m_dock.notifyButtonToggled(index, getChecked());
@@ -57,12 +52,6 @@ void dockButton::draw()
 void dockButton::update()
 {
 	ofxDatGuiComponent::update();
-}
-
-void dockButton::setPosition(int newX, int newY)
-{
-	x = newX;
-	y = newY;
 }
 
 int dockButton::getHeight()

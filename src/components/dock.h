@@ -3,6 +3,7 @@
 #include "ofxDatGuiComponent.h"
 
 class dockButton;
+class importPanel;
 
 class dockTheme : public ofxDatGuiTheme
 {
@@ -40,5 +41,7 @@ private:
 
 	std::vector<dockButton*> dockButtons;
 	int currentToggled;
+
+	importPanel* m_importPanel;
 };
 
