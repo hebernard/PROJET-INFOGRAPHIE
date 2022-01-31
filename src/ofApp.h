@@ -4,6 +4,7 @@
 #include "ofxDatGui.h"
 #include "./UI/dock.h"
 #include "scene.h"
+#include "camera.h"
 
 class ofApp : public ofBaseApp
 {
@@ -15,6 +16,8 @@ public:
 private:
 	dock* d;
 	scene& s = s.getInstance();
+
+	camera cam;
 
 	void mousePressed(int x, int y, int button);
 };
