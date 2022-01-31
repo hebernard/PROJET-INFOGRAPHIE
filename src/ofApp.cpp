@@ -89,7 +89,10 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+	int posX = ofGetMouseX();
+	int posY = ofGetMouseY();
+	cout << "case1 : " << posX << " , " << posY << endl;
+	cout << "case2 : " << mouseX << " , " << mouseY << endl;
 }
 
 //--------------------------------------------------------------

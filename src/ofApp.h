@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "./components/dock.h"
+#include "./UI/dock.h"
 
 class ofApp : public ofBaseApp
 {
