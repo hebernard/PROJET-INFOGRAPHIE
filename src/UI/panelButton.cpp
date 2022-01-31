@@ -51,5 +51,5 @@ void panelButton::setPosition(int newX, int newY)
 {
 	x = newX;
 	y = newY;
-	m_label->setPosition(x + icon.getWidth() + iconOffset * 2, y + getHeight() - m_label->getHeight());
+	m_label->setPosition(x + icon.getWidth() + iconOffset * 2, y + getHeight() - m_label->getHeight() + 4);
 }
