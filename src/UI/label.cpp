@@ -21,3 +21,8 @@ int label::getHeight()
 {
 	return (int) font.stringHeight(getLabel());
 }
+
+void label::setColor(ofColor color)
+{
+	this->color = color;
+}

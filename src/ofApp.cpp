@@ -2,14 +2,22 @@
 
 void ofApp::setup()
 {
-	d = new dock();
+	ofSetBackgroundColor(ofColor(36, 36, 36));
+	ofSetWindowTitle("IFT-3100 - Projet de session");
+
+	menu = new menuBar();
+
+	//d = new dock();
 	cam.setAutoDistance(false);
 	cam.setDistance(200);
 }
 
 void ofApp::update()
 {
-	d->update();
+	cam.setControlArea(ofRectangle(0, 70, ofGetWidth(), ofGetHeight()));
+
+	menu->update();
+	//d->update();
 }
 
 void ofApp::draw()
@@ -23,7 +31,9 @@ void ofApp::draw()
 	s.drawObjects();
 
 	// Always draw the ui last
-	d->draw();
+	//d->draw();
+
+	menu->draw();
 }
 
 void ofApp::mousePressed(int x, int y, int button)

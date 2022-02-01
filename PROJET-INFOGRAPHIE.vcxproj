@@ -184,7 +184,9 @@
     <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\components\image.cpp" />
     <ClCompile Include="src\object.cpp" />
+    <ClCompile Include="src\UI\dropdown.cpp" />
     <ClCompile Include="src\UI\label.cpp" />
+    <ClCompile Include="src\UI\menuBar.cpp" />
     <ClCompile Include="src\UI\panelButton.cpp" />
     <ClCompile Include="src\UI\dock.cpp" />
     <ClCompile Include="src\UI\dockButton.cpp" />
@@ -201,8 +203,10 @@
     <ClInclude Include="src\components\image.h" />
     <ClInclude Include="src\object.h" />
     <ClInclude Include="src\scene.h" />
+    <ClInclude Include="src\UI\dropdown.h" />
     <ClInclude Include="src\UI\importPanel.h" />
     <ClInclude Include="src\UI\label.h" />
+    <ClInclude Include="src\UI\menuBar.h" />
     <ClInclude Include="src\UI\panelButton.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\UI\dock.h" />

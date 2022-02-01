@@ -41,6 +41,8 @@
     <ClCompile Include="src\components\image.cpp" />
     <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\UI\menuBar.cpp" />
+    <ClCompile Include="src\UI\dropdown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -173,6 +175,8 @@
     <ClInclude Include="src\components\image.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\camera.h" />
+    <ClInclude Include="src\UI\menuBar.h" />
+    <ClInclude Include="src\UI\dropdown.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -5,6 +5,7 @@
 #include "./UI/dock.h"
 #include "scene.h"
 #include "camera.h"
+#include "UI/menuBar.h"
 
 class ofApp : public ofBaseApp
 {
@@ -14,7 +15,8 @@ public:
 	void draw();
 
 private:
-	dock* d;
+	menuBar* menu;
+	//dock* d;
 	scene& s = s.getInstance();
 
 	camera cam;

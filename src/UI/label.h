@@ -11,6 +11,8 @@ public:
 	int getWidth();
 	int getHeight();
 
+	void setColor(ofColor color);
+
 private:
 	ofTrueTypeFont font;
 	ofColor color;
