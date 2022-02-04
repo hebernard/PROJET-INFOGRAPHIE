@@ -1,8 +1,9 @@
 #include "menuBar.h"
 #include "UI/dropdown/dropdown.h"
 #include "dropdown/dropdownButton.h"
+#include "menuBarButton.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer"))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
@@ -27,6 +28,8 @@ void menuBar::draw()
 	dropdown2d->draw();
 	dropdown3d->draw();
 
+	importButton->draw();
+
 	ofPopStyle();
 }
 
@@ -43,7 +46,9 @@ void menuBar::update()
 	dropdown3d->setPosition(posX, posY);
 	dropdown3d->update();
 
-	posX += dropdown3d->getWidth() + 5;
+	posX += dropdown3d->getWidth() + 10;
+
+	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 }
 
 void menuBar::setPosition(int x, int y)

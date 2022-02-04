@@ -3,6 +3,7 @@
 #include "ofxDatGuiComponent.h"
 
 class dropdown;
+class menuBarButton;
 
 class menuBar : public ofxDatGuiComponent
 {
@@ -23,6 +24,8 @@ private:
 
 	dropdown* dropdown2d;
 	dropdown* dropdown3d;
+
+	menuBarButton* importButton;
 
 	void drawLogo();
 	void drawLine();
