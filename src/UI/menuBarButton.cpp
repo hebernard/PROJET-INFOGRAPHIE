@@ -14,7 +14,18 @@ void menuBarButton::setTheme(const ofxDatGuiTheme* theme)
 
 void menuBarButton::draw()
 {
-	ofSetColor(ofColor(87, 140, 245));
+	if (mFocused && mMouseDown)
+	{
+		ofSetColor(ofColor(87, 140, 245));
+	}
+	else if (mMouseOver)
+	{
+		ofSetColor(ofColor(115, 157, 247));
+	}
+	else
+	{
+		ofSetColor(ofColor(58, 119, 243));
+	}
 	ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 
 	m_label->setPosition(x + getWidth() / 2 - m_label->getWidth() / 2, y + m_label->getHeight() + 5);
