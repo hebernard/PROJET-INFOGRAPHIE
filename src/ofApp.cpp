@@ -24,9 +24,8 @@ void ofApp::draw()
 	ofNoFill();
 	ofDrawSphere(64);
 	ofDrawCircle(0, 0, 72);
-	cam.end();
-
 	s.drawObjects();
+	cam.end();
 
 	menu->draw();
 }

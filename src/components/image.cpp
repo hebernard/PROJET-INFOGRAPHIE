@@ -1,20 +1,19 @@
 #include "image.h"
 
-image::image(std::string path) : ofNode(), size(0,0), im()
+image::image(std::string path) : size(), im()
 {
 	im.load(path);
 	size.x = im.getWidth();
 	size.y = im.getHeight();
-}
 
-void image::drawUI()
-{
+	cout << "Image loaded" << endl;
 }
 
 void image::customDraw()
 {
 	if (im.isAllocated())
 	{
+		cout << "draw" << endl;
 		im.draw(getPosition(), size.x * getScale().x, size.y * getScale().y);
 	}
 }

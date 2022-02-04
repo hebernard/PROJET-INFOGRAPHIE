@@ -12,7 +12,7 @@ public:
 		return instance;
 	}
 
-	void addObject(ofNode obj)
+	void addObject(ofNode* obj)
 	{
 		objects.push_back(obj);
 		std::cout << "Added object to scene" << std::endl;
@@ -22,14 +22,17 @@ public:
 	{
 		for (size_t i = 0; i < objects.size(); i++)
 		{
-			objects[i].customDraw();
+			objects[i]->customDraw();
 		}
 	}
 
 private:
 	scene() {}
-	~scene() {}
+	~scene()
+	{
+		for (auto i : objects) delete i;
+	}
 
-	std::vector<ofNode> objects;
+	std::vector<ofNode*> objects;
 };
 

@@ -2,7 +2,7 @@
 #include "UI/dropdown/dropdown.h"
 #include "dropdown/dropdownButton.h"
 #include "menuBarButton.h"
-//#include "components/image.h"
+#include "components/image.h"
 #include "scene.h"
 
 menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer"))
@@ -114,12 +114,10 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 
 			if (fileExtension == "JPG" || fileExtension == "PNG")
 			{
-				//image im(openFileResult.getPath());
-				//s.addObject(im);
+				s.addObject(new image(openFileResult.getPath()));
 			}
 
 			//TODO: Gestion des objets 3D
 		}
 	}
-
 }

@@ -1,14 +1,12 @@
 #pragma once
 
-#include "ofNode.h"
-#include "ofImage.h"
+#include "ofMain.h"
 
 class image : public ofNode
 {
 public:
-	image(std::string path);
+	image(string path);
 
-	void drawUI();
 	void customDraw();
 
 private:
