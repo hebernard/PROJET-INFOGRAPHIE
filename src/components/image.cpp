@@ -13,7 +13,6 @@ void image::customDraw()
 {
 	if (im.isAllocated())
 	{
-		cout << "draw" << endl;
 		im.draw(getPosition(), size.x * getScale().x, size.y * getScale().y);
 	}
 }

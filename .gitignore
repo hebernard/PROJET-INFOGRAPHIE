@@ -71,3 +71,4 @@ Desktop.ini
 
 # Android
 .csettings
+openFrameworks/libs/openFrameworksCompiled/lib/vs/x64/openframeworksLib_debug.lib
