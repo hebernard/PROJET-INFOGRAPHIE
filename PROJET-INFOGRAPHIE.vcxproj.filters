@@ -25,9 +25,7 @@
     <ClCompile Include="src\UI\label.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\object.cpp" />
     <ClCompile Include="src\components\image.cpp" />
-    <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\UI\menuBar.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
@@ -149,8 +147,6 @@
     <ClInclude Include="src\UI\label.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\object.h" />
-    <ClInclude Include="src\components\component.h" />
     <ClInclude Include="src\components\image.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\camera.h" />

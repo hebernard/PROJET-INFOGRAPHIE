@@ -29,5 +29,7 @@ private:
 
 	void drawLogo();
 	void drawLine();
+
+	void onImportButtonEvent(ofxDatGuiButtonEvent e);
 };
 

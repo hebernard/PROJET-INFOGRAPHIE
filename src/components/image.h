@@ -1,17 +1,15 @@
 #pragma once
 
-#include "component.h"
+#include "ofNode.h"
 #include "ofImage.h"
 
-class ofFileDialogResult;
-
-class image : public component
+class image : public ofNode
 {
 public:
-	image(const object& objRef, ofFileDialogResult result);
+	image(std::string path);
 
 	void drawUI();
-	void draw();
+	void customDraw();
 
 private:
 	glm::vec2 size;

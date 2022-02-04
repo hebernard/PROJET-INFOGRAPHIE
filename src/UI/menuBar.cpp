@@ -2,6 +2,8 @@
 #include "UI/dropdown/dropdown.h"
 #include "dropdown/dropdownButton.h"
 #include "menuBarButton.h"
+//#include "components/image.h"
+#include "scene.h"
 
 menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer"))
 {
@@ -13,6 +15,8 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 
 	dropdown2d->addButton(new dropdownButton("images/icons/airplane.png", "Button 1"));
 	dropdown2d->addButton(new dropdownButton("images/icons/airplane.png", "Button 2"));
+
+	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
 }
 
 void menuBar::draw()
@@ -92,4 +96,30 @@ void menuBar::drawLine()
 	ofSetLineWidth(2);
 	ofSetColor(53);
 	ofDrawLine(0, 71, ofGetWidth(), 71);
+}
+
+void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
+{
+	ofFileDialogResult openFileResult = ofSystemLoadDialog("Choisir un objet à importer");
+
+	scene& s = s.getInstance();
+
+	if (openFileResult.bSuccess)
+	{
+		ofFile file(openFileResult.getPath());
+
+		if (file.exists())
+		{
+			std::string fileExtension = ofToUpper(file.getExtension());
+
+			if (fileExtension == "JPG" || fileExtension == "PNG")
+			{
+				//image im(openFileResult.getPath());
+				//s.addObject(im);
+			}
+
+			//TODO: Gestion des objets 3D
+		}
+	}
+
 }

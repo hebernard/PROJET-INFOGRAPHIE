@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "object.h"
+#include "ofNode.h"
 
 class scene
 {
@@ -12,7 +12,7 @@ public:
 		return instance;
 	}
 
-	void addObject(object* obj)
+	void addObject(ofNode obj)
 	{
 		objects.push_back(obj);
 		std::cout << "Added object to scene" << std::endl;
@@ -22,17 +22,14 @@ public:
 	{
 		for (size_t i = 0; i < objects.size(); i++)
 		{
-			objects[i]->drawComponents();
+			objects[i].customDraw();
 		}
 	}
 
 private:
 	scene() {}
-	~scene()
-	{
-		for (auto i : objects) delete i;
-	}
+	~scene() {}
 
-	std::vector<object*> objects;
+	std::vector<ofNode> objects;
 };
 
