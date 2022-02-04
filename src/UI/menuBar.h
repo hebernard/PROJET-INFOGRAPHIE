@@ -15,9 +15,12 @@ public:
 
 	void setPosition(int x, int y);
 
+	void notifyDropdownClicked(int index);
+
 private:
 	ofRectangle rect;
 	ofImage logo;
+
 	dropdown* dropdown2d;
 	dropdown* dropdown3d;
 

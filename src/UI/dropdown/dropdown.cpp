@@ -1,11 +1,20 @@
 #include "dropdown.h"
-#include "label.h"
+#include "../label.h"
+#include "../menuBar.h"
+#include "dropdownButton.h"
 
-dropdown::dropdown(std::string text) : ofxDatGuiButton("dropdown"), mLabel(new label(text, "fonts/roboto_regular.ttf", 13, ofColor(255, 255, 255, 128))), downArrow()
+dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), mLabel(new label(text, "fonts/inter_regular.ttf", 13, ofColor(255, 255, 255, 128))), downArrow(), panel(), m_menu(menu)
 {
 	downArrow.load("images/icons/down_arrow.png");
 	downArrow.resize(20, 20);
 	setTheme(new dropdownTheme());
+
+	onToggleEvent(this, &dropdown::onToggled);
+}
+
+void dropdown::onToggled(ofxDatGuiToggleEvent e)
+{
+	m_menu.notifyDropdownClicked(index);
 }
 
 void dropdown::setTheme(const ofxDatGuiTheme* theme)
@@ -20,9 +29,9 @@ void dropdown::draw()
 	ofPushStyle();
 	ofFill();
 
-	if (mMouseOver)
+	if (mMouseOver || getChecked())
 	{
-		ofSetColor(ofColor(35, 35, 35));
+		ofSetColor(35);
 		ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 
 		if (downArrow.isAllocated())
@@ -33,21 +42,17 @@ void dropdown::draw()
 
 		mLabel->setColor(ofColor::white);
 		mLabel->draw();
+
+		if (getChecked())
+		{
+			panel.draw();
+		}
 	}
 	else 
 	{
 		mLabel->setColor(ofColor(255, 255, 255, 128));
 		mLabel->draw();
 	}
-	/*if (mFocused && mMouseDown)
-	{
-		ofSetColor(ofColor(227, 227, 227));
-		ofDrawRectRounded(x, y, getWidth(), getHeight(), 8);
-	}
-	else if (mMouseOver)
-	{
-		ofSetColor(ofColor(238, 238, 238));
-	}*/
 
 	ofPopStyle();
 }
@@ -55,6 +60,10 @@ void dropdown::draw()
 void dropdown::update()
 {
 	ofxDatGuiComponent::update();
+	if (getChecked())
+	{
+		panel.update(x - 25, y + 50);
+	}
 }
 
 void dropdown::setPosition(int x, int y)
@@ -62,4 +71,9 @@ void dropdown::setPosition(int x, int y)
 	this->x = x;
 	this->y = y;
 	mLabel->setPosition(x + 15, y + mLabel->getHeight() + 14);
+}
+
+void dropdown::addButton(dropdownButton* button)
+{
+	panel.addButton(button);
 }

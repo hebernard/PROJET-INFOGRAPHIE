@@ -22,19 +22,7 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui-master\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\dockButton.cpp">
-      <Filter>src\components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\dock.cpp">
-      <Filter>src\components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\importPanel.cpp">
-      <Filter>src\components</Filter>
-    </ClCompile>
     <ClCompile Include="src\UI\label.cpp">
-      <Filter>src\components</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UI\panelButton.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
     <ClCompile Include="src\object.cpp" />
@@ -42,7 +30,9 @@
     <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\UI\menuBar.cpp" />
-    <ClCompile Include="src\UI\dropdown.cpp" />
+    <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
+    <ClCompile Include="src\UI\dropdown\dropdownPanel.cpp" />
+    <ClCompile Include="src\UI\dropdown\dropdownButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -85,12 +75,6 @@
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\dock.h">
-      <Filter>src\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\dockButton.h">
-      <Filter>src\components</Filter>
     </ClInclude>
     <ClInclude Include="src\UI\fonts\fontNormal.h">
       <Filter>src\fonts</Filter>
@@ -161,13 +145,7 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui-master\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\importPanel.h">
-      <Filter>src\components</Filter>
-    </ClInclude>
     <ClInclude Include="src\UI\label.h">
-      <Filter>src\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\panelButton.h">
       <Filter>src\components</Filter>
     </ClInclude>
     <ClInclude Include="src\object.h" />
@@ -176,7 +154,9 @@
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\UI\menuBar.h" />
-    <ClInclude Include="src\UI\dropdown.h" />
+    <ClInclude Include="src\UI\dropdown\dropdown.h" />
+    <ClInclude Include="src\UI\dropdown\dropdownPanel.h" />
+    <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

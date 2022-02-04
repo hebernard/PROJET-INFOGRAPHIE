@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "./UI/dock.h"
 #include "scene.h"
 #include "camera.h"
 #include "UI/menuBar.h"
@@ -16,7 +15,6 @@ public:
 
 private:
 	menuBar* menu;
-	//dock* d;
 	scene& s = s.getInstance();
 
 	camera cam;

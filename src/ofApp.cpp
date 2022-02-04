@@ -7,7 +7,6 @@ void ofApp::setup()
 
 	menu = new menuBar();
 
-	//d = new dock();
 	cam.setAutoDistance(false);
 	cam.setDistance(200);
 }
@@ -17,7 +16,6 @@ void ofApp::update()
 	cam.setControlArea(ofRectangle(0, 70, ofGetWidth(), ofGetHeight()));
 
 	menu->update();
-	//d->update();
 }
 
 void ofApp::draw()
@@ -29,9 +27,6 @@ void ofApp::draw()
 	cam.end();
 
 	s.drawObjects();
-
-	// Always draw the ui last
-	//d->draw();
 
 	menu->draw();
 }
