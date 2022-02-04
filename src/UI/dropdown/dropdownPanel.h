@@ -7,6 +7,8 @@ class dropdownButton;
 class dropdownPanel
 {
 public:
+	ofRectangle rect;
+
 	dropdownPanel();
 	void update(int x, int y);
 	void draw();
@@ -14,7 +16,6 @@ public:
 	void addButton(dropdownButton* button);
 
 private:
-	ofRectangle rect;
 	std::vector<dropdownButton*> buttons;
 };
 

@@ -63,6 +63,11 @@ void dropdown::update()
 	if (getChecked())
 	{
 		panel.update(x - 25, y + 50);
+		if (ofGetMouseX() < panel.rect.getX() || ofGetMouseX() > panel.rect.getX() + panel.rect.getWidth() ||
+			ofGetMouseY() < y || ofGetMouseY() > panel.rect.getY() + panel.rect.getHeight())
+		{
+			m_menu.notifyDropdownClicked(-1);
+		}
 	}
 }
 

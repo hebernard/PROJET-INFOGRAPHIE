@@ -44,7 +44,6 @@ void menuBar::update()
 	dropdown3d->update();
 
 	posX += dropdown3d->getWidth() + 5;
-
 }
 
 void menuBar::setPosition(int x, int y)
@@ -63,6 +62,11 @@ void menuBar::notifyDropdownClicked(int index)
 	else if (index == 1)
 	{
 		dropdown2d->setChecked(false);
+	}
+	else if (index == -1)
+	{
+		dropdown2d->setChecked(false);
+		dropdown3d->setChecked(false);
 	}
 }
 
