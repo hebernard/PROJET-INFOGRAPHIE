@@ -3,8 +3,8 @@
 image::image(std::string path) : size(), im()
 {
 	im.load(path);
-	size.x = im.getWidth();
-	size.y = im.getHeight();
+	size.x = im.getWidth() / 100;
+	size.y = im.getHeight() / 100;
 
 	cout << "Image loaded" << endl;
 }
