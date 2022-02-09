@@ -204,7 +204,6 @@
     <ClInclude Include="src\UI\label.h" />
     <ClInclude Include="src\UI\menuBar.h" />
     <ClInclude Include="src\ofApp.h" />
-    <ClInclude Include="src\UI\fonts\fontNormal.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h" />
