@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "ofNode.h"
+#include "UI/hierarchy/hierarchyPanel.h"
 
 class scene
 {
@@ -56,6 +57,11 @@ public:
 		ofPopStyle();
 	}
 
+	void drawHierarchyUI()
+	{
+		hierarchy.draw(objects);
+	}
+
 private:
 	scene() {}
 	~scene()
@@ -64,5 +70,7 @@ private:
 	}
 
 	std::vector<ofNode*> objects;
+
+	hierarchyPanel hierarchy;
 };
 

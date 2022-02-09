@@ -185,6 +185,7 @@
     <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownButton.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownPanel.cpp" />
+    <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp" />
     <ClCompile Include="src\UI\label.cpp" />
     <ClCompile Include="src\UI\menuBar.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="src\UI\dropdown\dropdown.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
     <ClInclude Include="src\UI\dropdown\dropdownPanel.h" />
+    <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
     <ClInclude Include="src\UI\label.h" />
     <ClInclude Include="src\UI\menuBar.h" />
     <ClInclude Include="src\ofApp.h" />

@@ -32,6 +32,7 @@
     <ClCompile Include="src\UI\dropdown\dropdownPanel.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownButton.cpp" />
     <ClCompile Include="src\UI\menuBarButton.cpp" />
+    <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -152,6 +153,7 @@
     <ClInclude Include="src\UI\dropdown\dropdownPanel.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
     <ClInclude Include="src\UI\menuBarButton.h" />
+    <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

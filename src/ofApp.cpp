@@ -34,7 +34,9 @@ void ofApp::draw()
 	ofDisableDepthTest();
 	cam.end();
 
+	// UI must be drawn at the end
 	menu->draw();
+	s.drawHierarchyUI();
 }
 
 void ofApp::mousePressed(int x, int y, int button)
