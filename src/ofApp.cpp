@@ -6,22 +6,24 @@ void ofApp::setup()
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
 	menu = new menuBar();
+	cam = new camera();
 
-	cam.setAutoDistance(false);
-	cam.setPosition(0, 1, 5);
-	cam.setTarget(glm::vec3(0, 1, 0));
-	cam.setNearClip(0.1f);
+	cam->setAutoDistance(false);
+	cam->setPosition(0, 1, 5);
+	cam->setTarget(glm::vec3(0, 1, 0));
+	cam->setNearClip(0.1f);
+	s.camera = cam;
 }
 
 void ofApp::update()
 {
-	cam.setControlArea(ofRectangle(0, 70, ofGetWidth(), ofGetHeight()));
+	cam->setControlArea(ofRectangle(0, 70, ofGetWidth(), ofGetHeight()));
 	menu->update();
 }
 
 void ofApp::draw()
 {
-	cam.begin();
+	cam->begin();
 	ofEnableDepthTest();
 
 	s.drawGrid();
@@ -32,11 +34,17 @@ void ofApp::draw()
 	s.drawObjects();
 
 	ofDisableDepthTest();
-	cam.end();
+	cam->end();
 
 	// UI must be drawn at the end
 	menu->draw();
 	s.drawHierarchyUI();
+}
+
+ofApp::~ofApp()
+{
+	delete menu;
+	delete cam;
 }
 
 void ofApp::mousePressed(int x, int y, int button)

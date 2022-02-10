@@ -3,14 +3,23 @@
 #include <vector>
 #include "components/object.h"
 #include "UI/hierarchy/hierarchyPanel.h"
+#include "camera.h"
 
 class scene
 {
 public:
+	camera* camera;
+
 	static scene& getInstance()
 	{
 		static scene instance;
 		return instance;
+	}
+
+	void focusObject(object& obj)
+	{
+		// todo other things?
+		camera->setTarget(obj.getCenter());
 	}
 
 	void addObject(object* obj)
@@ -63,7 +72,7 @@ public:
 	}
 
 private:
-	scene() {}
+	scene() : camera() {}
 	~scene()
 	{
 		for (auto i : objects) delete i;

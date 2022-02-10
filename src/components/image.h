@@ -9,6 +9,7 @@ public:
 
 	void customDraw();
 	void drawHierarchy(int x, int y);
+	glm::vec3 getCenter();
 
 private:
 	glm::vec2 size;

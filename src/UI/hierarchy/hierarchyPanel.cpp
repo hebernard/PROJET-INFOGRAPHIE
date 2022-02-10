@@ -3,10 +3,13 @@
 #include "UI/label.h"
 #include "components/object.h"
 
-hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", "fonts/inter_regular.ttf", 14, ofColor::white))
+hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", "fonts/inter_regular.ttf", 14, ofColor::white)), icon()
 {
 	rect.width = 300;
 	rect.y = 100;
+
+	icon.load("images/icons/hierarchy.png");
+	icon.resize(24, 24);
 }
 
 void hierarchyPanel::draw(const vector<object*>& objects)
@@ -23,16 +26,21 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 	ofSetColor(45);
 	ofDrawRectRounded(rect, 6, 0, 0, 6);
 
-	m_label->setPosition(rect.x + 20, rect.y + 35);
+	if (icon.isAllocated())
+	{
+		ofSetColor(ofColor::white);
+		icon.draw(rect.x + 15, rect.y + icon.getHeight() / 2);
+	}
+	m_label->setPosition(rect.x + 60, rect.y + 32);
 	m_label->draw();
 
 	ofSetColor(53);
 	ofSetLineWidth(2);
 	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
 
-	if (objects.size() > 0)
+	for (size_t i = 0; i < objects.size(); i++)
 	{
-		objects.front()->drawHierarchy(rect.x, rect.y + 100);
+		objects.at(i)->drawHierarchy(rect.x, rect.y + 56 + (i * 40));
 	}
 
 	ofPopStyle();

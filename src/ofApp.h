@@ -14,10 +14,11 @@ public:
 	void draw();
 
 private:
+	~ofApp();
 	menuBar* menu;
 	scene& s = s.getInstance();
 
-	camera cam;
+	camera* cam;
 
 	void mousePressed(int x, int y, int button);
 };

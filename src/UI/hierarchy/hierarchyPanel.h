@@ -15,5 +15,6 @@ public:
 private:
 	ofRectangle rect;
 	label* m_label;
+	ofImage icon;
 };
 
