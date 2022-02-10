@@ -154,6 +154,7 @@
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
     <ClInclude Include="src\UI\menuBarButton.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
+    <ClInclude Include="src\components\object.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

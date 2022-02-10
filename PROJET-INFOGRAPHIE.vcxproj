@@ -198,6 +198,7 @@
   <ItemGroup>
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\components\image.h" />
+    <ClInclude Include="src\components\object.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\UI\dropdown\dropdown.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />

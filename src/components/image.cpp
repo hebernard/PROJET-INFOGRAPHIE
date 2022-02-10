@@ -16,3 +16,8 @@ void image::customDraw()
 		im.draw(getPosition(), size.x * getScale().x, size.y * getScale().y);
 	}
 }
+
+void image::drawHierarchy(int x, int y)
+{
+	ofDrawRectangle(x, y, 250, 40);
+}

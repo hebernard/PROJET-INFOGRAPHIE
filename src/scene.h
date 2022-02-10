@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "ofNode.h"
+#include "components/object.h"
 #include "UI/hierarchy/hierarchyPanel.h"
 
 class scene
@@ -13,7 +13,7 @@ public:
 		return instance;
 	}
 
-	void addObject(ofNode* obj)
+	void addObject(object* obj)
 	{
 		objects.push_back(obj);
 		std::cout << "Added object to scene" << std::endl;
@@ -69,7 +69,7 @@ private:
 		for (auto i : objects) delete i;
 	}
 
-	std::vector<ofNode*> objects;
+	std::vector<object*> objects;
 
 	hierarchyPanel hierarchy;
 };
