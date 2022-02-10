@@ -49,6 +49,7 @@ public:
 	{
 		ofPushMatrix();
 		ofPushStyle();
+		ofNoFill();
 		ofRotateX(90);
 
 		ofSetLineWidth(2);

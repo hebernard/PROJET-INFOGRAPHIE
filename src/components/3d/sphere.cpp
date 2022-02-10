@@ -1,6 +1,6 @@
 #include "sphere.h"
 
-sphere::sphere(float radius) : object(new hierarchyButton(*this, "images/icons/3d.png", "Sphere")), m_radius(radius)
+sphere::sphere(float radius) : object(new hierarchyButton(*this, "images/icons/sphere.png", "Sphere")), m_radius(radius), noFill(false)
 {
 	cout << "Sphere added with " << radius << " radius" << endl;
 }
@@ -8,7 +8,14 @@ sphere::sphere(float radius) : object(new hierarchyButton(*this, "images/icons/3
 void sphere::customDraw()
 {
 	ofPushStyle();
-	ofFill();
+	if (noFill)
+	{
+		ofNoFill();
+	}
+	else
+	{
+		ofFill();
+	}
 	ofDrawSphere(getPosition(), m_radius);
 	ofPopStyle();
 }

@@ -2,8 +2,10 @@
 #include "UI/dropdown/dropdown.h"
 #include "dropdown/dropdownButton.h"
 #include "menuBarButton.h"
-#include "components/image.h"
+#include "components/2d/image.h"
 #include "scene.h"
+#include "components/2d/circle.h"
+#include "components/3d/sphere.h"
 
 menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer"))
 {
@@ -13,8 +15,31 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	logo.load("images/logo.png");
 	logo.resize(22, 22);
 
-	dropdown2d->addButton(new dropdownButton("images/icons/airplane.png", "Button 1"));
-	dropdown2d->addButton(new dropdownButton("images/icons/airplane.png", "Button 2"));
+	dropdownButton* circleButton = new dropdownButton("images/icons/circle.png", "Circle");
+	circleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		circle* circ = new circle(1.2f);
+		circ->setPosition(glm::vec3(1, 1, 0));
+
+		scene& s = s.getInstance();
+		s.addObject(circ);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown2d->addButton(circleButton);
+
+	dropdownButton* sphereButton = new dropdownButton("images/icons/Sphere.png", "Sphere");
+	sphereButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		sphere* sp = new sphere(1.2f);
+		sp->setPosition(glm::vec3(1, 1, 0));
+
+		scene& s = s.getInstance();
+		s.addObject(sp);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown3d->addButton(sphereButton);
 
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
 }

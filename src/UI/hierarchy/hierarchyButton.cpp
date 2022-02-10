@@ -49,5 +49,5 @@ void hierarchyButton::update(int x, int y)
 {
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
-	m_label->setPosition(x + icon.getWidth() + 25 * 2, y + getHeight() - m_label->getHeight() - 2);
+	m_label->setPosition(x + icon.getWidth() + 25 * 2, y + getHeight() / 2 + m_label->getHeight() / 2);
 }

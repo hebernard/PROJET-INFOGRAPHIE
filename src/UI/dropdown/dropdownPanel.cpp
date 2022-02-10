@@ -45,5 +45,5 @@ void dropdownPanel::addButton(dropdownButton* button)
 	buttons.push_back(button);
 
 	int height = buttons.front()->getHeight();
-	rect.height = 10 * buttons.size() + height * buttons.size();
+	rect.height = 20 + height * buttons.size();
 }

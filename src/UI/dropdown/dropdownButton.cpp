@@ -27,6 +27,7 @@ void dropdownButton::draw()
 
 	if (icon.isAllocated())
 	{
+		ofSetColor(ofColor::white);
 		icon.draw(x + 20, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
@@ -38,5 +39,5 @@ void dropdownButton::update(int x, int y)
 {
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
-	m_label->setPosition(x + icon.getWidth() + 20 * 2, y + getHeight() - m_label->getHeight() - 4);
+	m_label->setPosition(x + icon.getWidth() + 20 * 2, y + getHeight() / 2 + m_label->getHeight() / 2);
 }

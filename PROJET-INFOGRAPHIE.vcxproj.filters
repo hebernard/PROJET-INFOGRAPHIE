@@ -25,7 +25,7 @@
     <ClCompile Include="src\UI\label.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\image.cpp" />
+    <ClCompile Include="src\components\2d\image.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\UI\menuBar.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
@@ -34,7 +34,8 @@
     <ClCompile Include="src\UI\menuBarButton.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyButton.cpp" />
-    <ClCompile Include="src\components\sphere.cpp" />
+    <ClCompile Include="src\components\3d\sphere.cpp" />
+    <ClCompile Include="src\components\2d\circle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -147,7 +148,7 @@
     <ClInclude Include="src\UI\label.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\image.h" />
+    <ClInclude Include="src\components\2d\image.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\UI\menuBar.h" />
@@ -158,7 +159,8 @@
     <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
     <ClInclude Include="src\components\object.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyButton.h" />
-    <ClInclude Include="src\components\sphere.h" />
+    <ClInclude Include="src\components\3d\sphere.h" />
+    <ClInclude Include="src\components\2d\circle.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

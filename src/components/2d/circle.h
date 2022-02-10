@@ -1,11 +1,12 @@
 #pragma once
+#include "components/object.h"
 
-#include "object.h"
-
-class sphere : public object
+class circle : public object
 {
 public:
-	sphere(float radius);
+	bool noFill;
+
+	circle(float radius);
 
 	void customDraw();
 	glm::vec3 getCenter();
