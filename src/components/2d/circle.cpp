@@ -7,14 +7,10 @@ circle::circle(float radius) : object(new hierarchyButton(*this, "images/icons/c
 void circle::customDraw()
 {
 	ofPushStyle();
-	if (noFill)
-	{
-		ofNoFill();
-	}
-	else
-	{
-		ofFill();
-	}
+
+	if (noFill) { ofNoFill(); }
+	else { ofFill(); }
+
 	ofSetCircleResolution(50);
 	ofDrawCircle(getPosition(), m_radius);
 	ofPopStyle();

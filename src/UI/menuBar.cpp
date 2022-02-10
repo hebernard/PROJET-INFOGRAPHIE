@@ -4,8 +4,14 @@
 #include "menuBarButton.h"
 #include "components/2d/image.h"
 #include "scene.h"
+#include "components/2d/line.h"
 #include "components/2d/circle.h"
+#include "components/2d/ellipse.h"
+#include "components/2d/rectangle.h"
+#include "components/2d/square.h"
+#include "components/2d/triangle.h"
 #include "components/3d/sphere.h"
+#include "components/3d/cube.h"
 
 menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer"))
 {
@@ -15,6 +21,21 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	logo.load("images/logo.png");
 	logo.resize(22, 22);
 
+	//2D - Line Button
+	dropdownButton* lineButton = new dropdownButton("images/icons/line.png", "Line");
+	lineButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+		{
+			line* li = new line(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0));
+			li->setPosition(glm::vec3(1, 1, 0));
+
+			scene& s = s.getInstance();
+			s.addObject(li);
+
+			notifyDropdownClicked(-1);
+		});
+	dropdown2d->addButton(lineButton);
+
+	//2D - Circle Button
 	dropdownButton* circleButton = new dropdownButton("images/icons/circle.png", "Circle");
 	circleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
@@ -28,7 +49,64 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	});
 	dropdown2d->addButton(circleButton);
 
-	dropdownButton* sphereButton = new dropdownButton("images/icons/Sphere.png", "Sphere");
+	//2D - Ellipse Button
+	dropdownButton* ellipseButton = new dropdownButton("images/icons/ellipse.png", "Ellipse");
+	ellipseButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+		{
+			ellipse* elli = new ellipse(1.5f, 1.2f);
+			elli->setPosition(glm::vec3(1, 1, 0));
+
+			scene& s = s.getInstance();
+			s.addObject(elli);
+
+			notifyDropdownClicked(-1);
+		});
+	dropdown2d->addButton(ellipseButton);
+
+	//2D - Square Button
+	dropdownButton* squareButton = new dropdownButton("images/icons/square.png", "Square");
+	squareButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		square* sq = new square(1.2f);
+		sq->setPosition(glm::vec3(1, 1, 0));
+
+		scene& s = s.getInstance();
+		s.addObject(sq);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown2d->addButton(squareButton);
+
+	//2D - Rectangle Button
+	dropdownButton* rectangleButton = new dropdownButton("images/icons/rectangle.png", "Rectangle");
+	rectangleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		rectangle* rect = new rectangle(1.5f, 1.0f);
+		rect->setPosition(glm::vec3(1, 1, 0));
+
+		scene& s = s.getInstance();
+		s.addObject(rect);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown2d->addButton(rectangleButton);
+
+	//2D - Triangle Button
+	dropdownButton* triangleButton = new dropdownButton("images/icons/triangle.png", "Triangle");
+	triangleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		triangle* tri = new triangle(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0), glm::vec3(3, 1, 0));
+		tri->setPosition(glm::vec3(1, 1, 0));
+
+		scene& s = s.getInstance();
+		s.addObject(tri);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown2d->addButton(triangleButton);
+
+	//3D - Sphere Button
+	dropdownButton* sphereButton = new dropdownButton("images/icons/sphere.png", "Sphere");
 	sphereButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		sphere* sp = new sphere(1.2f);
@@ -40,6 +118,20 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 		notifyDropdownClicked(-1);
 	});
 	dropdown3d->addButton(sphereButton);
+
+	//3D - Cube Button
+	dropdownButton* cubeButton = new dropdownButton("images/icons/cube.png", "Cube");
+	cubeButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		cube* cu = new cube(1.2f, 1.2f, 1.2f);
+		cu->setPosition(glm::vec3(1, 1, 0));
+
+		scene& s = s.getInstance();
+		s.addObject(cu);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown3d->addButton(cubeButton);
 
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
 }

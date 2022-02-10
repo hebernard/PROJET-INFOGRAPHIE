@@ -182,7 +182,13 @@
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\components\2d\circle.cpp" />
+    <ClCompile Include="src\components\2d\ellipse.cpp" />
     <ClCompile Include="src\components\2d\image.cpp" />
+    <ClCompile Include="src\components\2d\line.cpp" />
+    <ClCompile Include="src\components\2d\rectangle.cpp" />
+    <ClCompile Include="src\components\2d\square.cpp" />
+    <ClCompile Include="src\components\2d\triangle.cpp" />
+    <ClCompile Include="src\components\3d\cube.cpp" />
     <ClCompile Include="src\components\3d\sphere.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownButton.cpp" />
@@ -201,7 +207,13 @@
   <ItemGroup>
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\components\2d\circle.h" />
+    <ClInclude Include="src\components\2d\ellipse.h" />
     <ClInclude Include="src\components\2d\image.h" />
+    <ClInclude Include="src\components\2d\line.h" />
+    <ClInclude Include="src\components\2d\rectangle.h" />
+    <ClInclude Include="src\components\2d\square.h" />
+    <ClInclude Include="src\components\2d\triangle.h" />
+    <ClInclude Include="src\components\3d\cube.h" />
     <ClInclude Include="src\components\object.h" />
     <ClInclude Include="src\components\3d\sphere.h" />
     <ClInclude Include="src\scene.h" />
