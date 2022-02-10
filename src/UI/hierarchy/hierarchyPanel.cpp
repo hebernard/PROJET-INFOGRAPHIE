@@ -15,16 +15,16 @@ hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", "fonts/inter_r
 void hierarchyPanel::draw(const vector<object*>& objects)
 {
 	rect.height = ofGetHeight() - 150;
-	rect.x = ofGetWidth() - rect.width;
+	rect.x = ofGetWidth() - rect.width - 20;
 
 	ofPushStyle();
 	ofFill();
 
 	ofSetColor(53);
-	ofDrawRectRounded(rect.x - 2, rect.y - 2, 0, rect.width + 4, rect.height + 4, 8, 0, 0, 8);
+	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
 
 	ofSetColor(45);
-	ofDrawRectRounded(rect, 6, 0, 0, 6);
+	ofDrawRectRounded(rect, 6);
 
 	if (icon.isAllocated())
 	{
