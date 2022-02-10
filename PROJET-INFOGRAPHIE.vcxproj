@@ -182,6 +182,7 @@
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\components\image.cpp" />
+    <ClCompile Include="src\components\sphere.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownButton.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownPanel.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\components\image.h" />
     <ClInclude Include="src\components\object.h" />
+    <ClInclude Include="src\components\sphere.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\UI\dropdown\dropdown.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />

@@ -29,7 +29,7 @@ void hierarchyButton::draw()
 	ofPushStyle();
 	ofFill();
 
-	if (mMouseOver)
+	if (mMouseOver || m_obj.isSelected)
 	{
 		ofSetColor(100);
 		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());

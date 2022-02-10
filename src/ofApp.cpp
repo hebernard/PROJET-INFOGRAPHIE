@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "components/sphere.h"
 
 void ofApp::setup()
 {
@@ -13,6 +14,10 @@ void ofApp::setup()
 	cam->setTarget(glm::vec3(0, 1, 0));
 	cam->setNearClip(0.1f);
 	s.camera = cam;
+
+	sphere* sp = new sphere(1);
+	sp->setPosition(glm::vec3(0, 1, 0));
+	s.addObject(sp);
 }
 
 void ofApp::update()
@@ -29,7 +34,6 @@ void ofApp::draw()
 	s.drawGrid();
 
 	ofNoFill();
-	ofDrawSphere(glm::vec3(0, 1, 0), 1);
 	ofDrawCircle(0, 1, 1.2f);
 	s.drawObjects();
 

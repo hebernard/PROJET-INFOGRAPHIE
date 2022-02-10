@@ -6,11 +6,18 @@
 class object : public ofNode
 {
 public:
-	object(hierarchyButton* btn) : button(btn) {}
+	bool isSelected;
+
+	object(hierarchyButton* btn) : button(btn), isSelected(false) {}
 	virtual ~object() {}
 
 	virtual void customDraw() {}
-	virtual void drawHierarchy(int x, int y) {}
+	void drawHierarchy(int x, int y)
+	{
+		button->update(x, y);
+		button->draw();
+	}
+
 	virtual glm::vec3 getCenter()
 	{
 		return glm::vec3();

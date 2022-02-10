@@ -34,6 +34,7 @@
     <ClCompile Include="src\UI\menuBarButton.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyButton.cpp" />
+    <ClCompile Include="src\components\sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -157,6 +158,7 @@
     <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
     <ClInclude Include="src\components\object.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyButton.h" />
+    <ClInclude Include="src\components\sphere.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

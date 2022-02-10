@@ -2,16 +2,15 @@
 
 #include "object.h"
 
-class image : public object
+class sphere : public object
 {
 public:
-	image(string path);
+	sphere(float radius);
 
 	void customDraw();
 	glm::vec3 getCenter();
 
 private:
-	glm::vec2 size;
-	ofImage im;
+	float m_radius;
 };
 

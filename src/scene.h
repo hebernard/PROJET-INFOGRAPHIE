@@ -18,8 +18,17 @@ public:
 
 	void focusObject(object& obj)
 	{
+		if (currentSelected != nullptr)
+		{
+			currentSelected->isSelected = false;
+		}
+
 		// todo other things?
 		camera->setTarget(obj.getCenter());
+
+		obj.isSelected = true;
+
+		currentSelected = &obj;
 	}
 
 	void addObject(object* obj)
@@ -81,5 +90,7 @@ private:
 	std::vector<object*> objects;
 
 	hierarchyPanel hierarchy;
+
+	object* currentSelected;
 };
 

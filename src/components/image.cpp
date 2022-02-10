@@ -17,12 +17,6 @@ void image::customDraw()
 	}
 }
 
-void image::drawHierarchy(int x, int y)
-{
-	button->update(x, y);
-	button->draw();
-}
-
 glm::vec3 image::getCenter()
 {
 	glm::vec3 pos = getPosition();
