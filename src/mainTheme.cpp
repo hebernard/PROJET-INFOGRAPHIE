@@ -5,27 +5,27 @@ void mainTheme::setTheme(bool theme)
 	//DarkTheme
 	if (theme) {
 
-		ofFontColor = ofColor(245, 245, 245);
-		ofFontColorAlpha = ofColor(245, 245, 245, 128);
-		fontColor = 245;
-		logoTopLayerColor = 70;
-		logoDownLayerColor = 36;
+		fontColor = ofColor(245, 245, 245);
+		fontColorAlpha = ofColor(245, 245, 245, 128);
+		logoTopLayerColor = ofColor(70, 70, 70);
+		logoDownLayerColor = ofColor(36, 36, 36);
 		logoPath = "images/logoDark.png";
+		themePath = "images/icons/moon.png";
 
-		toolBarColor = 18;
-		toolBarBorderColor = 53;
-		toolBarButtonHoverColor = 35;
+		toolBarColor = ofColor(18, 18, 18);
+		toolBarBorderColor = ofColor(53, 53, 53);
+		toolBarButtonHoverColor = ofColor(35, 35, 35);
 
-		panelColor = 49;
-		panelBorderColor = 59;
-		panelButtonHoverColor = 100;
+		panelColor = ofColor(49, 49, 49);
+		panelBorderColor = ofColor(59, 59, 59);
+		panelButtonHoverColor = ofColor(100, 100, 100);
 
 		color1 = ofColor(87, 140, 245);
 		color2 = ofColor(115, 157, 247);
 		color3 = ofColor(58, 119, 243);
 
 		sceneBackgroundColor = ofColor(36, 36, 36);
-		gridColor1 = ofColor(50, 50, 50);
+		gridColor1 = ofColor(50, 50, 50, 120);
 		gridColor2 = ofColor(150, 150, 150);
 
 		currentTheme = true;
@@ -33,27 +33,27 @@ void mainTheme::setTheme(bool theme)
 	//LightTheme
 	else {
 
-		ofFontColor = ofColor(18, 18, 18);
-		ofFontColorAlpha = ofColor(18, 18, 18, 128);
-		fontColor = 18;
-		logoTopLayerColor = 202;
-		logoDownLayerColor = 168;
+		fontColor = ofColor(46, 46, 46);
+		fontColorAlpha = ofColor(46, 46, 46, 128);
+		logoTopLayerColor = ofColor(217, 217, 217);
+		logoDownLayerColor = ofColor(196, 196, 196);
 		logoPath = "images/logoLight.png";
+		themePath = "images/icons/sun.png";
 
-		toolBarColor = 225;
-		toolBarBorderColor = 195;
-		toolBarButtonHoverColor = 186;
+		toolBarColor = ofColor(237, 237, 237);
+		toolBarBorderColor = ofColor(178, 178, 178);
+		toolBarButtonHoverColor = ofColor(219, 219, 219);
 
-		panelColor = 196;
-		panelBorderColor = 186;
-		panelButtonHoverColor = 150;
+		panelColor = ofColor(232, 232, 232);
+		panelBorderColor = ofColor(212, 212, 212);
+		panelButtonHoverColor = ofColor(195, 195, 195);
 
-		color1 = ofColor(3, 218, 198);
-		color2 = ofColor(4, 255, 232);
-		color3 = ofColor(3, 191, 174);
+		color1 = ofColor(86, 138, 242);
+		color2 = ofColor(91, 146, 255);
+		color3 = ofColor(81, 131, 229);
 
-		sceneBackgroundColor = ofColor(196, 196, 196);
-		gridColor1 = ofColor(150, 150, 150);
+		sceneBackgroundColor = ofColor(128, 128, 128);
+		gridColor1 = ofColor(100, 100, 100, 120);
 		gridColor2 = ofColor(200, 200, 200);
 
 		currentTheme = false;

@@ -10,8 +10,8 @@ class menuBarButtonTheme : public ofxDatGuiTheme
 public:
 	menuBarButtonTheme()
 	{
-		layout.width = 100;
-		layout.height = 30;
+		layout.width = 80;
+		layout.height = 38;
 		init();
 	}
 };

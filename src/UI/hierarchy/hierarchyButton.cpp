@@ -3,7 +3,7 @@
 #include "components/object.h"
 #include "scene.h"
 
-hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : ofxDatGuiButton("hierarchyButton"), m_label(new label(text, "fonts/inter_regular.ttf", 11, t.ofFontColor)), icon(), m_obj(obj)
+hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : ofxDatGuiButton("hierarchyButton"), m_label(new label(text, t.fontRegularPath, 11, t.fontColor)), icon(), m_obj(obj)
 {
 	icon.load(iconPath);
 	icon.resize(24, 24);
@@ -37,10 +37,11 @@ void hierarchyButton::draw()
 
 	if (icon.isAllocated())
 	{
-		ofSetColor(t.ofFontColor);
+		ofSetColor(ofColor::white);
 		icon.draw(x + 30, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
+	m_label->setColor(t.fontColor);
 	m_label->draw();
 	ofPopStyle();
 }

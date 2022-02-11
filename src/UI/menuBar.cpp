@@ -2,6 +2,7 @@
 #include "UI/dropdown/dropdown.h"
 #include "dropdown/dropdownButton.h"
 #include "menuBarButton.h"
+#include "menuBarButtonAlt.h"
 #include "components/2d/image.h"
 #include "scene.h"
 #include "components/2d/line.h"
@@ -13,7 +14,7 @@
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer")), themeButton(new menuBarButton("Theme"))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), themeButton(new menuBarButtonAlt(t.themePath))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
@@ -173,7 +174,7 @@ void menuBar::update()
 	posX += dropdown3d->getWidth() + 10;
 
 	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
-	themeButton->update(posX + 200, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
+	themeButton->update(ofGetWidth() - (themeButton->getWidth()*2), posY + dropdown2d->getHeight() / 2 - themeButton->getHeight() / 2);
 }
 
 void menuBar::setPosition(int x, int y)
@@ -208,7 +209,7 @@ void menuBar::drawLogo()
 	ofSetColor(t.logoTopLayerColor);
 	ofDrawRectRounded(20, rect.height / 2 - 17, 34, 34, 6);
 
-	ofSetColor(t.fontColor);
+	ofSetColor(ofColor::white);
 	logo.draw(26, rect.height / 2 - 9);
 }
 
@@ -246,4 +247,7 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)
 {
 	t.setTheme(!t.getTheme());
+	themeButton->updateIcon(t.themePath);
+	logo.load(t.logoPath);
+	logo.resize(22, 22);
 }

@@ -18,5 +18,6 @@ void triangle::customDraw()
 
 glm::vec3 triangle::getCenter()
 {
-	return getPosition();
+	glm::vec3 position((getPosition().x + m_p3.x) / 2, (getPosition().y + m_p2.y) / 2, getPosition().z);
+	return position;
 }

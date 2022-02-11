@@ -18,5 +18,6 @@ void line::customDraw()
 
 glm::vec3 line::getCenter()
 {
-	return getPosition();
+	glm::vec3 position((getPosition().x + m_p2.x) / 2, (getPosition().y + m_p2.y) / 2, getPosition().z);
+	return position;
 }

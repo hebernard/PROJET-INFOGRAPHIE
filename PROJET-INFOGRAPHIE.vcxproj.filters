@@ -43,6 +43,7 @@
     <ClCompile Include="src\components\2d\square.cpp" />
     <ClCompile Include="src\components\3d\cube.cpp" />
     <ClCompile Include="src\mainTheme.cpp" />
+    <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -175,6 +176,7 @@
     <ClInclude Include="src\components\2d\square.h" />
     <ClInclude Include="src\components\3d\cube.h" />
     <ClInclude Include="src\mainTheme.h" />
+    <ClInclude Include="src\UI\menuBarButtonAlt.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

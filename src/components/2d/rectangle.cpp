@@ -18,5 +18,6 @@ void rectangle::customDraw()
 
 glm::vec3 rectangle::getCenter()
 {
-	return getPosition();
+	glm::vec3 position(getPosition().x + m_width / 2, getPosition().y + m_height / 2, getPosition().z);
+	return position;
 }

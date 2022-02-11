@@ -18,5 +18,6 @@ void square::customDraw()
 
 glm::vec3 square::getCenter()
 {
-	return getPosition();
+	glm::vec3 position(getPosition().x + m_size/2, getPosition().y + m_size/2, getPosition().z);
+	return position;
 }

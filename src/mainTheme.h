@@ -7,22 +7,20 @@ class mainTheme
 public:
 
 	 //Font & Logo Colors
-	 ofColor ofFontColor;
-	 ofColor ofFontColorAlpha;
-	 int fontColor;
-	 int logoTopLayerColor;
-	 int logoDownLayerColor;
-	 string logoPath;
+	 ofColor fontColor;
+	 ofColor fontColorAlpha;
+	 ofColor logoTopLayerColor;
+	 ofColor logoDownLayerColor;
 
 	 //Menu Tool Bar Colors
-	 int toolBarColor;
-	 int toolBarBorderColor;
-	 int toolBarButtonHoverColor;
+	 ofColor toolBarColor;
+	 ofColor toolBarBorderColor;
+	 ofColor toolBarButtonHoverColor;
 
 	 //Dropdown & Hierarchy Colors
-	 int panelColor;
-	 int panelBorderColor;
-	 int panelButtonHoverColor;
+	 ofColor panelColor;
+	 ofColor panelBorderColor;
+	 ofColor panelButtonHoverColor;
 
 	 //Contrast Colors
 	 ofColor color1;
@@ -33,6 +31,12 @@ public:
 	 ofColor sceneBackgroundColor;
 	 ofColor gridColor1;
 	 ofColor gridColor2;
+
+	 //Paths
+	 string logoPath;
+	 string themePath;
+	 const string fontRegularPath = "fonts/inter_regular.ttf";
+	 const string fontMediumPath = "fonts/inter_medium.ttf";
 	 
 	 static mainTheme& getInstance()
 	 {

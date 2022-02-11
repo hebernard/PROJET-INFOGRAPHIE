@@ -2,13 +2,14 @@
 
 label::label(std::string text, std::string fontPath, int fontSize, ofColor c) : ofxDatGuiLabel(text), font(), color(c)
 {
+	ofTrueTypeFontSettings settings(fontPath, fontSize);
 	mType = ofxDatGuiType::LABEL;
-	font.load(fontPath, fontSize);
+	font.load(settings);
 }
 
 void label::draw()
 {
-	ofSetColor(t.ofFontColor);
+	ofSetColor(color);
 	font.drawString(getLabel(), x, y);
 }
 

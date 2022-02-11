@@ -5,6 +5,7 @@
 
 class dropdown;
 class menuBarButton;
+class menuBarButtonAlt;
 
 class menuBar : public ofxDatGuiComponent
 {
@@ -30,7 +31,7 @@ private:
 	dropdown* dropdown3d;
 
 	menuBarButton* importButton;
-	menuBarButton* themeButton;
+	menuBarButtonAlt* themeButton;
 
 	void drawLogo();
 	void drawLine();

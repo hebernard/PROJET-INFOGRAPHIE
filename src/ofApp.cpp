@@ -4,9 +4,10 @@
 
 void ofApp::setup()
 {
+	//set DarkTheme by default
 	t.setTheme(true);
 
-	ofSetBackgroundColor(t.sceneBackgroundColor);
+	ofSetBackgroundColor(36);
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
 	menu = new menuBar();

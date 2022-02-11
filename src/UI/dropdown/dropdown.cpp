@@ -3,7 +3,7 @@
 #include "../menuBar.h"
 #include "dropdownButton.h"
 
-dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), mLabel(new label(text, "fonts/inter_regular.ttf", 13, t.ofFontColorAlpha)), downArrow(), panel(), m_menu(menu)
+dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), mLabel(new label(text, t.fontMediumPath, 13, t.fontColorAlpha)), downArrow(), panel(), m_menu(menu)
 {
 	downArrow.load("images/icons/down_arrow.png");
 	downArrow.resize(20, 20);
@@ -36,11 +36,11 @@ void dropdown::draw()
 
 		if (downArrow.isAllocated())
 		{
-			ofSetColor(t.ofFontColor);
+			ofSetColor(t.fontColor);
 			downArrow.draw(mLabel->getX() + mLabel->getWidth() + 5, y + getHeight() / 2 - 10);
 		}
 
-		mLabel->setColor(t.ofFontColor);
+		mLabel->setColor(t.fontColor);
 		mLabel->draw();
 
 		if (getChecked())
@@ -50,7 +50,7 @@ void dropdown::draw()
 	}
 	else 
 	{
-		mLabel->setColor(t.ofFontColor);
+		mLabel->setColor(t.fontColorAlpha);
 		mLabel->draw();
 	}
 
