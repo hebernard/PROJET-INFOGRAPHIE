@@ -42,6 +42,7 @@
     <ClCompile Include="src\components\2d\ellipse.cpp" />
     <ClCompile Include="src\components\2d\square.cpp" />
     <ClCompile Include="src\components\3d\cube.cpp" />
+    <ClCompile Include="src\mainTheme.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -173,6 +174,7 @@
     <ClInclude Include="src\components\2d\ellipse.h" />
     <ClInclude Include="src\components\2d\square.h" />
     <ClInclude Include="src\components\3d\cube.h" />
+    <ClInclude Include="src\mainTheme.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

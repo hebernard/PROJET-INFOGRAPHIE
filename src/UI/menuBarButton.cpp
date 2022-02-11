@@ -1,7 +1,7 @@
 #include "menuBarButton.h"
 #include "label.h"
 
-menuBarButton::menuBarButton(std::string text) : ofxDatGuiButton(text), m_label(new label(text, "fonts/inter_regular.ttf", 11, ofColor::white))
+menuBarButton::menuBarButton(std::string text) : ofxDatGuiButton(text), m_label(new label(text, "fonts/inter_regular.ttf", 11, t.ofFontColor))
 {
 	setTheme(new menuBarButtonTheme());
 }
@@ -16,15 +16,15 @@ void menuBarButton::draw()
 {
 	if (mFocused && mMouseDown)
 	{
-		ofSetColor(ofColor(87, 140, 245));
+		ofSetColor(t.color1);
 	}
 	else if (mMouseOver)
 	{
-		ofSetColor(ofColor(115, 157, 247));
+		ofSetColor(t.color2);
 	}
 	else
 	{
-		ofSetColor(ofColor(58, 119, 243));
+		ofSetColor(t.color3);
 	}
 	ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 

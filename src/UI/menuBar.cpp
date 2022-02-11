@@ -13,12 +13,12 @@
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer"))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Importer")), themeButton(new menuBarButton("Theme"))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
 
-	logo.load("images/logo.png");
+	logo.load(t.logoPath);
 	logo.resize(22, 22);
 
 	//2D - Line Button
@@ -134,13 +134,15 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	dropdown3d->addButton(cubeButton);
 
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
+	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 }
 
 void menuBar::draw()
 {
 	ofPushStyle();
 	ofFill();
-	ofSetColor(18);
+
+	ofSetColor(t.toolBarColor);
 	ofDrawRectangle(rect);
 
 	drawLogo();
@@ -150,6 +152,7 @@ void menuBar::draw()
 	dropdown3d->draw();
 
 	importButton->draw();
+	themeButton->draw();
 
 	ofPopStyle();
 }
@@ -170,6 +173,7 @@ void menuBar::update()
 	posX += dropdown3d->getWidth() + 10;
 
 	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
+	themeButton->update(posX + 200, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 }
 
 void menuBar::setPosition(int x, int y)
@@ -198,20 +202,20 @@ void menuBar::notifyDropdownClicked(int index)
 
 void menuBar::drawLogo()
 {
-	ofSetColor(36);
+	ofSetColor(t.logoDownLayerColor);
 	ofDrawRectRounded(20, rect.height / 2 - 15, 34, 34, 6);
 
-	ofSetColor(70);
+	ofSetColor(t.logoTopLayerColor);
 	ofDrawRectRounded(20, rect.height / 2 - 17, 34, 34, 6);
 
-	ofSetColor(ofColor::white);
+	ofSetColor(t.fontColor);
 	logo.draw(26, rect.height / 2 - 9);
 }
 
 void menuBar::drawLine()
 {
 	ofSetLineWidth(2);
-	ofSetColor(53);
+	ofSetColor(t.toolBarBorderColor);
 	ofDrawLine(0, 71, ofGetWidth(), 71);
 }
 
@@ -237,4 +241,9 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 			//TODO: Gestion des objets 3D
 		}
 	}
+}
+
+void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)
+{
+	t.setTheme(!t.getTheme());
 }

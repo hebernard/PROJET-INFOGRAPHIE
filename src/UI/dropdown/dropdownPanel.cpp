@@ -26,10 +26,10 @@ void dropdownPanel::draw()
 	ofPushStyle();
 	ofFill();
 
-	ofSetColor(53);
+	ofSetColor(t.panelBorderColor);
 	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
 
-	ofSetColor(49);
+	ofSetColor(t.panelColor);
 	ofDrawRectRounded(rect, 6);
 
 	for (size_t i = 0; i < buttons.size(); i++)

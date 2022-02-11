@@ -8,7 +8,7 @@ label::label(std::string text, std::string fontPath, int fontSize, ofColor c) : 
 
 void label::draw()
 {
-	ofSetColor(color);
+	ofSetColor(t.ofFontColor);
 	font.drawString(getLabel(), x, y);
 }
 

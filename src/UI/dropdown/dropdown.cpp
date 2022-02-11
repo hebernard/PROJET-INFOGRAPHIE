@@ -3,7 +3,7 @@
 #include "../menuBar.h"
 #include "dropdownButton.h"
 
-dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), mLabel(new label(text, "fonts/inter_regular.ttf", 13, ofColor(255, 255, 255, 128))), downArrow(), panel(), m_menu(menu)
+dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), mLabel(new label(text, "fonts/inter_regular.ttf", 13, t.ofFontColorAlpha)), downArrow(), panel(), m_menu(menu)
 {
 	downArrow.load("images/icons/down_arrow.png");
 	downArrow.resize(20, 20);
@@ -31,16 +31,16 @@ void dropdown::draw()
 
 	if (mMouseOver || getChecked())
 	{
-		ofSetColor(35);
+		ofSetColor(t.toolBarButtonHoverColor);
 		ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 
 		if (downArrow.isAllocated())
 		{
-			ofSetColor(ofColor::white);
+			ofSetColor(t.ofFontColor);
 			downArrow.draw(mLabel->getX() + mLabel->getWidth() + 5, y + getHeight() / 2 - 10);
 		}
 
-		mLabel->setColor(ofColor::white);
+		mLabel->setColor(t.ofFontColor);
 		mLabel->draw();
 
 		if (getChecked())
@@ -50,7 +50,7 @@ void dropdown::draw()
 	}
 	else 
 	{
-		mLabel->setColor(ofColor(255, 255, 255, 128));
+		mLabel->setColor(t.ofFontColor);
 		mLabel->draw();
 	}
 

@@ -4,7 +4,9 @@
 
 void ofApp::setup()
 {
-	ofSetBackgroundColor(36);
+	t.setTheme(true);
+
+	ofSetBackgroundColor(t.sceneBackgroundColor);
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
 	menu = new menuBar();

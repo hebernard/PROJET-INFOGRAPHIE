@@ -4,11 +4,13 @@
 #include "components/object.h"
 #include "UI/hierarchy/hierarchyPanel.h"
 #include "camera.h"
+#include "mainTheme.h"
 
 class scene
 {
 public:
 	camera* camera;
+	mainTheme& t = t.getInstance();
 
 	static scene& getInstance()
 	{
@@ -53,18 +55,18 @@ public:
 		ofRotateX(90);
 
 		ofSetLineWidth(2);
-		ofSetColor(150);
+		ofSetColor(t.gridColor2);
 		ofDrawRectangle(-100, -100, 200, 200);
 
 		for (int x = -100; x < 100; x++)
 		{
-			ofSetColor(x == 0 ? ofColor(255, 0, 0, 50) : 50);
+			ofSetColor(x == 0 ? ofColor(255, 0, 0, 50) : t.gridColor1);
 			ofDrawLine(-100, x, 100, x);
 		}
 
 		for (int z = -100; z < 100; z++)
 		{
-			ofSetColor(z == 0 ? ofColor(0, 0, 255, 50) : 50);
+			ofSetColor(z == 0 ? ofColor(0, 0, 255, 50) : t.gridColor1);
 			ofDrawLine(z, -100, z, 100);
 		}
 

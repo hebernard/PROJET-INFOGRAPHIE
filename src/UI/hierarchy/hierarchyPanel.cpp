@@ -3,7 +3,7 @@
 #include "UI/label.h"
 #include "components/object.h"
 
-hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", "fonts/inter_regular.ttf", 14, ofColor::white)), icon()
+hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", "fonts/inter_regular.ttf", 14, t.ofFontColor)), icon()
 {
 	rect.width = 300;
 	rect.y = 100;
@@ -20,21 +20,21 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 	ofPushStyle();
 	ofFill();
 
-	ofSetColor(53);
+	ofSetColor(t.panelBorderColor);
 	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
 
-	ofSetColor(45);
+	ofSetColor(t.panelColor);
 	ofDrawRectRounded(rect, 6);
 
 	if (icon.isAllocated())
 	{
-		ofSetColor(ofColor::white);
+		ofSetColor(t.fontColor);
 		icon.draw(rect.x + 15, rect.y + icon.getHeight() / 2);
 	}
 	m_label->setPosition(rect.x + 60, rect.y + 32);
 	m_label->draw();
 
-	ofSetColor(53);
+	ofSetColor(t.panelBorderColor);
 	ofSetLineWidth(2);
 	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
 

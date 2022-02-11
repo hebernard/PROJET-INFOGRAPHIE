@@ -2,6 +2,7 @@
 
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
+#include "mainTheme.h"
 
 class label;
 class object;
@@ -26,6 +27,9 @@ public:
 	void update(int x, int y);
 
 private:
+
+	mainTheme& t = t.getInstance();
+
 	label* m_label;
 	ofImage icon;
 	object& m_obj;

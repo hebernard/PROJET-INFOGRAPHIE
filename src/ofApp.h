@@ -5,6 +5,7 @@
 #include "scene.h"
 #include "camera.h"
 #include "UI/menuBar.h"
+#include "mainTheme.h"
 
 class ofApp : public ofBaseApp
 {
@@ -15,6 +16,7 @@ public:
 
 private:
 	~ofApp();
+	mainTheme& t = t.getInstance();
 	menuBar* menu;
 	scene& s = s.getInstance();
 
