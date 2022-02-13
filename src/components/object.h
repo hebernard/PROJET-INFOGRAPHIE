@@ -6,10 +6,14 @@
 class object : public ofNode
 {
 public:
+	bool markedForDeletion;
 	bool isSelected;
 
-	object(hierarchyButton* btn) : button(btn), isSelected(false) {}
-	virtual ~object() {}
+	object(hierarchyButton* btn) : button(btn), isSelected(false), markedForDeletion(false) {}
+	virtual ~object()
+	{
+		delete button;
+	}
 
 	virtual void customDraw() {}
 	void drawHierarchy(int x, int y)

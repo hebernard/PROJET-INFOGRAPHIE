@@ -39,6 +39,17 @@ public:
 		std::cout << "Added object to scene" << std::endl;
 	}
 
+	void deleteObjects()
+	{
+		for (size_t i = 0; i < objects.size(); i++)
+		{
+			if (objects.at(i)->markedForDeletion)
+			{
+				objects.erase(objects.begin() + i);
+			}
+		}
+	}
+
 	void drawObjects()
 	{
 		for (size_t i = 0; i < objects.size(); i++)

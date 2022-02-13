@@ -6,6 +6,7 @@
 
 class label;
 class object;
+class hierarchySmallButton;
 
 class hierarchyButtonTheme : public ofxDatGuiTheme
 {
@@ -27,12 +28,13 @@ public:
 	void update(int x, int y);
 
 private:
-
 	mainTheme& t = t.getInstance();
 
 	label* m_label;
 	ofImage icon;
 	object& m_obj;
+
+	hierarchySmallButton* deleteButton;
 
 	void setTheme(const ofxDatGuiTheme* theme);
 	void onClick(ofxDatGuiButtonEvent e);

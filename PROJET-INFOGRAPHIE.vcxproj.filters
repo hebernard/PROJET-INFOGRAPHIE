@@ -44,6 +44,7 @@
     <ClCompile Include="src\components\3d\cube.cpp" />
     <ClCompile Include="src\mainTheme.cpp" />
     <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
+    <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -177,6 +178,7 @@
     <ClInclude Include="src\components\3d\cube.h" />
     <ClInclude Include="src\mainTheme.h" />
     <ClInclude Include="src\UI\menuBarButtonAlt.h" />
+    <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
