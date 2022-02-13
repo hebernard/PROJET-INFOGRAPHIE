@@ -25,7 +25,7 @@ void menuBarButtonAlt::draw()
 		ofDrawRectRounded(x, y, 34, 34, 6);
 
 		ofSetColor(ofColor::white);
-		icon.draw(ofGetWidth() - this->getWidth() * 2 + 7, this->getHeight() - 4);
+		icon.draw(x + getWidth() / 2 - icon.getWidth() / 2 + 1, y + getHeight() / 2 - icon.getHeight() / 2 + 2);
 	}
 	else if (mMouseOver)
 	{
@@ -36,7 +36,7 @@ void menuBarButtonAlt::draw()
 		ofDrawRectRounded(x, y - 3, 34, 34, 6);
 
 		ofSetColor(ofColor::white);
-		icon.draw(ofGetWidth() - this->getWidth() * 2 + 7, this->getHeight() - 7);
+		icon.draw(x + getWidth() / 2 - icon.getWidth() / 2 + 1, y + getHeight() / 2 - icon.getHeight() / 2 - 1);
 	}
 	else
 	{
@@ -47,7 +47,7 @@ void menuBarButtonAlt::draw()
 		ofDrawRectRounded(x, y - 2, 34, 34, 6);
 
 		ofSetColor(ofColor::white);
-		icon.draw(ofGetWidth() - this->getWidth() * 2 + 7, this->getHeight() - 6);
+		icon.draw(x + getWidth() / 2 - icon.getWidth() / 2 + 1, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
 
