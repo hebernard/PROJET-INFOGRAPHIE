@@ -19,6 +19,8 @@ propertiesPanel::propertiesPanel() : m_label(new label("Properties", t.fontMediu
 
 void propertiesPanel::draw(const object& obj)
 {
+	m_label->setLabel(obj.getName());
+
 	rect.height = ofGetHeight() - 150;
 	rect.x = ofGetWidth() - rect.width - 20;
 

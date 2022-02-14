@@ -38,6 +38,11 @@ public:
 		return glm::vec3();
 	}
 
+	std::string getName() const
+	{
+		return button->getLabel();
+	}
+
 protected:
 	hierarchyButton* button;
 };

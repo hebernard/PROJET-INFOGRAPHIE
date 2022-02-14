@@ -91,3 +91,8 @@ void hierarchyButton::update(int x, int y)
 	posX -= propertiesButton->getWidth();
 	visibleButton->update(posX, posY);
 }
+
+std::string hierarchyButton::getLabel()
+{
+	return m_label->getLabel();
+}

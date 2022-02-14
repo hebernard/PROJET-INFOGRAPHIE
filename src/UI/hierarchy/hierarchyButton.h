@@ -26,6 +26,7 @@ public:
 
 	void draw();
 	void update(int x, int y);
+	std::string getLabel();
 
 private:
 	mainTheme& t = t.getInstance();
