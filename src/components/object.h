@@ -27,6 +27,15 @@ public:
 		return glm::vec3();
 	}
 
+	/// <summary>
+	/// Gets the bounding box of the object
+	/// </summary>
+	/// <returns>A 2D vector representing the width, height and depth of the box from the center point</returns>
+	virtual glm::vec3 getBBox()
+	{
+		return glm::vec3();
+	}
+
 protected:
 	hierarchyButton* button;
 };

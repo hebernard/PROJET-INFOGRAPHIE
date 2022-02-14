@@ -20,3 +20,8 @@ glm::vec3 circle::getCenter()
 {
 	return getPosition();
 }
+
+glm::vec3 circle::getBBox()
+{
+	return glm::vec3(m_radius * 2, m_radius * 2, 0);
+}

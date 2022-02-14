@@ -24,3 +24,8 @@ glm::vec3 cube::getCenter()
 {
 	return getPosition();
 }
+
+glm::vec3 cube::getBBox()
+{
+	return glm::vec3(m_width, m_height, m_depth);
+}

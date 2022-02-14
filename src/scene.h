@@ -54,7 +54,17 @@ public:
 	{
 		for (size_t i = 0; i < objects.size(); i++)
 		{
-			objects[i]->customDraw();
+			auto obj = objects.at(i);
+			if (obj->isSelected)
+			{
+				ofPushStyle();
+				ofNoFill();
+				ofSetColor(t.color1);
+				auto bbox = obj->getBBox();
+				ofDrawBox(obj->getCenter(), bbox.x, bbox.y, bbox.z);
+				ofPopStyle();
+			}
+			obj->customDraw();
 		}
 	}
 
