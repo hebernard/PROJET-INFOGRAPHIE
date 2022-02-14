@@ -247,6 +247,7 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)
 {
 	t.setTheme(!t.getTheme());
+	ofSetBackgroundColor(t.sceneBackgroundColor);
 	themeButton->updateIcon(t.themePath);
 	logo.load(t.logoPath);
 	logo.resize(22, 22);

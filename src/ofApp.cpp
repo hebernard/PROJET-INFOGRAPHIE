@@ -7,7 +7,7 @@ void ofApp::setup()
 	//set DarkTheme by default
 	t.setTheme(true);
 
-	ofSetBackgroundColor(36);
+	ofSetBackgroundColor(t.sceneBackgroundColor);
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
 	menu = new menuBar();
@@ -39,6 +39,7 @@ void ofApp::update()
 
 void ofApp::draw()
 {
+
 	cam->begin();
 	ofEnableDepthTest();
 
