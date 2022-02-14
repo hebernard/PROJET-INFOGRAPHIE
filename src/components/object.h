@@ -9,8 +9,9 @@ public:
 	bool markedForDeletion;
 	bool isSelected;
 	bool propertiesOpened;
+	bool isVisible;
 
-	object(hierarchyButton* btn) : button(btn), isSelected(false), markedForDeletion(false), propertiesOpened(false) {}
+	object(hierarchyButton* btn) : button(btn), isSelected(false), markedForDeletion(false), propertiesOpened(false), isVisible(true) {}
 	virtual ~object()
 	{
 		delete button;

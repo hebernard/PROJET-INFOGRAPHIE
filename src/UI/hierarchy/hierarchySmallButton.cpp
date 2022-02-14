@@ -3,8 +3,7 @@
 
 hierarchySmallButton::hierarchySmallButton(std::string iconPath) : ofxDatGuiButton("hierarchySmallButton")
 {
-	icon.load(iconPath);
-	icon.resize(22, 22);
+	changeIcon(iconPath);
 
 	setTheme(new hierarchySmallButtonTheme());
 }
@@ -32,6 +31,12 @@ void hierarchySmallButton::update(int x, int y)
 {
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
+}
+
+void hierarchySmallButton::changeIcon(std::string path)
+{
+	icon.load(path);
+	icon.resize(22, 22);
 }
 
 void hierarchySmallButton::setTheme(const ofxDatGuiTheme* theme)

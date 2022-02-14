@@ -21,6 +21,8 @@ public:
 	void draw();
 	void update(int x, int y);
 
+	void changeIcon(std::string path);
+
 private:
 	ofImage icon;
 

@@ -56,16 +56,20 @@ public:
 		for (size_t i = 0; i < objects.size(); i++)
 		{
 			auto obj = objects.at(i);
-			if (obj->isSelected)
+			if (obj->isVisible)
 			{
-				ofPushStyle();
-				ofNoFill();
-				ofSetColor(t.color1);
-				auto bbox = obj->getBBox();
-				ofDrawBox(obj->getCenter(), bbox.x, bbox.y, bbox.z);
-				ofPopStyle();
+				if (obj->isSelected)
+				{
+					ofPushStyle();
+					ofNoFill();
+					ofSetColor(t.color1);
+					auto bbox = obj->getBBox();
+					ofDrawBox(obj->getCenter(), bbox.x, bbox.y, bbox.z);
+					ofPopStyle();
+				}
+
+				obj->customDraw();
 			}
-			obj->customDraw();
 		}
 	}
 
