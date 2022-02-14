@@ -5,12 +5,14 @@
 #include "UI/hierarchy/hierarchyPanel.h"
 #include "camera.h"
 #include "mainTheme.h"
+#include "UI/properties/propertiesPanel.h"
 
 class scene
 {
 public:
 	camera* camera;
 	mainTheme& t = t.getInstance();
+	object* currentSelected;
 
 	static scene& getInstance()
 	{
@@ -25,7 +27,6 @@ public:
 			currentSelected->isSelected = false;
 		}
 
-		// todo other things?
 		camera->setTarget(obj.getCenter());
 
 		obj.isSelected = true;
@@ -101,7 +102,14 @@ public:
 
 	void drawHierarchyUI()
 	{
-		hierarchy.draw(objects);
+		if (currentSelected != nullptr && currentSelected->propertiesOpened)
+		{
+			properties.draw(*currentSelected);
+		}
+		else
+		{
+			hierarchy.draw(objects);
+		}
 	}
 
 private:
@@ -114,7 +122,6 @@ private:
 	std::vector<object*> objects;
 
 	hierarchyPanel hierarchy;
-
-	object* currentSelected;
+	propertiesPanel properties;
 };
 

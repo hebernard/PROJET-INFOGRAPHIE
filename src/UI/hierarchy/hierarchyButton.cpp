@@ -8,7 +8,8 @@ hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string 
 	ofxDatGuiButton("hierarchyButton"), 
 	m_label(new label(text, t.fontRegularPath, 11, t.fontColor)), 
 	icon(), m_obj(obj), 
-	deleteButton(new hierarchySmallButton("images/icons/delete.png"))
+	deleteButton(new hierarchySmallButton("images/icons/delete.png")),
+	propertiesButton(new hierarchySmallButton("images/icons/properties.png"))
 {
 	icon.load(iconPath);
 	icon.resize(24, 24);
@@ -21,6 +22,11 @@ hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string 
 		obj.markedForDeletion = true;
 		scene& s = s.getInstance();
 		s.deleteObjects();
+	});
+
+	propertiesButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		obj.propertiesOpened = true;
 	});
 }
 
@@ -57,6 +63,7 @@ void hierarchyButton::draw()
 	m_label->draw();
 
 	deleteButton->draw();
+	propertiesButton->draw();
 	ofPopStyle();
 }
 
@@ -66,5 +73,9 @@ void hierarchyButton::update(int x, int y)
 	setPosition(x, y);
 	m_label->setPosition(x + icon.getWidth() + 25 * 2, y + getHeight() / 2 + m_label->getHeight() / 2);
 
-	deleteButton->update(x + getWidth() - deleteButton->getWidth() - 30, y + getHeight() / 2 - deleteButton->getHeight() / 2);
+	int posX = x + getWidth() - deleteButton->getWidth() - 30;
+	int posY = y + getHeight() / 2 - deleteButton->getHeight() / 2;
+	deleteButton->update(posX, posY);
+	posX -= deleteButton->getWidth();
+	propertiesButton->update(posX, posY);
 }

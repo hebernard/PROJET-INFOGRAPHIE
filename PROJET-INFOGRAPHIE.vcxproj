@@ -207,6 +207,7 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
     <ClCompile Include="src\UI\menuBarButton.cpp" />
     <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
+    <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\camera.h" />
@@ -254,6 +255,7 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h" />
     <ClInclude Include="src\UI\menuBarButton.h" />
     <ClInclude Include="src\UI\menuBarButtonAlt.h" />
+    <ClInclude Include="src\UI\properties\propertiesPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

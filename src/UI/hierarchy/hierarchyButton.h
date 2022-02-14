@@ -35,6 +35,7 @@ private:
 	object& m_obj;
 
 	hierarchySmallButton* deleteButton;
+	hierarchySmallButton* propertiesButton;
 
 	void setTheme(const ofxDatGuiTheme* theme);
 	void onClick(ofxDatGuiButtonEvent e);

@@ -8,8 +8,9 @@ class object : public ofNode
 public:
 	bool markedForDeletion;
 	bool isSelected;
+	bool propertiesOpened;
 
-	object(hierarchyButton* btn) : button(btn), isSelected(false), markedForDeletion(false) {}
+	object(hierarchyButton* btn) : button(btn), isSelected(false), markedForDeletion(false), propertiesOpened(false) {}
 	virtual ~object()
 	{
 		delete button;

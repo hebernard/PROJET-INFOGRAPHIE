@@ -5,18 +5,19 @@
 
 class label;
 class object;
+class hierarchySmallButton;
 
-class hierarchyPanel
+class propertiesPanel
 {
 public:
-	hierarchyPanel();
+	propertiesPanel();
 
-	void draw(const vector<object*>& objects);
+	void draw(const object& obj);
 
 private:
 	mainTheme& t = t.getInstance();
 
 	ofRectangle rect;
 	label* m_label;
-	ofImage icon;
+	hierarchySmallButton* backButton;
 };

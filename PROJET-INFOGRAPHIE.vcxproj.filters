@@ -45,6 +45,7 @@
     <ClCompile Include="src\mainTheme.cpp" />
     <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp" />
+    <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -179,6 +180,7 @@
     <ClInclude Include="src\mainTheme.h" />
     <ClInclude Include="src\UI\menuBarButtonAlt.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
+    <ClInclude Include="src\UI\properties\propertiesPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
