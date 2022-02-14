@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\components;src\fonts;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\UI;src\UI\dropdown;src\UI\hierarchy;src\UI\properties;src\components;src\components\2d;src\components\3d;openFrameworks\addons\ofxAssimpModelLoader\libs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\license;openFrameworks\addons\ofxAssimpModelLoader\src;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
@@ -108,8 +108,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -120,18 +120,17 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\components;src\fonts;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\UI;src\UI\dropdown;src\UI\hierarchy;src\UI\properties;src\components;src\components\2d;src\components\3d;openFrameworks\addons\ofxAssimpModelLoader\libs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\license;openFrameworks\addons\ofxAssimpModelLoader\src;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp64.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -141,7 +140,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\components;src\fonts;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\UI;src\UI\dropdown;src\UI\hierarchy;src\UI\properties;src\components;src\components\2d;src\components\3d;openFrameworks\addons\ofxAssimpModelLoader\libs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\license;openFrameworks\addons\ofxAssimpModelLoader\src;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
@@ -153,8 +152,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
@@ -164,7 +163,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\components;src\fonts;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\UI;src\UI\dropdown;src\UI\hierarchy;src\UI\properties;src\components;src\components\2d;src\components\3d;openFrameworks\addons\ofxAssimpModelLoader\libs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\Win32;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64;openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\license;openFrameworks\addons\ofxAssimpModelLoader\src;openFrameworks\addons\ofxDatGui-master\src;openFrameworks\addons\ofxDatGui-master\src\components;openFrameworks\addons\ofxDatGui-master\src\core;openFrameworks\addons\ofxDatGui-master\src\libs;openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont;openFrameworks\addons\ofxDatGui-master\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
@@ -175,12 +174,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies);assimp64.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\lib\vs\x64</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\components\2d\circle.cpp" />
     <ClCompile Include="src\components\2d\ellipse.cpp" />
@@ -200,16 +201,19 @@
     <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp" />
     <ClCompile Include="src\UI\label.cpp" />
     <ClCompile Include="src\UI\menuBar.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
-    <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
-    <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
     <ClCompile Include="src\UI\menuBarButton.cpp" />
     <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
+    <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\components\2d\circle.h" />
     <ClInclude Include="src\components\2d\ellipse.h" />
@@ -219,10 +223,10 @@
     <ClInclude Include="src\components\2d\square.h" />
     <ClInclude Include="src\components\2d\triangle.h" />
     <ClInclude Include="src\components\3d\cube.h" />
-    <ClInclude Include="src\components\object.h" />
     <ClInclude Include="src\components\3d\sphere.h" />
-    <ClInclude Include="src\scene.h" />
+    <ClInclude Include="src\components\object.h" />
     <ClInclude Include="src\mainTheme.h" />
+    <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\UI\dropdown\dropdown.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
     <ClInclude Include="src\UI\dropdown\dropdownPanel.h" />
@@ -231,7 +235,55 @@
     <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
     <ClInclude Include="src\UI\label.h" />
     <ClInclude Include="src\UI\menuBar.h" />
-    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\UI\menuBarButton.h" />
+    <ClInclude Include="src\UI\menuBarButtonAlt.h" />
+    <ClInclude Include="src\UI\properties\propertiesPanel.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpModelLoader.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpTexture.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpUtils.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ai_assert.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\anim.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\camera.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cexport.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cfileio.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\cimport.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\color4.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\pstdint.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\config.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\DefaultIOStream.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\DefaultIOSystem.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Defines.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\defs.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Exporter.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Importer.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\importerdesc.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\IOStream.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\light.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\Logger.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\LogStream.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\material.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\matrix3x3.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\matrix4x4.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\mesh.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\metadata.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\postprocess.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\quaternion.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\scene.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\SceneCombiner.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\texture.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\types.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\vector2.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\vector3.h" />
+    <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\libs\assimp\include\assimp\version.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGui2dPad.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiButton.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\components\ofxDatGuiColorPicker.h" />
@@ -253,9 +305,6 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h" />
-    <ClInclude Include="src\UI\menuBarButton.h" />
-    <ClInclude Include="src\UI\menuBarButtonAlt.h" />
-    <ClInclude Include="src\UI\properties\propertiesPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
