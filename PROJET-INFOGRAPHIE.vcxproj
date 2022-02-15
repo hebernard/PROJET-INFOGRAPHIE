@@ -203,6 +203,7 @@
     <ClCompile Include="src\UI\menuBar.cpp" />
     <ClCompile Include="src\UI\menuBarButton.cpp" />
     <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
+    <ClCompile Include="src\UI\panel.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
@@ -225,7 +226,6 @@
     <ClInclude Include="src\components\3d\cube.h" />
     <ClInclude Include="src\components\3d\sphere.h" />
     <ClInclude Include="src\components\object.h" />
-    <ClInclude Include="src\UI\mainTheme.h" />
     <ClInclude Include="src\scene.h" />
     <ClInclude Include="src\UI\dropdown\dropdown.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
@@ -234,9 +234,11 @@
     <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
     <ClInclude Include="src\UI\label.h" />
+    <ClInclude Include="src\UI\mainTheme.h" />
     <ClInclude Include="src\UI\menuBar.h" />
     <ClInclude Include="src\UI\menuBarButton.h" />
     <ClInclude Include="src\UI\menuBarButtonAlt.h" />
+    <ClInclude Include="src\UI\panel.h" />
     <ClInclude Include="src\UI\properties\propertiesPanel.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.h" />

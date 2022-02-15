@@ -4,13 +4,14 @@
 #include "dropdownButton.h"
 #include "mainTheme.h"
 
-dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), mLabel(new label(text, mainTheme::fontMediumPath, 13, mainTheme::fontColorAlpha())), downArrow(), panel(), m_menu(menu)
+dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), m_text(text), downArrow(), panel(), m_menu(menu)
 {
 	downArrow.load("images/icons/down_arrow.png");
 	downArrow.resize(20, 20);
 	setTheme(new dropdownTheme());
 
 	onToggleEvent(this, &dropdown::onToggled);
+	textSize = label::getSize(text, 13);
 }
 
 void dropdown::onToggled(ofxDatGuiToggleEvent e)
@@ -21,7 +22,7 @@ void dropdown::onToggled(ofxDatGuiToggleEvent e)
 void dropdown::setTheme(const ofxDatGuiTheme* theme)
 {
 	setComponentStyle(theme);
-	int width = mLabel->getWidth() + 50;
+	int width = textSize.x + 70;
 	ofxDatGuiComponent::setWidth(width, theme->layout.labelWidth);
 }
 
@@ -38,11 +39,10 @@ void dropdown::draw()
 		if (downArrow.isAllocated())
 		{
 			ofSetColor(mainTheme::fontColor());
-			downArrow.draw(mLabel->getX() + mLabel->getWidth() + 5, y + getHeight() / 2 - 10);
+			downArrow.draw(x + textSize.x + 20, y + getHeight() / 2 - 10);
 		}
 
-		mLabel->setColor(mainTheme::fontColor());
-		mLabel->draw();
+		drawText(x + 15, y + textSize.y + 14, m_text, 13);
 
 		if (getChecked())
 		{
@@ -51,8 +51,7 @@ void dropdown::draw()
 	}
 	else 
 	{
-		mLabel->setColor(mainTheme::fontColor());
-		mLabel->draw();
+		drawText(x + 15, y + textSize.y + 14, m_text, 13, mainTheme::fontColorAlpha());
 	}
 
 	ofPopStyle();
@@ -70,13 +69,6 @@ void dropdown::update()
 			m_menu.notifyDropdownClicked(-1);
 		}
 	}
-}
-
-void dropdown::setPosition(int x, int y)
-{
-	this->x = x;
-	this->y = y;
-	mLabel->setPosition(x + 15, y + mLabel->getHeight() + 14);
 }
 
 void dropdown::addButton(dropdownButton* button)

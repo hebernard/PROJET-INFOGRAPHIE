@@ -25,7 +25,8 @@ public:
 	void update(int x, int y);
 
 private:
-	label* m_label;
+	std::string m_text;
+	glm::vec2 textSize;
 	ofImage icon;
 
 	void setTheme(const ofxDatGuiTheme* theme);

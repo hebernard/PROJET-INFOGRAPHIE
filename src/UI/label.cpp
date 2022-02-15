@@ -1,29 +1,49 @@
 #include "label.h"
+#include "ofMain.h"
 
-label::label(std::string text, std::string fontPath, int fontSize, ofColor c) : ofxDatGuiLabel(text), font(), color(c)
-{
-	ofTrueTypeFontSettings settings(fontPath, fontSize);
-	mType = ofxDatGuiType::LABEL;
-	font.load(settings);
-}
+std::vector<fontArgs*> label::fonts;
 
-void label::draw()
+void drawText(int x, int y, std::string text, int fontSize, ofColor color, std::string path)
 {
+	auto font = label::getFont(path, fontSize);
+
+	ofPushStyle();
 	ofSetColor(color);
-	font.drawString(getLabel(), x, y);
+	font->drawString(text, x, y);
+	ofPopStyle();
 }
 
-int label::getWidth()
+ofTrueTypeFont* label::getFont(std::string path, int fontSize)
 {
-	return (int) font.stringWidth(getLabel());
+	for (size_t i = 0; i < label::fonts.size(); i++)
+	{
+		auto args = label::fonts.at(i);
+		if (args->path == path && args->font->getSize() == fontSize)
+		{
+			return args->font;
+		}
+	}
+
+	// The font wasn't found, add it
+	ofTrueTypeFont* font = new ofTrueTypeFont();
+	font->load(path, fontSize);
+	label::fonts.push_back(new fontArgs(path, font));
+
+	std::cout << "Added new font: " << path << " with size " << fontSize << endl;
+
+	return font;
 }
 
-int label::getHeight()
+glm::vec2 label::getSize(std::string text, int fontSize, std::string path)
 {
-	return (int) font.stringHeight(getLabel());
+	auto font = label::getFont(path, fontSize);
+	return glm::vec2(font->stringWidth(text), font->stringHeight(text));
 }
 
-void label::setColor(ofColor color)
+label::~label()
 {
-	this->color = color;
+	for (auto i : fonts)
+	{
+		delete i;
+	}
 }

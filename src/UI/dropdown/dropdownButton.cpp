@@ -2,11 +2,13 @@
 #include "UI/label.h"
 #include "mainTheme.h"
 
-dropdownButton::dropdownButton(std::string iconPath, std::string text) : ofxDatGuiButton("dropdownButton"), m_label(new label(text, mainTheme::fontRegularPath, 11, ofColor(mainTheme::fontColor()))), icon()
+dropdownButton::dropdownButton(std::string iconPath, std::string text) : ofxDatGuiButton("dropdownButton"), m_text(text), icon()
 {
 	icon.load(iconPath);
 	icon.resize(20, 20);
 	setTheme(new dropdownButtonTheme());
+
+	textSize = label::getSize(text, 11, mainTheme::fontRegularPath);
 }
 
 void dropdownButton::setTheme(const ofxDatGuiTheme* theme)
@@ -32,8 +34,14 @@ void dropdownButton::draw()
 		icon.draw(x + 20, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
-	m_label->setColor(mainTheme::fontColor());
-	m_label->draw();
+	drawText(
+		x + icon.getWidth() + 20 * 2,
+		y + getHeight() / 2 + textSize.y / 2,
+		m_text, 
+		11, 
+		mainTheme::fontColor(),
+		mainTheme::fontRegularPath
+	);
 	ofPopStyle();
 }
 
@@ -41,5 +49,4 @@ void dropdownButton::update(int x, int y)
 {
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
-	m_label->setPosition(x + icon.getWidth() + 20 * 2, y + getHeight() / 2 + m_label->getHeight() / 2);
 }

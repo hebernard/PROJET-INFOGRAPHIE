@@ -1,20 +1,37 @@
 #pragma once
+#include <vector>
+#include <iostream>
+#include "ofTrueTypeFont.h"
+#include "mainTheme.h"
 
-#include "ofxDatGuiLabel.h"
-
-class label : public ofxDatGuiLabel
+struct fontArgs
 {
 public:
-	label(std::string text, std::string font, int fontSize, ofColor color);
-	void draw();
+	std::string path;
+	ofTrueTypeFont* font;
 
-	int getWidth();
-	int getHeight();
+	fontArgs(std::string path, ofTrueTypeFont* font)
+	{
+		this->path = path;
+		this->font = font;
+	}
 
-	void setColor(ofColor color);
-
-private:
-	ofTrueTypeFont font;
-	ofColor color;
+	~fontArgs()
+	{
+		delete font;
+	}
 };
 
+class label
+{
+public:
+	static std::vector<fontArgs*> fonts;
+
+	static ofTrueTypeFont* getFont(std::string path, int fontSize);
+	static glm::vec2 getSize(std::string text, int fontSize, std::string path = mainTheme::fontMediumPath);
+
+private:
+	~label();
+};
+
+void drawText(int x, int y, std::string text, int fontSize, ofColor color = mainTheme::fontColor(), std::string path = mainTheme::fontMediumPath);

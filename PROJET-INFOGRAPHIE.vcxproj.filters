@@ -97,6 +97,7 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui-master\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\panel.cpp" />
     <ClCompile Include="src\UI\mainTheme.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +213,6 @@
     </ClInclude>
     <ClInclude Include="src\components\object.h">
       <Filter>src\components</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UI\mainTheme.h">
-      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
@@ -456,6 +454,8 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui-master\src\themes</Filter>
     </ClInclude>
+    <ClInclude Include="src\UI\panel.h" />
+    <ClInclude Include="src\UI\mainTheme.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

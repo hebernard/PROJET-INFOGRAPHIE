@@ -13,10 +13,9 @@
 #include "components/2d/triangle.h"
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
-//#include "components/3d/object3D.h"
-//#include "ofxAssimpModelLoader.h"
+#include "panel.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), exportButton(new menuBarButton("Export")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
@@ -27,15 +26,15 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	//2D - Line Button
 	dropdownButton* lineButton = new dropdownButton("images/icons/line.png", "Line");
 	lineButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
-		{
-			line* li = new line(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0));
-			li->setPosition(glm::vec3(1, 1, 0));
+	{
+		line* li = new line(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0));
+		li->setPosition(glm::vec3(1, 1, 0));
 
-			scene& s = s.getInstance();
-			s.addObject(li);
+		scene& s = s.getInstance();
+		s.addObject(li);
 
-			notifyDropdownClicked(-1);
-		});
+		notifyDropdownClicked(-1);
+	});
 	dropdown2d->addButton(lineButton);
 
 	//2D - Circle Button
@@ -55,15 +54,15 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	//2D - Ellipse Button
 	dropdownButton* ellipseButton = new dropdownButton("images/icons/ellipse.png", "Ellipse");
 	ellipseButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
-		{
-			ellipse* elli = new ellipse(1.5f, 1.2f);
-			elli->setPosition(glm::vec3(1, 1, 0));
+	{
+		ellipse* elli = new ellipse(1.5f, 1.2f);
+		elli->setPosition(glm::vec3(1, 1, 0));
 
-			scene& s = s.getInstance();
-			s.addObject(elli);
+		scene& s = s.getInstance();
+		s.addObject(elli);
 
-			notifyDropdownClicked(-1);
-		});
+		notifyDropdownClicked(-1);
+	});
 	dropdown2d->addButton(ellipseButton);
 
 	//2D - Square Button
@@ -137,6 +136,7 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	dropdown3d->addButton(cubeButton);
 
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
+	exportButton->onButtonEvent(this, &menuBar::onExportButtonEvent);
 	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 }
 
@@ -155,6 +155,7 @@ void menuBar::draw()
 	dropdown3d->draw();
 
 	importButton->draw();
+	exportButton->draw();
 	themeButton->draw();
 
 	ofPopStyle();
@@ -174,8 +175,10 @@ void menuBar::update()
 	dropdown3d->update();
 
 	posX += dropdown3d->getWidth() + 10;
-
 	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
+
+	posX += importButton->getWidth() + 10;
+	exportButton->update(posX, posY + dropdown2d->getHeight() / 2 - exportButton->getHeight() / 2);
 	themeButton->update(ofGetWidth() - (themeButton->getWidth()*2), posY + dropdown2d->getHeight() / 2 - themeButton->getHeight() / 2);
 }
 
@@ -247,6 +250,10 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 			}
 		}
 	}
+}
+
+void menuBar::onExportButtonEvent(ofxDatGuiButtonEvent e)
+{
 }
 
 void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)

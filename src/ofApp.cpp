@@ -40,7 +40,6 @@ void ofApp::update()
 
 void ofApp::draw()
 {
-
 	cam->begin();
 	ofEnableDepthTest();
 

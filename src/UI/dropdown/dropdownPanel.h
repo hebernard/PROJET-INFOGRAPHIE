@@ -16,8 +16,6 @@ public:
 	void addButton(dropdownButton* button);
 
 private:
-
 	std::vector<dropdownButton*> buttons;
-
 };
 

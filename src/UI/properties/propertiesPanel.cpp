@@ -5,7 +5,7 @@
 #include "UI/hierarchy/hierarchySmallButton.h"
 #include "scene.h"
 
-propertiesPanel::propertiesPanel() : m_label(new label("Properties", mainTheme::fontMediumPath, 14, mainTheme::fontColor())), backButton(new hierarchySmallButton("images/icons/back.png"))
+propertiesPanel::propertiesPanel() : backButton(new hierarchySmallButton("images/icons/back.png"))
 {
 	rect.width = 300;
 	rect.y = 100;
@@ -19,8 +19,6 @@ propertiesPanel::propertiesPanel() : m_label(new label("Properties", mainTheme::
 
 void propertiesPanel::draw(const object& obj)
 {
-	m_label->setLabel(obj.getName());
-
 	rect.height = ofGetHeight() - 150;
 	rect.x = ofGetWidth() - rect.width - 20;
 
@@ -33,9 +31,7 @@ void propertiesPanel::draw(const object& obj)
 	ofSetColor(mainTheme::panelColor());
 	ofDrawRectRounded(rect, 6);
 
-	m_label->setPosition(rect.x + 60, rect.y + 32);
-	m_label->setColor(mainTheme::fontColor());
-	m_label->draw();
+	drawText(rect.x + 60, rect.y + 32, obj.getName(), 14);
 
 	backButton->update(rect.x + 15, rect.y + 10);
 	backButton->draw();

@@ -4,7 +4,7 @@
 #include "components/object.h"
 #include "mainTheme.h"
 
-hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", mainTheme::fontMediumPath, 14, mainTheme::fontColor())), icon()
+hierarchyPanel::hierarchyPanel() : icon()
 {
 	rect.width = 300;
 	rect.y = 100;
@@ -32,9 +32,8 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 		ofSetColor(ofColor::white);
 		icon.draw(rect.x + 15, rect.y + icon.getHeight() / 2);
 	}
-	m_label->setPosition(rect.x + 60, rect.y + 32);
-	m_label->setColor(mainTheme::fontColor());
-	m_label->draw();
+
+	drawText(rect.x + 60, rect.y + 32, "Hierarchy", 14);
 
 	ofSetColor(mainTheme::panelBorderColor());
 	ofSetLineWidth(2);

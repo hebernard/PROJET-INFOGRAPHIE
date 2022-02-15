@@ -1,7 +1,7 @@
 #include "dropdownPanel.h"
 #include "ofGraphics.h"
 #include "dropdownButton.h"
-#include "mainTheme.h"
+#include "panel.h"
 
 dropdownPanel::dropdownPanel() : rect(), buttons()
 {
@@ -24,21 +24,12 @@ void dropdownPanel::update(int x, int y)
 
 void dropdownPanel::draw()
 {
-	ofPushStyle();
-	ofFill();
-
-	ofSetColor(mainTheme::panelBorderColor());
-	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
-
-	ofSetColor(mainTheme::panelColor());
-	ofDrawRectRounded(rect, 6);
+	drawPanel(rect);
 
 	for (size_t i = 0; i < buttons.size(); i++)
 	{
 		buttons.at(i)->draw();
 	}
-
-	ofPopStyle();
 }
 
 void dropdownPanel::addButton(dropdownButton* button)

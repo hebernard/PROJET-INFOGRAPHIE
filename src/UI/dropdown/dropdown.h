@@ -25,7 +25,6 @@ public:
 
 	void draw();
 	void update();
-	void setPosition(int x, int y);
 
 	void addButton(dropdownButton* button);
 
@@ -33,7 +32,9 @@ private:
 	int index;
 	bool opened;
 
-	label* mLabel;
+	std::string m_text;
+	glm::vec2 textSize;
+
 	ofImage downArrow;
 	dropdownPanel panel;
 	menuBar& m_menu;

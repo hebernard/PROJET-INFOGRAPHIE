@@ -6,8 +6,9 @@
 
 hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : 
 	ofxDatGuiButton("hierarchyButton"), 
-	m_label(new label(text, mainTheme::fontRegularPath, 11, mainTheme::fontColor())),
-	icon(), m_obj(obj), 
+	m_text(text),
+	icon(),
+	m_obj(obj), 
 	deleteButton(new hierarchySmallButton("images/icons/delete.png")),
 	propertiesButton(new hierarchySmallButton("images/icons/properties.png")),
 	visibleButton(new hierarchySmallButton("images/icons/eye.png"))
@@ -15,6 +16,8 @@ hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string 
 	icon.load(iconPath);
 	icon.resize(24, 24);
 	setTheme(new hierarchyButtonTheme());
+
+	textSize = label::getSize(text, 11, mainTheme::fontRegularPath);
 
 	onButtonEvent(this, &hierarchyButton::onClick);
 
@@ -66,8 +69,7 @@ void hierarchyButton::draw()
 		icon.draw(x + 30, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
-	m_label->setColor(mainTheme::fontColor());
-	m_label->draw();
+	drawText(x + icon.getWidth() + 25 * 2, y + getHeight() / 2 + textSize.y / 2, m_text, 11, mainTheme::fontColor(), mainTheme::fontRegularPath);
 
 	deleteButton->draw();
 	propertiesButton->draw();
@@ -79,7 +81,6 @@ void hierarchyButton::update(int x, int y)
 {
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
-	m_label->setPosition(x + icon.getWidth() + 25 * 2, y + getHeight() / 2 + m_label->getHeight() / 2);
 
 	int posX = x + getWidth() - deleteButton->getWidth() - 30;
 	int posY = y + getHeight() / 2 - deleteButton->getHeight() / 2;
@@ -94,5 +95,5 @@ void hierarchyButton::update(int x, int y)
 
 std::string hierarchyButton::getLabel()
 {
-	return m_label->getLabel();
+	return m_text;
 }

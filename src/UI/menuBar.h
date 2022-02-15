@@ -28,12 +28,14 @@ private:
 	dropdown* dropdown3d;
 
 	menuBarButton* importButton;
+	menuBarButton* exportButton;
 	menuBarButtonAlt* themeButton;
 
 	void drawLogo();
 	void drawLine();
 
 	void onImportButtonEvent(ofxDatGuiButtonEvent e);
+	void onExportButtonEvent(ofxDatGuiButtonEvent e);
 	void onThemeButtonEvent(ofxDatGuiButtonEvent e);
 };
 

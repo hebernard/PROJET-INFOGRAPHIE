@@ -3,7 +3,6 @@
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
 
-class label;
 class object;
 class hierarchySmallButton;
 
@@ -28,8 +27,8 @@ public:
 	std::string getLabel();
 
 private:
-
-	label* m_label;
+	std::string m_text;
+	glm::vec2 textSize;
 	ofImage icon;
 	object& m_obj;
 

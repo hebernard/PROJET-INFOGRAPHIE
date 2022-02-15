@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 
-class label;
 class object;
 class hierarchySmallButton;
 
@@ -14,9 +13,6 @@ public:
 	void draw(const object& obj);
 
 private:
-
 	ofRectangle rect;
-	label* m_label;
 	hierarchySmallButton* backButton;
-
 };
