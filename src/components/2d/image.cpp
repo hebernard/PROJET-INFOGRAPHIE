@@ -22,3 +22,8 @@ glm::vec3 image::getCenter()
 	glm::vec3 pos = getPosition();
 	return glm::vec3(pos.x + (size.x * getScale().x / 2), pos.y + (size.y * getScale().y / 2), pos.z);
 }
+
+glm::vec3 image::getBBox()
+{
+	return glm::vec3(size.x, size.y, 0);
+}

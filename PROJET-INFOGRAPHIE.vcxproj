@@ -180,6 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\3d\objectModel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\camera.cpp" />
@@ -214,6 +215,7 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\3d\objectModel.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\components\2d\circle.h" />

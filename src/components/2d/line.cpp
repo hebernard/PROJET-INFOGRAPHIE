@@ -21,3 +21,9 @@ glm::vec3 line::getCenter()
 	glm::vec3 position((getPosition().x + m_p2.x) / 2, (getPosition().y + m_p2.y) / 2, getPosition().z);
 	return position;
 }
+
+glm::vec3 line::getBBox()
+{
+	glm::vec3 position(abs(m_p2.x - m_p1.x), abs(m_p2.y - m_p1.y), 0);
+	return position;
+}

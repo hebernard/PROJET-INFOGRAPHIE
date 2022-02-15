@@ -21,3 +21,8 @@ glm::vec3 triangle::getCenter()
 	glm::vec3 position((getPosition().x + m_p3.x) / 2, (getPosition().y + m_p2.y) / 2, getPosition().z);
 	return position;
 }
+
+glm::vec3 triangle::getBBox()
+{
+	return glm::vec3((m_p1.x+m_p3.x)/2, m_p2.y/2, 0);
+}

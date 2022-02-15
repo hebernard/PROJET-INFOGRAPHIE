@@ -21,3 +21,8 @@ glm::vec3 rectangle::getCenter()
 	glm::vec3 position(getPosition().x + m_width / 2, getPosition().y + m_height / 2, getPosition().z);
 	return position;
 }
+
+glm::vec3 rectangle::getBBox()
+{
+	return glm::vec3(m_width, m_height, 0);
+}

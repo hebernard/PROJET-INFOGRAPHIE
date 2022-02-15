@@ -13,6 +13,7 @@
 #include "components/2d/triangle.h"
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
+#include "components/3d/objectModel.h"
 #include "panel.h"
 
 menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), exportButton(new menuBarButton("Export")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
@@ -244,9 +245,9 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 				s.addObject(new image(openFileResult.getPath()));
 			}
 
-			if (fileExtension == "OBJ" || fileExtension == "3DS" || fileExtension == "PLY" || fileExtension == "STL")
+			if (fileExtension == "OBJ" || fileExtension == "3DS" || fileExtension == "PLY" || fileExtension == "STL" || fileExtension == "DAE")
 			{
-				//s.addObject(new object3D(openFileResult.getPath()));
+				s.addObject(new objectModel(openFileResult.getPath()));
 			}
 		}
 	}
