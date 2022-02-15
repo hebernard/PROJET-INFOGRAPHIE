@@ -3,6 +3,8 @@
 
 /bin/*
 !/bin/data/
+!/bin/assimp32.dll
+!/bin/assimp64.dll
 
 # general
 .vs/
