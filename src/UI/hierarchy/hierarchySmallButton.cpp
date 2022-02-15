@@ -14,8 +14,7 @@ void hierarchySmallButton::draw()
 
 	if (mMouseOver)
 	{
-		mainTheme& t = t.getInstance();
-		ofSetColor(t.toolBarButtonHoverColor);
+		ofSetColor(mainTheme::toolBarButtonHoverColor());
 		ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 	}
 

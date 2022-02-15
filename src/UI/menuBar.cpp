@@ -13,13 +13,15 @@
 #include "components/2d/triangle.h"
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
+//#include "components/3d/object3D.h"
+//#include "ofxAssimpModelLoader.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), themeButton(new menuBarButtonAlt(t.themePath))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
 
-	logo.load(t.logoPath);
+	logo.load(mainTheme::logoPath());
 	logo.resize(22, 22);
 
 	//2D - Line Button
@@ -143,7 +145,7 @@ void menuBar::draw()
 	ofPushStyle();
 	ofFill();
 
-	ofSetColor(t.toolBarColor);
+	ofSetColor(mainTheme::toolBarColor());
 	ofDrawRectangle(rect);
 
 	drawLogo();
@@ -203,10 +205,10 @@ void menuBar::notifyDropdownClicked(int index)
 
 void menuBar::drawLogo()
 {
-	ofSetColor(t.logoDownLayerColor);
+	ofSetColor(mainTheme::logoDownLayerColor());
 	ofDrawRectRounded(20, rect.height / 2 - 15, 34, 34, 6);
 
-	ofSetColor(t.logoTopLayerColor);
+	ofSetColor(mainTheme::logoTopLayerColor());
 	ofDrawRectRounded(20, rect.height / 2 - 17, 34, 34, 6);
 
 	ofSetColor(ofColor::white);
@@ -216,7 +218,7 @@ void menuBar::drawLogo()
 void menuBar::drawLine()
 {
 	ofSetLineWidth(2);
-	ofSetColor(t.toolBarBorderColor);
+	ofSetColor(mainTheme::toolBarBorderColor());
 	ofDrawLine(0, 71, ofGetWidth(), 71);
 }
 
@@ -239,16 +241,19 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 				s.addObject(new image(openFileResult.getPath()));
 			}
 
-			//TODO: Gestion des objets 3D
+			if (fileExtension == "OBJ" || fileExtension == "3DS" || fileExtension == "PLY" || fileExtension == "STL")
+			{
+				//s.addObject(new object3D(openFileResult.getPath()));
+			}
 		}
 	}
 }
 
 void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)
 {
-	t.setTheme(!t.getTheme());
-	ofSetBackgroundColor(t.sceneBackgroundColor);
-	themeButton->updateIcon(t.themePath);
-	logo.load(t.logoPath);
+	mainTheme::darkTheme = !mainTheme::darkTheme;
+	ofSetBackgroundColor(mainTheme::sceneBackgroundColor());
+	themeButton->updateIcon(mainTheme::themePath());
+	logo.load(mainTheme::logoPath());
 	logo.resize(22, 22);
 }

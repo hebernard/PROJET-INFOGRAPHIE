@@ -11,7 +11,6 @@ class scene
 {
 public:
 	camera* camera;
-	mainTheme& t = t.getInstance();
 	object* currentSelected;
 
 	static scene& getInstance()
@@ -62,7 +61,7 @@ public:
 				{
 					ofPushStyle();
 					ofNoFill();
-					ofSetColor(t.color1);
+					ofSetColor(mainTheme::color1());
 					auto bbox = obj->getBBox();
 					ofDrawBox(obj->getCenter(), bbox.x, bbox.y, bbox.z);
 					ofPopStyle();
@@ -81,18 +80,18 @@ public:
 		ofRotateX(90);
 
 		ofSetLineWidth(2);
-		ofSetColor(t.gridColor2);
+		ofSetColor(mainTheme::gridColor2());
 		ofDrawRectangle(-100, -100, 200, 200);
 
 		for (int x = -100; x < 100; x++)
 		{
-			ofSetColor(x == 0 ? ofColor(255, 0, 0, 50) : t.gridColor1);
+			ofSetColor(x == 0 ? ofColor(255, 0, 0, 50) : mainTheme::gridColor1());
 			ofDrawLine(-100, x, 100, x);
 		}
 
 		for (int z = -100; z < 100; z++)
 		{
-			ofSetColor(z == 0 ? ofColor(0, 0, 255, 50) : t.gridColor1);
+			ofSetColor(z == 0 ? ofColor(0, 0, 255, 50) : mainTheme::gridColor1());
 			ofDrawLine(z, -100, z, 100);
 		}
 

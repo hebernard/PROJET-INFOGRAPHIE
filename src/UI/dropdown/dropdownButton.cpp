@@ -1,7 +1,8 @@
 #include "dropdownButton.h"
 #include "UI/label.h"
+#include "mainTheme.h"
 
-dropdownButton::dropdownButton(std::string iconPath, std::string text) : ofxDatGuiButton("dropdownButton"), m_label(new label(text, t.fontRegularPath, 11, ofColor(t.fontColor))), icon()
+dropdownButton::dropdownButton(std::string iconPath, std::string text) : ofxDatGuiButton("dropdownButton"), m_label(new label(text, mainTheme::fontRegularPath, 11, ofColor(mainTheme::fontColor()))), icon()
 {
 	icon.load(iconPath);
 	icon.resize(20, 20);
@@ -21,7 +22,7 @@ void dropdownButton::draw()
 
 	if (mMouseOver)
 	{
-		ofSetColor(t.panelButtonHoverColor);
+		ofSetColor(mainTheme::panelButtonHoverColor());
 		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());
 	}
 
@@ -31,7 +32,7 @@ void dropdownButton::draw()
 		icon.draw(x + 20, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
-	m_label->setColor(t.fontColor);
+	m_label->setColor(mainTheme::fontColor());
 	m_label->draw();
 	ofPopStyle();
 }

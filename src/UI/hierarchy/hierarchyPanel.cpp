@@ -2,8 +2,9 @@
 #include "ofRectangle.h"
 #include "UI/label.h"
 #include "components/object.h"
+#include "mainTheme.h"
 
-hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", t.fontMediumPath, 14, t.fontColor)), icon()
+hierarchyPanel::hierarchyPanel() : m_label(new label("Hierarchy", mainTheme::fontMediumPath, 14, mainTheme::fontColor())), icon()
 {
 	rect.width = 300;
 	rect.y = 100;
@@ -20,10 +21,10 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 	ofPushStyle();
 	ofFill();
 
-	ofSetColor(t.panelBorderColor);
+	ofSetColor(mainTheme::panelBorderColor());
 	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
 
-	ofSetColor(t.panelColor);
+	ofSetColor(mainTheme::panelColor());
 	ofDrawRectRounded(rect, 6);
 
 	if (icon.isAllocated())
@@ -32,10 +33,10 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 		icon.draw(rect.x + 15, rect.y + icon.getHeight() / 2);
 	}
 	m_label->setPosition(rect.x + 60, rect.y + 32);
-	m_label->setColor(t.fontColor);
+	m_label->setColor(mainTheme::fontColor());
 	m_label->draw();
 
-	ofSetColor(t.panelBorderColor);
+	ofSetColor(mainTheme::panelBorderColor());
 	ofSetLineWidth(2);
 	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofRectangle.h"
-#include "mainTheme.h"
 
 class dropdownButton;
 
@@ -17,7 +16,8 @@ public:
 	void addButton(dropdownButton* button);
 
 private:
-	mainTheme& t = t.getInstance();
+
 	std::vector<dropdownButton*> buttons;
+
 };
 

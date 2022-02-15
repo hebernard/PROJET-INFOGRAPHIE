@@ -6,7 +6,7 @@
 
 hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : 
 	ofxDatGuiButton("hierarchyButton"), 
-	m_label(new label(text, t.fontRegularPath, 11, t.fontColor)), 
+	m_label(new label(text, mainTheme::fontRegularPath, 11, mainTheme::fontColor())),
 	icon(), m_obj(obj), 
 	deleteButton(new hierarchySmallButton("images/icons/delete.png")),
 	propertiesButton(new hierarchySmallButton("images/icons/properties.png")),
@@ -56,7 +56,7 @@ void hierarchyButton::draw()
 
 	if (mMouseOver || m_obj.isSelected)
 	{
-		ofSetColor(t.panelButtonHoverColor);
+		ofSetColor(mainTheme::panelButtonHoverColor());
 		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());
 	}
 
@@ -66,7 +66,7 @@ void hierarchyButton::draw()
 		icon.draw(x + 30, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
 
-	m_label->setColor(t.fontColor);
+	m_label->setColor(mainTheme::fontColor());
 	m_label->draw();
 
 	deleteButton->draw();

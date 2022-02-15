@@ -1,5 +1,6 @@
 #include "menuBarButtonAlt.h"
 #include "label.h"
+#include "mainTheme.h"
 
 menuBarButtonAlt::menuBarButtonAlt(std::string iconPath) : ofxDatGuiButton("menuBarButtonAlt"), icon()
 {
@@ -21,7 +22,7 @@ void menuBarButtonAlt::draw()
 
 	if (mFocused && mMouseDown)
 	{
-		ofSetColor(t.logoTopLayerColor);
+		ofSetColor(mainTheme::logoTopLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 
 		ofSetColor(ofColor::white);
@@ -29,10 +30,10 @@ void menuBarButtonAlt::draw()
 	}
 	else if (mMouseOver)
 	{
-		ofSetColor(t.logoDownLayerColor);
+		ofSetColor(mainTheme::logoDownLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 
-		ofSetColor(t.logoTopLayerColor);
+		ofSetColor(mainTheme::logoTopLayerColor());
 		ofDrawRectRounded(x, y - 3, 34, 34, 6);
 
 		ofSetColor(ofColor::white);
@@ -40,17 +41,15 @@ void menuBarButtonAlt::draw()
 	}
 	else
 	{
-		ofSetColor(t.logoDownLayerColor);
+		ofSetColor(mainTheme::logoDownLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 
-		ofSetColor(t.logoTopLayerColor);
+		ofSetColor(mainTheme::logoTopLayerColor());
 		ofDrawRectRounded(x, y - 2, 34, 34, 6);
 
 		ofSetColor(ofColor::white);
 		icon.draw(x + getWidth() / 2 - icon.getWidth() / 2 + 1, y + getHeight() / 2 - icon.getHeight() / 2);
 	}
-
-
 
 	ofPopStyle();
 }

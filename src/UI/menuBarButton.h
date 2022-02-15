@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofxDatGuiButton.h"
-#include "mainTheme.h"
 
 class label;
 
@@ -25,7 +24,6 @@ public:
 	void update(int x, int y);
 
 private:
-	mainTheme& t = t.getInstance();
 
 	label* m_label;
 

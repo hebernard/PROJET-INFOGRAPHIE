@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofxDatGuiComponent.h"
-#include "mainTheme.h"
 
 class dropdown;
 class menuBarButton;
@@ -21,8 +20,6 @@ public:
 	void notifyDropdownClicked(int index);
 
 private:
-
-	mainTheme& t = t.getInstance();
 
 	ofRectangle rect;
 	ofImage logo;

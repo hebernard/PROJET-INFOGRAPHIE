@@ -2,7 +2,6 @@
 
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
-#include "mainTheme.h"
 
 class label;
 class object;
@@ -29,7 +28,6 @@ public:
 	std::string getLabel();
 
 private:
-	mainTheme& t = t.getInstance();
 
 	label* m_label;
 	ofImage icon;

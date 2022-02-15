@@ -1,13 +1,14 @@
 #include "ofApp.h"
 #include "components/3d/sphere.h"
 #include "components/2d/circle.h"
+#include "mainTheme.h"
 
 void ofApp::setup()
 {
 	//set DarkTheme by default
-	t.setTheme(true);
+	mainTheme::darkTheme = true;
 
-	ofSetBackgroundColor(t.sceneBackgroundColor);
+	ofSetBackgroundColor(mainTheme::sceneBackgroundColor());
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
 	menu = new menuBar();

@@ -3,7 +3,6 @@
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
 #include "dropdownPanel.h"
-#include "mainTheme.h"
 
 class label;
 class menuBar;
@@ -31,8 +30,6 @@ public:
 	void addButton(dropdownButton* button);
 
 private:
-	mainTheme& t = t.getInstance();
-
 	int index;
 	bool opened;
 

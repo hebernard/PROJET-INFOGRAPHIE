@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofxDatGuiLabel.h"
-#include "mainTheme.h"
 
 class label : public ofxDatGuiLabel
 {
@@ -15,8 +14,6 @@ public:
 	void setColor(ofColor color);
 
 private:
-	mainTheme& t = t.getInstance();
-
 	ofTrueTypeFont font;
 	ofColor color;
 };

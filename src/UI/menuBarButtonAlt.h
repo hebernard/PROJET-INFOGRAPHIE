@@ -2,7 +2,6 @@
 
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
-#include "mainTheme.h"
 
 class label;
 
@@ -27,7 +26,6 @@ public:
 	void updateIcon(std::string iconPath);
 
 private:
-	mainTheme& t = t.getInstance();
 
 	ofImage icon;
 

@@ -5,7 +5,7 @@
 #include "UI/hierarchy/hierarchySmallButton.h"
 #include "scene.h"
 
-propertiesPanel::propertiesPanel() : m_label(new label("Properties", t.fontMediumPath, 14, t.fontColor)), backButton(new hierarchySmallButton("images/icons/back.png"))
+propertiesPanel::propertiesPanel() : m_label(new label("Properties", mainTheme::fontMediumPath, 14, mainTheme::fontColor())), backButton(new hierarchySmallButton("images/icons/back.png"))
 {
 	rect.width = 300;
 	rect.y = 100;
@@ -27,20 +27,20 @@ void propertiesPanel::draw(const object& obj)
 	ofPushStyle();
 	ofFill();
 
-	ofSetColor(t.panelBorderColor);
+	ofSetColor(mainTheme::panelBorderColor());
 	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
 
-	ofSetColor(t.panelColor);
+	ofSetColor(mainTheme::panelColor());
 	ofDrawRectRounded(rect, 6);
 
 	m_label->setPosition(rect.x + 60, rect.y + 32);
-	m_label->setColor(t.fontColor);
+	m_label->setColor(mainTheme::fontColor());
 	m_label->draw();
 
 	backButton->update(rect.x + 15, rect.y + 10);
 	backButton->draw();
 
-	ofSetColor(t.panelBorderColor);
+	ofSetColor(mainTheme::panelBorderColor());
 	ofSetLineWidth(2);
 	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
 
