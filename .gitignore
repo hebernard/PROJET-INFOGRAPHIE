@@ -3,6 +3,8 @@
 
 /bin/*
 !/bin/data/
+!/bin/assimp32.dll
+!/bin/assimp64.dll
 
 # general
 .vs/
@@ -72,3 +74,4 @@ Desktop.ini
 # Android
 .csettings
 openFrameworks/libs/openFrameworksCompiled/lib/vs/x64/openframeworksLib_debug.lib
+openFrameworks/libs/openFrameworksCompiled/lib/vs/Win32/openframeworksLib_debug.lib
