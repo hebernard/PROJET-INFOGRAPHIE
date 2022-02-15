@@ -3,6 +3,7 @@
 #include "UI/label.h"
 #include "components/object.h"
 #include "mainTheme.h"
+#include "panel.h"
 
 hierarchyPanel::hierarchyPanel() : icon()
 {
@@ -18,14 +19,7 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 	rect.height = ofGetHeight() - 150;
 	rect.x = ofGetWidth() - rect.width - 20;
 
-	ofPushStyle();
-	ofFill();
-
-	ofSetColor(mainTheme::panelBorderColor());
-	ofDrawRectRounded(rect.x - 2, rect.y - 2, rect.width + 4, rect.height + 4, 8);
-
-	ofSetColor(mainTheme::panelColor());
-	ofDrawRectRounded(rect, 6);
+	drawPanel(rect);
 
 	if (icon.isAllocated())
 	{
@@ -35,14 +29,14 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 
 	drawText(rect.x + 60, rect.y + 32, "Hierarchy", 14);
 
+	ofPushStyle();
 	ofSetColor(mainTheme::panelBorderColor());
 	ofSetLineWidth(2);
 	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
+	ofPopStyle();
 
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		objects.at(i)->drawHierarchy(rect.x, rect.y + 56 + (i * 40));
 	}
-
-	ofPopStyle();
 }
