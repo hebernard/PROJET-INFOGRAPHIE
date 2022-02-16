@@ -2,6 +2,7 @@
 #include "UI/dropdown/dropdown.h"
 #include "dropdown/dropdownButton.h"
 #include "menuBarButton.h"
+#include "recButton.h"
 #include "menuBarButtonAlt.h"
 #include "components/2d/image.h"
 #include "scene.h"
@@ -16,7 +17,7 @@
 #include "components/3d/objectModel.h"
 #include "panel.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), exportButton(new menuBarButton("Export")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), exportButton(new recButton("images/icons/rec.png")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
@@ -179,7 +180,7 @@ void menuBar::update()
 	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 
 	posX += importButton->getWidth() + 10;
-	exportButton->update(posX, posY + dropdown2d->getHeight() / 2 - exportButton->getHeight() / 2);
+	exportButton->update(rect.width/2, posY + dropdown2d->getHeight() / 2 - exportButton->getHeight() / 2);
 	themeButton->update(ofGetWidth() - (themeButton->getWidth()*2), posY + dropdown2d->getHeight() / 2 - themeButton->getHeight() / 2);
 }
 
@@ -255,6 +256,7 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 
 void menuBar::onExportButtonEvent(ofxDatGuiButtonEvent e)
 {
+	exportButton->rec();
 }
 
 void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)

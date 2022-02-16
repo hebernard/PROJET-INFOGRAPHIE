@@ -36,6 +36,8 @@ public:
 	static ofColor color2();
 	static ofColor color3();
 
+	static ofColor recColor();
+
 	//Scene & Grid colors
 	static ofColor sceneBackgroundColor();
 	static ofColor gridColor1();

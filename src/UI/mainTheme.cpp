@@ -25,6 +25,8 @@ ofColor mainTheme::color1() { return darkTheme ? ofColor(87, 140, 245) : ofColor
 ofColor mainTheme::color2() { return darkTheme ? ofColor(115, 157, 247) : ofColor(91, 146, 255); }
 ofColor mainTheme::color3() { return darkTheme ? ofColor(58, 119, 243) : ofColor(81, 131, 229); }
 
+ofColor mainTheme::recColor() { return darkTheme ? ofColor(235, 52, 66) : ofColor(235, 52, 66); }
+
 ofColor mainTheme::sceneBackgroundColor() { return darkTheme ? ofColor(36) : ofColor(128); }
 ofColor mainTheme::gridColor1() { return darkTheme ? ofColor(50, 120) : ofColor(100, 120); }
 ofColor mainTheme::gridColor2() { return darkTheme ? ofColor(150) : ofColor(200); }
