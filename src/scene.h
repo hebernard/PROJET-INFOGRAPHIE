@@ -6,6 +6,8 @@
 #include "camera.h"
 #include "mainTheme.h"
 #include "UI/properties/propertiesPanel.h"
+#include "components/3d/sphere.h"
+#include "components/2d/circle.h"
 
 class scene
 {
@@ -17,6 +19,18 @@ public:
 	{
 		static scene instance;
 		return instance;
+	}
+
+	void setupObjects() {
+		sphere* sp = new sphere(1);
+		sp->noFill = true;
+		sp->setPosition(glm::vec3(0, 1, 0));
+		addObject(sp);
+
+		circle* circ = new circle(1.2f);
+		circ->noFill = true;
+		circ->setPosition(glm::vec3(0, 1, 0));
+		addObject(circ);
 	}
 
 	void focusObject(object& obj)

@@ -4,7 +4,7 @@
 #include "ofxDatGui.h"
 #include "scene.h"
 #include "camera.h"
-#include "UI/menuBar.h"
+#include "UI/menuBar/menuBar.h"
 
 class ofApp : public ofBaseApp
 {
@@ -16,9 +16,9 @@ public:
 private:
 	~ofApp();
 	menuBar* menu;
-	scene& s = s.getInstance();
-
 	camera* cam;
+
+	scene& s = s.getInstance();
 
 	void mousePressed(int x, int y, int button);
 };

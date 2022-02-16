@@ -64,13 +64,13 @@
     <ClCompile Include="src\UI\label.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\menuBar.cpp">
+    <ClCompile Include="src\UI\menuBar\menuBar.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\menuBarButton.cpp">
+    <ClCompile Include="src\UI\menuBar\menuBarButton.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\menuBarButtonAlt.cpp">
+    <ClCompile Include="src\UI\menuBar\menuBarButtonAlt.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp">
@@ -100,7 +100,7 @@
     <ClCompile Include="src\UI\panel.cpp" />
     <ClCompile Include="src\UI\mainTheme.cpp" />
     <ClCompile Include="src\components\3d\objectModel.cpp" />
-    <ClCompile Include="src\UI\recButton.cpp" />
+    <ClCompile Include="src\UI\menuBar\recButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -243,13 +243,13 @@
     <ClInclude Include="src\UI\label.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\menuBar.h">
+    <ClInclude Include="src\UI\menuBar\menuBar.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\menuBarButton.h">
+    <ClInclude Include="src\UI\menuBar\menuBarButton.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\menuBarButtonAlt.h">
+    <ClInclude Include="src\UI\menuBar\menuBarButtonAlt.h">
       <Filter>src\UI</Filter>
     </ClInclude>
     <ClInclude Include="src\UI\properties\propertiesPanel.h">
@@ -459,7 +459,7 @@
     <ClInclude Include="src\UI\panel.h" />
     <ClInclude Include="src\UI\mainTheme.h" />
     <ClInclude Include="src\components\3d\objectModel.h" />
-    <ClInclude Include="src\UI\recButton.h" />
+    <ClInclude Include="src\UI\menuBar\recButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

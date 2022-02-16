@@ -1,6 +1,4 @@
 #include "ofApp.h"
-#include "components/3d/sphere.h"
-#include "components/2d/circle.h"
 #include "mainTheme.h"
 
 void ofApp::setup()
@@ -21,15 +19,8 @@ void ofApp::setup()
 	s.camera = cam;
 
 	// Add dummy objects
-	sphere* sp = new sphere(1);
-	sp->noFill = true;
-	sp->setPosition(glm::vec3(0, 1, 0));
-	s.addObject(sp);
+	s.setupObjects();
 
-	circle* circ = new circle(1.2f);
-	circ->noFill = true;
-	circ->setPosition(glm::vec3(0, 1, 0));
-	s.addObject(circ);
 }
 
 void ofApp::update()

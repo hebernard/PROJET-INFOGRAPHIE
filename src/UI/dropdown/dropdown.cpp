@@ -1,6 +1,6 @@
 #include "dropdown.h"
 #include "../label.h"
-#include "../menuBar.h"
+#include "UI/menuBar/menuBar.h"
 #include "dropdownButton.h"
 #include "mainTheme.h"
 

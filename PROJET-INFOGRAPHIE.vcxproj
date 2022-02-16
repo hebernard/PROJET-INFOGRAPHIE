@@ -201,9 +201,9 @@
     <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp" />
     <ClCompile Include="src\UI\label.cpp" />
     <ClCompile Include="src\UI\mainTheme.cpp" />
-    <ClCompile Include="src\UI\menuBar.cpp" />
-    <ClCompile Include="src\UI\menuBarButton.cpp" />
-    <ClCompile Include="src\UI\menuBarButtonAlt.cpp" />
+    <ClCompile Include="src\UI\menuBar\menuBar.cpp" />
+    <ClCompile Include="src\UI\menuBar\menuBarButton.cpp" />
+    <ClCompile Include="src\UI\menuBar\menuBarButtonAlt.cpp" />
     <ClCompile Include="src\UI\panel.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
@@ -213,7 +213,7 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
-    <ClCompile Include="src\UI\recButton.cpp" />
+    <ClCompile Include="src\UI\menuBar\recButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\3d\objectModel.h" />
@@ -238,9 +238,9 @@
     <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
     <ClInclude Include="src\UI\label.h" />
     <ClInclude Include="src\UI\mainTheme.h" />
-    <ClInclude Include="src\UI\menuBar.h" />
-    <ClInclude Include="src\UI\menuBarButton.h" />
-    <ClInclude Include="src\UI\menuBarButtonAlt.h" />
+    <ClInclude Include="src\UI\menuBar\menuBar.h" />
+    <ClInclude Include="src\UI\menuBar\menuBarButton.h" />
+    <ClInclude Include="src\UI\menuBar\menuBarButtonAlt.h" />
     <ClInclude Include="src\UI\panel.h" />
     <ClInclude Include="src\UI\properties\propertiesPanel.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />
@@ -310,7 +310,7 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h" />
-    <ClInclude Include="src\UI\recButton.h" />
+    <ClInclude Include="src\UI\menuBar\recButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
