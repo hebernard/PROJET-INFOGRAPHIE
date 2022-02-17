@@ -35,6 +35,11 @@ public:
 
 	void focusObject(object& obj)
 	{
+		if (!&obj)
+		{
+			return;
+		}
+
 		if (currentSelected != nullptr)
 		{
 			currentSelected->isSelected = false;
@@ -71,6 +76,7 @@ public:
 			auto obj = objects.at(i);
 			if (obj->isVisible)
 			{
+				// TODO MAKE OBJECTS DRAW THEIR OWN BBOX
 				if (obj->isSelected)
 				{
 					ofPushStyle();

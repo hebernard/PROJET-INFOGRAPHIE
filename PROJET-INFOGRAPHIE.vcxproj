@@ -206,6 +206,7 @@
     <ClCompile Include="src\UI\menuBar\menuBarButton.cpp" />
     <ClCompile Include="src\UI\menuBar\menuBarButtonAlt.cpp" />
     <ClCompile Include="src\UI\panel.cpp" />
+    <ClCompile Include="src\UI\properties\centeredSlider.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.cpp" />
@@ -244,6 +245,7 @@
     <ClInclude Include="src\UI\menuBar\menuBarButton.h" />
     <ClInclude Include="src\UI\menuBar\menuBarButtonAlt.h" />
     <ClInclude Include="src\UI\panel.h" />
+    <ClInclude Include="src\UI\properties\centeredSlider.h" />
     <ClInclude Include="src\UI\properties\propertiesPanel.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpMeshHelper.h" />

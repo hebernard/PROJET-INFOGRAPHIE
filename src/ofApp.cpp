@@ -32,9 +32,8 @@ void ofApp::setup()
 
 void ofApp::update()
 {
-	cam->setControlArea(ofRectangle(0, 70, ofGetWidth(), ofGetHeight()));
-
-	//update menuUI
+	// todo cleanup
+	cam->setControlArea(ofRectangle(0, 70, ofGetWidth() - 300, ofGetHeight()));
 	menu->update();
 }
 

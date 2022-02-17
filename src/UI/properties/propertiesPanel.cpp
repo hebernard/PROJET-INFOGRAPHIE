@@ -6,8 +6,9 @@
 #include "scene.h"
 #include "panel.h"
 
-propertiesPanel::propertiesPanel() : backButton(new hierarchySmallButton("images/icons/back.png"))
+propertiesPanel::propertiesPanel() : backButton(new hierarchySmallButton("images/icons/back.png")), position(centeredSlider("Position")), rotation(centeredSlider("Rotation"))
 {
+	ofRegisterMouseEvents(this);
 	rect.width = 300;
 	rect.y = 100;
 
@@ -18,7 +19,7 @@ propertiesPanel::propertiesPanel() : backButton(new hierarchySmallButton("images
 	});
 }
 
-void propertiesPanel::draw(const object& obj)
+void propertiesPanel::draw(object& obj)
 {
 	rect.height = ofGetHeight() - 150;
 	rect.x = ofGetWidth() - rect.width - 20;
@@ -37,5 +38,48 @@ void propertiesPanel::draw(const object& obj)
 	ofPopStyle();
 
 	// todo draw all the relevant properties of the object here
+	position.draw(rect.x + 30, rect.y + 85, obj.getPosition());
+	rotation.draw(rect.x + 30, rect.y + 200, obj.getOrientationEuler());
 
+	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime());
+	obj.rotateAroundDeg(rotation.value * ofGetLastFrameTime() * 5, rotation.axis, obj.getCenter());
+	//obj.rotateAroundDeg(1, glm::vec3(1, 0, 0), obj.getCenter());
+	//obj.rotateDeg(30, glm::vec3(1, 0, 0));
+	//obj.tiltDeg(rotation.value * ofGetLastFrameTime() * 10);
+}
+
+void propertiesPanel::mouseMoved(ofMouseEventArgs& args)
+{
+}
+
+void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
+{
+	position.mouseDragged(args);
+	rotation.mouseDragged(args);
+}
+
+void propertiesPanel::mousePressed(ofMouseEventArgs& args)
+{
+}
+
+void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
+{
+	position.mouseReleased(args);
+	rotation.mouseReleased(args);
+
+	// Refocus on the object once we're done dragging
+	/*scene& s = s.getInstance();
+	s.focusObject(*s.currentSelected);*/
+}
+
+void propertiesPanel::mouseScrolled(ofMouseEventArgs& args)
+{
+}
+
+void propertiesPanel::mouseEntered(ofMouseEventArgs& args)
+{
+}
+
+void propertiesPanel::mouseExited(ofMouseEventArgs& args)
+{
 }
