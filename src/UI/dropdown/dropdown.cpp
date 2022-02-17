@@ -3,6 +3,7 @@
 #include "UI/menuBar/menuBar.h"
 #include "dropdownButton.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), m_text(text), downArrow(), panel(), m_menu(menu)
 {
@@ -33,6 +34,7 @@ void dropdown::draw()
 
 	if (mMouseOver || getChecked())
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::toolBarButtonHoverColor());
 		ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 

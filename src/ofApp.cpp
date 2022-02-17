@@ -10,9 +10,6 @@ void ofApp::setup()
 	ofSetBackgroundColor(mainTheme::sceneBackgroundColor());
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
-	//setup cursor 
-	cursor::setup();
-
 	//setup menu UI
 	menu = new menuBar();
 
@@ -39,7 +36,7 @@ void ofApp::update()
 
 void ofApp::draw()
 {
-
+	cursor::setDefaultCursor();
 	cam->begin();//-----------------------begin of cam------------------------------//
 	ofEnableDepthTest();
 
@@ -50,7 +47,7 @@ void ofApp::draw()
 	s.drawObjects();
 
 	ofDisableDepthTest();
-	cam->end();//-----------------------end of cam------------------------------//
+	cam->end();//--------------------------end of cam------------------------------//
 
 	// UI must be drawn at the end & objects are added to the hierarchy
 	menu->draw();

@@ -3,6 +3,7 @@
 #include "components/object.h"
 #include "scene.h"
 #include "hierarchySmallButton.h"
+#include "cursor.h"
 
 hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : 
 	ofxDatGuiButton("hierarchyButton"), 
@@ -59,6 +60,9 @@ void hierarchyButton::draw()
 
 	if (mMouseOver || m_obj.isSelected)
 	{
+		if (!m_obj.isSelected) {
+			cursor::setTargetCursor();
+		}
 		ofSetColor(mainTheme::panelButtonHoverColor());
 		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());
 	}

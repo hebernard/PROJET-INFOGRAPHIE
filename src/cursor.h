@@ -6,17 +6,20 @@ class cursor
 public:
 
 	static ofImage cursorIcon;
+	static bool isDefault;
+	static int offsetX;
+	static int offsetY;
 
-	static void setup();
 	static void draw();
 
 	//dynamic cursors
-	static void setBasicCursor();
+	static void setDefaultCursor();
 	static void setHandCursor();
 	static void setDragCursor();
 	static void setRotateCursor();
 	static void setLeftCursor();
 	static void setRightCursor();
+	static void setHorizontalTranslateCursor();
 	static void setLeftRotationCursor();
 	static void setRightRotationCursor();
 	static void setScaleUpCursor();

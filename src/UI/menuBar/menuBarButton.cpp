@@ -1,6 +1,7 @@
 #include "menuBarButton.h"
 #include "label.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 menuBarButton::menuBarButton(std::string text) : ofxDatGuiButton(text), m_text(text)
 {
@@ -18,10 +19,12 @@ void menuBarButton::draw()
 {
 	if (mFocused && mMouseDown)
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::color3());
 	}
 	else if (mMouseOver)
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::color2());
 	}
 	else

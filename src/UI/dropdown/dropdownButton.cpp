@@ -1,6 +1,7 @@
 #include "dropdownButton.h"
 #include "UI/label.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 dropdownButton::dropdownButton(std::string iconPath, std::string text) : ofxDatGuiButton("dropdownButton"), m_text(text), icon()
 {
@@ -24,6 +25,7 @@ void dropdownButton::draw()
 
 	if (mMouseOver)
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::panelButtonHoverColor());
 		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());
 	}

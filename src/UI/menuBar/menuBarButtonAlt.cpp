@@ -44,7 +44,6 @@ void menuBarButtonAlt::draw()
 	}
 	else
 	{
-		cursor::setBasicCursor();
 		ofSetColor(mainTheme::logoDownLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 

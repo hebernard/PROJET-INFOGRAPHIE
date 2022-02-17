@@ -59,6 +59,7 @@ void centeredSlider::draw(int x, int y, glm::vec3 xyz)
 
 void centeredSlider::mouseDragged(ofMouseEventArgs& args)
 {
+
 	if (args.y >= xyzRect.y + 49 - thumbRadius && args.y <= xyzRect.y + 49 + thumbRadius &&
 		args.x >= xyzRect.x - 100 && args.x <= xyzRect.x - 100 + 240)
 	{

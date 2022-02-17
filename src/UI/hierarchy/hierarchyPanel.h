@@ -9,11 +9,12 @@ class hierarchyPanel
 public:
 	hierarchyPanel();
 
+	void setup();
 	void draw(const vector<object*>& objects);
-	void drawFull(const vector<object*>& objects);
+	void drawOpened(const vector<object*>& objects);
 	void drawMinimized();
 
-	void setMinimized();
+	void onMinimized(ofMouseEventArgs& mouse);
 	bool getMinimized();
 
 private:

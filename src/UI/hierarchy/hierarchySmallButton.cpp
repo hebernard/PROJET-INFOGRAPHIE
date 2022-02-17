@@ -1,5 +1,6 @@
 #include "hierarchySmallButton.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 hierarchySmallButton::hierarchySmallButton(std::string iconPath) : ofxDatGuiButton("hierarchySmallButton")
 {
@@ -14,6 +15,7 @@ void hierarchySmallButton::draw()
 
 	if (mMouseOver)
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::toolBarButtonHoverColor());
 		ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 	}
