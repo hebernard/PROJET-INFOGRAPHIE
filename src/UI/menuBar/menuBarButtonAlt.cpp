@@ -1,6 +1,7 @@
 #include "menuBarButtonAlt.h"
 #include "label.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 menuBarButtonAlt::menuBarButtonAlt(std::string iconPath) : ofxDatGuiButton("menuBarButtonAlt"), icon()
 {
@@ -22,6 +23,7 @@ void menuBarButtonAlt::draw()
 
 	if (mFocused && mMouseDown)
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::logoTopLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 
@@ -30,6 +32,7 @@ void menuBarButtonAlt::draw()
 	}
 	else if (mMouseOver)
 	{
+		cursor::setHandCursor();
 		ofSetColor(mainTheme::logoDownLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 
@@ -41,6 +44,7 @@ void menuBarButtonAlt::draw()
 	}
 	else
 	{
+		cursor::setBasicCursor();
 		ofSetColor(mainTheme::logoDownLayerColor());
 		ofDrawRectRounded(x, y, 34, 34, 6);
 

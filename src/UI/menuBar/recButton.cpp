@@ -1,6 +1,7 @@
 #include "recButton.h"
 #include "label.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 recButton::recButton(std::string iconPath) : ofxDatGuiButton("recButton"), icon()
 {

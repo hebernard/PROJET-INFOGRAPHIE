@@ -4,9 +4,13 @@
 #include "ofEvents.h"
 #include "ofRectangle.h"
 #include "glm/gtc/quaternion.hpp"
+#include "ofMain.h"
+#include "UI/hierarchy/hierarchyButton.h"
+#include "components/object.h"
 
 /// \brief A super simple camera for interacting with objects in 3D space.
-class camera : public ofCamera {
+class camera : public ofCamera
+{
 public:
 	/// \name Constructor and Destructor
 	/// \{
@@ -178,8 +182,10 @@ public:
 	bool hasInteraction(TransformType type, int mouseButton, int key = -1);
 	bool hasInteraction(int mouseButton, int key);
 	void removeAllInteractions();
+
 protected:
 	virtual void onPositionChanged();
+
 private:
 	void setDistance(float distance, bool save);
 

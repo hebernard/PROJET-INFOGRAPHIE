@@ -101,6 +101,7 @@
     <ClCompile Include="src\UI\mainTheme.cpp" />
     <ClCompile Include="src\components\3d\objectModel.cpp" />
     <ClCompile Include="src\UI\menuBar\recButton.cpp" />
+    <ClCompile Include="src\cursor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -460,6 +461,7 @@
     <ClInclude Include="src\UI\mainTheme.h" />
     <ClInclude Include="src\components\3d\objectModel.h" />
     <ClInclude Include="src\UI\menuBar\recButton.h" />
+    <ClInclude Include="src\cursor.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

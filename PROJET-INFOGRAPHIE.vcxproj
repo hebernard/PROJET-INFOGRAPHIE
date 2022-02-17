@@ -181,6 +181,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\components\3d\objectModel.cpp" />
+    <ClCompile Include="src\cursor.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\camera.cpp" />
@@ -217,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\3d\objectModel.h" />
+    <ClInclude Include="src\cursor.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\components\2d\circle.h" />

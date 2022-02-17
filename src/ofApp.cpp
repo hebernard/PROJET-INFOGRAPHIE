@@ -1,15 +1,22 @@
 #include "ofApp.h"
 #include "mainTheme.h"
+#include "cursor.h"
 
 void ofApp::setup()
 {
-	//set DarkTheme by default
+	//setup darkTheme by default
 	mainTheme::darkTheme = true;
 
 	ofSetBackgroundColor(mainTheme::sceneBackgroundColor());
 	ofSetWindowTitle("IFT-3100 - Projet de session");
 
+	//setup cursor 
+	cursor::setup();
+
+	//setup menu UI
 	menu = new menuBar();
+
+	//setup camera
 	cam = new camera();
 
 	cam->setAutoDistance(false);
@@ -18,7 +25,7 @@ void ofApp::setup()
 	cam->setNearClip(0.1f);
 	s.camera = cam;
 
-	// Add dummy objects
+	// setup dummyObjects by default
 	s.setupObjects();
 
 }
@@ -26,24 +33,30 @@ void ofApp::setup()
 void ofApp::update()
 {
 	cam->setControlArea(ofRectangle(0, 70, ofGetWidth(), ofGetHeight()));
+
+	//update menuUI
 	menu->update();
 }
 
 void ofApp::draw()
 {
-	cam->begin();
+
+	cam->begin();//-----------------------begin of cam------------------------------//
 	ofEnableDepthTest();
 
+	//draw grid
 	s.drawGrid();
 
+	//draw objects
 	s.drawObjects();
 
 	ofDisableDepthTest();
-	cam->end();
+	cam->end();//-----------------------end of cam------------------------------//
 
-	// UI must be drawn at the end
+	// UI must be drawn at the end & objects are added to the hierarchy
 	menu->draw();
 	s.drawHierarchyUI();
+	cursor::draw();
 }
 
 ofApp::~ofApp()
