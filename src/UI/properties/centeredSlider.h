@@ -3,12 +3,14 @@
 #include "ofMain.h"
 
 class object;
+class hierarchySmallButton;
 
 class centeredSlider
 {
 public:
     glm::vec3 axis = glm::vec3(1, 0, 0);
     float value = 0;
+    hierarchySmallButton* resetButton;
 
 	centeredSlider(std::string text);
 
@@ -31,10 +33,12 @@ private:
 	std::string m_text;
     glm::vec2 textSize;
 
+
     std::string getDrawedValue(glm::vec3 xyz);
 
+    void drawResetButton(int x, int y);
     void drawXYZRect(int x, int y);
-    void drawSlider(int x, int y);
+    void drawSlider(int x, int y, int width);
     void drawValue(int x, int y, glm::vec3 xyz);
 };
 

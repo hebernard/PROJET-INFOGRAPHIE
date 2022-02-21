@@ -2,8 +2,9 @@
 #include "label.h"
 #include "panel.h"
 #include "object.h"
+#include "hierarchySmallButton.h"
 
-centeredSlider::centeredSlider(std::string text) : m_text(text)
+centeredSlider::centeredSlider(std::string text) : m_text(text), resetButton(new hierarchySmallButton("images/icons/reset.png"))
 {
 	xyzRect.width = 78;
 	xyzRect.height = 20;
@@ -15,14 +16,16 @@ void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
 {
 	ofPushStyle();
 
+	drawResetButton(x, y - 10);
+
 	// Main label
-	drawText(x, y + textSize.y, m_text, 12);
+	drawText(x + resetButton->getWidth() + 5, y + textSize.y, m_text, 12);
 
 	drawValue(x + width - 50, y, xyz);
 
 	drawXYZRect(x + width - xyzRect.width - 60, y);
 
-	drawSlider(x, y + 50);
+	drawSlider(x, y + 50, width);
 
 	ofPopStyle();
 }
@@ -84,7 +87,6 @@ void centeredSlider::mouseReleased(ofMouseEventArgs& args)
 		axis = glm::vec3(0, 0, 1);
 	}
 
-	thumbX = 1110;
 	value = 0;
 	dragStarted = false;
 }
@@ -114,9 +116,8 @@ void centeredSlider::drawXYZRect(int x, int y)
 	drawText(offsetX, offsetY, "z", 11);
 }
 
-void centeredSlider::drawSlider(int x, int y)
+void centeredSlider::drawSlider(int x, int y, int width)
 {
-	int width = 240;
 	minX = x;
 	maxX = x + width;
 	int center = minX + width / 2;
@@ -132,6 +133,12 @@ void centeredSlider::drawSlider(int x, int y)
 	ofSetColor(axisColor);
 	ofDrawRectRounded(center, y, thumbX - center, 4, 8);
 	ofDrawCircle(thumbX, y, thumbRadius);
+}
+
+void centeredSlider::drawResetButton(int x, int y)
+{
+	resetButton->update(x, y);
+	resetButton->draw();
 }
 
 void centeredSlider::drawValue(int x, int y, glm::vec3 xyz)

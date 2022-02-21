@@ -21,6 +21,24 @@ propertiesPanel::propertiesPanel() :
 		scene& s = s.getInstance();
 		s.currentSelected->propertiesOpened = false;
 	});
+
+	position.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		scene& s = s.getInstance();
+		s.currentSelected->setPosition(glm::vec3(0, 0, 0));
+	});
+
+	rotation.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		scene& s = s.getInstance();
+		s.currentSelected->setOrientation(glm::vec3(0, 0, 0));
+	});
+
+	scale.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		scene& s = s.getInstance();
+		s.currentSelected->setScale(glm::vec3(1, 1, 1));
+	});
 }
 
 void propertiesPanel::draw(object& obj)
@@ -42,7 +60,7 @@ void propertiesPanel::draw(object& obj)
 	ofPopStyle();
 
 	// todo draw all the relevant properties of the object here
-	int offsetX = 30;
+	int offsetX = 15;
 	int sliderWidth = rect.width - offsetX * 2;
 	position.draw(rect.x + offsetX, rect.y + 70, sliderWidth, obj.getPosition());
 	rotation.draw(rect.x + offsetX, rect.y + 150, sliderWidth, obj.getOrientationEuler());
