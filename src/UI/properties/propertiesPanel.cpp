@@ -6,7 +6,11 @@
 #include "scene.h"
 #include "panel.h"
 
-propertiesPanel::propertiesPanel() : backButton(new hierarchySmallButton("images/icons/back.png")), position(centeredSlider("Position")), rotation(centeredSlider("Rotation"))
+propertiesPanel::propertiesPanel() : 
+	backButton(new hierarchySmallButton("images/icons/back.png")),
+	position(centeredSlider("Position")),
+	rotation(centeredSlider("Rotation")),
+	scale(centeredSlider("Scale"))
 {
 	ofRegisterMouseEvents(this);
 	rect.width = 300;
@@ -38,14 +42,15 @@ void propertiesPanel::draw(object& obj)
 	ofPopStyle();
 
 	// todo draw all the relevant properties of the object here
-	position.draw(rect.x + 30, rect.y + 85, obj.getPosition());
-	rotation.draw(rect.x + 30, rect.y + 200, obj.getOrientationEuler());
+	int offsetX = 30;
+	int sliderWidth = rect.width - offsetX * 2;
+	position.draw(rect.x + offsetX, rect.y + 70, sliderWidth, obj.getPosition());
+	rotation.draw(rect.x + offsetX, rect.y + 150, sliderWidth, obj.getOrientationEuler());
+	scale.draw(rect.x + offsetX, rect.y + 230, sliderWidth, obj.getScale());
 
-	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime());
-	obj.rotateAroundDeg(rotation.value * ofGetLastFrameTime() * 5, rotation.axis, obj.getCenter());
-	//obj.rotateAroundDeg(1, glm::vec3(1, 0, 0), obj.getCenter());
-	//obj.rotateDeg(30, glm::vec3(1, 0, 0));
-	//obj.tiltDeg(rotation.value * ofGetLastFrameTime() * 10);
+	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime() * translationSpeed);
+	obj.rotateDeg(rotation.value * ofGetLastFrameTime() * rotationSpeed, rotation.axis);
+	obj.setScale(obj.getScale() + scale.axis * scale.value * ofGetLastFrameTime() * scaleSpeed);
 }
 
 void propertiesPanel::mouseMoved(ofMouseEventArgs& args)
@@ -56,6 +61,7 @@ void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
 {
 	position.mouseDragged(args);
 	rotation.mouseDragged(args);
+	scale.mouseDragged(args);
 }
 
 void propertiesPanel::mousePressed(ofMouseEventArgs& args)
@@ -66,6 +72,7 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 {
 	position.mouseReleased(args);
 	rotation.mouseReleased(args);
+	scale.mouseReleased(args);
 
 	// Refocus on the object once we're done dragging
 	/*scene& s = s.getInstance();

@@ -24,8 +24,12 @@ public:
     void mouseExited(ofMouseEventArgs& args);
 
 private:
+    const int translationSpeed = 5;
+    const int rotationSpeed = 30;
+    const int scaleSpeed = 1;
+
 	ofRectangle rect;
 	hierarchySmallButton* backButton;
 
-	centeredSlider position, rotation;
+	centeredSlider position, rotation, scale;
 };

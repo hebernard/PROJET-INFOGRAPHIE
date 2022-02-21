@@ -13,7 +13,7 @@ void image::customDraw()
 {
 	if (im.isAllocated())
 	{
-		im.draw(getPosition(), size.x * getScale().x, size.y * getScale().y);
+		im.draw(0, 0, 0, size.x * getScale().x, size.y * getScale().y);
 	}
 }
 

@@ -12,7 +12,8 @@ void rectangle::customDraw()
 	if (noFill) {ofNoFill();}
 	else {ofFill();}
 
-	ofDrawRectangle(getPosition(), m_width, m_height);
+	ofDrawRectangle(0, 0, 0, m_width, m_height);
+
 	ofPopStyle();
 }
 

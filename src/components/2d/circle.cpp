@@ -12,7 +12,7 @@ void circle::customDraw()
 	else { ofFill(); }
 
 	ofSetCircleResolution(50);
-	ofDrawCircle(getPosition(), m_radius);
+	ofDrawCircle(0, 0, 0, m_radius);
 	ofPopStyle();
 }
 

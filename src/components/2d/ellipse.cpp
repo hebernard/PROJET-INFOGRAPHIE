@@ -13,7 +13,8 @@ void ellipse::customDraw()
 	else { ofFill(); }
 
 	ofSetCircleResolution(50);
-	ofDrawEllipse(getPosition(), m_width, m_height);
+	ofDrawEllipse(0, 0, 0, m_width, m_height);
+
 	ofPopStyle();
 }
 

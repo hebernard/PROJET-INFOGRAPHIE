@@ -12,7 +12,8 @@ void square::customDraw()
 	if (noFill) { ofNoFill(); }
 	else { ofFill(); }
 
-	ofDrawRectangle(getPosition(), m_size, m_size);
+	ofDrawRectangle(0, 0, 0, m_size, m_size);
+
 	ofPopStyle();
 }
 

@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "UI/hierarchy/hierarchyButton.h"
+#include "mainTheme.h"
 
 class object : public ofNode
 {
@@ -17,7 +18,33 @@ public:
 		delete button;
 	}
 
-	virtual void customDraw() {}
+	virtual void customDraw()
+	{
+	}
+
+	void drawWithTransformations()
+	{
+		ofPushMatrix();
+		ofTranslate(getPosition());
+		ofRotateXDeg(getOrientationEulerDeg().x);
+		ofRotateYDeg(getOrientationEulerDeg().y);
+		ofRotateZDeg(getOrientationEulerDeg().z);
+		ofScale(getScale());
+
+		if (isSelected)
+		{
+			ofPushStyle();
+			ofNoFill();
+			ofSetColor(mainTheme::color1());
+			auto bbox = getBBox();
+			ofDrawBox(0, 0, 0, bbox.x, bbox.y, bbox.z);
+			ofPopStyle();
+		}
+
+		customDraw();
+		ofPopMatrix();
+	}
+	
 	void drawHierarchy(int x, int y)
 	{
 		button->update(x, y);

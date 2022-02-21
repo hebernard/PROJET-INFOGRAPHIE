@@ -7,7 +7,6 @@ cube::cube(float width, float height, float depth)
 
 void cube::customDraw()
 {
-	ofPushMatrix();
 	ofPushStyle();
 	if (noFill)
 	{
@@ -18,14 +17,9 @@ void cube::customDraw()
 		ofFill();
 	}
 
-	ofTranslate(getPosition());
-	ofRotateXDeg(getOrientationEulerDeg().x);
-	ofRotateYDeg(getOrientationEulerDeg().y);
-	ofRotateZDeg(getOrientationEulerDeg().z);
-
 	ofDrawBox(0, 0, 0, m_width, m_height, m_depth);
+
 	ofPopStyle();
-	ofPopMatrix();
 }
 
 glm::vec3 cube::getCenter()

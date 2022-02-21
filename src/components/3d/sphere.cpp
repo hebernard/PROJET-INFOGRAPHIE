@@ -16,7 +16,9 @@ void sphere::customDraw()
 	{
 		ofFill();
 	}
-	ofDrawSphere(getPosition(), m_radius);
+
+	ofDrawSphere(0, 0, 0, m_radius);
+
 	ofPopStyle();
 }
 

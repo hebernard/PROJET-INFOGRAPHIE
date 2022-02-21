@@ -13,6 +13,7 @@ void line::customDraw()
 	else { ofFill(); }
 
 	ofDrawLine(m_p1, m_p2);
+
 	ofPopStyle();
 }
 

@@ -13,6 +13,7 @@ void triangle::customDraw()
 	else { ofFill(); }
 
 	ofDrawTriangle(m_p1, m_p2, m_p3);
+
 	ofPopStyle();
 }
 

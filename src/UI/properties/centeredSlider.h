@@ -12,22 +12,29 @@ public:
 
 	centeredSlider(std::string text);
 
-	void draw(int x, int y, glm::vec3 xyz);
+	void draw(int x, int y, int width, glm::vec3 xyz);
 
     void mouseDragged(ofMouseEventArgs& args);
     void mouseReleased(ofMouseEventArgs& args);
 
 private:
     bool dragStarted = false;
-    int thumbX = 1110;
+    int thumbX;
     int thumbRadius = 10;
-    int minX = 990;
-    int maxX = 1230;
+    int minX;
+    int maxX;
+
     int current = 0;
+    ofColor axisColor = ofColor::red;
 
 	ofRectangle xyzRect, slider;
 	std::string m_text;
+    glm::vec2 textSize;
 
     std::string getDrawedValue(glm::vec3 xyz);
+
+    void drawXYZRect(int x, int y);
+    void drawSlider(int x, int y);
+    void drawValue(int x, int y, glm::vec3 xyz);
 };
 

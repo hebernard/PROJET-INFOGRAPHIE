@@ -5,61 +5,30 @@
 
 centeredSlider::centeredSlider(std::string text) : m_text(text)
 {
-	xyzRect.width = 80;
+	xyzRect.width = 78;
 	xyzRect.height = 20;
+
+	textSize = label::getSize(m_text, 12);
 }
 
-void centeredSlider::draw(int x, int y, glm::vec3 xyz)
+void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
 {
-	int firstX = 100;
-	int circleRadius = 14;
-	xyzRect.x = x + firstX;
-	xyzRect.y = y - circleRadius;
-
-	drawText(x, y, m_text, 12);
-
 	ofPushStyle();
-	ofSetColor(mainTheme::toolBarButtonHoverColor());
-	ofDrawRectRounded(xyzRect.x, xyzRect.y, 80, 20, 8);
-	ofDrawRectRounded(x, y + 35, 240, 4, 8);
 
-	int posX = xyzRect.x + 11;
-	if (current == 0)
-	{
-		ofSetColor(ofColor::red);
-	}
-	else if (current == 1)
-	{
-		ofSetColor(ofColor::green);
-	}
-	else
-	{
-		ofSetColor(ofColor::blue);
-	}
-	ofDrawCircle(posX + (current * 25) + 5, y - 4, circleRadius);
-	ofDrawCircle(thumbX, y + 35, circleRadius - 4);
-	ofDrawRectRounded(1110, y + 35, thumbX - 1110, 4, 8);
+	// Main label
+	drawText(x, y + textSize.y, m_text, 12);
 
-	drawText(posX, y, "x", 11);
-	posX += 25;
-	drawText(posX, y, "y", 11);
-	posX += 25;
-	drawText(posX, y, "z", 11);
+	drawValue(x + width - 50, y, xyz);
 
-	posX += 30;
-	drawPanel(posX, xyzRect.y, 50, 20);
+	drawXYZRect(x + width - xyzRect.width - 60, y);
 
-	std::string val = getDrawedValue(xyz);
-	int s = label::getSize(val, 10).x;
-	posX += 25 - s / 2;
-	drawText(posX, y, getDrawedValue(xyz), 10);
+	drawSlider(x, y + 50);
 
 	ofPopStyle();
 }
 
 void centeredSlider::mouseDragged(ofMouseEventArgs& args)
 {
-
 	if (args.y >= xyzRect.y + 49 - thumbRadius && args.y <= xyzRect.y + 49 + thumbRadius &&
 		args.x >= xyzRect.x - 100 && args.x <= xyzRect.x - 100 + 240)
 	{
@@ -78,6 +47,7 @@ void centeredSlider::mouseDragged(ofMouseEventArgs& args)
 			thumbX = maxX;
 		}
 
+		// Normalize between -1 and 1
 		value = (float) 2 * (thumbX - minX) / (maxX - minX) - 1;
 	}
 }
@@ -90,6 +60,7 @@ void centeredSlider::mouseReleased(ofMouseEventArgs& args)
 		args.y <= xyzRect.y + xyzRect.height)
 	{
 		current = 0;
+		axisColor = ofColor::red;
 		axis = glm::vec3(1, 0, 0);
 	}
 
@@ -99,6 +70,7 @@ void centeredSlider::mouseReleased(ofMouseEventArgs& args)
 		args.y <= xyzRect.y + xyzRect.height)
 	{
 		current = 1;
+		axisColor = ofColor::green;
 		axis = glm::vec3(0, 1, 0);
 	}
 
@@ -108,12 +80,69 @@ void centeredSlider::mouseReleased(ofMouseEventArgs& args)
 		args.y <= xyzRect.y + xyzRect.height)
 	{
 		current = 2;
+		axisColor = ofColor::blue;
 		axis = glm::vec3(0, 0, 1);
 	}
 
 	thumbX = 1110;
 	value = 0;
 	dragStarted = false;
+}
+
+void centeredSlider::drawXYZRect(int x, int y)
+{
+	xyzRect.x = x;
+	xyzRect.y = y;
+
+	// Background
+	ofSetColor(mainTheme::toolBarButtonHoverColor());
+	ofDrawRectRounded(x, y, xyzRect.width, xyzRect.height, 8);
+
+	int offsetX = x + 9;
+	int offsetY = y + 15;
+	int offsetInBetween = xyzRect.width / 3;
+
+	// Selection thumb
+	ofSetColor(axisColor);
+	ofDrawCircle(x + offsetInBetween / 2 + (current * offsetInBetween), offsetY - 4, 14);
+
+	// Always draw the text last
+	drawText(offsetX, offsetY, "x", 11);
+	offsetX += offsetInBetween;
+	drawText(offsetX, offsetY, "y", 11);
+	offsetX += offsetInBetween;
+	drawText(offsetX, offsetY, "z", 11);
+}
+
+void centeredSlider::drawSlider(int x, int y)
+{
+	int width = 240;
+	minX = x;
+	maxX = x + width;
+	int center = minX + width / 2;
+
+	ofSetColor(mainTheme::toolBarButtonHoverColor());
+	ofDrawRectRounded(minX, y, width, 4, 8);
+
+	if (!dragStarted)
+	{
+		thumbX = center;
+	}
+
+	ofSetColor(axisColor);
+	ofDrawRectRounded(center, y, thumbX - center, 4, 8);
+	ofDrawCircle(thumbX, y, thumbRadius);
+}
+
+void centeredSlider::drawValue(int x, int y, glm::vec3 xyz)
+{
+	// Background
+	drawPanel(x, y, 50, 20);
+
+	std::string val = getDrawedValue(xyz);
+	auto size = label::getSize(val, 10);
+	int offsetX = x + 25 - size.x / 2;
+	drawText(offsetX, y + size.y + 5, getDrawedValue(xyz), 10);
 }
 
 std::string centeredSlider::getDrawedValue(glm::vec3 xyz)

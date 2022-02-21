@@ -76,18 +76,7 @@ public:
 			auto obj = objects.at(i);
 			if (obj->isVisible)
 			{
-				// TODO MAKE OBJECTS DRAW THEIR OWN BBOX
-				if (obj->isSelected)
-				{
-					ofPushStyle();
-					ofNoFill();
-					ofSetColor(mainTheme::color1());
-					auto bbox = obj->getBBox();
-					ofDrawBox(obj->getCenter(), bbox.x, bbox.y, bbox.z);
-					ofPopStyle();
-				}
-
-				obj->customDraw();
+				obj->drawWithTransformations();
 			}
 		}
 	}
