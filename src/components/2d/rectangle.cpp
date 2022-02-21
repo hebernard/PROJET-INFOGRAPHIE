@@ -12,15 +12,14 @@ void rectangle::customDraw()
 	if (noFill) {ofNoFill();}
 	else {ofFill();}
 
-	ofDrawRectangle(0, 0, 0, m_width, m_height);
+	ofDrawRectangle(-m_width / 2, -m_height / 2, 0, m_width, m_height);
 
 	ofPopStyle();
 }
 
 glm::vec3 rectangle::getCenter()
 {
-	glm::vec3 position(getPosition().x + m_width / 2, getPosition().y + m_height / 2, getPosition().z);
-	return position;
+	return getPosition();
 }
 
 glm::vec3 rectangle::getBBox()
