@@ -44,7 +44,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	circleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		circle* circ = new circle(1.2f);
-		circ->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(circ);
@@ -58,7 +57,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	ellipseButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		ellipse* elli = new ellipse(1.5f, 1.2f);
-		elli->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(elli);
@@ -72,7 +70,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	squareButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		square* sq = new square(1.2f);
-		sq->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(sq);
@@ -86,7 +83,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	rectangleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		rectangle* rect = new rectangle(1.5f, 1.0f);
-		rect->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(rect);
@@ -100,7 +96,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	triangleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		triangle* tri = new triangle(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0), glm::vec3(3, 1, 0));
-		tri->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(tri);
@@ -114,7 +109,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	sphereButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		sphere* sp = new sphere(1.2f);
-		sp->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(sp);
@@ -128,7 +122,6 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	cubeButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		cube* cu = new cube(1.2f, 1.2f, 1.2f);
-		cu->setPosition(glm::vec3(1, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(cu);
