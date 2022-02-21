@@ -17,11 +17,6 @@ void square::customDraw()
 	ofPopStyle();
 }
 
-glm::vec3 square::getCenter()
-{
-	return getPosition();
-}
-
 glm::vec3 square::getBBox()
 {
 	return glm::vec3(m_size, m_size, 0);

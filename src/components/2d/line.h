@@ -7,7 +7,6 @@ public:
 	line(int length);
 
 	void customDraw();
-	glm::vec3 getCenter();
 	glm::vec3 getBBox();
 
 private:

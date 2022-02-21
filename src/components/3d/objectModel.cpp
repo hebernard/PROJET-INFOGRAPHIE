@@ -15,5 +15,12 @@ void objectModel::customDraw()
 
 glm::vec3 objectModel::getCenter()
 {
+	// todo
 	return getPosition();
+}
+
+glm::vec3 objectModel::getBBox()
+{
+	// todo
+	return glm::vec3();
 }

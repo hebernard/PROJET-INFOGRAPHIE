@@ -18,11 +18,6 @@ void ellipse::customDraw()
 	ofPopStyle();
 }
 
-glm::vec3 ellipse::getCenter()
-{
-	return getPosition();
-}
-
 glm::vec3 ellipse::getBBox()
 {
 	return glm::vec3(m_width, m_height, 0);

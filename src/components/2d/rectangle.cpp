@@ -17,11 +17,6 @@ void rectangle::customDraw()
 	ofPopStyle();
 }
 
-glm::vec3 rectangle::getCenter()
-{
-	return getPosition();
-}
-
 glm::vec3 rectangle::getBBox()
 {
 	return glm::vec3(m_width, m_height, 0);

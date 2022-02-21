@@ -21,11 +21,6 @@ void triangle::customDraw()
 	ofPopStyle();
 }
 
-glm::vec3 triangle::getCenter()
-{
-	return getPosition();
-}
-
 glm::vec3 triangle::getBBox()
 {
 	return glm::vec3(m_width, m_height, 0);

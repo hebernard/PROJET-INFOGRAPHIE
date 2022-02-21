@@ -53,7 +53,7 @@ public:
 
 	virtual glm::vec3 getCenter()
 	{
-		return glm::vec3();
+		return getPosition();
 	}
 
 	/// <summary>

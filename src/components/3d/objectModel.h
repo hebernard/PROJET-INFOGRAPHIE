@@ -9,8 +9,8 @@ public:
 
 	void customDraw();
 	glm::vec3 getCenter();
+	glm::vec3 getBBox();
 
 private:
 	ofxAssimpModelLoader obj;
 };
-

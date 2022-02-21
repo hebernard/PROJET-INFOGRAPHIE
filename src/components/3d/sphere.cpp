@@ -22,11 +22,6 @@ void sphere::customDraw()
 	ofPopStyle();
 }
 
-glm::vec3 sphere::getCenter()
-{
-	return getPosition();
-}
-
 glm::vec3 sphere::getBBox()
 {
 	return glm::vec3(m_radius*2, m_radius*2, m_radius*2);

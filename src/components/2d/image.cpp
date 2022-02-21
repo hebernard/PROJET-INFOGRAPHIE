@@ -20,11 +20,6 @@ void image::customDraw()
 	}
 }
 
-glm::vec3 image::getCenter()
-{
-	return getPosition();
-}
-
 glm::vec3 image::getBBox()
 {
 	auto scale = getScale();
