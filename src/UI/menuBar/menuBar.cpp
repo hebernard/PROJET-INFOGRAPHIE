@@ -95,7 +95,7 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	dropdownButton* triangleButton = new dropdownButton("images/icons/triangle.png", "Triangle");
 	triangleButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
-		triangle* tri = new triangle(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0), glm::vec3(3, 1, 0));
+		triangle* tri = new triangle(3, 2);
 
 		scene& s = s.getInstance();
 		s.addObject(tri);

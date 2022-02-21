@@ -7,7 +7,7 @@ line::line(int length)
 
 void line::customDraw()
 {
-	ofDrawLine(-m_length / 2, 0, 0, m_length / 2, 0, 0);
+	ofDrawLine(-m_length / 2.f, 0, 0, m_length / 2.f, 0, 0);
 }
 
 glm::vec3 line::getCenter()

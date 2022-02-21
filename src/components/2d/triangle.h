@@ -6,15 +6,14 @@ class triangle : public object
 public:
 	bool noFill;
 
-	triangle(glm::vec3 p1, glm::vec3 p2, glm::vec3 p3);
+	triangle(int width, int height);
 
 	void customDraw();
 	glm::vec3 getCenter();
 	glm::vec3 getBBox();
 
 private:
-	glm::vec3 m_p1;
-	glm::vec3 m_p2;
-	glm::vec3 m_p3;
+	int m_width;
+	int m_height;
 };
 

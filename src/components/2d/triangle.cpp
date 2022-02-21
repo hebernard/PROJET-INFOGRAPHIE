@@ -1,7 +1,7 @@
 #include "triangle.h"
 
-triangle::triangle(glm::vec3 p1, glm::vec3 p2, glm::vec3 p3) : 
-	object(new hierarchyButton(*this, "images/icons/triangle.png", "Triangle")), m_p1(p1), m_p2(p2), m_p3(p3), noFill(false)
+triangle::triangle(int width, int height) : 
+	object(new hierarchyButton(*this, "images/icons/triangle.png", "Triangle")), m_width(width), m_height(height), noFill(false)
 {
 }
 
@@ -12,18 +12,21 @@ void triangle::customDraw()
 	if (noFill) { ofNoFill(); }
 	else { ofFill(); }
 
-	ofDrawTriangle(m_p1, m_p2, m_p3);
+	/*
+	*    2
+	* 1     3
+	*/
+	ofDrawTriangle(-m_width / 2.f, -m_height / 2.f, 0, 0, m_height / 2.f, 0, m_width / 2.f, -m_height / 2.f, 0);
 
 	ofPopStyle();
 }
 
 glm::vec3 triangle::getCenter()
 {
-	glm::vec3 position((getPosition().x + m_p3.x) / 2, (getPosition().y + m_p2.y) / 2, getPosition().z);
-	return position;
+	return getPosition();
 }
 
 glm::vec3 triangle::getBBox()
 {
-	return glm::vec3((m_p1.x+m_p3.x)/2, m_p2.y/2, 0);
+	return glm::vec3(m_width, m_height, 0);
 }
