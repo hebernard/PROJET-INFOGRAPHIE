@@ -1,30 +1,24 @@
 #include "line.h"
 
-line::line(glm::vec3 p1, glm::vec3 p2)
-	: object(new hierarchyButton(*this, "images/icons/line.png", "Line")), m_p1(p1), m_p2(p2), noFill(false)
+line::line(int length)
+	: object(new hierarchyButton(*this, "images/icons/line.png", "Line")), m_length(length)
 {
 }
 
 void line::customDraw()
 {
-	ofPushStyle();
-
-	if (noFill) { ofNoFill(); }
-	else { ofFill(); }
-
-	ofDrawLine(m_p1, m_p2);
-
-	ofPopStyle();
+	ofDrawLine(-m_length / 2, 0, 0, m_length / 2, 0, 0);
 }
 
 glm::vec3 line::getCenter()
 {
-	glm::vec3 position((getPosition().x + m_p2.x) / 2, (getPosition().y + m_p2.y) / 2, getPosition().z);
-	return position;
+	// The position is the center since the line is drawn
+	// from its center point from the customDraw() method
+	return getPosition();
 }
 
 glm::vec3 line::getBBox()
 {
-	glm::vec3 position(abs(m_p2.x - m_p1.x), abs(m_p2.y - m_p1.y), 0);
-	return position;
+	// No point on drawing the bounding box for the line
+	return glm::vec3(0, 0, 0);
 }

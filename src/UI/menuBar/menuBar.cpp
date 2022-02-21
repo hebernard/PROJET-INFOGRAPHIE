@@ -29,8 +29,8 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	dropdownButton* lineButton = new dropdownButton("images/icons/line.png", "Line");
 	lineButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
-		line* li = new line(glm::vec3(1, 1, 0), glm::vec3(2, 2, 0));
-		li->setPosition(glm::vec3(1, 1, 0));
+		line* li = new line(5);
+		li->setPosition(glm::vec3(0, 1, 0));
 
 		scene& s = s.getInstance();
 		s.addObject(li);
