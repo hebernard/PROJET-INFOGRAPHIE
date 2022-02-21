@@ -5,6 +5,7 @@
 class image : public object
 {
 public:
+	glm::vec2 size;
 	image(string path);
 
 	void customDraw();
@@ -12,7 +13,6 @@ public:
 	glm::vec3 getBBox();
 
 private:
-	glm::vec2 size;
 	ofImage im;
 };
 

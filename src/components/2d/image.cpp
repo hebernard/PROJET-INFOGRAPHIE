@@ -13,17 +13,20 @@ void image::customDraw()
 {
 	if (im.isAllocated())
 	{
-		im.draw(0, 0, 0, size.x * getScale().x, size.y * getScale().y);
+		auto scale = getScale();
+		float width = size.x * scale.x;
+		float height = size.y * scale.y;
+		im.draw(-width / 2, -height / 2, 0, width, height);
 	}
 }
 
 glm::vec3 image::getCenter()
 {
-	glm::vec3 pos = getPosition();
-	return glm::vec3(pos.x + (size.x * getScale().x / 2), pos.y + (size.y * getScale().y / 2), pos.z);
+	return getPosition();
 }
 
 glm::vec3 image::getBBox()
 {
-	return glm::vec3(size.x, size.y, 0);
+	auto scale = getScale();
+	return glm::vec3(size.x * scale.x, size.y * scale.y, 0);
 }
