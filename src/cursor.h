@@ -17,15 +17,14 @@ public:
 	static void setHandCursor();
 	static void setDragCursor();
 	static void setRotateCursor();
-	static void setLeftCursor();
-	static void setRightCursor();
-	static void setHorizontalTranslateCursor();
-	static void setLeftRotationCursor();
-	static void setRightRotationCursor();
 	static void setScaleUpCursor();
 	static void setScaleDownCursor();
+	static void setZoomInCursor();
+	static void setZoomOutCursor();
 	static void setTargetCursor();
 	static void setResetCursor();
+
+	static bool isDefaultCursor();
 
 };
 

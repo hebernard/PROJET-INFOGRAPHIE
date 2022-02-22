@@ -103,8 +103,12 @@
     <ClCompile Include="src\UI\menuBar\recButton.cpp" />
     <ClCompile Include="src\cursor.cpp" />
     <ClCompile Include="src\UI\properties\centeredSlider.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="src\UI\properties\floatInputProperty.cpp" />
     <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
+=======
+    <ClCompile Include="src\UI\hierarchy\hierarchyButtonCamera.cpp" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -466,8 +470,12 @@
     <ClInclude Include="src\UI\menuBar\recButton.h" />
     <ClInclude Include="src\cursor.h" />
     <ClInclude Include="src\UI\properties\centeredSlider.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
     <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
+=======
+    <ClInclude Include="src\UI\hierarchy\hierarchyButtonCamera.h" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

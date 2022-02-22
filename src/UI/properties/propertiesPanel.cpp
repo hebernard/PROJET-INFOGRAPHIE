@@ -5,6 +5,7 @@
 #include "UI/hierarchy/hierarchySmallButton.h"
 #include "scene.h"
 #include "panel.h"
+#include "cursor.h"
 
 propertiesPanel::propertiesPanel() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),
