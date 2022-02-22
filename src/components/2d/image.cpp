@@ -20,6 +20,12 @@ void image::customDraw()
 	}
 }
 
+void image::drawProperties(int x, int y, int width)
+{
+	// Dont call base class to not set filled property
+	// todo
+}
+
 glm::vec3 image::getBBox()
 {
 	auto scale = getScale();

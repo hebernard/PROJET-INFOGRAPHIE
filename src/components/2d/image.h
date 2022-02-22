@@ -9,6 +9,7 @@ public:
 	image(string path);
 
 	void customDraw();
+	void drawProperties(int x, int y, int width);
 	glm::vec3 getBBox();
 
 private:
