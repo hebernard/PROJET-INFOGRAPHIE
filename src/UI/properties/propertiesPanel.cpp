@@ -15,6 +15,7 @@ propertiesPanel::propertiesPanel() :
 	ofRegisterMouseEvents(this);
 	rect.width = 300;
 	rect.y = 100;
+	propertyWidth = rect.width - offsetX * 2;
 
 	backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
@@ -66,28 +67,13 @@ void propertiesPanel::draw(object& obj)
 	backButton->update(rect.x + 15, rect.y + 10);
 	backButton->draw();
 
-	ofPushStyle();
-	ofSetColor(mainTheme::panelBorderColor());
-	ofSetLineWidth(2);
-	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
-	ofPopStyle();
+	drawLine(rect.x, rect.y + 55, rect.width);
 
-	// todo draw all the relevant properties of the object here
-	int offsetX = 15;
-	int sliderWidth = rect.width - offsetX * 2;
-	position.draw(rect.x + offsetX, rect.y + 75, sliderWidth, obj.getPosition());
-	rotation.draw(rect.x + offsetX, rect.y + 155, sliderWidth, obj.getOrientationEuler());
-	scale.draw(rect.x + offsetX, rect.y + 235, sliderWidth, obj.getScale());
+	drawTransformSliders(obj);
 
-	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime() * translationSpeed);
-	obj.rotateDeg(rotation.value * ofGetLastFrameTime() * rotationSpeed, rotation.axis);
+	drawLine(rect.x + 30, rect.y + 310, rect.width - 60);
 
-	auto scaleAxis = scale.getLocked() ? glm::vec3(1, 1, 1) : scale.axis;
-	obj.setScale(obj.getScale() + scaleAxis * scale.value * ofGetLastFrameTime() * scaleSpeed);
-}
-
-void propertiesPanel::mouseMoved(ofMouseEventArgs& args)
-{
+	obj.drawProperties(rect.x + offsetX, rect.y + 330, propertyWidth);
 }
 
 void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
@@ -108,10 +94,6 @@ void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
 	}
 }
 
-void propertiesPanel::mousePressed(ofMouseEventArgs& args)
-{
-}
-
 void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 {
 	if (position.dragStarted || rotation.dragStarted || scale.dragStarted)
@@ -125,16 +107,26 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 	scale.mouseReleased(args);
 }
 
-void propertiesPanel::mouseScrolled(ofMouseEventArgs& args)
+void propertiesPanel::drawTransformSliders(object& obj)
 {
+	position.draw(rect.x + offsetX, rect.y + 75, propertyWidth, obj.getPosition());
+	rotation.draw(rect.x + offsetX, rect.y + 155, propertyWidth, obj.getOrientationEuler());
+	scale.draw(rect.x + offsetX, rect.y + 235, propertyWidth, obj.getScale());
+
+	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime() * translationSpeed);
+	obj.rotateDeg(rotation.value * ofGetLastFrameTime() * rotationSpeed, rotation.axis);
+
+	auto scaleAxis = scale.getLocked() ? glm::vec3(1, 1, 1) : scale.axis;
+	obj.setScale(obj.getScale() + scaleAxis * scale.value * ofGetLastFrameTime() * scaleSpeed);
 }
 
-void propertiesPanel::mouseEntered(ofMouseEventArgs& args)
+void propertiesPanel::drawLine(int x, int y, int width)
 {
-}
-
-void propertiesPanel::mouseExited(ofMouseEventArgs& args)
-{
+	ofPushStyle();
+	ofSetColor(mainTheme::panelBorderColor());
+	ofSetLineWidth(2);
+	ofDrawLine(x, y, x + width, y);
+	ofPopStyle();
 }
 
 void propertiesPanel::resetFocus()
@@ -142,3 +134,9 @@ void propertiesPanel::resetFocus()
 	scene& s = s.getInstance();
 	s.focusObject(*s.currentSelected);
 }
+
+void propertiesPanel::mouseMoved(ofMouseEventArgs& args) {}
+void propertiesPanel::mousePressed(ofMouseEventArgs& args) {}
+void propertiesPanel::mouseScrolled(ofMouseEventArgs& args) {}
+void propertiesPanel::mouseEntered(ofMouseEventArgs& args) {}
+void propertiesPanel::mouseExited(ofMouseEventArgs& args) {}

@@ -51,6 +51,10 @@ public:
 		button->draw();
 	}
 
+	virtual void drawProperties(int x, int y, int width)
+	{
+	}
+
 	virtual glm::vec3 getCenter()
 	{
 		return getPosition();

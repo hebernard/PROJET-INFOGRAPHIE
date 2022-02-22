@@ -24,6 +24,8 @@ public:
     void mouseExited(ofMouseEventArgs& args);
 
 private:
+    const int offsetX = 15;
+    int propertyWidth;
     const int translationSpeed = 5;
     const int rotationSpeed = 30;
     const int scaleSpeed = 1;
@@ -33,5 +35,7 @@ private:
 
 	centeredSlider position, rotation, scale;
 
+    void drawTransformSliders(object& obj);
+    void drawLine(int x, int y, int width);
     void resetFocus();
 };

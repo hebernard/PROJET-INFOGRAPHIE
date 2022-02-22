@@ -103,6 +103,7 @@
     <ClCompile Include="src\UI\menuBar\recButton.cpp" />
     <ClCompile Include="src\cursor.cpp" />
     <ClCompile Include="src\UI\properties\centeredSlider.cpp" />
+    <ClCompile Include="src\UI\properties\floatInputProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -464,6 +465,7 @@
     <ClInclude Include="src\UI\menuBar\recButton.h" />
     <ClInclude Include="src\cursor.h" />
     <ClInclude Include="src\UI\properties\centeredSlider.h" />
+    <ClInclude Include="src\UI\properties\floatInputProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
