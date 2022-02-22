@@ -25,6 +25,7 @@ public:
 	static void setScaleUpCursor();
 	static void setScaleDownCursor();
 	static void setTargetCursor();
+	static void setResetCursor();
 
 };
 

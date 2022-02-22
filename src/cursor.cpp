@@ -127,3 +127,13 @@ void cursor::setTargetCursor()
 	cursorIcon.load("images/icons/cursor/targetCursor.png");
 	cursorIcon.resize(20, 20);
 }
+
+void cursor::setResetCursor()
+{
+	isDefault = false;
+	offsetX = 10;
+	offsetY = 10;
+	ofHideCursor();
+	cursorIcon.load("images/icons/cursor/resetCursor.png");
+	cursorIcon.resize(20, 20);
+}
