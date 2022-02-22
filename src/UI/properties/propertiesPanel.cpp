@@ -10,7 +10,7 @@ propertiesPanel::propertiesPanel() :
 	backButton(new hierarchySmallButton("images/icons/back.png")),
 	position(centeredSlider("Position")),
 	rotation(centeredSlider("Rotation")),
-	scale(centeredSlider("Scale"))
+	scale(centeredSlider("Scale", true))
 {
 	ofRegisterMouseEvents(this);
 	rect.width = 300;
@@ -39,6 +39,16 @@ propertiesPanel::propertiesPanel() :
 		scene& s = s.getInstance();
 		s.currentSelected->setScale(glm::vec3(1, 1, 1));
 	});
+
+	scale.lockedButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		scale.setLocked(!scale.getLocked());
+		if (scale.getLocked())
+		{
+			scene& s = s.getInstance();
+			s.currentSelected->setScale(glm::vec3(1, 1, 1));
+		}
+	});
 }
 
 void propertiesPanel::draw(object& obj)
@@ -62,13 +72,15 @@ void propertiesPanel::draw(object& obj)
 	// todo draw all the relevant properties of the object here
 	int offsetX = 15;
 	int sliderWidth = rect.width - offsetX * 2;
-	position.draw(rect.x + offsetX, rect.y + 70, sliderWidth, obj.getPosition());
-	rotation.draw(rect.x + offsetX, rect.y + 150, sliderWidth, obj.getOrientationEuler());
-	scale.draw(rect.x + offsetX, rect.y + 230, sliderWidth, obj.getScale());
+	position.draw(rect.x + offsetX, rect.y + 75, sliderWidth, obj.getPosition());
+	rotation.draw(rect.x + offsetX, rect.y + 155, sliderWidth, obj.getOrientationEuler());
+	scale.draw(rect.x + offsetX, rect.y + 235, sliderWidth, obj.getScale());
 
 	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime() * translationSpeed);
 	obj.rotateDeg(rotation.value * ofGetLastFrameTime() * rotationSpeed, rotation.axis);
-	obj.setScale(obj.getScale() + scale.axis * scale.value * ofGetLastFrameTime() * scaleSpeed);
+
+	auto scaleAxis = scale.getLocked() ? glm::vec3(1, 1, 1) : scale.axis;
+	obj.setScale(obj.getScale() + scaleAxis * scale.value * ofGetLastFrameTime() * scaleSpeed);
 }
 
 void propertiesPanel::mouseMoved(ofMouseEventArgs& args)

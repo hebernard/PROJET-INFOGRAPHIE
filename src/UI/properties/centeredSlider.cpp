@@ -4,7 +4,11 @@
 #include "object.h"
 #include "hierarchySmallButton.h"
 
-centeredSlider::centeredSlider(std::string text) : m_text(text), resetButton(new hierarchySmallButton("images/icons/reset.png"))
+centeredSlider::centeredSlider(std::string text, bool drawLockedButton) : 
+	m_text(text),
+	drawLocked(drawLockedButton),
+	resetButton(new hierarchySmallButton("images/icons/reset.png")),
+	lockedButton(new hierarchySmallButton("images/icons/unlock.png"))
 {
 	xyzRect.width = 78;
 	xyzRect.height = 20;
@@ -18,8 +22,15 @@ void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
 
 	drawResetButton(x, y - 10);
 
+	int labelX = x + resetButton->getWidth() + 5;
+	if (drawLocked)
+	{
+		drawLockedButton(x + resetButton->getWidth(), y - 10);
+		labelX += lockedButton->getWidth();
+	}
+
 	// Main label
-	drawText(x + resetButton->getWidth() + 5, y + textSize.y, m_text, 12);
+	drawText(labelX, y + textSize.y, m_text, 12);
 
 	drawValue(x + width - 50, y, xyz);
 
@@ -57,6 +68,13 @@ void centeredSlider::mouseDragged(ofMouseEventArgs& args)
 
 void centeredSlider::mouseReleased(ofMouseEventArgs& args)
 {
+	if (isLocked)
+	{
+		value = 0;
+		dragStarted = false;
+		return;
+	}
+
 	if (args.x >= xyzRect.x &&
 		args.x <= xyzRect.x + 25 &&
 		args.y >= xyzRect.y &&
@@ -91,6 +109,23 @@ void centeredSlider::mouseReleased(ofMouseEventArgs& args)
 	dragStarted = false;
 }
 
+centeredSlider::~centeredSlider()
+{
+	delete resetButton;
+	delete lockedButton;
+}
+
+void centeredSlider::setLocked(bool locked)
+{
+	isLocked = locked;
+	lockedButton->changeIcon(locked ? "images/icons/lock.png" : "images/icons/unlock.png");
+}
+
+bool centeredSlider::getLocked()
+{
+	return isLocked;
+}
+
 void centeredSlider::drawXYZRect(int x, int y)
 {
 	xyzRect.x = x;
@@ -100,20 +135,28 @@ void centeredSlider::drawXYZRect(int x, int y)
 	ofSetColor(mainTheme::toolBarButtonHoverColor());
 	ofDrawRectRounded(x, y, xyzRect.width, xyzRect.height, 8);
 
-	int offsetX = x + 9;
 	int offsetY = y + 15;
-	int offsetInBetween = xyzRect.width / 3;
+	if (isLocked)
+	{
+		auto size = label::getSize("xyz", 11);
+		drawText(xyzRect.x + xyzRect.width / 2 - size.x / 2, offsetY, "xyz", 11);
+	}
+	else
+	{
+		int offsetX = x + 9;
+		int offsetInBetween = xyzRect.width / 3;
 
-	// Selection thumb
-	ofSetColor(axisColor);
-	ofDrawCircle(x + offsetInBetween / 2 + (current * offsetInBetween), offsetY - 4, 14);
+		// Selection thumb
+		ofSetColor(axisColor);
+		ofDrawCircle(x + offsetInBetween / 2 + (current * offsetInBetween), offsetY - 4, 14);
 
-	// Always draw the text last
-	drawText(offsetX, offsetY, "x", 11);
-	offsetX += offsetInBetween;
-	drawText(offsetX, offsetY, "y", 11);
-	offsetX += offsetInBetween;
-	drawText(offsetX, offsetY, "z", 11);
+		// Always draw the text last
+		drawText(offsetX, offsetY, "x", 11);
+		offsetX += offsetInBetween;
+		drawText(offsetX, offsetY, "y", 11);
+		offsetX += offsetInBetween;
+		drawText(offsetX, offsetY, "z", 11);
+	}
 }
 
 void centeredSlider::drawSlider(int x, int y, int width)
@@ -130,7 +173,7 @@ void centeredSlider::drawSlider(int x, int y, int width)
 		thumbX = center;
 	}
 
-	ofSetColor(axisColor);
+	ofSetColor(!isLocked ? axisColor : mainTheme::color3());
 	ofDrawRectRounded(center, y, thumbX - center, 4, 8);
 	ofDrawCircle(thumbX, y, thumbRadius);
 }
@@ -139,6 +182,12 @@ void centeredSlider::drawResetButton(int x, int y)
 {
 	resetButton->update(x, y);
 	resetButton->draw();
+}
+
+void centeredSlider::drawLockedButton(int x, int y)
+{
+	lockedButton->update(x, y);
+	lockedButton->draw();
 }
 
 void centeredSlider::drawValue(int x, int y, glm::vec3 xyz)
