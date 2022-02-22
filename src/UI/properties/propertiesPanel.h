@@ -32,4 +32,6 @@ private:
 	hierarchySmallButton* backButton;
 
 	centeredSlider position, rotation, scale;
+
+    void resetFocus();
 };

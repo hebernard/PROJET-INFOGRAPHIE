@@ -10,6 +10,7 @@ class centeredSlider
 public:
     glm::vec3 axis = glm::vec3(1, 0, 0);
     float value = 0;
+    bool dragStarted = false;
     hierarchySmallButton* resetButton;
     hierarchySmallButton* lockedButton;
 
@@ -27,7 +28,6 @@ public:
 private:
     bool isLocked = false;
     bool drawLocked;
-    bool dragStarted = false;
     int thumbX;
     int thumbRadius = 10;
     int minX;

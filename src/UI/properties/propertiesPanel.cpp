@@ -26,18 +26,21 @@ propertiesPanel::propertiesPanel() :
 	{
 		scene& s = s.getInstance();
 		s.currentSelected->setPosition(glm::vec3(0, 0, 0));
+		resetFocus();
 	});
 
 	rotation.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		scene& s = s.getInstance();
 		s.currentSelected->setOrientation(glm::vec3(0, 0, 0));
+		resetFocus();
 	});
 
 	scale.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		scene& s = s.getInstance();
 		s.currentSelected->setScale(glm::vec3(1, 1, 1));
+		resetFocus();
 	});
 
 	scale.lockedButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -89,9 +92,20 @@ void propertiesPanel::mouseMoved(ofMouseEventArgs& args)
 
 void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
 {
-	position.mouseDragged(args);
-	rotation.mouseDragged(args);
-	scale.mouseDragged(args);
+	if (!rotation.dragStarted && !scale.dragStarted)
+	{
+		position.mouseDragged(args);
+	}
+
+	if (!position.dragStarted && !scale.dragStarted)
+	{
+		rotation.mouseDragged(args);
+	}
+
+	if (!position.dragStarted && !rotation.dragStarted)
+	{
+		scale.mouseDragged(args);
+	}
 }
 
 void propertiesPanel::mousePressed(ofMouseEventArgs& args)
@@ -100,13 +114,15 @@ void propertiesPanel::mousePressed(ofMouseEventArgs& args)
 
 void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 {
+	if (position.dragStarted || rotation.dragStarted || scale.dragStarted)
+	{
+		// Refocus on the object once we're done dragging
+		resetFocus();
+	}
+
 	position.mouseReleased(args);
 	rotation.mouseReleased(args);
 	scale.mouseReleased(args);
-
-	// Refocus on the object once we're done dragging
-	/*scene& s = s.getInstance();
-	s.focusObject(*s.currentSelected);*/
 }
 
 void propertiesPanel::mouseScrolled(ofMouseEventArgs& args)
@@ -119,4 +135,10 @@ void propertiesPanel::mouseEntered(ofMouseEventArgs& args)
 
 void propertiesPanel::mouseExited(ofMouseEventArgs& args)
 {
+}
+
+void propertiesPanel::resetFocus()
+{
+	scene& s = s.getInstance();
+	s.focusObject(*s.currentSelected);
 }
