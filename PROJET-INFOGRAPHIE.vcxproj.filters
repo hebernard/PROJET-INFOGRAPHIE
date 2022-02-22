@@ -104,6 +104,7 @@
     <ClCompile Include="src\cursor.cpp" />
     <ClCompile Include="src\UI\properties\centeredSlider.cpp" />
     <ClCompile Include="src\UI\properties\floatInputProperty.cpp" />
+    <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -466,6 +467,7 @@
     <ClInclude Include="src\cursor.h" />
     <ClInclude Include="src\UI\properties\centeredSlider.h" />
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
+    <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

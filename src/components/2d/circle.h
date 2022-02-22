@@ -1,12 +1,11 @@
 #pragma once
 #include "components/object.h"
 #include "floatInputProperty.h"
+#include "checkBoxProperty.h"
 
 class circle : public object
 {
 public:
-	bool noFill;
-
 	circle(float radius);
 
 	void customDraw();
@@ -16,5 +15,6 @@ public:
 private:
 	float m_radius;
 	floatInputProperty radiusInput;
+	checkBoxProperty filledCheckBox;
 };
 

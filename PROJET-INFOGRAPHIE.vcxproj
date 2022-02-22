@@ -207,6 +207,7 @@
     <ClCompile Include="src\UI\menuBar\menuBarButtonAlt.cpp" />
     <ClCompile Include="src\UI\panel.cpp" />
     <ClCompile Include="src\UI\properties\centeredSlider.cpp" />
+    <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
     <ClCompile Include="src\UI\properties\floatInputProperty.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="src\UI\menuBar\menuBarButtonAlt.h" />
     <ClInclude Include="src\UI\panel.h" />
     <ClInclude Include="src\UI\properties\centeredSlider.h" />
+    <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
     <ClInclude Include="src\UI\properties\propertiesPanel.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />

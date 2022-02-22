@@ -7,6 +7,7 @@ public:
 	floatInputProperty(std::string label, float& ref);
 
 	void draw(int x, int y, int width);
+	int getHeight();
 
 	void keyPressed(ofKeyEventArgs& args);
 	void keyReleased(ofKeyEventArgs& args);

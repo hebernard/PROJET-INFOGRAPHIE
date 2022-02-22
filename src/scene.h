@@ -28,7 +28,6 @@ public:
 		addObject(sp);
 
 		circle* circ = new circle(1.2f);
-		circ->noFill = true;
 		circ->setPosition(glm::vec3(0, 1, 0));
 		addObject(circ);
 	}

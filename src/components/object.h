@@ -7,6 +7,7 @@
 class object : public ofNode
 {
 public:
+	bool filled = false;
 	bool markedForDeletion;
 	bool isSelected;
 	bool propertiesOpened;
@@ -41,7 +42,17 @@ public:
 			ofPopStyle();
 		}
 
+		ofPushStyle();
+		if (filled)
+		{
+			ofFill();
+		}
+		else
+		{
+			ofNoFill();
+		}
 		customDraw();
+		ofPopStyle();
 		ofPopMatrix();
 	}
 	

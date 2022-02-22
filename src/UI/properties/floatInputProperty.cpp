@@ -61,6 +61,11 @@ void floatInputProperty::draw(int x, int y, int width)
 	}
 }
 
+int floatInputProperty::getHeight()
+{
+	return rect.height;
+}
+
 void floatInputProperty::keyPressed(ofKeyEventArgs& args)
 {
 	if (focused)

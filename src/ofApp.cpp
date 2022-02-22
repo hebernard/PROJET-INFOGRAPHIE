@@ -4,6 +4,8 @@
 
 void ofApp::setup()
 {
+	ofSetCircleResolution(50);
+
 	//setup darkTheme by default
 	mainTheme::darkTheme = true;
 
