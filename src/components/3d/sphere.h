@@ -5,8 +5,6 @@
 class sphere : public object
 {
 public:
-	bool noFill;
-
 	sphere(float radius);
 
 	void customDraw();

@@ -23,7 +23,6 @@ public:
 
 	void setupObjects() {
 		sphere* sp = new sphere(1);
-		sp->noFill = true;
 		sp->setPosition(glm::vec3(0, 1, 0));
 		addObject(sp);
 

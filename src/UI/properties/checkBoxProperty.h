@@ -6,7 +6,6 @@ class checkBoxProperty
 {
 public:
 	checkBoxProperty(std::string label, bool& ref);
-	~checkBoxProperty();
 
 	void draw(int x, int y, int width);
 	int getHeight();

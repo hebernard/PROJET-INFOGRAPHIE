@@ -3,8 +3,7 @@
 circle::circle(float radius) : 
 	object(new hierarchyButton(*this, "images/icons/circle.png", "Circle")), 
 	m_radius(radius), 
-	radiusInput("Radius", m_radius),
-	filledCheckBox("Filled", filled)
+	radiusInput("Radius", m_radius)
 {
 }
 
@@ -16,8 +15,8 @@ void circle::customDraw()
 void circle::drawProperties(int x, int y, int width)
 {
 	int offsetY = 10;
-	filledCheckBox.draw(x, y, width);
-	radiusInput.draw(x, y + filledCheckBox.getHeight() + offsetY, width);
+	object::drawProperties(x, y, width);
+	radiusInput.draw(x, y + filledCheckBox->getHeight() + offsetY, width);
 }
 
 glm::vec3 circle::getBBox()

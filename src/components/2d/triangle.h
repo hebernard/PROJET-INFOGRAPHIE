@@ -4,8 +4,6 @@
 class triangle : public object
 {
 public:
-	bool noFill;
-
 	triangle(int width, int height);
 
 	void customDraw();

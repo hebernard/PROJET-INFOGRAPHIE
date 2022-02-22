@@ -4,8 +4,6 @@
 class square : public object
 {
 public:
-	bool noFill;
-
 	square(float size);
 
 	void customDraw();

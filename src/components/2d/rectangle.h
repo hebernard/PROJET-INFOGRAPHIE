@@ -4,8 +4,6 @@
 class rectangle : public object
 {
 public:
-	bool noFill;
-
 	rectangle(float width, float height);
 
 	void customDraw();

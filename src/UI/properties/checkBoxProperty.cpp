@@ -11,13 +11,6 @@ checkBoxProperty::checkBoxProperty(std::string label, bool& ref) : m_label(label
 
 	checkBox.width = icon.getWidth();
 	checkBox.height = icon.getHeight();
-
-	ofRegisterMouseEvents(this);
-}
-
-checkBoxProperty::~checkBoxProperty()
-{
-	ofUnregisterMouseEvents(this);
 }
 
 void checkBoxProperty::draw(int x, int y, int width)

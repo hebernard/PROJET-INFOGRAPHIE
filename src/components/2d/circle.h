@@ -15,6 +15,5 @@ public:
 private:
 	float m_radius;
 	floatInputProperty radiusInput;
-	checkBoxProperty filledCheckBox;
 };
 

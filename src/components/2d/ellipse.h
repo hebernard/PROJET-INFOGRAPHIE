@@ -4,8 +4,6 @@
 class ellipse : public object
 {
 public:
-	bool noFill;
-
 	ellipse(float width, float height);
 
 	void customDraw();

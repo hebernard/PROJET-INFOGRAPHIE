@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "UI/hierarchy/hierarchyButton.h"
 #include "mainTheme.h"
+#include "checkBoxProperty.h"
 
 class object : public ofNode
 {
@@ -13,10 +14,20 @@ public:
 	bool propertiesOpened;
 	bool isVisible;
 
-	object(hierarchyButton* btn) : button(btn), isSelected(false), markedForDeletion(false), propertiesOpened(false), isVisible(true) {}
+	object(hierarchyButton* btn) : 
+		button(btn), 
+		isSelected(false), 
+		markedForDeletion(false), 
+		propertiesOpened(false), 
+		isVisible(true),
+		filledCheckBox(new checkBoxProperty("Filled", filled))
+	{
+	}
+	
 	virtual ~object()
 	{
 		delete button;
+		delete filledCheckBox;
 	}
 
 	virtual void customDraw()
@@ -60,10 +71,13 @@ public:
 	{
 		button->update(x, y);
 		button->draw();
+		ofUnregisterMouseEvents(filledCheckBox);
 	}
 
 	virtual void drawProperties(int x, int y, int width)
 	{
+		ofRegisterMouseEvents(filledCheckBox);
+		filledCheckBox->draw(x, y, width);
 	}
 
 	virtual glm::vec3 getCenter()
@@ -87,5 +101,6 @@ public:
 
 protected:
 	hierarchyButton* button;
+	checkBoxProperty* filledCheckBox;
 };
 

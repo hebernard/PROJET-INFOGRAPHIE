@@ -5,8 +5,6 @@
 class cube : public object
 {
 public:
-	bool noFill;
-
 	cube(float width, float height, float depth);
 
 	void customDraw();
