@@ -2,6 +2,8 @@
 
 ofImage cursor::cursorIcon;
 bool cursor::isDefault = true;
+bool cursor::isCamera = false;
+bool cursor::isDragged = false;
 int cursor::offsetX = 10;
 int cursor::offsetY = 10;
 
@@ -15,12 +17,14 @@ void cursor::draw()
 void cursor::setDefaultCursor()
 {
 	isDefault = true;
+	isCamera = false;
 	ofShowCursor();
 }
 
 void cursor::setHandCursor()
 {
 	isDefault = false;
+	isCamera = false;
 	offsetX = 11;
 	offsetY = 1;
 	ofHideCursor();
@@ -28,9 +32,21 @@ void cursor::setHandCursor()
 	cursorIcon.resize(20, 20);
 }
 
+void cursor::setHandGrabCursor()
+{
+	isDefault = false;
+	isCamera = false;
+	offsetX = 11;
+	offsetY = 1;
+	ofHideCursor();
+	cursorIcon.load("images/icons/cursor/handGrabCursor.png");
+	cursorIcon.resize(20, 20);
+}
+
 void cursor::setDragCursor()
 {
 	isDefault = false;
+	isCamera = true;
 	offsetX = 15;
 	offsetY = 15;
 	ofHideCursor();
@@ -41,6 +57,7 @@ void cursor::setDragCursor()
 void cursor::setRotateCursor()
 {
 	isDefault = false;
+	isCamera = true;
 	offsetX = 15;
 	offsetY = 15;
 	ofHideCursor();
@@ -71,6 +88,7 @@ void cursor::setScaleDownCursor()
 void cursor::setZoomInCursor()
 {
 	isDefault = false;
+	isCamera = true;
 	offsetX = 15;
 	offsetY = 15;
 	ofHideCursor();
@@ -81,6 +99,7 @@ void cursor::setZoomInCursor()
 void cursor::setZoomOutCursor()
 {
 	isDefault = false;
+	isCamera = true;
 	offsetX = 15;
 	offsetY = 15;
 	ofHideCursor();
@@ -91,6 +110,7 @@ void cursor::setZoomOutCursor()
 void cursor::setTargetCursor()
 {
 	isDefault = false;
+	isCamera = false;
 	offsetX = 12;
 	offsetY = 12;
 	ofHideCursor();
@@ -108,7 +128,22 @@ void cursor::setResetCursor()
 	cursorIcon.resize(20, 20);
 }
 
+void cursor::setDragged(bool drag)
+{
+	isDragged = drag;
+}
+
 bool cursor::isDefaultCursor()
 {
 	return isDefault;
+}
+
+bool cursor::isCameraCursor()
+{
+	return isCamera;
+}
+
+bool cursor::isDraggedCursor()
+{
+	return isDragged;
 }

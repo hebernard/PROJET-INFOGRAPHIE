@@ -39,6 +39,7 @@ void ofApp::update()
 
 void ofApp::draw()
 {
+	if (!cursor::isCameraCursor() && !cursor::isDraggedCursor()) { cursor::setDefaultCursor(); }
 	cam->begin();//-----------------------begin of cam------------------------------//
 	ofEnableDepthTest();
 
