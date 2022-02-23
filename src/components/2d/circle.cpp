@@ -14,9 +14,8 @@ void circle::customDraw()
 
 void circle::drawProperties(int x, int y, int width)
 {
-	int offsetY = 10;
 	object::drawProperties(x, y, width);
-	radiusInput.draw(x, y + filledCheckBox->getHeight() + offsetY, width);
+	radiusInput.draw(x, y + getPropertiesHeight(), width);
 }
 
 glm::vec3 circle::getBBox()

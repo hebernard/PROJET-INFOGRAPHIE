@@ -44,7 +44,7 @@ public:
 		}
 
 		camera->setTarget(obj.getCenter());
-		camera->setDistance(5);
+		//camera->setDistance(5);
 
 		obj.isSelected = true;
 

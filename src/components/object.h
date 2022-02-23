@@ -4,6 +4,7 @@
 #include "UI/hierarchy/hierarchyButton.h"
 #include "mainTheme.h"
 #include "checkBoxProperty.h"
+#include "colorProperty.h"
 
 class object : public ofNode
 {
@@ -13,6 +14,7 @@ public:
 	bool isSelected;
 	bool propertiesOpened;
 	bool isVisible;
+	ofColor color = ofColor::white;
 
 	object(hierarchyButton* btn) : 
 		button(btn), 
@@ -20,7 +22,8 @@ public:
 		markedForDeletion(false), 
 		propertiesOpened(false), 
 		isVisible(true),
-		filledCheckBox(new checkBoxProperty("Filled", filled))
+		filledCheckBox(new checkBoxProperty("Filled", filled)),
+		colorPicker(new colorProperty("Color", color))
 	{
 	}
 	
@@ -28,6 +31,7 @@ public:
 	{
 		delete button;
 		delete filledCheckBox;
+		delete colorPicker;
 	}
 
 	virtual void customDraw()
@@ -62,6 +66,7 @@ public:
 		{
 			ofNoFill();
 		}
+		ofSetColor(color);
 		customDraw();
 		ofPopStyle();
 		ofPopMatrix();
@@ -78,6 +83,7 @@ public:
 	{
 		ofRegisterMouseEvents(filledCheckBox);
 		filledCheckBox->draw(x, y, width);
+		colorPicker->draw(x, y + filledCheckBox->getHeight() + 10, width);
 	}
 
 	virtual glm::vec3 getCenter()
@@ -102,5 +108,11 @@ public:
 protected:
 	hierarchyButton* button;
 	checkBoxProperty* filledCheckBox;
+	colorProperty* colorPicker;
+
+	int getPropertiesHeight()
+	{
+		return filledCheckBox->getHeight() + 10 + colorPicker->getHeight() + 10;
+	}
 };
 
