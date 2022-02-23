@@ -106,6 +106,7 @@
     <ClCompile Include="src\UI\properties\floatInputProperty.cpp" />
     <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
     <ClCompile Include="src\UI\properties\colorProperty.cpp" />
+    <ClCompile Include="src\UI\hierarchy\hierarchyButtonCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -470,6 +471,7 @@
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
     <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
     <ClInclude Include="src\UI\properties\colorProperty.h" />
+    <ClInclude Include="src\UI\hierarchy\hierarchyButtonCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

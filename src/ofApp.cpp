@@ -5,6 +5,7 @@
 void ofApp::setup()
 {
 	ofSetCircleResolution(50);
+	ofSetFrameRate(60);
 
 	//setup darkTheme by default
 	mainTheme::darkTheme = true;
@@ -38,7 +39,7 @@ void ofApp::update()
 
 void ofApp::draw()
 {
-	cursor::setDefaultCursor();
+	if (!cursor::isCameraCursor() && !cursor::isDraggedCursor()) { cursor::setDefaultCursor(); }
 	cam->begin();//-----------------------begin of cam------------------------------//
 	ofEnableDepthTest();
 

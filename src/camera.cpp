@@ -4,6 +4,7 @@
 #include "ofGraphicsBaseTypes.h"
 #include <limits>
 #include "glm/gtx/vector_angle.hpp"
+#include "cursor.h"
 
 using namespace std;
 
@@ -34,11 +35,13 @@ void camera::update(ofEventArgs& args) {
 			updateMouse(glm::vec2(events->getMouseX(), events->getMouseY()));
 		}
 		if (currentTransformType == TRANSFORM_ROTATE) {
+			//cursor::setRotateCursor();
 			updateRotation();
 		}
 		else if (currentTransformType == TRANSFORM_TRANSLATE_XY ||
 			currentTransformType == TRANSFORM_TRANSLATE_Z ||
 			currentTransformType == TRANSFORM_SCALE) {
+			//cursor::setDragCursor();
 			updateTranslation();
 		}
 	}
@@ -373,7 +376,6 @@ void camera::mousePressed(ofMouseEventArgs& mouse) {
 		lastPressAxisZ = getZAxis();
 		lastPressPosition = ofCamera::getGlobalPosition();
 		lastPressOrientation = ofCamera::getGlobalOrientation();
-
 		currentTransformType = TRANSFORM_NONE;
 		if (events) {
 			for (const auto& i : interactions) {
@@ -393,7 +395,7 @@ void camera::mousePressed(ofMouseEventArgs& mouse) {
 //----------------------------------------
 void camera::mouseReleased(ofMouseEventArgs& mouse) {
 	ofRectangle area = getControlArea();
-
+	cursor::setDefaultCursor();
 	if (doInertia) {
 		bApplyInertia = true;
 	}
@@ -420,6 +422,12 @@ void camera::mouseScrolled(ofMouseEventArgs& mouse) {
 		}
 		else {
 			translate.z = -mouse.scrollY * 30 * sensitivityTranslate.z * (getDistance() + std::numeric_limits<float>::epsilon()) / area.height;
+			if (translate.z > 0) {
+				cursor::setZoomOutCursor();
+			}
+			if (translate.z < 0) {
+				cursor::setZoomInCursor();
+			}
 		}
 		currentTransformType = TRANSFORM_SCALE;
 		bIsScrolling = true;
@@ -435,6 +443,7 @@ void camera::updateMouse(const glm::vec2& mouse) {
 	translate = { 0,0,0 };
 	switch (currentTransformType) {
 	case TRANSFORM_ROTATE:
+		cursor::setRotateCursor();
 		mouseVel = mouse - lastPressMouse;
 		//if (bInsideArcball) {
 			rot.x = vFlip * -mouseVel.y * sensitivityRot.x * glm::pi<float>() / std::min(area.width, area.height);
@@ -447,6 +456,7 @@ void camera::updateMouse(const glm::vec2& mouse) {
 		}*/
 		break;
 	case TRANSFORM_TRANSLATE_XY:
+		cursor::setDragCursor();
 		mouseVel = mouse - prevMouse;
 		if (getOrtho()) {
 			translate.x = -mouseVel.x * getScale().z;
@@ -466,7 +476,13 @@ void camera::updateMouse(const glm::vec2& mouse) {
 			translate.z = mouseVel.y * (sensitivityTranslate.z * 0.7f) * (getDistance() + std::numeric_limits<float>::epsilon()) / area.height;
 		}
 		break;
+	case TRANSFORM_NONE:
+		cursor::setDefaultCursor();
+		break;
+	case TRANSFORM_SCALE:
+		break;
 	default:
+		cursor::setDefaultCursor();
 		break;
 	}
 	prevMouse = mouse;

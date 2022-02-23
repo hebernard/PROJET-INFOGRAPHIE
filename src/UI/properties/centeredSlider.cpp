@@ -3,6 +3,7 @@
 #include "panel.h"
 #include "object.h"
 #include "hierarchySmallButton.h"
+#include "cursor.h"
 
 centeredSlider::centeredSlider(std::string text, bool drawLockedButton) : 
 	m_text(text),
@@ -27,6 +28,13 @@ void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
 	{
 		drawLockedButton(x + resetButton->getWidth(), y - 10);
 		labelX += lockedButton->getWidth();
+	}
+	if (dragStarted) {
+		cursor::setDragged(true);
+		cursor::setHandGrabCursor();
+	}
+	if (!dragStarted) {
+		cursor::setDragged(false);
 	}
 
 	// Main label

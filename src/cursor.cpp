@@ -2,6 +2,8 @@
 
 ofImage cursor::cursorIcon;
 bool cursor::isDefault = true;
+bool cursor::isCamera = false;
+bool cursor::isDragged = false;
 int cursor::offsetX = 10;
 int cursor::offsetY = 10;
 
@@ -15,12 +17,14 @@ void cursor::draw()
 void cursor::setDefaultCursor()
 {
 	isDefault = true;
+	isCamera = false;
 	ofShowCursor();
 }
 
 void cursor::setHandCursor()
 {
 	isDefault = false;
+	isCamera = false;
 	offsetX = 11;
 	offsetY = 1;
 	ofHideCursor();
@@ -28,74 +32,37 @@ void cursor::setHandCursor()
 	cursorIcon.resize(20, 20);
 }
 
+void cursor::setHandGrabCursor()
+{
+	isDefault = false;
+	isCamera = false;
+	offsetX = 11;
+	offsetY = 1;
+	ofHideCursor();
+	cursorIcon.load("images/icons/cursor/handGrabCursor.png");
+	cursorIcon.resize(20, 20);
+}
+
 void cursor::setDragCursor()
 {
 	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
+	isCamera = true;
+	offsetX = 15;
+	offsetY = 15;
 	ofHideCursor();
 	cursorIcon.load("images/icons/cursor/dragCursor.png");
-	cursorIcon.resize(20, 20);
+	cursorIcon.resize(30, 30);
 }
 
 void cursor::setRotateCursor()
 {
 	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
+	isCamera = true;
+	offsetX = 15;
+	offsetY = 15;
 	ofHideCursor();
 	cursorIcon.load("images/icons/cursor/rotateCursor.png");
-	cursorIcon.resize(20, 20);
-}
-
-void cursor::setLeftCursor()
-{
-	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
-	ofHideCursor();
-	cursorIcon.load("images/icons/cursor/leftCursor.png");
-	cursorIcon.resize(20, 20);
-}
-
-void cursor::setRightCursor()
-{
-	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
-	ofHideCursor();
-	cursorIcon.load("images/icons/cursor/rightCursor.png");
-	cursorIcon.resize(20, 20);
-}
-
-void cursor::setHorizontalTranslateCursor()
-{
-	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
-	ofHideCursor();
-	cursorIcon.load("images/icons/cursor/horizontalTranslateCursor.png");
-	cursorIcon.resize(20, 20);
-}
-
-void cursor::setLeftRotationCursor()
-{
-	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
-	ofHideCursor();
-	cursorIcon.load("images/icons/cursor/leftRotationCursor.png");
-	cursorIcon.resize(20, 20);
-}
-
-void cursor::setRightRotationCursor()
-{
-	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
-	ofHideCursor();
-	cursorIcon.load("images/icons/cursor/rightRotationCursor.png");
-	cursorIcon.resize(20, 20);
+	cursorIcon.resize(30, 30);
 }
 
 void cursor::setScaleUpCursor()
@@ -118,14 +85,37 @@ void cursor::setScaleDownCursor()
 	cursorIcon.resize(20, 20);
 }
 
+void cursor::setZoomInCursor()
+{
+	isDefault = false;
+	isCamera = true;
+	offsetX = 15;
+	offsetY = 15;
+	ofHideCursor();
+	cursorIcon.load("images/icons/cursor/zoomInCursor.png");
+	cursorIcon.resize(30, 30);
+}
+
+void cursor::setZoomOutCursor()
+{
+	isDefault = false;
+	isCamera = true;
+	offsetX = 15;
+	offsetY = 15;
+	ofHideCursor();
+	cursorIcon.load("images/icons/cursor/zoomOutCursor.png");
+	cursorIcon.resize(30, 30);
+}
+
 void cursor::setTargetCursor()
 {
 	isDefault = false;
-	offsetX = 10;
-	offsetY = 10;
+	isCamera = false;
+	offsetX = 12;
+	offsetY = 12;
 	ofHideCursor();
 	cursorIcon.load("images/icons/cursor/targetCursor.png");
-	cursorIcon.resize(20, 20);
+	cursorIcon.resize(25, 25);
 }
 
 void cursor::setResetCursor()
@@ -136,4 +126,24 @@ void cursor::setResetCursor()
 	ofHideCursor();
 	cursorIcon.load("images/icons/cursor/resetCursor.png");
 	cursorIcon.resize(20, 20);
+}
+
+void cursor::setDragged(bool drag)
+{
+	isDragged = drag;
+}
+
+bool cursor::isDefaultCursor()
+{
+	return isDefault;
+}
+
+bool cursor::isCameraCursor()
+{
+	return isCamera;
+}
+
+bool cursor::isDraggedCursor()
+{
+	return isDragged;
 }
