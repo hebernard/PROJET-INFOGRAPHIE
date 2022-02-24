@@ -1,5 +1,7 @@
 #pragma once
 #include "components/object.h"
+#include "floatInputProperty.h"
+#include "checkBoxProperty.h"
 
 class line : public object
 {
@@ -8,8 +10,12 @@ public:
 
 	void customDraw();
 	glm::vec3 getBBox();
+	void drawProperties(int x, int y, int width);
 
 private:
-	int m_length;
+	float m_length;
+	float m_contourThickness = 1;
+	floatInputProperty lengthInput;
+	floatInputProperty contourThicknessInput;
 };
 

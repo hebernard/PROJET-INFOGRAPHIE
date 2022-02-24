@@ -54,6 +54,7 @@ public:
 	void addObject(object* obj)
 	{
 		objects.push_back(obj);
+		focusObject(*obj);
 		std::cout << "Added object to scene" << std::endl;
 	}
 

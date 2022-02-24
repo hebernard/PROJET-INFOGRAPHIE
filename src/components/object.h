@@ -10,6 +10,7 @@ class object : public ofNode
 {
 public:
 	bool filled = false;
+	bool showBBox = true;
 	bool markedForDeletion;
 	bool isSelected;
 	bool propertiesOpened;
@@ -22,6 +23,7 @@ public:
 		markedForDeletion(false), 
 		propertiesOpened(false), 
 		isVisible(true),
+		bboxCheckBox(new checkBoxProperty("Bounding Box", showBBox)),
 		filledCheckBox(new checkBoxProperty("Filled", filled)),
 		colorPicker(new colorProperty("Color", color))
 	{
@@ -47,7 +49,7 @@ public:
 		ofRotateZDeg(getOrientationEulerDeg().z);
 		ofScale(getScale());
 
-		if (isSelected)
+		if (isSelected && showBBox)
 		{
 			ofPushStyle();
 			ofNoFill();
@@ -77,13 +79,19 @@ public:
 		button->update(x, y);
 		button->draw();
 		ofUnregisterMouseEvents(filledCheckBox);
+		ofUnregisterMouseEvents(bboxCheckBox);
 	}
 
 	virtual void drawProperties(int x, int y, int width)
 	{
 		ofRegisterMouseEvents(filledCheckBox);
-		filledCheckBox->draw(x, y, width);
-		colorPicker->draw(x, y + filledCheckBox->getHeight() + 10, width);
+		ofRegisterMouseEvents(bboxCheckBox);
+		int offset = y;
+		bboxCheckBox->draw(x, offset, width);
+		offset += bboxCheckBox->getHeight() + 10;
+		filledCheckBox->draw(x, offset, width);
+		offset += filledCheckBox->getHeight() + 10;
+		colorPicker->draw(x, offset, width);
 	}
 
 	virtual glm::vec3 getCenter()
@@ -108,11 +116,12 @@ public:
 protected:
 	hierarchyButton* button;
 	checkBoxProperty* filledCheckBox;
+	checkBoxProperty* bboxCheckBox;
 	colorProperty* colorPicker;
 
 	int getPropertiesHeight()
 	{
-		return filledCheckBox->getHeight() + 10 + colorPicker->getHeight() + 10;
+		return filledCheckBox->getHeight() + 10 + colorPicker->getHeight() + 10 + bboxCheckBox->getHeight() + 10;
 	}
 };
 
