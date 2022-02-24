@@ -1,9 +1,11 @@
 #include "ofApp.h"
 #include "mainTheme.h"
 #include "cursor.h"
+#include "utils.h"
 
 void ofApp::setup()
 {
+	ofEnableAlphaBlending();
 	ofSetCircleResolution(50);
 	ofSetFrameRate(60);
 
@@ -32,8 +34,6 @@ void ofApp::setup()
 
 void ofApp::update()
 {
-	// todo cleanup
-	cam->setControlArea(ofRectangle(0, 70, ofGetWidth() - 300, ofGetHeight()));
 	menu->update();
 }
 
@@ -56,6 +56,20 @@ void ofApp::draw()
 	menu->draw();
 	s.drawHierarchyUI();
 	cursor::draw();
+
+	// Give time for the components to check the mouse state before setting back to false
+	utils::mouseReleased = false;
+	utils::mousePressed = false;
+
+	if (utils::isMouseOverUI)
+	{
+		cam->disableMouseInput();
+	}
+	else
+	{
+		cam->enableMouseInput();
+	}
+	utils::isMouseOverUI = false;
 }
 
 ofApp::~ofApp()
@@ -67,4 +81,16 @@ ofApp::~ofApp()
 void ofApp::mousePressed(int x, int y, int button)
 {
 	cout << "Mouse pressed: " << x << ", " << y << endl;
+	if (button == 0)
+	{
+		utils::mousePressed = true;
+	}
+}
+
+void ofApp::mouseReleased(int x, int y, int button)
+{
+	if (button == 0)
+	{
+		utils::mouseReleased = true;
+	}
 }

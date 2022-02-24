@@ -13,6 +13,8 @@ public:
 	void update();
 	void draw();
 
+	void mouseReleased(int x, int y, int button);
+
 private:
 	~ofApp();
 	menuBar* menu;

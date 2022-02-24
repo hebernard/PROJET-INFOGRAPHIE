@@ -13,12 +13,12 @@ ofColor mainTheme::fontColorAlpha() { return darkTheme ? ofColor(245, 128) : ofC
 ofColor mainTheme::logoTopLayerColor() { return darkTheme ? ofColor(70) : ofColor(217); }
 ofColor mainTheme::logoDownLayerColor() { return darkTheme ? ofColor(36) : ofColor(196); }
 
-ofColor mainTheme::toolBarColor() { return darkTheme ? ofColor(18) : ofColor(237); }
-ofColor mainTheme::toolBarBorderColor() { return darkTheme ? ofColor(53) : ofColor(178); }
+ofColor mainTheme::toolBarColor() { return darkTheme ? ofColor(18, 200) : ofColor(237, 200); }
+ofColor mainTheme::toolBarBorderColor() { return darkTheme ? ofColor(53, 0) : ofColor(178); }
 ofColor mainTheme::toolBarButtonHoverColor() { return darkTheme ? ofColor(35) : ofColor(219); }
 
-ofColor mainTheme::panelColor() { return darkTheme ? ofColor(49) : ofColor(232); }
-ofColor mainTheme::panelBorderColor() { return darkTheme ? ofColor(59) : ofColor(212); }
+ofColor mainTheme::panelColor() { return darkTheme ? ofColor(49, 200) : ofColor(232, 200); }
+ofColor mainTheme::panelBorderColor() { return darkTheme ? ofColor(59, 0) : ofColor(212, 0); }
 ofColor mainTheme::panelButtonHoverColor() { return darkTheme ? ofColor(100) : ofColor(195); }
 
 ofColor mainTheme::color1() { return darkTheme ? ofColor(87, 140, 245) : ofColor(86, 138, 242); }

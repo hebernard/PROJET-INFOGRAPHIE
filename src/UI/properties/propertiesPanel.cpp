@@ -6,6 +6,7 @@
 #include "scene.h"
 #include "panel.h"
 #include "cursor.h"
+#include "utils.h"
 
 propertiesPanel::propertiesPanel() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),
@@ -58,6 +59,11 @@ propertiesPanel::propertiesPanel() :
 
 void propertiesPanel::draw(object& obj)
 {
+	if (rect.inside(ofGetMouseX(), ofGetMouseY()))
+	{
+		utils::isMouseOverUI = true;
+	}
+
 	rect.height = ofGetHeight() - 150;
 	rect.x = ofGetWidth() - rect.width - 20;
 

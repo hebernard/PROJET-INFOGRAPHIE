@@ -16,6 +16,7 @@
 #include "components/3d/cube.h"
 #include "components/3d/objectModel.h"
 #include "panel.h"
+#include "utils.h"
 
 menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), exportButton(new recButton("images/icons/rec.png")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
 {
@@ -137,6 +138,10 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 
 void menuBar::draw()
 {
+	if (rect.inside(ofGetMouseX(), ofGetMouseY()))
+	{
+		utils::isMouseOverUI = true;
+	}
 	ofPushStyle();
 	ofFill();
 

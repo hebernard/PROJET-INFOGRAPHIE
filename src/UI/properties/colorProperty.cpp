@@ -1,14 +1,14 @@
 #include "colorProperty.h"
 #include "label.h"
+#include "panel.h"
+#include "utils.h"
 
 colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), m_ref(ref)
 {
 	textSize = label::getSize(label, 12);
 	colorRect.height = 20;
 	gradientRect.height = 200;
-
-	panelColor = mainTheme::color1();
-	baseBrightness = panelColor.getBrightness();
+	pickerRect.height = gradientRect.height + 100;
 
 	rainbow.load("ofxbraitsch/ofxdatgui/picker-rainbow.png");
 	rainbow.resize(10, gradientRect.height);
@@ -49,25 +49,46 @@ void colorProperty::draw(int x, int y, int width)
 
 	ofPushStyle();
 	bool mouseInside = colorRect.inside(mouseX, mouseY);
-	//panelColor.setBrightness(mouseInside ? baseBrightness - 50 : baseBrightness);
 	ofSetColor(m_ref);
 	ofDrawRectRounded(colorRect, 20);
 
-	if (ofGetMousePressed())
+	if (utils::mousePressed)
 	{
 		if (mouseInside)
 		{
-			showPicker = true;
+			showPicker = !showPicker;
 		}
-		/*else if (!pickerRect.inside(ofGetMouseX(), ofGetMouseY()))
+		else if (!pickerRect.inside(mouseX, mouseY))
 		{
 			showPicker = false;
-		}*/
+		}
 	}
 
-	drawPicker(colorRect.x, colorRect.y, colorRect.width);
+	if (showPicker)
+	{
+		utils::isMouseOverUI = true;
 
-	if (showPicker && pickerRect.inside(mouseX, mouseY))
+		drawPicker(colorRect.x, colorRect.y, colorRect.width);
+
+		updateGradient(mouseX, mouseY);
+
+		// Draw rainbow line
+		ofSetColor(ofColor::white);
+		ofDrawLine(rainbowRect.x, rainbowLine, rainbowRect.x + rainbowRect.width, rainbowLine);
+
+		// Draw gradient circle
+		ofPushStyle();
+		ofNoFill();
+		ofDrawCircle(gradientPos, 10);
+		ofPopStyle();
+	}
+
+	ofPopStyle();
+}
+
+void colorProperty::updateGradient(int mouseX, int mouseY)
+{
+	if (pickerRect.inside(mouseX, mouseY))
 	{
 		unsigned char p[3];
 		int y = (mouseY - ofGetHeight()) * -1;
@@ -92,21 +113,6 @@ void colorProperty::draw(int x, int y, int width)
 			}
 		}
 	}
-
-	if (showPicker)
-	{
-		// Draw rainbow line
-		ofSetColor(ofColor::white);
-		ofDrawLine(rainbowRect.x, rainbowLine, rainbowRect.x + rainbowRect.width, rainbowLine);
-
-		// Draw gradient circle
-		ofPushStyle();
-		ofNoFill();
-		ofDrawCircle(gradientPos, 10);
-		ofPopStyle();
-	}
-
-	ofPopStyle();
 }
 
 int colorProperty::getHeight()
@@ -116,8 +122,15 @@ int colorProperty::getHeight()
 
 void colorProperty::drawPicker(int x, int y, int width)
 {
-	rainbowRect.x = x - 300;
-	rainbowRect.y = y;
+	rainbowRect.x = x - 310;
+	if (y + pickerRect.height + 100 > ofGetHeight())
+	{
+		rainbowRect.y = ofGetHeight() - pickerRect.height - 100;
+	}
+	else
+	{
+		rainbowRect.y = y;
+	}
 
 	gradientRect.x = rainbowRect.x + rainbowRect.width;
 	gradientRect.y = rainbowRect.y;
@@ -126,19 +139,16 @@ void colorProperty::drawPicker(int x, int y, int width)
 	pickerRect.x = rainbowRect.x;
 	pickerRect.y = rainbowRect.y;
 	pickerRect.width = rainbowRect.width + gradientRect.width;
-	pickerRect.height = gradientRect.height;
-	
-	if (showPicker)
-	{
-		gPoints[0] = ofVec2f(gradientRect.x + gradientRect.width / 2, gradientRect.y + gradientRect.height / 2);
-		gPoints[1] = ofVec2f(gradientRect.x, gradientRect.y);
-		gPoints[2] = ofVec2f(gradientRect.x + gradientRect.width, gradientRect.y);
-		gPoints[3] = ofVec2f(gradientRect.x + gradientRect.width, gradientRect.y + gradientRect.height);
-		gPoints[4] = ofVec2f(gradientRect.x, gradientRect.y + gradientRect.height);
-		gPoints[5] = ofVec2f(gradientRect.x, gradientRect.y);
-		vbo.setVertexData(&gPoints[0], 6, GL_DYNAMIC_DRAW);
-		vbo.draw(GL_TRIANGLE_FAN, 0, 6);
-		ofSetColor(ofColor::white);
-		rainbow.draw(rainbowRect.x, rainbowRect.y);
-	}
+	drawPanel(pickerRect.x - 10, pickerRect.y - 10, pickerRect.width + 20, pickerRect.height + 20);
+	ofSetColor(ofColor::white);
+	rainbow.draw(rainbowRect.x, rainbowRect.y);
+
+	gPoints[0] = ofVec2f(gradientRect.x + gradientRect.width / 2, gradientRect.y + gradientRect.height / 2);
+	gPoints[1] = ofVec2f(gradientRect.x, gradientRect.y);
+	gPoints[2] = ofVec2f(gradientRect.x + gradientRect.width, gradientRect.y);
+	gPoints[3] = ofVec2f(gradientRect.x + gradientRect.width, gradientRect.y + gradientRect.height);
+	gPoints[4] = ofVec2f(gradientRect.x, gradientRect.y + gradientRect.height);
+	gPoints[5] = ofVec2f(gradientRect.x, gradientRect.y);
+	vbo.setVertexData(&gPoints[0], 6, GL_DYNAMIC_DRAW);
+	vbo.draw(GL_TRIANGLE_FAN, 0, 6);
 }

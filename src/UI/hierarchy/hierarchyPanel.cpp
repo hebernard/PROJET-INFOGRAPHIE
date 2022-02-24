@@ -4,7 +4,7 @@
 #include "components/object.h"
 #include "mainTheme.h"
 #include "panel.h"
-
+#include "utils.h"
 
 hierarchyPanel::hierarchyPanel() : minimized(false), icon(), iconMinimize()
 {
@@ -42,6 +42,11 @@ void hierarchyPanel::setup()
 
 void hierarchyPanel::draw(const vector<object*>& objects)
 {
+	if (rect.inside(ofGetMouseX(), ofGetMouseY()))
+	{
+		utils::isMouseOverUI = true;
+	}
+
 	if (minimized) {
 
 		rect.height = 40;
@@ -63,7 +68,6 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 
 void hierarchyPanel::drawOpened(const vector<object*>& objects)
 {
-
 	//draw panel
 	drawPanel(rect);
 

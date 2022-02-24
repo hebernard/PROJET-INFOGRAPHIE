@@ -8,12 +8,12 @@ public:
 
 	void draw(int x, int y, int width);
 
+	void updateGradient(int mouseX, int mouseY);
+
 	int getHeight();
 
 private:
 	ofColor& m_ref;
-	ofColor panelColor;
-	int baseBrightness;
 	std::string m_label;
 	glm::vec2 textSize;
 

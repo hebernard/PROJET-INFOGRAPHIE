@@ -107,6 +107,7 @@
     <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
     <ClCompile Include="src\UI\properties\colorProperty.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyButtonCamera.cpp" />
+    <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -472,6 +473,7 @@
     <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
     <ClInclude Include="src\UI\properties\colorProperty.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyButtonCamera.h" />
+    <ClInclude Include="src\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
