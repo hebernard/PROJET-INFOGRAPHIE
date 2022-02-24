@@ -56,7 +56,7 @@ void floatInputProperty::draw(int x, int y, int width)
 		focused = hovered;
 		if (!focused)
 		{
-			m_ref = stof(value);
+			m_ref = getValue();
 		}
 	}
 }
@@ -86,7 +86,7 @@ void floatInputProperty::keyPressed(ofKeyEventArgs& args)
 		else if (args.key == OF_KEY_RETURN)
 		{
 			focused = false;
-			m_ref = stof(value);
+			m_ref = getValue();
 		}
 
 		valueSize = label::getSize(value, 10);
@@ -95,3 +95,14 @@ void floatInputProperty::keyPressed(ofKeyEventArgs& args)
 }
 
 void floatInputProperty::keyReleased(ofKeyEventArgs& args) {}
+
+float floatInputProperty::getValue()
+{
+	if (value.size() <= 0)
+	{
+		value = "0";
+		valueSize = label::getSize(value, 10);
+	}
+
+	return stof(value);
+}

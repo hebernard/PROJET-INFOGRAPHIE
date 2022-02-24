@@ -11,6 +11,7 @@ public:
 
 	void keyPressed(ofKeyEventArgs& args);
 	void keyReleased(ofKeyEventArgs& args);
+
 private:
 	bool focused = false;
 	bool hovered = false;
@@ -27,4 +28,6 @@ private:
 	// Lets make it blink cause we're that cool.
 	float blinkTimer = 0;
 	float blinkTime = 0.5f;
+
+	float getValue();
 };
