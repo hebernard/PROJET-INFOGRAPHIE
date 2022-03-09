@@ -1,10 +1,12 @@
 #include "hierarchyPanel.h"
+#include "scene.h"
 #include "ofRectangle.h"
 #include "UI/label.h"
 #include "components/object.h"
 #include "mainTheme.h"
 #include "panel.h"
 #include "utils.h"
+#include "cameraHierarchyButton.h"
 
 hierarchyPanel::hierarchyPanel() : minimized(false), icon(), iconMinimize()
 {
@@ -15,7 +17,6 @@ hierarchyPanel::hierarchyPanel() : minimized(false), icon(), iconMinimize()
 
 void hierarchyPanel::setup()
 {
-
 	if (minimized) {
 		icon.load("images/icons/hierarchy.png");
 		icon.resize(18, 18);
@@ -37,6 +38,8 @@ void hierarchyPanel::setup()
 		rect.y = 100;
 		rect.height = ofGetHeight() - 150;
 		rect.x = ofGetWidth() - rect.width - 20;
+
+		cameraButton = new cameraHierarchyButton("images/icons/camera.png", "Camera");
 	}
 }
 
@@ -89,10 +92,13 @@ void hierarchyPanel::drawOpened(const vector<object*>& objects)
 	ofDrawLine(rect.x, rect.y + 55, rect.x + rect.width, rect.y + 55);
 	ofPopStyle();
 
+	cameraButton->update(rect.x, rect.y + 56);
+	cameraButton->draw();
+
 	//draw hierarchy objects
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		objects.at(i)->drawHierarchy(rect.x, rect.y + 56 + (i * 40));
+		objects.at(i)->drawHierarchy(rect.x, rect.y + 56 + ((i + 1) * 40));
 	}
 }
 

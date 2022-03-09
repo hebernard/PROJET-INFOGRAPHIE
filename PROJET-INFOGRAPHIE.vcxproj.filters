@@ -108,6 +108,7 @@
     <ClCompile Include="src\UI\hierarchy\hierarchyButtonCamera.cpp" />
     <ClCompile Include="src\utils.cpp" />
     <ClCompile Include="src\UI\properties\inputProperty.cpp" />
+    <ClCompile Include="src\UI\hierarchy\cameraHierarchyButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -474,6 +475,8 @@
     <ClInclude Include="src\UI\hierarchy\hierarchyButtonCamera.h" />
     <ClInclude Include="src\utils.h" />
     <ClInclude Include="src\UI\properties\inputProperty.h" />
+    <ClInclude Include="src\UI\properties\floatInputProperty.h" />
+    <ClInclude Include="src\UI\hierarchy\cameraHierarchyButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

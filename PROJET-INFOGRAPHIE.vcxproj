@@ -197,6 +197,7 @@
     <ClCompile Include="src\UI\dropdown\dropdown.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownButton.cpp" />
     <ClCompile Include="src\UI\dropdown\dropdownPanel.cpp" />
+    <ClCompile Include="src\UI\hierarchy\cameraHierarchyButton.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyButton.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyButtonCamera.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="src\UI\dropdown\dropdown.h" />
     <ClInclude Include="src\UI\dropdown\dropdownButton.h" />
     <ClInclude Include="src\UI\dropdown\dropdownPanel.h" />
+    <ClInclude Include="src\UI\hierarchy\cameraHierarchyButton.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyButton.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyButtonCamera.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />

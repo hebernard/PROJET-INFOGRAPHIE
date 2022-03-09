@@ -3,6 +3,7 @@
 #include "ofMain.h"
 
 class object;
+class cameraHierarchyButton;
 
 class hierarchyPanel
 {
@@ -18,6 +19,7 @@ public:
 	bool getMinimized();
 
 private:
+	cameraHierarchyButton* cameraButton;
 	ofRectangle rect;
 	ofImage icon;
 	ofImage iconMinimize;
