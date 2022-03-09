@@ -12,14 +12,14 @@ floatInputProperty::floatInputProperty(std::string label, float& ref) : m_label(
 	ofRegisterKeyEvents(this);
 }
 
-void floatInputProperty::draw(int x, int y, int width)
+void floatInputProperty::draw(int x, int y, int width, int textOffset)
 {
-	rect.x = x + labelSize.x + 30;
+	rect.x = x + labelSize.x + textOffset;
 	rect.y = y;
 	rect.width = width - labelSize.x - 30;
 	hovered = rect.inside(ofGetMouseX(), ofGetMouseY());
 
-	drawText(x, y + labelSize.y, m_label, 11);
+	drawText(x, y + labelSize.y + 5, m_label, 11);
 
 	if (hovered || focused)
 	{
@@ -96,9 +96,15 @@ void floatInputProperty::keyPressed(ofKeyEventArgs& args)
 
 void floatInputProperty::keyReleased(ofKeyEventArgs& args) {}
 
+void floatInputProperty::forceUpdateValue()
+{
+	value = ofToString(m_ref);
+	valueSize = label::getSize(value, 10);
+}
+
 float floatInputProperty::getValue()
 {
-	if (value.size() <= 0)
+	if (value.size() <= 0 || value[0] == '.')
 	{
 		value = "0";
 		valueSize = label::getSize(value, 10);

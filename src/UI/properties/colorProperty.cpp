@@ -9,6 +9,12 @@ colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), 
 	colorRect.height = 20;
 	gradientRect.height = 200;
 	pickerRect.height = gradientRect.height + 100;
+	rgbRect.width = 50;
+	rgbRect.height = 25;
+	hexRect.width = rgbRect.width;
+	hexRect.height = rgbRect.height;
+	hsvRect.width = rgbRect.width;
+	hsvRect.height = rgbRect.height;
 
 	rainbow.load("ofxbraitsch/ofxdatgui/picker-rainbow.png");
 	rainbow.resize(10, gradientRect.height);
@@ -34,6 +40,15 @@ colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), 
 	gColors.push_back(ofColor::black);  // btm-left
 	gColors.push_back(ofColor::white);  // top-left
 	vbo.setColorData(&gColors[0], 6, GL_DYNAMIC_DRAW);
+
+	rInput = new floatInputProperty("R", R);
+	gInput = new floatInputProperty("G", G);
+	bInput = new floatInputProperty("B", B);
+}
+
+colorProperty::~colorProperty()
+{
+	delete rInput;
 }
 
 void colorProperty::draw(int x, int y, int width)
@@ -90,7 +105,6 @@ void colorProperty::updateGradient(int mouseX, int mouseY)
 {
 	if (pickerRect.inside(mouseX, mouseY))
 	{
-		unsigned char p[3];
 		int y = (mouseY - ofGetHeight()) * -1;
 		glReadPixels(mouseX, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, &p);
 		gColor.r = int(p[0]);
@@ -109,7 +123,24 @@ void colorProperty::updateGradient(int mouseX, int mouseY)
 			else if (gradientRect.inside(mouseX, mouseY))
 			{
 				gradientPos = glm::vec2(mouseX, mouseY);
-				m_ref = gColor;
+
+				switch (currentMode)
+				{
+				case RGB:
+					R = gColor.r;
+					G = gColor.g;
+					B = gColor.b;
+
+					rInput->forceUpdateValue();
+					gInput->forceUpdateValue();
+					bInput->forceUpdateValue();
+					break;
+				case HEX:
+					hex = gColor.getHex();
+					break;
+				case HSV:
+					break;
+				}
 			}
 		}
 	}
@@ -151,4 +182,64 @@ void colorProperty::drawPicker(int x, int y, int width)
 	gPoints[5] = ofVec2f(gradientRect.x, gradientRect.y);
 	vbo.setVertexData(&gPoints[0], 6, GL_DYNAMIC_DRAW);
 	vbo.draw(GL_TRIANGLE_FAN, 0, 6);
+
+	rgbRect.x = pickerRect.x;
+	rgbRect.y = pickerRect.y + pickerRect.height - 30;
+	hexRect.x = pickerRect.x + pickerRect.width / 2 - hexRect.width / 2;
+	hexRect.y = rgbRect.y;
+	hsvRect.x = pickerRect.x + pickerRect.width - hsvRect.width;
+	hsvRect.y = rgbRect.y;
+
+	int mouseX = ofGetMouseX();
+	int mouseY = ofGetMouseY();
+
+	ofSetColor(mainTheme::toolBarButtonHoverColor());
+	if (rgbRect.inside(mouseX, mouseY) || currentMode == 0)
+	{
+		ofDrawRectRounded(rgbRect, 20);
+		if (utils::mousePressed)
+		{
+			currentMode = ColorMode::RGB;
+		}
+	}
+
+	if (hexRect.inside(mouseX, mouseY) || currentMode == 1)
+	{
+		ofDrawRectRounded(hexRect, 20);
+		if (utils::mousePressed)
+		{
+			currentMode = ColorMode::HEX;
+		}
+	}
+
+	if (hsvRect.inside(mouseX, mouseY) || currentMode == 2)
+	{
+		ofDrawRectRounded(hsvRect, 20);
+		if (utils::mousePressed)
+		{
+			currentMode = ColorMode::HSV;
+		}
+	}
+
+	drawText(rgbRect.x + rgbRect.width / 2 - 12, rgbRect.y + rgbRect.height / 2 + 5, "RGB", 10);
+	drawText(hexRect.x + hexRect.width / 2 - 12, hexRect.y + hexRect.height / 2 + 5, "HEX", 10);
+	drawText(hsvRect.x + hsvRect.width / 2 - 12, hsvRect.y + hsvRect.height / 2 + 5, "HSV", 10);
+
+	switch (currentMode)
+	{
+	case RGB:
+		m_ref.r = R;
+		m_ref.g = G;
+		m_ref.b = B;
+
+		rInput->draw(rgbRect.x, gradientRect.y + gradientRect.height + 20, 90, 10);
+		gInput->draw(rgbRect.x + 70, gradientRect.y + gradientRect.height + 20, 90, 10);
+		bInput->draw(rgbRect.x + 140, gradientRect.y + gradientRect.height + 20, 90, 10);
+		break;
+	case HEX:
+		m_ref = ofColor::fromHex(stoi("0x" + hex.substr(0, 4) + "00"));
+		break;
+	case HSV:
+		break;
+	}
 }

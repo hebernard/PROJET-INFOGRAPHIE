@@ -29,12 +29,10 @@ void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
 		drawLockedButton(x + resetButton->getWidth(), y - 10);
 		labelX += lockedButton->getWidth();
 	}
+
+	cursor::setDragged(dragStarted);
 	if (dragStarted) {
-		cursor::setDragged(true);
 		cursor::setHandGrabCursor();
-	}
-	if (!dragStarted) {
-		cursor::setDragged(false);
 	}
 
 	// Main label

@@ -1,10 +1,12 @@
 #pragma once
 #include "ofMain.h"
+#include "floatInputProperty.h"
 
 class colorProperty
 {
 public:
 	colorProperty(std::string label, ofColor& ref);
+	~colorProperty();
 
 	void draw(int x, int y, int width);
 
@@ -22,6 +24,15 @@ private:
 	float rainbowLine;
 	glm::vec2 gradientPos;
 	bool showPicker = false;
+	ofRectangle rgbRect, hexRect, hsvRect;
+	ColorMode currentMode = ColorMode::RGB;
+
+	floatInputProperty* rInput, *gInput, *bInput;
+	float R = 255, G = 255, B = 255;
+
+	string hex;
+
+	unsigned char p[3];
 
 	vector<ofVec2f> gPoints;
 	vector<ofFloatColor> gColors;
@@ -31,3 +42,4 @@ private:
 	void drawPicker(int x, int y, int width);
 };
 
+enum ColorMode { RGB = 0, HEX = 1, HSV = 2 };

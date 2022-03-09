@@ -15,7 +15,7 @@ public:
 
 private:
 	float m_radius;
-	float m_resolution = 50;
+	float m_resolution = 20;
 	float m_contourThickness = 1;
 	floatInputProperty radiusInput;
 	floatInputProperty resolutionInput;
