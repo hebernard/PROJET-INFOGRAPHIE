@@ -21,6 +21,7 @@ private:
 
 	hierarchySmallButton* propertiesButton;
 	hierarchySmallButton* addCameraButton;
+	hierarchySmallButton* removeCameraButton;
 
 	void setTheme(const ofxDatGuiTheme* theme);
 };

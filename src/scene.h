@@ -143,11 +143,11 @@ public:
 		cameras.push_back(cam);
 	}
 
-	void removeCamera(int index)
+	void removeCamera()
 	{
-		if (index != 0)
+		if (cameraCount() > 1)
 		{
-			cameras.erase(cameras.begin() + index);
+			cameras.erase(cameras.begin() + cameraCount() - 1);
 		}
 	}
 
