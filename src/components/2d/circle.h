@@ -1,6 +1,6 @@
 #pragma once
 #include "components/object.h"
-#include "floatInputProperty.h"
+#include "inputProperty.h"
 #include "checkBoxProperty.h"
 
 class circle : public object
@@ -16,9 +16,9 @@ private:
 	float m_radius;
 	float m_resolution = 20;
 	float m_contourThickness = 1;
-	floatInputProperty radiusInput;
-	floatInputProperty resolutionInput;
-	floatInputProperty contourThicknessInput;
+	inputProperty radiusInput;
+	inputProperty resolutionInput;
+	inputProperty contourThicknessInput;
 
 };
 

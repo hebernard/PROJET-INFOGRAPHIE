@@ -41,9 +41,9 @@ colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), 
 	gColors.push_back(ofColor::white);  // top-left
 	vbo.setColorData(&gColors[0], 6, GL_DYNAMIC_DRAW);
 
-	rInput = new floatInputProperty("R", R);
-	gInput = new floatInputProperty("G", G);
-	bInput = new floatInputProperty("B", B);
+	rInput = new inputProperty("R", R);
+	gInput = new inputProperty("G", G);
+	bInput = new inputProperty("B", B);
 }
 
 colorProperty::~colorProperty()

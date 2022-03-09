@@ -1,11 +1,11 @@
 #pragma once
 #include "ofMain.h"
 
-class floatInputProperty
+class inputProperty
 {
 public:
 	bool focused = false;
-	floatInputProperty(std::string label, float& ref);
+	inputProperty(std::string label, float& ref);
 
 	void draw(int x, int y, int width, int textOffset = 30);
 	int getHeight();

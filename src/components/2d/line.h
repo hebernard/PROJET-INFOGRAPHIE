@@ -1,6 +1,6 @@
 #pragma once
 #include "components/object.h"
-#include "floatInputProperty.h"
+#include "inputProperty.h"
 #include "checkBoxProperty.h"
 
 class line : public object
@@ -15,7 +15,7 @@ public:
 private:
 	float m_length;
 	float m_contourThickness = 1;
-	floatInputProperty lengthInput;
-	floatInputProperty contourThicknessInput;
+	inputProperty lengthInput;
+	inputProperty contourThicknessInput;
 };
 

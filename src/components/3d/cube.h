@@ -1,7 +1,7 @@
 #pragma once
 
 #include "object.h"
-#include "floatInputProperty.h"
+#include "inputProperty.h"
 #include "checkBoxProperty.h"
 
 class cube : public object
@@ -18,9 +18,9 @@ private:
 	float m_height;
 	float m_depth;
 	float m_contourThickness = 1;
-	floatInputProperty widthInput;
-	floatInputProperty heightInput;
-	floatInputProperty depthInput;
-	floatInputProperty contourThicknessInput;
+	inputProperty widthInput;
+	inputProperty heightInput;
+	inputProperty depthInput;
+	inputProperty contourThicknessInput;
 };
 

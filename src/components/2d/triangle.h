@@ -1,6 +1,6 @@
 #pragma once
 #include "components/object.h"
-#include "floatInputProperty.h"
+#include "inputProperty.h"
 #include "checkBoxProperty.h"
 
 class triangle : public object
@@ -16,8 +16,8 @@ private:
 	float m_width;
 	float m_height;
 	float m_contourThickness = 1;
-	floatInputProperty widthInput;
-	floatInputProperty heightInput;
-	floatInputProperty contourThicknessInput;
+	inputProperty widthInput;
+	inputProperty heightInput;
+	inputProperty contourThicknessInput;
 };
 

@@ -1,6 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "floatInputProperty.h"
+#include "inputProperty.h"
+
+enum ColorMode { RGB, HEX, HSV };
 
 class colorProperty
 {
@@ -25,9 +27,9 @@ private:
 	glm::vec2 gradientPos;
 	bool showPicker = false;
 	ofRectangle rgbRect, hexRect, hsvRect;
-	ColorMode currentMode = ColorMode::RGB;
+	ColorMode currentMode = RGB;
 
-	floatInputProperty* rInput, *gInput, *bInput;
+	inputProperty* rInput, *gInput, *bInput;
 	float R = 255, G = 255, B = 255;
 
 	string hex;
@@ -41,5 +43,3 @@ private:
 
 	void drawPicker(int x, int y, int width);
 };
-
-enum ColorMode { RGB = 0, HEX = 1, HSV = 2 };

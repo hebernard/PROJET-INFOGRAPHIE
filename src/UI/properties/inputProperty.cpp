@@ -1,8 +1,8 @@
-#include "floatInputProperty.h"
+#include "inputProperty.h"
 #include "panel.h"
 #include "label.h"
 
-floatInputProperty::floatInputProperty(std::string label, float& ref) : m_label(label), m_ref(ref)
+inputProperty::inputProperty(std::string label, float& ref) : m_label(label), m_ref(ref)
 {
 	labelSize = label::getSize(label, 11);
 	rect.height = 20;
@@ -12,7 +12,7 @@ floatInputProperty::floatInputProperty(std::string label, float& ref) : m_label(
 	ofRegisterKeyEvents(this);
 }
 
-void floatInputProperty::draw(int x, int y, int width, int textOffset)
+void inputProperty::draw(int x, int y, int width, int textOffset)
 {
 	rect.x = x + labelSize.x + textOffset;
 	rect.y = y;
@@ -61,12 +61,12 @@ void floatInputProperty::draw(int x, int y, int width, int textOffset)
 	}
 }
 
-int floatInputProperty::getHeight()
+int inputProperty::getHeight()
 {
 	return rect.height;
 }
 
-void floatInputProperty::keyPressed(ofKeyEventArgs& args)
+void inputProperty::keyPressed(ofKeyEventArgs& args)
 {
 	if (focused)
 	{
@@ -94,15 +94,15 @@ void floatInputProperty::keyPressed(ofKeyEventArgs& args)
 	}
 }
 
-void floatInputProperty::keyReleased(ofKeyEventArgs& args) {}
+void inputProperty::keyReleased(ofKeyEventArgs& args) {}
 
-void floatInputProperty::forceUpdateValue()
+void inputProperty::forceUpdateValue()
 {
 	value = ofToString(m_ref);
 	valueSize = label::getSize(value, 10);
 }
 
-float floatInputProperty::getValue()
+float inputProperty::getValue()
 {
 	if (value.size() <= 0 || value[0] == '.')
 	{
