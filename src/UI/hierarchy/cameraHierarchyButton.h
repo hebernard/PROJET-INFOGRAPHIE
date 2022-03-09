@@ -20,6 +20,7 @@ private:
 	ofImage icon;
 
 	hierarchySmallButton* propertiesButton;
+	hierarchySmallButton* addCameraButton;
 
 	void setTheme(const ofxDatGuiTheme* theme);
 };

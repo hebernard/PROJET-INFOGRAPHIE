@@ -2,12 +2,14 @@
 #include "hierarchyButton.h"
 #include "UI/label.h"
 #include "hierarchySmallButton.h"
+#include "scene.h"
 
 cameraHierarchyButton::cameraHierarchyButton(std::string iconPath, std::string text) :
 	ofxDatGuiButton("cameraHierarchyButton"),
 	m_text(text),
 	icon(),
-	propertiesButton(new hierarchySmallButton("images/icons/properties.png"))
+	propertiesButton(new hierarchySmallButton("images/icons/properties.png")),
+	addCameraButton(new hierarchySmallButton("images/icons/add_camera.png"))
 {
 	icon.load(iconPath);
 	icon.resize(24, 24);
@@ -18,6 +20,12 @@ cameraHierarchyButton::cameraHierarchyButton(std::string iconPath, std::string t
 	propertiesButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 
+	});
+
+	addCameraButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		scene& s = s.getInstance();
+		s.addCamera();
 	});
 }
 
@@ -44,6 +52,7 @@ void cameraHierarchyButton::draw()
 	drawText(x + icon.getWidth() + 25 * 2, y + getHeight() / 2 + textSize.y / 2, m_text, 11, mainTheme::fontColor(), mainTheme::fontRegularPath);
 
 	propertiesButton->draw();
+	addCameraButton->draw();
 	ofPopStyle();
 }
 
@@ -52,8 +61,11 @@ void cameraHierarchyButton::update(int x, int y)
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
 
-	int posX = x + getWidth() - propertiesButton->getWidth() - 30;
-	int posY = y + getHeight() / 2 - propertiesButton->getHeight() / 2;
+	int posX = x + getWidth() - addCameraButton->getWidth() - 30;
+	int posY = y + getHeight() / 2 - addCameraButton->getHeight() / 2;
+	addCameraButton->update(posX, posY);
+
+	posX -= addCameraButton->getWidth();
 	propertiesButton->update(posX, posY);
 }
 

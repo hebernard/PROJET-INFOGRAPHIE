@@ -8,6 +8,8 @@
 #include "UI/hierarchy/hierarchyButton.h"
 #include "components/object.h"
 
+class scene;
+
 /// \brief A super simple camera for interacting with objects in 3D space.
 class camera : public ofCamera
 {
@@ -17,6 +19,8 @@ public:
 
 	/// \brief Create a default camera.
 	camera();
+
+	void render(scene& s, int index);
 
 	/// \}
 	/// \name Rendering

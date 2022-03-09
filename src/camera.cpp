@@ -5,6 +5,7 @@
 #include <limits>
 #include "glm/gtx/vector_angle.hpp"
 #include "cursor.h"
+#include "scene.h"
 
 using namespace std;
 
@@ -22,6 +23,67 @@ camera::camera() {
 	addInteraction(TRANSFORM_TRANSLATE_XY, OF_MOUSE_BUTTON_RIGHT);
 
 }
+
+void camera::render(scene& s, int index)
+{
+	int cameraCount = s.cameraCount();
+	if (cameraCount == 1)
+	{
+		begin();
+	}
+	else if (cameraCount == 2)
+	{
+		if (index == 0)
+		{
+			begin(ofRectangle(0, 0, ofGetWidth()/2, ofGetHeight()));
+		}
+		else
+		{
+			begin(ofRectangle(ofGetWidth() / 2, 0, ofGetWidth()/2, ofGetHeight()));
+		}
+	}
+	else if (cameraCount == 3)
+	{
+		if (index == 0)
+		{
+			begin(ofRectangle(0, 0, ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+		else if (index == 1)
+		{
+			begin(ofRectangle(ofGetWidth() / 2, 0, ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+		else
+		{
+			begin(ofRectangle(0, ofGetHeight() / 2, ofGetWidth(), ofGetHeight() / 2));
+		}
+	}
+	else if (cameraCount == 4)
+	{
+		if (index == 0)
+		{
+			begin(ofRectangle(0, 0, ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+		else if (index == 1)
+		{
+			begin(ofRectangle(ofGetWidth() / 2, 0, ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+		else if (index == 2)
+		{
+			begin(ofRectangle(0, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+		else
+		{
+			begin(ofRectangle(ofGetWidth() / 2, ofGetHeight() / 2, ofGetWidth() / 2, ofGetHeight() / 2));
+		}
+	}
+
+	s.drawGrid();
+
+	s.drawObjects();
+
+	end();
+}
+
 //----------------------------------------
 void camera::update(ofEventArgs& args) {
 	if (this->viewport.isZero()) {

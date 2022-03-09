@@ -18,14 +18,8 @@ void ofApp::setup()
 	//setup menu UI
 	menu = new menuBar();
 
-	//setup camera
-	cam = new camera();
-
-	cam->setAutoDistance(false);
-	cam->setPosition(0, 1, 5);
-	cam->setTarget(glm::vec3(0, 1, 0));
-	cam->setNearClip(0.1f);
-	s.camera = cam;
+	// Add the main camera to the scene
+	s.addCamera();
 
 	// setup dummyObjects by default
 	s.setupObjects();
@@ -40,17 +34,15 @@ void ofApp::update()
 void ofApp::draw()
 {
 	if (!cursor::isCameraCursor() && !cursor::isDraggedCursor()) { cursor::setDefaultCursor(); }
-	cam->begin();//-----------------------begin of cam------------------------------//
+
 	ofEnableDepthTest();
-
-	//draw grid
-	s.drawGrid();
-
-	//draw objects
-	s.drawObjects();
+	auto cameras = s.getCameras();
+	for (int i = 0; i < cameras.size(); i++)
+	{
+		cameras.at(i)->render(s, i);
+	}
 
 	ofDisableDepthTest();
-	cam->end();//--------------------------end of cam------------------------------//
 
 	// UI must be drawn at the end & objects are added to the hierarchy
 	menu->draw();
@@ -63,11 +55,11 @@ void ofApp::draw()
 
 	if (utils::isMouseOverUI)
 	{
-		cam->disableMouseInput();
+		s.disableMouseInputs();
 	}
 	else
 	{
-		cam->enableMouseInput();
+		s.enableMouseInputs();
 	}
 	utils::isMouseOverUI = false;
 }
@@ -75,7 +67,6 @@ void ofApp::draw()
 ofApp::~ofApp()
 {
 	delete menu;
-	delete cam;
 }
 
 void ofApp::mousePressed(int x, int y, int button)

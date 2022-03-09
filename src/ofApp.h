@@ -18,7 +18,6 @@ public:
 private:
 	~ofApp();
 	menuBar* menu;
-	camera* cam;
 
 	scene& s = s.getInstance();
 

@@ -12,7 +12,6 @@
 class scene
 {
 public:
-	camera* camera;
 	object* currentSelected;
 
 	static scene& getInstance()
@@ -43,7 +42,11 @@ public:
 			currentSelected->isSelected = false;
 		}
 
-		camera->setTarget(obj.getCenter());
+		for (size_t i = 0; i < cameras.size(); i++)
+		{
+			cameras.at(i)->setTarget(obj.getCenter());
+		}
+
 		//camera->setDistance(5);
 
 		obj.isSelected = true;
@@ -124,14 +127,66 @@ public:
 		}
 	}
 
+	void addCamera()
+	{
+		if (cameraCount() >= 4)
+		{
+			return;
+		}
+
+		camera* cam = new camera();
+		cam->setAutoDistance(false);
+		cam->setPosition(0, 1, 5);
+		cam->setTarget(glm::vec3(0, 1, 0));
+		cam->setNearClip(0.1f);
+
+		cameras.push_back(cam);
+	}
+
+	void removeCamera(int index)
+	{
+		if (index != 0)
+		{
+			cameras.erase(cameras.begin() + index);
+		}
+	}
+
+	std::vector<camera*>& getCameras()
+	{
+		return cameras;
+	}
+
+	int cameraCount()
+	{
+		return cameras.size();
+	}
+
+	void enableMouseInputs()
+	{
+		for (size_t i = 0; i < cameras.size(); i++)
+		{
+			cameras.at(i)->enableMouseInput();
+		}
+	}
+
+	void disableMouseInputs()
+	{
+		for (size_t i = 0; i < cameras.size(); i++)
+		{
+			cameras.at(i)->disableMouseInput();
+		}
+	}
+
 private:
-	scene() : camera() {}
+	scene() {}
 	~scene()
 	{
 		for (auto i : objects) delete i;
+		for (auto c : cameras) delete c;
 	}
 
 	std::vector<object*> objects;
+	std::vector<camera*> cameras;
 
 	hierarchyPanel hierarchy;
 	propertiesPanel properties;
