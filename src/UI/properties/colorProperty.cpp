@@ -13,8 +13,8 @@ colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), 
 	rgbRect.height = 25;
 	hexRect.width = rgbRect.width;
 	hexRect.height = rgbRect.height;
-	hsvRect.width = rgbRect.width;
-	hsvRect.height = rgbRect.height;
+	hsbRect.width = rgbRect.width;
+	hsbRect.height = rgbRect.height;
 
 	rainbow.load("ofxbraitsch/ofxdatgui/picker-rainbow.png");
 	rainbow.resize(10, gradientRect.height);
@@ -41,14 +41,33 @@ colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), 
 	gColors.push_back(ofColor::white);  // top-left
 	vbo.setColorData(&gColors[0], 6, GL_DYNAMIC_DRAW);
 
+	// RGB
 	rInput = new inputProperty("R", R);
 	gInput = new inputProperty("G", G);
 	bInput = new inputProperty("B", B);
+
+	rInput->maxCharacters = 5;
+	gInput->maxCharacters = 5;
+	bInput->maxCharacters = 5;
+
+	// HSV
+	hInput = new inputProperty("H", H);
+	sInput = new inputProperty("S", S);
+	brInput = new inputProperty("B", Br);
+
+	hInput->maxCharacters = 5;
+	sInput->maxCharacters = 5;
+	brInput->maxCharacters = 5;
 }
 
 colorProperty::~colorProperty()
 {
 	delete rInput;
+	delete gInput;
+	delete bInput;
+	delete hInput;
+	delete sInput;
+	delete brInput;
 }
 
 void colorProperty::draw(int x, int y, int width)
@@ -131,14 +150,21 @@ void colorProperty::updateGradient(int mouseX, int mouseY)
 					G = gColor.g;
 					B = gColor.b;
 
-					rInput->forceUpdateValue();
-					gInput->forceUpdateValue();
-					bInput->forceUpdateValue();
+					rInput->forceUpdateValue(255);
+					gInput->forceUpdateValue(255);
+					bInput->forceUpdateValue(255);
 					break;
-				case HEX:
+				/*case HEX:
 					hex = gColor.getHex();
-					break;
-				case HSV:
+					break;*/
+				case HSB:
+					H = gColor.getHue();
+					S = gColor.getSaturation();
+					Br = gColor.getBrightness();
+
+					hInput->forceUpdateValue(255);
+					sInput->forceUpdateValue(255);
+					brInput->forceUpdateValue(255);
 					break;
 				}
 			}
@@ -183,12 +209,12 @@ void colorProperty::drawPicker(int x, int y, int width)
 	vbo.setVertexData(&gPoints[0], 6, GL_DYNAMIC_DRAW);
 	vbo.draw(GL_TRIANGLE_FAN, 0, 6);
 
-	rgbRect.x = pickerRect.x;
+	rgbRect.x = pickerRect.x + pickerRect.width / 4 - rgbRect.width / 2;
 	rgbRect.y = pickerRect.y + pickerRect.height - 30;
 	hexRect.x = pickerRect.x + pickerRect.width / 2 - hexRect.width / 2;
 	hexRect.y = rgbRect.y;
-	hsvRect.x = pickerRect.x + pickerRect.width - hsvRect.width;
-	hsvRect.y = rgbRect.y;
+	hsbRect.x = pickerRect.x + pickerRect.width / 2 + hsbRect.width / 2;
+	hsbRect.y = rgbRect.y;
 
 	int mouseX = ofGetMouseX();
 	int mouseY = ofGetMouseY();
@@ -203,27 +229,34 @@ void colorProperty::drawPicker(int x, int y, int width)
 		}
 	}
 
-	if (hexRect.inside(mouseX, mouseY) || currentMode == 1)
+	/*if (hexRect.inside(mouseX, mouseY) || currentMode == 1)
 	{
 		ofDrawRectRounded(hexRect, 20);
 		if (utils::mousePressed)
 		{
 			currentMode = ColorMode::HEX;
 		}
-	}
+	}*/
 
-	if (hsvRect.inside(mouseX, mouseY) || currentMode == 2)
+	if (hsbRect.inside(mouseX, mouseY) || currentMode == 2)
 	{
-		ofDrawRectRounded(hsvRect, 20);
+		ofDrawRectRounded(hsbRect, 20);
 		if (utils::mousePressed)
 		{
-			currentMode = ColorMode::HSV;
+			currentMode = ColorMode::HSB;
+			H = m_ref.getHue();
+			S = m_ref.getSaturation();
+			Br = m_ref.getBrightness();
+
+			hInput->forceUpdateValue(255);
+			sInput->forceUpdateValue(255);
+			brInput->forceUpdateValue(255);
 		}
 	}
 
 	drawText(rgbRect.x + rgbRect.width / 2 - 12, rgbRect.y + rgbRect.height / 2 + 5, "RGB", 10);
-	drawText(hexRect.x + hexRect.width / 2 - 12, hexRect.y + hexRect.height / 2 + 5, "HEX", 10);
-	drawText(hsvRect.x + hsvRect.width / 2 - 12, hsvRect.y + hsvRect.height / 2 + 5, "HSV", 10);
+	//drawText(hexRect.x + hexRect.width / 2 - 12, hexRect.y + hexRect.height / 2 + 5, "HEX", 10);
+	drawText(hsbRect.x + hsbRect.width / 2 - 12, hsbRect.y + hsbRect.height / 2 + 5, "HSB", 10);
 
 	switch (currentMode)
 	{
@@ -232,14 +265,19 @@ void colorProperty::drawPicker(int x, int y, int width)
 		m_ref.g = G;
 		m_ref.b = B;
 
-		rInput->draw(rgbRect.x, gradientRect.y + gradientRect.height + 20, 90, 10);
-		gInput->draw(rgbRect.x + 70, gradientRect.y + gradientRect.height + 20, 90, 10);
-		bInput->draw(rgbRect.x + 140, gradientRect.y + gradientRect.height + 20, 90, 10);
+		rInput->draw(pickerRect.x, gradientRect.y + gradientRect.height + 20, 90, 5);
+		gInput->draw(pickerRect.x + 72, gradientRect.y + gradientRect.height + 20, 90, 5);
+		bInput->draw(pickerRect.x + 144, gradientRect.y + gradientRect.height + 20, 90, 5);
 		break;
-	case HEX:
+	/*case HEX:
 		m_ref = ofColor::fromHex(stoi("0x" + hex.substr(0, 4) + "00"));
-		break;
-	case HSV:
+		break;*/
+	case HSB:
+		m_ref.setHsb(H, S, Br);
+
+		hInput->draw(pickerRect.x, gradientRect.y + gradientRect.height + 20, 90, 5);
+		sInput->draw(pickerRect.x + 72, gradientRect.y + gradientRect.height + 20, 90, 5);
+		brInput->draw(pickerRect.x + 144, gradientRect.y + gradientRect.height + 20, 90, 5);
 		break;
 	}
 }

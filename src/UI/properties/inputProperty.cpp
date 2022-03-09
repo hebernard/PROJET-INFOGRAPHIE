@@ -96,9 +96,9 @@ void inputProperty::keyPressed(ofKeyEventArgs& args)
 
 void inputProperty::keyReleased(ofKeyEventArgs& args) {}
 
-void inputProperty::forceUpdateValue()
+void inputProperty::forceUpdateValue(float maxValue)
 {
-	value = ofToString(m_ref);
+	value = ofToString(CLAMP(m_ref, 0, maxValue)).substr(0, maxCharacters);
 	valueSize = label::getSize(value, 10);
 }
 

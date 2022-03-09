@@ -4,6 +4,7 @@
 class inputProperty
 {
 public:
+	int maxCharacters = 10;
 	bool focused = false;
 	inputProperty(std::string label, float& ref);
 
@@ -13,7 +14,7 @@ public:
 	void keyPressed(ofKeyEventArgs& args);
 	void keyReleased(ofKeyEventArgs& args);
 
-	void forceUpdateValue();
+	void forceUpdateValue(float maxValue);
 
 private:
 	bool hovered = false;
@@ -25,7 +26,6 @@ private:
 	std::string value;
 	glm::vec2 valueSize;
 	float& m_ref;
-	const int maxCharacters = 10;
 
 	// Lets make it blink cause we're that cool.
 	float blinkTimer = 0;

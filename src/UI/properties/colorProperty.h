@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "inputProperty.h"
 
-enum ColorMode { RGB, HEX, HSV };
+enum ColorMode { RGB, HEX, HSB };
 
 class colorProperty
 {
@@ -26,13 +26,16 @@ private:
 	float rainbowLine;
 	glm::vec2 gradientPos;
 	bool showPicker = false;
-	ofRectangle rgbRect, hexRect, hsvRect;
-	ColorMode currentMode = RGB;
+	ofRectangle rgbRect, hexRect, hsbRect;
+	ColorMode currentMode = ColorMode::RGB;
 
 	inputProperty* rInput, *gInput, *bInput;
 	float R = 255, G = 255, B = 255;
 
-	string hex;
+	inputProperty* hInput, * sInput, * brInput;
+	float H = 255, S = 255, Br = 255;
+
+	//string hex;
 
 	unsigned char p[3];
 
