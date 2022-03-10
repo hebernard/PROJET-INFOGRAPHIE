@@ -62,7 +62,7 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 	else {
 		rect.width = 300;
 		rect.y = 100;
-		rect.height = ofGetHeight() - 150;
+		rect.height = ofGetHeight() - 125;
 		rect.x = ofGetWidth() - rect.width - 20;
 
 		drawOpened(objects);

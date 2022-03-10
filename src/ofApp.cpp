@@ -51,6 +51,7 @@ void ofApp::draw()
 
 	// Give time for the components to check the mouse state before setting back to false
 	utils::mouseReleased = false;
+	utils::rightMouseReleased = false;
 	utils::mousePressed = false;
 
 	if (utils::isMouseOverUI)
@@ -83,5 +84,9 @@ void ofApp::mouseReleased(int x, int y, int button)
 	if (button == 0)
 	{
 		utils::mouseReleased = true;
+	}
+	else if (button == 2)
+	{
+		utils::rightMouseReleased = true;
 	}
 }

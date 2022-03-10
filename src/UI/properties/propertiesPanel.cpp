@@ -10,6 +10,7 @@
 
 propertiesPanel::propertiesPanel() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),
+	animateButton(new hierarchySmallButton("images/icons/animation.png")),
 	position(centeredSlider("Position")),
 	rotation(centeredSlider("Rotation")),
 	scale(centeredSlider("Scale", true))
@@ -21,8 +22,14 @@ propertiesPanel::propertiesPanel() :
 
 	backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
+		animationPanelVisible = false;
 		scene& s = s.getInstance();
 		s.currentSelected->propertiesOpened = false;
+	});
+
+	animateButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		animationPanelVisible = !animationPanelVisible;
 	});
 
 	position.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -59,12 +66,18 @@ propertiesPanel::propertiesPanel() :
 
 void propertiesPanel::draw(object& obj)
 {
+	if (m_obj == nullptr)
+	{
+		animPanel.setObject(obj);
+		m_obj = &obj;
+	}
+
 	if (rect.inside(ofGetMouseX(), ofGetMouseY()))
 	{
 		utils::isMouseOverUI = true;
 	}
 
-	rect.height = ofGetHeight() - 150;
+	rect.height = ofGetHeight() - 125;
 	rect.x = ofGetWidth() - rect.width - 20;
 
 	drawPanel(rect);
@@ -74,6 +87,9 @@ void propertiesPanel::draw(object& obj)
 	backButton->update(rect.x + 15, rect.y + 10);
 	backButton->draw();
 
+	animateButton->update(rect.x + rect.width - animateButton->getWidth() - 15, rect.y + 10);
+	animateButton->draw();
+
 	drawLine(rect.x, rect.y + 55, rect.width);
 
 	drawTransformSliders(obj);
@@ -81,6 +97,11 @@ void propertiesPanel::draw(object& obj)
 	drawLine(rect.x + 30, rect.y + 310, rect.width - 60);
 
 	obj.drawProperties(rect.x + offsetX, rect.y + 330, propertyWidth);
+
+	if (animationPanelVisible)
+	{
+		animPanel.draw(rect.x - 10);
+	}
 }
 
 void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
@@ -99,6 +120,8 @@ void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
 	{
 		scale.mouseDragged(args);
 	}
+
+	animPanel.mouseDragged(args);
 }
 
 void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
@@ -107,6 +130,8 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 	{
 		// Refocus on the object once we're done dragging
 		resetFocus();
+
+		animPanel.addKeyFrame(*m_obj);
 	}
 
 	position.mouseReleased(args);

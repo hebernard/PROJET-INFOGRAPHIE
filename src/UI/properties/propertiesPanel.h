@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "centeredSlider.h"
+#include "animation/animationPanel.h"
 
 class object;
 class hierarchySmallButton;
@@ -24,6 +25,7 @@ public:
     void mouseExited(ofMouseEventArgs& args);
 
 private:
+    object* m_obj;
     const int offsetX = 15;
     int propertyWidth;
     const int translationSpeed = 5;
@@ -32,6 +34,10 @@ private:
 
 	ofRectangle rect;
 	hierarchySmallButton* backButton;
+	hierarchySmallButton* animateButton;
+
+    bool animationPanelVisible = false;
+    animationPanel animPanel;
 
 	centeredSlider position, rotation, scale;
 
