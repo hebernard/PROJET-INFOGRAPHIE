@@ -20,9 +20,12 @@ animationPanel::animationPanel() :
 
 	playButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
-		isRecording = false;
-		isPlaying = !isPlaying;
-		timer = 0;
+		if (keyframes.size() > 0)
+		{
+			isRecording = false;
+			isPlaying = !isPlaying;
+			timer = keyframes.front().time * maxSeconds;
+		}
 	});
 }
 
@@ -97,14 +100,6 @@ void animationPanel::addKeyFrame(object& obj)
 {
 	if (isRecording)
 	{
-		// Sort the keyframes by their time
-		std::sort(keyframes.begin(), keyframes.end(),
-			[](const keyframe& key1, const keyframe& key2)
-			{
-				return (key1.time < key2.time);
-			}
-		);
-
 		for (size_t i = 0; i < keyframes.size(); i++)
 		{
 			if (abs(cursorPos - keyframes.at(i).time) <= 0.001f)
@@ -117,6 +112,14 @@ void animationPanel::addKeyFrame(object& obj)
 		}
 
 		keyframes.push_back(keyframe(glm::vec3(obj.getPosition()), glm::vec3(obj.getOrientationEuler()), glm::vec3(obj.getScale()), cursorPos));
+
+		// Sort the keyframes by their time
+		std::sort(keyframes.begin(), keyframes.end(),
+			[](const keyframe& key1, const keyframe& key2)
+			{
+				return (key1.time < key2.time);
+			}
+		);
 	}
 }
 
@@ -183,9 +186,9 @@ void animationPanel::drawPlayer()
 		timer += ofGetLastFrameTime();
 		cursorPos = timer / maxSeconds;
 
-		if (cursorPos >= 1)
+		if (cursorPos >= 1 || cursorPos > keyframes.at(keyframes.size() - 1).time)
 		{
-			timer = 0;
+			timer = keyframes.front().time * maxSeconds;
 		}
 		else
 		{
@@ -204,7 +207,10 @@ void animationPanel::drawPlayer()
 	for (size_t i = 0; i < keyframes.size(); i++)
 	{
 		ofSetColor(ofColor::green);
-		ofDrawCircle(midLineX + playerRect.width * keyframes.at(i).time, midLineY, 10);
+		float x = midLineX + playerRect.width * keyframes.at(i).time;
+		ofDrawCircle(x, midLineY, 10);
+
+		drawText(x - 5, midLineY + 25, ofToString(i + 1), 10);
 	}
 
 	ofPopStyle();
