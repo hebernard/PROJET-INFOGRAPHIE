@@ -124,8 +124,10 @@ void animationPanel::save()
 {
 	m_obj->keyframes = std::vector<keyframe>(keyframes);
 
-	// Remove all keyframes upon saving
+	// Reset everything upon saving
 	keyframes.clear();
+	isPlaying = false;
+	isRecording = false;
 }
 
 void animationPanel::load()
