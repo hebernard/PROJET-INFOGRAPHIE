@@ -1,4 +1,5 @@
 #include "animationPanel.h"
+#include "keyframe.h"
 #include "panel.h"
 #include "label.h"
 #include "hierarchySmallButton.h"
@@ -121,11 +122,15 @@ void animationPanel::addKeyFrame(object& obj)
 
 void animationPanel::save()
 {
+	m_obj->keyframes = std::vector<keyframe>(keyframes);
 
+	// Remove all keyframes upon saving
+	keyframes.clear();
 }
 
 void animationPanel::load()
 {
+	keyframes = std::vector<keyframe>(m_obj->keyframes);
 }
 
 void animationPanel::drawPlayer()

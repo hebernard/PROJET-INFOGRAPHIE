@@ -110,6 +110,7 @@
     <ClCompile Include="src\UI\properties\inputProperty.cpp" />
     <ClCompile Include="src\UI\hierarchy\cameraHierarchyButton.cpp" />
     <ClCompile Include="src\UI\animation\animationPanel.cpp" />
+    <ClCompile Include="src\keyframe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -479,6 +480,7 @@
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
     <ClInclude Include="src\UI\hierarchy\cameraHierarchyButton.h" />
     <ClInclude Include="src\UI\animation\animationPanel.h" />
+    <ClInclude Include="src\keyframe.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

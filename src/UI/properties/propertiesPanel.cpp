@@ -22,9 +22,12 @@ propertiesPanel::propertiesPanel() :
 
 	backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
+		m_obj = nullptr;
 		animationPanelVisible = false;
 		scene& s = s.getInstance();
 		s.currentSelected->propertiesOpened = false;
+
+		animPanel.save();
 	});
 
 	animateButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -69,6 +72,7 @@ void propertiesPanel::draw(object& obj)
 	if (m_obj == nullptr)
 	{
 		animPanel.setObject(obj);
+		animPanel.load();
 		m_obj = &obj;
 	}
 

@@ -5,6 +5,7 @@
 #include "mainTheme.h"
 #include "checkBoxProperty.h"
 #include "colorProperty.h"
+#include "keyframe.h"
 
 class object : public ofNode
 {
@@ -16,6 +17,8 @@ public:
 	bool propertiesOpened;
 	bool isVisible;
 	ofColor color = ofColor::white;
+
+	std::vector<keyframe> keyframes;
 
 	object(hierarchyButton* btn) : 
 		button(btn), 
