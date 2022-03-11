@@ -4,6 +4,7 @@
 #include "label.h"
 #include "hierarchySmallButton.h"
 #include "utils.h"
+#include "inputProperty.h"
 
 animationPanel::animationPanel() : 
 	playButton(new hierarchySmallButton("images/icons/play.png")),
@@ -27,12 +28,16 @@ animationPanel::animationPanel() :
 			timer = keyframes.front().time * maxSeconds;
 		}
 	});
+
+	maxSecondsInput = new inputProperty("Max time", maxSeconds);
+	maxSecondsInput->maxCharacters = 3;
 }
 
 animationPanel::~animationPanel()
 {
 	delete playButton;
 	delete recordButton;
+	delete maxSecondsInput;
 }
 
 void animationPanel::draw(int endX)
@@ -62,14 +67,15 @@ void animationPanel::draw(int endX)
 	recordButton->update(playButton->getX() + playButton->getWidth() + 5, rect.y + 10);
 	recordButton->draw();
 
+	//maxSecondsInput->draw(rect.x + rect.width - 150, rect.y + 10, 140, 15);
+
 	drawPlayer();
 
-	if (utils::rightMouseReleased)
+	if (utils::rightMouseReleased && !isPlaying)
 	{
 		for (size_t i = 0; i < keyframes.size(); i++)
 		{
-			//ofDrawCircle(midLineX + playerRect.width * keyframes.at(i).time, midLineY, 10);
-			int x1 = playerRect.x + playerRect.width * keyframes.at(i).time - 10;
+			int x1 = playerRect.x + playerRect.width * (keyframes.at(i).time / maxSeconds) - 10;
 			int y1 = playerRect.y + playerRect.height / 2 - 10;
 			int x2 = x1 + 20;
 			int y2 = y1 + 20;
@@ -85,9 +91,32 @@ void animationPanel::mouseDragged(ofMouseEventArgs& args)
 {
 	if (playerRect.inside(args.x, args.y) && !isPlaying)
 	{
-		cursorPos = (args.x - playerRect.x) / playerRect.width;
+		cursorPos = (args.x - playerRect.x) / playerRect.width * maxSeconds;
 
 		animateObject();
+	}
+}
+
+void animationPanel::mouseScrolled(ofMouseEventArgs& args)
+{
+	if (playerRect.inside(args.x, args.y))
+	{
+		maxSeconds -= args.scrollY;
+		if (keyframes.size() >= 1)
+		{
+			maxSeconds = CLAMP(maxSeconds, ceil(keyframes.at(keyframes.size() - 1).time), 100);
+		}
+		else
+		{
+			maxSeconds = CLAMP(maxSeconds, 1, 100);
+		}
+
+		if (cursorPos > maxSeconds)
+		{
+			cursorPos = maxSeconds;
+		}
+
+		maxSecondsInput->forceUpdateValue(999);
 	}
 }
 
@@ -102,6 +131,7 @@ void animationPanel::addKeyFrame(object& obj)
 	{
 		for (size_t i = 0; i < keyframes.size(); i++)
 		{
+			// Update when modifying multiple values on the same keyframe
 			if (abs(cursorPos - keyframes.at(i).time) <= 0.001f)
 			{
 				keyframes.at(i).position = glm::vec3(obj.getPosition());
@@ -126,6 +156,7 @@ void animationPanel::addKeyFrame(object& obj)
 void animationPanel::save()
 {
 	m_obj->keyframes = std::vector<keyframe>(keyframes);
+	m_obj->animationMaxTime = maxSeconds;
 
 	// Reset everything upon saving
 	keyframes.clear();
@@ -136,6 +167,17 @@ void animationPanel::save()
 void animationPanel::load()
 {
 	keyframes = std::vector<keyframe>(m_obj->keyframes);
+	if (m_obj->animationMaxTime != 0)
+	{
+		maxSeconds = m_obj->animationMaxTime;
+	}
+	else
+	{
+		// just set to default value
+		maxSeconds = 10;
+	}
+
+	maxSecondsInput->forceUpdateValue(999);
 }
 
 void animationPanel::drawPlayer()
@@ -169,7 +211,7 @@ void animationPanel::drawPlayer()
 	int midLineY = playerRect.y + playerRect.height / 2;
 	ofDrawLine(midLineX, midLineY, midLineX + playerRect.width, midLineY);
 
-	float step = playerRect.width * 0.1;
+	float step = playerRect.width * (1 / maxSeconds);
 	for (size_t i = 0; i <= maxSeconds; i++)
 	{
 		int height = 10;
@@ -184,11 +226,11 @@ void animationPanel::drawPlayer()
 	if (isPlaying)
 	{
 		timer += ofGetLastFrameTime();
-		cursorPos = timer / maxSeconds;
+		cursorPos = timer;
 
-		if (cursorPos >= 1 || cursorPos > keyframes.at(keyframes.size() - 1).time)
+		if (cursorPos >= maxSeconds || cursorPos > keyframes.at(keyframes.size() - 1).time)
 		{
-			timer = keyframes.front().time * maxSeconds;
+			timer = keyframes.front().time;
 		}
 		else
 		{
@@ -198,16 +240,16 @@ void animationPanel::drawPlayer()
 
 	// Cursor
 	ofSetColor(isRecording ? ofColor::red : mainTheme::color3());
-	float cursorX = midLineX + playerRect.width * cursorPos;
+	float cursorX = midLineX + playerRect.width * (cursorPos / maxSeconds);
 	ofDrawLine(cursorX, midLineY - 20, cursorX, midLineY + 20);
 
-	drawText(cursorX - 5, midLineY - 25, ofToString(cursorPos * maxSeconds).substr(0, 4), 10);
+	drawText(cursorX - 5, midLineY - 25, ofToString(cursorPos).substr(0, 4), 10);
 
 	// keyframes
 	for (size_t i = 0; i < keyframes.size(); i++)
 	{
 		ofSetColor(ofColor::green);
-		float x = midLineX + playerRect.width * keyframes.at(i).time;
+		float x = midLineX + playerRect.width * (keyframes.at(i).time / maxSeconds);
 		ofDrawCircle(x, midLineY, 10);
 
 		drawText(x - 5, midLineY + 25, ofToString(i + 1), 10);
@@ -254,4 +296,9 @@ void animationPanel::animateObject()
 			m_obj->setScale(sx, sy, sz);
 		}
 	}
+}
+
+void animationPanel::setMaxTime(float max)
+{
+
 }

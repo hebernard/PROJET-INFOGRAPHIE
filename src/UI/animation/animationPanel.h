@@ -4,6 +4,7 @@
 
 class hierarchySmallButton;
 class keyframe;
+class inputProperty;
 
 class animationPanel
 {
@@ -14,6 +15,7 @@ public:
 	void draw(int endX);
 
 	void mouseDragged(ofMouseEventArgs& args);
+	void mouseScrolled(ofMouseEventArgs& args);
 
 	void setObject(object& obj);
 	void addKeyFrame(object& obj);
@@ -38,8 +40,12 @@ private:
 
 	std::vector<keyframe> keyframes;
 
+	inputProperty* maxSecondsInput;
+
 	void drawPlayer();
 
 	void animateObject();
+
+	void setMaxTime(float max);
 };
 

@@ -173,6 +173,9 @@ void propertiesPanel::resetFocus()
 
 void propertiesPanel::mouseMoved(ofMouseEventArgs& args) {}
 void propertiesPanel::mousePressed(ofMouseEventArgs& args) {}
-void propertiesPanel::mouseScrolled(ofMouseEventArgs& args) {}
+void propertiesPanel::mouseScrolled(ofMouseEventArgs& args)
+{
+	animPanel.mouseScrolled(args);
+}
 void propertiesPanel::mouseEntered(ofMouseEventArgs& args) {}
 void propertiesPanel::mouseExited(ofMouseEventArgs& args) {}

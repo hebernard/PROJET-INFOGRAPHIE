@@ -19,6 +19,7 @@ public:
 	ofColor color = ofColor::white;
 
 	std::vector<keyframe> keyframes;
+	float animationMaxTime = 0;
 
 	object(hierarchyButton* btn) : 
 		button(btn), 
