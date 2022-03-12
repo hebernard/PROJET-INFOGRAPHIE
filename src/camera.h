@@ -285,4 +285,6 @@ private:
 		TransformType transformType;
 	};
 	std::vector<interaction> interactions;
+
+	float timer = 0;
 };
