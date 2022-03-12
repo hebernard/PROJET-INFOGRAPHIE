@@ -15,6 +15,11 @@ hierarchyPanel::hierarchyPanel() : minimized(false), icon(), iconMinimize()
 	setup();
 }
 
+hierarchyPanel::~hierarchyPanel()
+{
+	delete cameraButton;
+}
+
 void hierarchyPanel::setup()
 {
 	if (minimized) {
@@ -40,6 +45,15 @@ void hierarchyPanel::setup()
 		rect.x = ofGetWidth() - rect.width - 20;
 
 		cameraButton = new cameraHierarchyButton("images/icons/camera.png", "Camera");
+		cameraButton->propertiesButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+		{
+			isDrawingCameraProp = true;
+		});
+
+		camProp.backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+		{
+			isDrawingCameraProp = false;
+		});
 	}
 }
 
@@ -60,12 +74,19 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 		drawMinimized();
 	}
 	else {
-		rect.width = 300;
-		rect.y = 100;
-		rect.height = ofGetHeight() - 125;
-		rect.x = ofGetWidth() - rect.width - 20;
+		if (isDrawingCameraProp)
+		{
+			camProp.draw();
+		}
+		else
+		{
+			rect.width = 300;
+			rect.y = 100;
+			rect.height = ofGetHeight() - 125;
+			rect.x = ofGetWidth() - rect.width - 20;
 
-		drawOpened(objects);
+			drawOpened(objects);
+		}
 	}
 }
 

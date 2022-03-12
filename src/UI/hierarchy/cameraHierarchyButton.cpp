@@ -19,11 +19,6 @@ cameraHierarchyButton::cameraHierarchyButton(std::string iconPath, std::string t
 
 	textSize = label::getSize(text, 11, mainTheme::fontRegularPath);
 
-	propertiesButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
-	{
-
-	});
-
 	addCameraButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		scene& s = s.getInstance();

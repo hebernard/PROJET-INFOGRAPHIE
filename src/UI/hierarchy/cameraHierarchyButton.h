@@ -8,6 +8,8 @@ class hierarchySmallButton;
 class cameraHierarchyButton : public ofxDatGuiButton
 {
 public:
+	hierarchySmallButton* propertiesButton;
+
 	cameraHierarchyButton(std::string iconPath, std::string text);
 
 	void draw();
@@ -19,7 +21,6 @@ private:
 	glm::vec2 textSize;
 	ofImage icon;
 
-	hierarchySmallButton* propertiesButton;
 	hierarchySmallButton* addCameraButton;
 	hierarchySmallButton* removeCameraButton;
 
