@@ -1,5 +1,6 @@
 #pragma once
 #include "ofMain.h"
+#include "cameraPropertiesButton.h"
 
 class hierarchySmallButton;
 
@@ -13,5 +14,9 @@ public:
 
 private:
 	ofRectangle rect;
+	int offset = 20;
+	int buttonWidth;
+
+	cameraPropertiesButton perspective, orthogonal;
 };
 

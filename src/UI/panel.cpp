@@ -6,11 +6,11 @@ void drawPanel(int x, int y, int width, int height, ofColor backgroundColor)
 	ofPushStyle();
 	ofFill();
 
-	ofSetColor(mainTheme::panelBorderColor());
-	ofDrawRectRounded(x - 2, y - 2, width + 4, height + 4, 8);
+	//ofSetColor(mainTheme::panelBorderColor());
+	//ofDrawRectRounded(x - 2, y - 2, width + 4, height + 4, 8);
 
 	ofSetColor(backgroundColor);
-	ofDrawRectRounded(x, y, width, height, 6);
+	ofDrawRectRounded(x, y, width, height, 8);
 
 	ofPopStyle();
 }
