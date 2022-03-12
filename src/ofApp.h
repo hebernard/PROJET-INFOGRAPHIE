@@ -2,8 +2,9 @@
 
 #include "ofMain.h"
 #include "ofxDatGui.h"
-#include "./UI/dock.h"
 #include "scene.h"
+#include "camera.h"
+#include "UI/menuBar/menuBar.h"
 
 class ofApp : public ofBaseApp
 {
@@ -12,8 +13,12 @@ public:
 	void update();
 	void draw();
 
+	void mouseReleased(int x, int y, int button);
+
 private:
-	dock* d;
+	~ofApp();
+	menuBar* menu;
+
 	scene& s = s.getInstance();
 
 	void mousePressed(int x, int y, int button);
