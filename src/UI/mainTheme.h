@@ -6,6 +6,7 @@ class mainTheme
 public:
 
 	static bool darkTheme;
+	static bool isDefaultBackground;
 
 	//Font & logo paths
 	static const std::string fontRegularPath;
@@ -40,6 +41,10 @@ public:
 
 	//Scene & Grid colors
 	static ofColor sceneBackgroundColor();
+	static ofColor sceneDefaultBackgroundColor();
+	static ofColor sceneCustomBackgroundColor;
+	static ofColor getSceneCustomBackgroundColor();
+	static void setSceneCustomBackgroundColor(ofColor color);
 	static ofColor gridColor1();
 	static ofColor gridColor2();
 

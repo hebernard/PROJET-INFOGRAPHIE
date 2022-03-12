@@ -8,10 +8,8 @@
 #include "utils.h"
 #include "cameraHierarchyButton.h"
 
-hierarchyPanel::hierarchyPanel() : minimized(false), icon(), iconMinimize()
+hierarchyPanel::hierarchyPanel() : icon()
 {
-	//ofAddListener(ofEvents().mouseReleased, this, &hierarchyPanel::onMinimized);
-
 	setup();
 }
 
@@ -22,39 +20,26 @@ hierarchyPanel::~hierarchyPanel()
 
 void hierarchyPanel::setup()
 {
-	if (minimized) {
-		icon.load("images/icons/hierarchy.png");
-		icon.resize(18, 18);
-		iconMinimize.load("images/icons/down.png");
-		iconMinimize.resize(12, 12);
 
-		rect.height = 40;
-		rect.width = 200;
-		rect.x = ofGetWidth() - rect.width - 60;
-		rect.y = 80;
-	}
-	else {
-		icon.load("images/icons/hierarchy.png");
-		icon.resize(24, 24);
-		iconMinimize.load("images/icons/up.png");
-		iconMinimize.resize(18, 18);
+	icon.load("images/icons/hierarchy.png");
+	icon.resize(24, 24);
 
-		rect.width = 300;
-		rect.y = 100;
-		rect.height = ofGetHeight() - 150;
-		rect.x = ofGetWidth() - rect.width - 20;
+	rect.width = 300;
+	rect.y = 100;
+	rect.height = ofGetHeight() - 150;
+	rect.x = ofGetWidth() - rect.width - 20;
 
-		cameraButton = new cameraHierarchyButton("images/icons/camera.png", "Camera");
-		cameraButton->propertiesButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
-		{
-			isDrawingCameraProp = true;
-		});
+	cameraButton = new cameraHierarchyButton("images/icons/camera.png", "Camera");
+	cameraButton->propertiesButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		isDrawingCameraProp = true;
+	});
 
-		camProp.backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
-		{
-			isDrawingCameraProp = false;
-		});
-	}
+	camProp.backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		isDrawingCameraProp = false;
+	});
+	
 }
 
 void hierarchyPanel::draw(const vector<object*>& objects)
@@ -64,30 +49,18 @@ void hierarchyPanel::draw(const vector<object*>& objects)
 		utils::isMouseOverUI = true;
 	}
 
-	if (minimized) {
-
-		rect.height = 40;
-		rect.width = 200;
-		rect.x = ofGetWidth() - rect.width - 60;
-		rect.y = 80;
-
-		drawMinimized();
+	if (isDrawingCameraProp)
+	{
+		camProp.draw();
 	}
-	else {
-		if (isDrawingCameraProp)
-		{
-			camProp.draw();
-		}
-		else
-		{
-			rect.width = 300;
-			rect.y = 100;
-			rect.height = ofGetHeight() - 125;
-			rect.x = ofGetWidth() - rect.width - 20;
+	else
+	{
+		rect.height = ofGetHeight() - 125;
+		rect.x = ofGetWidth() - rect.width - 20;
 
-			drawOpened(objects);
-		}
+		drawOpened(objects);
 	}
+
 }
 
 void hierarchyPanel::drawOpened(const vector<object*>& objects)
@@ -100,7 +73,6 @@ void hierarchyPanel::drawOpened(const vector<object*>& objects)
 	{
 		ofSetColor(ofColor::white);
 		icon.draw(rect.x + 15, rect.y + icon.getHeight() / 2);
-		iconMinimize.draw(rect.x + 245, rect.y + iconMinimize.getHeight() / 2 + 8);
 	}
 
 	//draw text
@@ -123,30 +95,3 @@ void hierarchyPanel::drawOpened(const vector<object*>& objects)
 	}
 }
 
-void hierarchyPanel::drawMinimized()
-{
-	//draw panel
-	drawPanel(rect);
-
-	//draw icons
-	if (icon.isAllocated())
-	{
-		ofSetColor(ofColor::white);
-		icon.draw(rect.x + 15, rect.y + icon.getHeight() / 2);
-		iconMinimize.draw(rect.x + 165, rect.y + iconMinimize.getHeight() / 2 + 8);
-	}
-
-	//draw text
-	drawText(rect.x + 60, rect.y + 24, "Hierarchy", 9);
-}
-
-void hierarchyPanel::onMinimized(ofMouseEventArgs& mouse)
-{
-	minimized = !minimized;
-	setup();
-}
-
-bool hierarchyPanel::getMinimized()
-{
-	return minimized;
-}

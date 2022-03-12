@@ -15,19 +15,12 @@ public:
 	void setup();
 	void draw(const vector<object*>& objects);
 	void drawOpened(const vector<object*>& objects);
-	void drawMinimized();
-
-	void onMinimized(ofMouseEventArgs& mouse);
-	bool getMinimized();
 
 private:
 	cameraHierarchyButton* cameraButton;
 	ofRectangle rect;
 	ofImage icon;
-	ofImage iconMinimize;
 
 	bool isDrawingCameraProp = false;
 	cameraProperties camProp;
-
-	bool minimized;
 };

@@ -402,6 +402,11 @@ void camera::updateRotation() {
 	}
 	if (bApplyInertia) {
 		curRot = glm::angleAxis(rot.z, getZAxis()) * glm::angleAxis(rot.y, up()) * glm::angleAxis(rot.x, getXAxis());
+		//glm::vec3 p;
+		//p.x = ofGetWidth() / 2;
+		//p.y = ofGetHeight() / 2;
+		//p.z = 0;
+		//screenToWorld(p);
 		rotateAround(curRot, target.getGlobalPosition());
 		rotate(curRot);
 	}
@@ -535,6 +540,8 @@ void camera::updateMouse(const glm::vec2& mouse) {
 		else {
 			translate.x = -mouseVel.x * sensitivityTranslate.x * 0.5f * (getDistance() + std::numeric_limits<float>::epsilon()) / area.width;
 			translate.y = vFlip * mouseVel.y * sensitivityTranslate.y * 0.5f * (getDistance() + std::numeric_limits<float>::epsilon()) / area.height;
+			//translate.x = -mouseVel.x * getScale().z;
+			//translate.y = vFlip * mouseVel.y * getScale().z;
 		}
 		break;
 	case TRANSFORM_TRANSLATE_Z:

@@ -1,6 +1,7 @@
 #include "mainTheme.h"
 
 bool mainTheme::darkTheme = true;
+bool mainTheme::isDefaultBackground = true;
 
 const std::string mainTheme::fontRegularPath = "fonts/inter_regular.ttf";
 const std::string mainTheme::fontMediumPath = "fonts/inter_medium.ttf";
@@ -27,6 +28,10 @@ ofColor mainTheme::color3() { return darkTheme ? ofColor(58, 119, 243) : ofColor
 
 ofColor mainTheme::recColor() { return darkTheme ? ofColor(235, 52, 66) : ofColor(235, 52, 66); }
 
-ofColor mainTheme::sceneBackgroundColor() { return darkTheme ? ofColor(36) : ofColor(128); }
+ofColor mainTheme::sceneBackgroundColor() { return isDefaultBackground ? mainTheme::sceneDefaultBackgroundColor() : mainTheme::getSceneCustomBackgroundColor(); }
+ofColor mainTheme::sceneDefaultBackgroundColor() { return darkTheme ? ofColor(36) : ofColor(128); }
+ofColor mainTheme::sceneCustomBackgroundColor = ofColor(213, 84, 31);
+ofColor mainTheme::getSceneCustomBackgroundColor() { return mainTheme::sceneCustomBackgroundColor; }
+void mainTheme::setSceneCustomBackgroundColor(ofColor color) { sceneCustomBackgroundColor = color; }
 ofColor mainTheme::gridColor1() { return darkTheme ? ofColor(50, 120) : ofColor(100, 120); }
 ofColor mainTheme::gridColor2() { return darkTheme ? ofColor(150) : ofColor(200); }
