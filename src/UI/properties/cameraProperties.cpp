@@ -6,6 +6,7 @@
 #include "scene.h"
 #include "mainTheme.h"
 #include "scene.h"
+#include "cursor.h"
 
 cameraProperties::cameraProperties() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),
@@ -56,6 +57,9 @@ void cameraProperties::draw()
 	exportImage.draw(rect.x + offset, rect.y + 100, buttonWidth);
 	exportSeqImage.draw(rect.x + offset + buttonWidth + offset, rect.y + 100, buttonWidth);
 
+	if (exportImage.isInside() || exportSeqImage.isInside() && utils::isMouseOverUI) {
+		cursor::setHandCursor();
+	}
 	if (exportImage.isInside() && utils::mouseReleased) {
 		exportImage.setSelected();
 		exportSeqImage.setUnselected();
@@ -71,6 +75,9 @@ void cameraProperties::draw()
 	perspective.draw(rect.x + offset, rect.y + 250, buttonWidth);
 	orthogonal.draw(rect.x + offset + buttonWidth + offset, rect.y + 250, buttonWidth);
 
+	if (perspective.isInside() || orthogonal.isInside() && utils::isMouseOverUI) {
+		cursor::setHandCursor();
+	}
 	if (perspective.isInside() && utils::mouseReleased) {
 		perspective.setSelected();
 		orthogonal.setUnselected();
@@ -88,6 +95,9 @@ void cameraProperties::draw()
 	backgroundDefault.draw(rect.x + offset, rect.y + 400, buttonWidth);
 	backgroundCustom.draw(rect.x + offset + buttonWidth + offset, rect.y + 400, buttonWidth);
 
+	if (backgroundDefault.isInside() || backgroundCustom.isInside() && utils::isMouseOverUI) {
+		cursor::setHandCursor();
+	}
 	if (backgroundDefault.isInside() && utils::mouseReleased) {
 		backgroundDefault.setSelected();
 		backgroundCustom.setUnselected();
@@ -114,6 +124,9 @@ void cameraProperties::draw()
 	showGrid.draw(rect.x + offset, rect.y + 550, buttonWidth);
 	hideGrid.draw(rect.x + offset + buttonWidth + offset, rect.y + 550, buttonWidth);
 
+	if (showGrid.isInside() || hideGrid.isInside() && utils::isMouseOverUI) {
+		cursor::setHandCursor();
+	}
 	if (showGrid.isInside() && utils::mouseReleased) {
 		showGrid.setSelected();
 		hideGrid.setUnselected();
