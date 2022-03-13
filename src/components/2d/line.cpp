@@ -23,11 +23,13 @@ glm::vec3 line::getBBox()
 void line::drawProperties(int x, int y, int width)
 {
 	// Dont call base class to not set filled property
-	// todo
 	int offset = y;
-	//object::drawProperties(x, y, width);
+	colorPicker->draw(x, offset, width);
+	offset += 10 + colorPicker->getHeight();
+
 	lengthInput.draw(x, offset, width);
 	offset += 10 + lengthInput.getHeight();
+
 	contourThicknessInput.draw(x, offset, width);
 	offset += 10 + contourThicknessInput.getHeight();
 }
