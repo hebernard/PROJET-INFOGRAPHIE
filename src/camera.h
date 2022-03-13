@@ -22,6 +22,9 @@ public:
 
 	void render(scene& s, int index);
 
+	void setOrtho();
+	void setPerpective();
+
 	/// \}
 	/// \name Rendering
 	/// \{

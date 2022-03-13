@@ -84,6 +84,31 @@ void camera::render(scene& s, int index)
 	end();
 }
 
+void camera::setOrtho()
+{
+	enableOrtho();
+	setPosition(0, 1, 5);
+	setTarget(glm::vec3(0, 1, 0));
+	setScale(0.01);
+	setNearClip(-100000);
+
+	//removeAllInteractions();
+	//addInteraction(TRANSFORM_TRANSLATE_XY, OF_MOUSE_BUTTON_RIGHT);
+}
+
+void camera::setPerpective()
+{
+	disableOrtho();
+	setPosition(0, 1, 5);
+	setTarget(glm::vec3(0, 1, 0));
+	setScale(1);
+	setNearClip(0.001f);
+
+	//removeAllInteractions();
+	//addInteraction(TRANSFORM_ROTATE, OF_MOUSE_BUTTON_LEFT);
+	//addInteraction(TRANSFORM_TRANSLATE_XY, OF_MOUSE_BUTTON_RIGHT);
+}
+
 //----------------------------------------
 void camera::update(ofEventArgs& args) {
 	if (this->viewport.isZero()) {
@@ -372,9 +397,10 @@ void camera::updateTranslation() {
 			}
 			move(glm::vec3(lastPressAxisX * translate.x) + (lastPressAxisY * translate.y));
 			if (bDoScale) {
-				setScale(getScale() + translate.z);
+				auto s = getScale() + translate.z;
+				setScale(CLAMP(s.x, 0, 10), CLAMP(s.y, 0, 10), CLAMP(s.z, 0, 10));
 				// this move call is to keep the scaling centered below the mouse.
-				move(mousePre - screenToWorld(glm::vec3((bIsScrolling ? mouseAtScroll : lastPressMouse), 0)));
+				//move(mousePre - screenToWorld(glm::vec3((bIsScrolling ? mouseAtScroll : lastPressMouse), 0)));
 			}
 		}
 		else {

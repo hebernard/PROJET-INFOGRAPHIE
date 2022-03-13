@@ -139,9 +139,15 @@ public:
 
 		camera* cam = new camera();
 		cam->setAutoDistance(false);
-		cam->setPosition(0, 1, 5);
-		cam->setTarget(glm::vec3(0, 1, 0));
-		cam->setNearClip(0.1f);
+		cam->setFarClip(100000);
+		if (isOrtho)
+		{
+			cam->setOrtho();
+		}
+		else 
+		{
+			cam->setPerpective();
+		}
 
 		cameras.push_back(cam);
 	}
@@ -184,29 +190,18 @@ public:
 	{
 		for (size_t i = 0; i < cameras.size(); i++)
 		{
-			camera* cam = cameras.at(i);
-			if (!cam->getOrtho()) {
-				cam->setPosition(0, 1, 5);
-				cam->setTarget(glm::vec3(0, 1, 0));
-				cam->setScale(0.01);
-				cam->setNearClip(0.1f);
-				cam->enableOrtho();
-			}
+			cameras.at(i)->setOrtho();
 		}
+		isOrtho = true;
 	}
 
 	void disableCamerasOrtho()
 	{
 		for (size_t i = 0; i < cameras.size(); i++)
 		{
-			camera* cam = cameras.at(i);
-			if (cam->getOrtho()) {
-				cam->setPosition(0, 1, 5);
-				cam->setTarget(glm::vec3(0, 1, 0));
-				cam->setNearClip(0.1f);
-				cam->disableOrtho();
-			}
+			cameras.at(i)->setPerpective();
 		}
+		isOrtho = false;
 	}
 
 private:
@@ -222,5 +217,7 @@ private:
 
 	hierarchyPanel hierarchy;
 	propertiesPanel properties;
+
+	bool isOrtho = false;
 };
 
