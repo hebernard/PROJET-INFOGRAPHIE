@@ -38,6 +38,12 @@ cameraProperties::cameraProperties() :
 	});
 }
 
+cameraProperties::~cameraProperties()
+{
+	delete backButton;
+	delete resetCameraButton;
+}
+
 void cameraProperties::draw()
 {
 	scene& s = s.getInstance();

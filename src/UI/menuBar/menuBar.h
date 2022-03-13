@@ -11,6 +11,8 @@ class menuBar : public ofxDatGuiComponent
 {
 public:
 	menuBar();
+	~menuBar();
+
 	void setTheme(const ofxDatGuiTheme* theme) {}
 
 	void draw();

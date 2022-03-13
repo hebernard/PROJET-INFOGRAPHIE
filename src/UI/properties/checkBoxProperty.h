@@ -10,14 +10,6 @@ public:
 	void draw(int x, int y, int width);
 	int getHeight();
 
-	void mouseMoved(ofMouseEventArgs& args);
-	void mouseDragged(ofMouseEventArgs& args);
-	void mousePressed(ofMouseEventArgs& args);
-	void mouseReleased(ofMouseEventArgs& args);
-	void mouseScrolled(ofMouseEventArgs& args);
-	void mouseEntered(ofMouseEventArgs& args);
-	void mouseExited(ofMouseEventArgs& args);
-
 private:
 	ofRectangle rect;
 

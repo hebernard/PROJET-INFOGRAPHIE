@@ -136,6 +136,16 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 }
 
+menuBar::~menuBar()
+{
+	delete dropdown2d;
+	delete dropdown3d;
+
+	delete importButton;
+	delete exportButton;
+	delete themeButton;
+}
+
 void menuBar::draw()
 {
 	if (rect.inside(ofGetMouseX(), ofGetMouseY()))
@@ -178,7 +188,14 @@ void menuBar::update()
 	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 
 	posX += importButton->getWidth() + 10;
-	exportButton->update(rect.width/2, posY + dropdown2d->getHeight() / 2 - exportButton->getHeight() / 2);
+	if (posX < ofGetWidth() / 2)
+	{
+		exportButton->update(ofGetWidth() / 2, rect.height / 2);
+	}
+	else
+	{
+		exportButton->update(posX + exportButton->getWidth() / 2, rect.height / 2);
+	}
 	themeButton->update(ofGetWidth() - (themeButton->getWidth()*2), posY + dropdown2d->getHeight() / 2 - themeButton->getHeight() / 2);
 }
 

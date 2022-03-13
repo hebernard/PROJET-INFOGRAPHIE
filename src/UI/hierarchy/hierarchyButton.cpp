@@ -41,6 +41,13 @@ hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string 
 	});
 }
 
+hierarchyButton::~hierarchyButton()
+{
+	delete deleteButton;
+	delete propertiesButton;
+	delete visibleButton;
+}
+
 void hierarchyButton::setTheme(const ofxDatGuiTheme* theme)
 {
 	setComponentStyle(theme);

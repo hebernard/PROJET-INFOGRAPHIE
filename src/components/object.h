@@ -38,6 +38,7 @@ public:
 		delete button;
 		delete filledCheckBox;
 		delete colorPicker;
+		delete bboxCheckBox;
 	}
 
 	virtual void customDraw()

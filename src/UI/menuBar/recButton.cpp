@@ -21,58 +21,58 @@ void recButton::draw()
 {
 	ofPushStyle();
 	ofFill();
-	ofSetCircleResolution(100);
+	ofSetCircleResolution(50);
 
 	if (!recMode) {
 		if (mFocused && mMouseDown)
 		{
 			ofSetColor(mainTheme::fontColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 20);
+			ofDrawCircle(x, y, 20);
 
 			ofSetColor(mainTheme::recColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 2);
+			ofDrawCircle(x, y, 2);
 		}
 		else if (mMouseOver)
 		{
 			ofSetColor(mainTheme::fontColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 20);
+			ofDrawCircle(x, y, 20);
 
 			ofSetColor(mainTheme::recColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 6);
+			ofDrawCircle(x, y, 6);
 		}
 		else
 		{
 			ofSetColor(mainTheme::fontColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 20);
+			ofDrawCircle(x, y, 20);
 
 			ofSetColor(mainTheme::recColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 5);
+			ofDrawCircle(x, y, 5);
 		}
 	}
 	else {
 		if (mFocused && mMouseDown)
 		{
 			ofSetColor(mainTheme::fontColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 20);
+			ofDrawCircle(x, y, 20);
 
 			ofSetColor(mainTheme::recColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 18);
+			ofDrawCircle(x, y, 18);
 		}
 		else if (mMouseOver)
 		{
 			ofSetColor(mainTheme::fontColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight()/2, 20);
+			ofDrawCircle(x, y + getHeight()/2, 20);
 
 			ofSetColor(mainTheme::recColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 14);
+			ofDrawCircle(x, y, 14);
 		}
 		else
 		{
 			ofSetColor(mainTheme::fontColor());
-			ofDrawCircle(ofGetWidth()/2, y + getHeight() / 2, 20);
+			ofDrawCircle(x, y, 20);
 
 			ofSetColor(mainTheme::recColor());
-			ofDrawCircle(ofGetWidth() / 2, y + getHeight() / 2, 15);
+			ofDrawCircle(x, y, 15);
 		}
 	}
 	

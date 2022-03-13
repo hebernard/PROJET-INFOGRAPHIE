@@ -11,6 +11,7 @@ public:
 	hierarchySmallButton* propertiesButton;
 
 	cameraHierarchyButton(std::string iconPath, std::string text);
+	~cameraHierarchyButton();
 
 	void draw();
 	void update(int x, int y);

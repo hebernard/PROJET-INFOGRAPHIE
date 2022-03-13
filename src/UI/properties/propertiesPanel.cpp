@@ -67,6 +67,13 @@ propertiesPanel::propertiesPanel() :
 	});
 }
 
+propertiesPanel::~propertiesPanel()
+{
+	delete m_obj;
+	delete backButton;
+	delete animateButton;
+}
+
 void propertiesPanel::draw(object& obj)
 {
 	if (m_obj == nullptr)

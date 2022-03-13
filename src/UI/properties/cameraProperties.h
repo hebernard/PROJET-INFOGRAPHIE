@@ -11,6 +11,7 @@ public:
 	hierarchySmallButton* backButton;
 
 	cameraProperties();
+	~cameraProperties();
 	void draw();
 
 private:

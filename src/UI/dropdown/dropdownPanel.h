@@ -10,6 +10,8 @@ public:
 	ofRectangle rect;
 
 	dropdownPanel();
+	~dropdownPanel();
+
 	void update(int x, int y);
 	void draw();
 

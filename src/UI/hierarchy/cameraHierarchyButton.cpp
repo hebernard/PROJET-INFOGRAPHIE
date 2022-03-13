@@ -32,6 +32,13 @@ cameraHierarchyButton::cameraHierarchyButton(std::string iconPath, std::string t
 	});
 }
 
+cameraHierarchyButton::~cameraHierarchyButton()
+{
+	delete propertiesButton;
+	delete addCameraButton;
+	delete removeCameraButton;
+}
+
 void cameraHierarchyButton::setTheme(const ofxDatGuiTheme* theme)
 {
 	setComponentStyle(theme);

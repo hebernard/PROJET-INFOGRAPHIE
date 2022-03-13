@@ -21,6 +21,7 @@ class hierarchyButton : public ofxDatGuiButton
 {
 public:
 	hierarchyButton(object& obj, std::string iconPath, std::string text);
+	~hierarchyButton();
 
 	void draw();
 	void update(int x, int y);

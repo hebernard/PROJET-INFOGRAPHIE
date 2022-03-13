@@ -8,6 +8,11 @@ dropdownPanel::dropdownPanel() : rect(), buttons()
 	rect.width = 250;
 }
 
+dropdownPanel::~dropdownPanel()
+{
+	for (auto i : buttons) delete i;
+}
+
 void dropdownPanel::update(int x, int y)
 {
 	rect.setPosition(x, y);
