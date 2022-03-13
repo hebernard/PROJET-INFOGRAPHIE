@@ -8,7 +8,7 @@ public:
 	objectModel(std::string path);
 
 	void customDraw();
-	glm::vec3 getCenter();
+	void drawProperties(int x, int y, int width);
 	glm::vec3 getBBox();
 
 private:
