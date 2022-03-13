@@ -28,10 +28,9 @@ ofColor mainTheme::color3() { return darkTheme ? ofColor(58, 119, 243) : ofColor
 
 ofColor mainTheme::recColor() { return darkTheme ? ofColor(235, 52, 66) : ofColor(235, 52, 66); }
 
-ofColor mainTheme::sceneBackgroundColor() { return isDefaultBackground ? mainTheme::sceneDefaultBackgroundColor() : mainTheme::getSceneCustomBackgroundColor(); }
+ofColor mainTheme::sceneBackgroundColor() { return isDefaultBackground ? mainTheme::sceneDefaultBackgroundColor() : mainTheme::sceneCustomBackgroundColor; }
 ofColor mainTheme::sceneDefaultBackgroundColor() { return darkTheme ? ofColor(36) : ofColor(128); }
 ofColor mainTheme::sceneCustomBackgroundColor = ofColor(213, 84, 31);
-ofColor mainTheme::getSceneCustomBackgroundColor() { return mainTheme::sceneCustomBackgroundColor; }
 void mainTheme::setSceneCustomBackgroundColor(ofColor color) { sceneCustomBackgroundColor = color; }
 ofColor mainTheme::gridColor1() { return darkTheme ? ofColor(50, 120) : ofColor(100, 120); }
 ofColor mainTheme::gridColor2() { return darkTheme ? ofColor(150) : ofColor(200); }

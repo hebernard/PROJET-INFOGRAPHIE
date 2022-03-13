@@ -15,6 +15,7 @@ cameraProperties::cameraProperties() :
 	exportSeqImage(cameraPropertiesButton("Image seq.\nExport", "images/icons/gallery.png", false, 0)),
 	backgroundDefault(cameraPropertiesButton("Default\nColor", "images/icons/image.png", true, 1)),
 	backgroundCustom(cameraPropertiesButton("Custom\nColor", "images/icons/image.png", false, 1)),
+	backgroundPicker(mainTheme::sceneCustomBackgroundColor),
 	showGrid(cameraPropertiesButton("Show\nGrid", "images/icons/eye.png", false, 0)),
 	hideGrid(cameraPropertiesButton("Hide\nGrid", "images/icons/no_eye.png", false, 0))
 {
@@ -83,12 +84,19 @@ void cameraProperties::draw()
 		backgroundCustom.setUnselected();
 		mainTheme::isDefaultBackground = true;
 		ofSetBackgroundColor(mainTheme::sceneDefaultBackgroundColor());
+		backgroundPicker.show = false;
 	}
 	if (backgroundCustom.isInside() && utils::mouseReleased) {
 		backgroundCustom.setSelected();
 		backgroundDefault.setUnselected();
 		mainTheme::isDefaultBackground = false;
-		ofSetBackgroundColor(mainTheme::getSceneCustomBackgroundColor());
+		backgroundPicker.show = true;
+	}
+
+	backgroundPicker.draw(rect.x + 80, backgroundCustom.getY());
+	if (backgroundCustom.isSelected)
+	{
+		ofSetBackgroundColor(mainTheme::sceneCustomBackgroundColor);
 	}
 
 	drawText(rect.x + offset, backgroundDefault.getY() - 13, "Background Color", 12);

@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "cameraPropertiesButton.h"
+#include "colorPicker.h"
 
 class hierarchySmallButton;
 
@@ -14,6 +15,7 @@ public:
 	void draw();
 
 private:
+	colorPicker backgroundPicker;
 	ofRectangle rect;
 
 	int offset = 20;

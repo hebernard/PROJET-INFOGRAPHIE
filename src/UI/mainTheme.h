@@ -43,7 +43,6 @@ public:
 	static ofColor sceneBackgroundColor();
 	static ofColor sceneDefaultBackgroundColor();
 	static ofColor sceneCustomBackgroundColor;
-	static ofColor getSceneCustomBackgroundColor();
 	static void setSceneCustomBackgroundColor(ofColor color);
 	static ofColor gridColor1();
 	static ofColor gridColor2();

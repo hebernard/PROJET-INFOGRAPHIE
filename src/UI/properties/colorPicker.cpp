@@ -68,7 +68,7 @@ colorPicker::~colorPicker()
 	delete brInput;
 }
 
-void colorPicker::draw(int x, int y, int width)
+void colorPicker::draw(int x, int y)
 {
 	if (!show)
 	{
@@ -87,7 +87,7 @@ void colorPicker::draw(int x, int y, int width)
 
 	gradientRect.x = rainbowRect.x + rainbowRect.width;
 	gradientRect.y = rainbowRect.y;
-	gradientRect.width = width;
+	gradientRect.width = 198;
 
 	pickerRect.x = rainbowRect.x;
 	pickerRect.y = rainbowRect.y;
@@ -188,14 +188,20 @@ void colorPicker::draw(int x, int y, int width)
 
 	updateGradient();
 
-	// Draw rainbow line
-	ofSetColor(ofColor::white);
-	ofDrawLine(rainbowRect.x, rainbowLine, rainbowRect.x + rainbowRect.width, rainbowLine);
-
-	// Draw gradient circle
 	ofPushStyle();
-	ofNoFill();
-	ofDrawCircle(gradientPos, 10);
+	ofSetColor(ofColor::white);
+	if (rainbowRect.inside(rainbowRect.x + 1, rainbowLine))
+	{
+		// Draw rainbow line
+		ofDrawLine(rainbowRect.x, rainbowLine, rainbowRect.x + rainbowRect.width, rainbowLine);
+	}
+
+	if (gradientRect.inside(gradientPos))
+	{
+		// Draw gradient circle
+		ofNoFill();
+		ofDrawCircle(gradientPos, 10);
+	}
 	ofPopStyle();
 }
 

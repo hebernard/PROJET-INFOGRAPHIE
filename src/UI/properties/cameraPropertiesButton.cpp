@@ -46,7 +46,7 @@ void cameraPropertiesButton::draw(int x, int y, int width)
 			break;
 		case 1:
 			ofPushStyle();
-			ofSetColor(m_isDefault ? mainTheme::fontColor() : mainTheme::getSceneCustomBackgroundColor());
+			ofSetColor(m_isDefault ? mainTheme::fontColor() : mainTheme::sceneCustomBackgroundColor);
 			ofDrawCircle(rect.x + 20, rect.y + 20, 10);
 			ofPopStyle();
 			break;

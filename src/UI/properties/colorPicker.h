@@ -12,13 +12,13 @@ public:
 	colorPicker(ofColor& ref);
 	~colorPicker();
 
-	void draw(int x, int y, int width);
+	void draw(int x, int y);
 
 private:
 	ofColor& m_ref;
 	ofRectangle pickerRect, gradientRect, rainbowRect;
 	ofImage rainbow;
-	float rainbowLine;
+	float rainbowLine = 0;
 	glm::vec2 gradientPos;
 	ofRectangle rgbRect, hexRect, hsbRect;
 	ColorMode currentMode = ColorMode::RGB;

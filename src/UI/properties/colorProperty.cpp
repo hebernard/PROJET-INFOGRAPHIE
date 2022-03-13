@@ -25,7 +25,7 @@ void colorProperty::draw(int x, int y, int width)
 	ofSetColor(m_ref);
 	ofDrawRectRounded(colorRect, 20);
 
-	picker.draw(colorRect.x, colorRect.y, colorRect.width);
+	picker.draw(colorRect.x, colorRect.y);
 
 	if (utils::mousePressed)
 	{
