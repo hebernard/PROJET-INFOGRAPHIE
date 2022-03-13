@@ -1,5 +1,6 @@
 #include "checkBoxProperty.h"
 #include "label.h"
+#include "utils.h"
 
 checkBoxProperty::checkBoxProperty(std::string label, bool& ref) : m_label(label), m_ref(ref)
 {
@@ -15,6 +16,11 @@ checkBoxProperty::checkBoxProperty(std::string label, bool& ref) : m_label(label
 
 void checkBoxProperty::draw(int x, int y, int width)
 {
+	if (checkBox.inside(ofGetMouseX(), ofGetMouseY()) && utils::mouseReleased)
+	{
+		m_ref = !m_ref;
+	}
+
 	rect.x = x;
 	rect.y = y;
 	rect.width = width;
@@ -46,18 +52,3 @@ void checkBoxProperty::setIcon()
 	icon.load(m_ref ? "images/icons/checked.png" : "images/icons/unchecked.png");
 	icon.resize(40, 25);
 }
-
-void checkBoxProperty::mouseReleased(ofMouseEventArgs& args)
-{
-	if (checkBox.inside(ofGetMouseX(), ofGetMouseY()))
-	{
-		m_ref = !m_ref;
-	}
-}
-
-void checkBoxProperty::mouseMoved(ofMouseEventArgs& args) {}
-void checkBoxProperty::mousePressed(ofMouseEventArgs& args) {}
-void checkBoxProperty::mouseScrolled(ofMouseEventArgs& args) {}
-void checkBoxProperty::mouseEntered(ofMouseEventArgs& args) {}
-void checkBoxProperty::mouseExited(ofMouseEventArgs& args) {}
-void checkBoxProperty::mouseDragged(ofMouseEventArgs& args) {}

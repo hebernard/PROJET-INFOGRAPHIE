@@ -6,7 +6,6 @@
 void ofApp::setup()
 {
 	ofEnableAlphaBlending();
-	ofSetCircleResolution(50);
 	ofSetFrameRate(60);
 
 	//setup darkTheme by default

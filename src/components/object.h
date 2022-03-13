@@ -82,14 +82,10 @@ public:
 	{
 		button->update(x, y);
 		button->draw();
-		ofUnregisterMouseEvents(filledCheckBox);
-		ofUnregisterMouseEvents(bboxCheckBox);
 	}
 
 	virtual void drawProperties(int x, int y, int width)
 	{
-		ofRegisterMouseEvents(filledCheckBox);
-		ofRegisterMouseEvents(bboxCheckBox);
 		int offset = y;
 		bboxCheckBox->draw(x, offset, width);
 		offset += bboxCheckBox->getHeight() + 10;
