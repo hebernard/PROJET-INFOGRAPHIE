@@ -204,6 +204,14 @@ public:
 		isOrtho = false;
 	}
 
+	void resetViews()
+	{
+		for (size_t i = 0; i < cameras.size(); i++)
+		{
+			cameras.at(i)->resetView();
+		}
+	}
+
 private:
 	scene() {}
 	~scene()

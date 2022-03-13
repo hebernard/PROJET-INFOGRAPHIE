@@ -5,10 +5,11 @@
 #include "utils.h"
 #include "scene.h"
 #include "mainTheme.h"
-
+#include "scene.h"
 
 cameraProperties::cameraProperties() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),
+	resetCameraButton(new hierarchySmallButton("images/icons/reset.png")),
 	perspective(cameraPropertiesButton("3D\nPerspective", "images/icons/projection.png", false, 0)),
 	orthogonal(cameraPropertiesButton("2D\nOrthogonal", "images/icons/projection.png", false, 0)),
 	exportImage(cameraPropertiesButton("Image\nExport", "images/icons/image.png", false, 0)),
@@ -28,6 +29,12 @@ cameraProperties::cameraProperties() :
 	showGrid.setSelected();
 
 	buttonWidth = (rect.width - (offset * 3)) / 2;
+
+	resetCameraButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		scene& s = s.getInstance();
+		s.resetViews();
+	});
 }
 
 void cameraProperties::draw()
@@ -42,6 +49,8 @@ void cameraProperties::draw()
 	backButton->update(rect.x + 15, rect.y + 10);
 	backButton->draw();
 
+	resetCameraButton->update(rect.x + rect.width - resetCameraButton->getWidth() - 15, rect.y + 10);
+	resetCameraButton->draw();
 
 	//Export
 	exportImage.draw(rect.x + offset, rect.y + 100, buttonWidth);

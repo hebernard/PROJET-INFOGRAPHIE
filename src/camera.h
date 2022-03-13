@@ -24,6 +24,7 @@ public:
 
 	void setOrtho();
 	void setPerpective();
+	void resetView();
 
 	/// \}
 	/// \name Rendering

@@ -8,7 +8,6 @@ class hierarchySmallButton;
 class cameraProperties
 {
 public:
-
 	hierarchySmallButton* backButton;
 
 	cameraProperties();
@@ -25,5 +24,7 @@ private:
 	cameraPropertiesButton perspective, orthogonal;
 	cameraPropertiesButton backgroundDefault, backgroundCustom;
 	cameraPropertiesButton showGrid, hideGrid;
+
+	hierarchySmallButton* resetCameraButton;
 };
 
