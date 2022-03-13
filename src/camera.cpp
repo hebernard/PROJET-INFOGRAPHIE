@@ -532,15 +532,17 @@ void camera::mouseScrolled(ofMouseEventArgs& mouse) {
 		}
 		else {
 			translate.z = -mouse.scrollY * 30 * sensitivityTranslate.z * (getDistance() + std::numeric_limits<float>::epsilon()) / area.height;
-			if (translate.z > 0) {
-				cursor::setZoomOutCursor();
-				timer = 0;
-			}
-			if (translate.z < 0) {
-				cursor::setZoomInCursor();
-				timer = 0;
-			}
 		}
+
+		if (translate.z > 0) {
+			cursor::setZoomOutCursor();
+			timer = 0;
+		}
+		if (translate.z < 0) {
+			cursor::setZoomInCursor();
+			timer = 0;
+		}
+
 		currentTransformType = TRANSFORM_SCALE;
 		bIsScrolling = true;
 	}
