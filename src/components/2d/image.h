@@ -5,7 +5,6 @@
 class image : public object
 {
 public:
-	glm::vec2 size;
 	image(string path);
 
 	void customDraw();
@@ -14,5 +13,10 @@ public:
 
 private:
 	ofImage im;
+
+	float width;
+	float height;
+	inputProperty widthInput;
+	inputProperty heightInput;
 };
 

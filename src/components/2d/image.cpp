@@ -1,10 +1,18 @@
 #include "image.h"
 
-image::image(std::string path) : object(new hierarchyButton(*this, "images/icons/image.png", "Image")), size(), im()
+image::image(std::string path) :
+	object(new hierarchyButton(*this, "images/icons/image.png", "Image")),
+	width(0),
+	height(0),
+	im(),
+	widthInput("Width", width),
+	heightInput("Height", height)
 {
 	im.load(path);
-	size.x = im.getWidth() / 100;
-	size.y = im.getHeight() / 100;
+	width = im.getWidth() / 100;
+	widthInput.forceUpdateValue(10000);
+	height = im.getHeight() / 100;
+	heightInput.forceUpdateValue(10000);
 
 	cout << "Image loaded" << endl;
 }
@@ -14,20 +22,30 @@ void image::customDraw()
 	if (im.isAllocated())
 	{
 		auto scale = getScale();
-		float width = size.x * scale.x;
-		float height = size.y * scale.y;
-		im.draw(-width / 2, -height / 2, 0, width, height);
+		float w = width * scale.x;
+		float h = height * scale.y;
+		im.draw(-w / 2, -h / 2, 0, w, h);
 	}
 }
 
 void image::drawProperties(int x, int y, int width)
 {
 	// Dont call base class to not set filled property
-	// todo
+	int offset = y;
+	bboxCheckBox->draw(x, offset, width);
+	offset += bboxCheckBox->getHeight() + 10;
+
+	colorPicker->draw(x, offset, width);
+	offset += 10 + colorPicker->getHeight();
+
+	widthInput.draw(x, offset, width);
+	offset += 10 + widthInput.getHeight();
+
+	heightInput.draw(x, offset, width);
 }
 
 glm::vec3 image::getBBox()
 {
 	auto scale = getScale();
-	return glm::vec3(size.x * scale.x, size.y * scale.y, 0);
+	return glm::vec3(width * scale.x, height * scale.y, 0);
 }
