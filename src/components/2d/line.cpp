@@ -3,7 +3,7 @@
 line::line(int length)
 	: object(new hierarchyButton(*this, "images/icons/line.png", "Line")),
 	m_length(length),
-	lengthInput("Lenght", m_length),
+	lengthInput("Length", m_length),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
 }

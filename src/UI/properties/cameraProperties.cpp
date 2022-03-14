@@ -69,11 +69,15 @@ void cameraProperties::draw()
 	if (exportImage.isInside() && utils::mouseReleased) {
 		exportImage.setSelected();
 		exportSeqImage.setUnselected();
+		imgEx.exportImages();
 	}
 	if (exportSeqImage.isInside() && utils::mouseReleased) {
 		exportSeqImage.setSelected();
 		exportImage.setUnselected();
+		imgEx.exportSeqImages();
 	}
+
+	imgEx.updateTimer();
 
 	drawText(rect.x + offset, exportImage.getY() - 13, "Export", 12);
 
@@ -146,3 +150,5 @@ void cameraProperties::draw()
 
 	drawText(rect.x + offset, showGrid.getY() - 13, "Grid (Hide/Show)", 12);
 }
+
+

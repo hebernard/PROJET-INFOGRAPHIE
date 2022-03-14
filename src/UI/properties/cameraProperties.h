@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include "cameraPropertiesButton.h"
 #include "colorPicker.h"
+#include "imageExport.h"
 
 class hierarchySmallButton;
 
@@ -14,12 +15,15 @@ public:
 	~cameraProperties();
 	void draw();
 
+
 private:
 	colorPicker backgroundPicker;
 	ofRectangle rect;
 
 	int offset = 20;
 	int buttonWidth;
+
+	imageExport imgEx;
 
 	cameraPropertiesButton exportImage, exportSeqImage;
 	cameraPropertiesButton perspective, orthogonal;

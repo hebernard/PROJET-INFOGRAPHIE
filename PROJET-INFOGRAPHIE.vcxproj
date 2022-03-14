@@ -182,6 +182,7 @@
   <ItemGroup>
     <ClCompile Include="src\components\3d\objectModel.cpp" />
     <ClCompile Include="src\cursor.cpp" />
+    <ClCompile Include="src\imageExport.cpp" />
     <ClCompile Include="src\keyframe.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
@@ -230,6 +231,7 @@
   <ItemGroup>
     <ClInclude Include="src\components\3d\objectModel.h" />
     <ClInclude Include="src\cursor.h" />
+    <ClInclude Include="src\imageExport.h" />
     <ClInclude Include="src\keyframe.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\camera.h" />
