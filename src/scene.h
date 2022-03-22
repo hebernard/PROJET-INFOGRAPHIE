@@ -4,6 +4,7 @@
 #include "components/object.h"
 #include "UI/hierarchy/hierarchyPanel.h"
 #include "camera.h"
+#include "light.h"
 #include "mainTheme.h"
 #include "UI/properties/propertiesPanel.h"
 #include "components/3d/sphere.h"
@@ -22,6 +23,7 @@ public:
 	}
 
 	void setupObjects() {
+
 		sphere* sp = new sphere(1);
 		sp->setPosition(glm::vec3(0, 1, 0));
 		addObject(sp);
@@ -218,10 +220,12 @@ private:
 	{
 		for (auto i : objects) delete i;
 		for (auto c : cameras) delete c;
+		for (auto l : lights) delete l;
 	}
 
 	std::vector<object*> objects;
 	std::vector<camera*> cameras;
+	std::vector<light*> lights;
 
 	hierarchyPanel hierarchy;
 	propertiesPanel properties;

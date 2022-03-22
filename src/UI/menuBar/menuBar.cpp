@@ -132,7 +132,7 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	dropdown3d->addButton(cubeButton);
 
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
-	exportButton->onButtonEvent(this, &menuBar::onExportButtonEvent);
+	//exportButton->onButtonEvent(this, &menuBar::onExportButtonEvent);
 	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 }
 
@@ -142,7 +142,7 @@ menuBar::~menuBar()
 	delete dropdown3d;
 
 	delete importButton;
-	delete exportButton;
+	//delete exportButton;
 	delete themeButton;
 }
 
@@ -165,7 +165,7 @@ void menuBar::draw()
 	dropdown3d->draw();
 
 	importButton->draw();
-	exportButton->draw();
+	//exportButton->draw();
 	themeButton->draw();
 
 	ofPopStyle();
@@ -188,6 +188,8 @@ void menuBar::update()
 	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 
 	posX += importButton->getWidth() + 10;
+
+	/*
 	if (posX < ofGetWidth() / 2)
 	{
 		exportButton->update(ofGetWidth() / 2, rect.height / 2);
@@ -196,6 +198,8 @@ void menuBar::update()
 	{
 		exportButton->update(posX + exportButton->getWidth() / 2, rect.height / 2);
 	}
+	*/
+
 	themeButton->update(ofGetWidth() - (themeButton->getWidth()*2), posY + dropdown2d->getHeight() / 2 - themeButton->getHeight() / 2);
 }
 

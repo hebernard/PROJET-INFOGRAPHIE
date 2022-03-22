@@ -114,6 +114,7 @@
     <ClCompile Include="src\UI\properties\cameraPropertiesButton.cpp" />
     <ClCompile Include="src\UI\properties\colorPicker.cpp" />
     <ClCompile Include="src\imageExport.cpp" />
+    <ClCompile Include="src\components\light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -487,6 +488,7 @@
     <ClInclude Include="src\UI\properties\cameraPropertiesButton.h" />
     <ClInclude Include="src\UI\properties\colorPicker.h" />
     <ClInclude Include="src\imageExport.h" />
+    <ClInclude Include="src\components\light.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
