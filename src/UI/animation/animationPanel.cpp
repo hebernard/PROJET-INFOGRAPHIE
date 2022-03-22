@@ -35,7 +35,6 @@ animationPanel::animationPanel() :
 
 animationPanel::~animationPanel()
 {
-	delete m_obj;
 	delete playButton;
 	delete recordButton;
 	delete maxSecondsInput;

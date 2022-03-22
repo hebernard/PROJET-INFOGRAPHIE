@@ -69,7 +69,6 @@ propertiesPanel::propertiesPanel() :
 
 propertiesPanel::~propertiesPanel()
 {
-	delete m_obj;
 	delete backButton;
 	delete animateButton;
 }

@@ -42,7 +42,7 @@ void hierarchyPanel::setup()
 
 void hierarchyPanel::draw(const vector<object*>& objects)
 {
-	rect.height = ofGetHeight() - 150;
+	rect.height = ofGetHeight() - 125;
 	rect.x = ofGetWidth() - rect.width - 20;
 
 	if (rect.inside(ofGetMouseX(), ofGetMouseY()))
