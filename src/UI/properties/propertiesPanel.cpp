@@ -11,6 +11,7 @@
 propertiesPanel::propertiesPanel() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),
 	animateButton(new hierarchySmallButton("images/icons/animation.png")),
+	materialButton(new hierarchySmallButton("images/icons/material.png")),
 	position(centeredSlider("Position")),
 	rotation(centeredSlider("Rotation")),
 	scale(centeredSlider("Scale", true))
@@ -33,6 +34,12 @@ propertiesPanel::propertiesPanel() :
 	animateButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		animationPanelVisible = !animationPanelVisible;
+	});
+
+	materialButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		animationPanelVisible = false;
+		materialPanelVisible = true;
 	});
 
 	position.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -65,12 +72,18 @@ propertiesPanel::propertiesPanel() :
 			s.currentSelected->setScale(glm::vec3(1, 1, 1));
 		}
 	});
+
+	matPanel.backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		materialPanelVisible = false;
+	});
 }
 
 propertiesPanel::~propertiesPanel()
 {
 	delete backButton;
 	delete animateButton;
+	delete materialButton;
 }
 
 void propertiesPanel::draw(object& obj)
@@ -90,6 +103,13 @@ void propertiesPanel::draw(object& obj)
 	rect.height = ofGetHeight() - 125;
 	rect.x = ofGetWidth() - rect.width - 20;
 
+	if (materialPanelVisible)
+	{
+		matPanel.draw(obj);
+		// Dont draw the normal panel
+		return;
+	}
+
 	drawPanel(rect);
 
 	drawText(rect.x + 60, rect.y + 32, obj.getName(), 14);
@@ -99,6 +119,9 @@ void propertiesPanel::draw(object& obj)
 
 	animateButton->update(rect.x + rect.width - animateButton->getWidth() - 15, rect.y + 10);
 	animateButton->draw();
+
+	materialButton->update(animateButton->getX() - materialButton->getWidth() - 15, rect.y + 10);
+	materialButton->draw();
 
 	drawLine(rect.x, rect.y + 55, rect.width);
 

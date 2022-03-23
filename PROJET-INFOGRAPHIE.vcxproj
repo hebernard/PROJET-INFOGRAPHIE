@@ -207,6 +207,7 @@
     <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp" />
     <ClCompile Include="src\UI\label.cpp" />
     <ClCompile Include="src\UI\mainTheme.cpp" />
+    <ClCompile Include="src\UI\materials\materialPanel.cpp" />
     <ClCompile Include="src\UI\menuBar\menuBar.cpp" />
     <ClCompile Include="src\UI\menuBar\menuBarButton.cpp" />
     <ClCompile Include="src\UI\menuBar\menuBarButtonAlt.cpp" />
@@ -217,6 +218,7 @@
     <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
     <ClCompile Include="src\UI\properties\colorPicker.cpp" />
     <ClCompile Include="src\UI\properties\colorProperty.cpp" />
+    <ClCompile Include="src\UI\properties\imageProperty.cpp" />
     <ClCompile Include="src\UI\properties\inputProperty.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp" />
@@ -258,6 +260,7 @@
     <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
     <ClInclude Include="src\UI\label.h" />
     <ClInclude Include="src\UI\mainTheme.h" />
+    <ClInclude Include="src\UI\materials\materialPanel.h" />
     <ClInclude Include="src\UI\menuBar\menuBar.h" />
     <ClInclude Include="src\UI\menuBar\menuBarButton.h" />
     <ClInclude Include="src\UI\menuBar\menuBarButtonAlt.h" />
@@ -269,6 +272,7 @@
     <ClInclude Include="src\UI\properties\colorPicker.h" />
     <ClInclude Include="src\UI\properties\colorProperty.h" />
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
+    <ClInclude Include="src\UI\properties\imageProperty.h" />
     <ClInclude Include="src\UI\properties\inputProperty.h" />
     <ClInclude Include="src\UI\properties\propertiesPanel.h" />
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h" />

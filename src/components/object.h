@@ -21,6 +21,9 @@ public:
 	std::vector<keyframe> keyframes;
 	float animationMaxTime = 0;
 
+	ofTexture texture;
+	ofMaterial material;
+
 	object(hierarchyButton* btn) : 
 		button(btn), 
 		isSelected(false), 
@@ -74,7 +77,19 @@ public:
 			ofNoFill();
 		}
 		ofSetColor(color);
+
+		if (texture.isAllocated())
+		{
+			texture.bind();
+		}
+
 		customDraw();
+
+		if (texture.isAllocated())
+		{
+			texture.unbind();
+		}
+
 		ofPopStyle();
 		ofPopMatrix();
 	}

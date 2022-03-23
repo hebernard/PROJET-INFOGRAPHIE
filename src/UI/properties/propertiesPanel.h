@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "centeredSlider.h"
 #include "animation/animationPanel.h"
+#include "materials/materialPanel.h"
 
 class object;
 class hierarchySmallButton;
@@ -36,11 +37,15 @@ private:
 	ofRectangle rect;
 	hierarchySmallButton* backButton;
 	hierarchySmallButton* animateButton;
+	hierarchySmallButton* materialButton;
 
     bool animationPanelVisible = false;
     animationPanel animPanel;
 
 	centeredSlider position, rotation, scale;
+
+    bool materialPanelVisible = false;
+    materialPanel matPanel;
 
     void drawTransformSliders(object& obj);
     void drawLine(int x, int y, int width);

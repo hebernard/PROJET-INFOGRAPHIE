@@ -5,6 +5,7 @@
 
 void ofApp::setup()
 {
+	ofDisableArbTex();
 	ofEnableAlphaBlending();
 	ofSetFrameRate(60);
 

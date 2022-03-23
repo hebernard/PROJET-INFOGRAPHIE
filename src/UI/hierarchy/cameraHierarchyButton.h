@@ -2,8 +2,7 @@
 
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
-
-class hierarchySmallButton;
+#include "hierarchySmallButton.h"
 
 class cameraHierarchyButton : public ofxDatGuiButton
 {
