@@ -16,6 +16,9 @@ public:
 	{
 		rect.height = height;
 		labelSize = label::getSize(l, 10);
+
+		// Fix "Spot" having higher height
+		labelSize.y = 13;
 	}
 
 	void draw(int x, int y, int width)
@@ -34,13 +37,15 @@ public:
 		ofDrawRectangle(rect);
 		ofPopStyle();
 
-		drawText(rect.x + rect.width/2 - labelSize.x / 2, rect.y + labelSize.y + 5, label, 10);
+		drawText(rect.x + rect.width/2 - labelSize.x / 2, rect.y + labelSize.y, label, 10);
 	}
 };
 
 class dropdownProperty
 {
 public:
+	std::function<void(int)> onClick;
+
 	dropdownProperty(string label);
 
 	void setElements(vector<string> el);

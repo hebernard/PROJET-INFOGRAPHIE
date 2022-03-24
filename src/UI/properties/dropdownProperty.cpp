@@ -50,16 +50,17 @@ void dropdownProperty::draw(int x, int y, int w)
 		utils::drawOnTopQueue.push([this]() -> void
 		{
 			ofDrawRectRounded(dropdownRect, 8);
-			int y = dropdownRect.y + 10;
 			for (int i = 0; i < elements.size(); i++)
 			{
-				y += elements[i].height * i;
+				int y = dropdownRect.y + 10 + elements[i].height * i;
 				elements[i].draw(dropdownRect.x, y, dropdownRect.width);
 
 				if (elements[i].hovered && utils::mousePressed)
 				{
 					current = elements[i].label;
 					elements[i].selected = true;
+					onClick(i);
+
 					for (int j = 0; j < elements.size(); j++)
 					{
 						if (i != j)
@@ -74,6 +75,6 @@ void dropdownProperty::draw(int x, int y, int w)
 		});
 	}
 
-	auto size = label::getSize(current, 11);
-	drawText(rect.x + rect.width / 2 - size.x / 2, rect.y + size.y + 5, current, 11);
+	auto size = label::getSize(current, 10);
+	drawText(rect.x + rect.width / 2 - size.x / 2, rect.y + 13, current, 10);
 }

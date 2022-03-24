@@ -29,7 +29,8 @@ light::light(bool isSecondary) :
     diffuseColor = ofColor(191, 191, 191);
     specularColor = ofColor(191, 191, 191);
 
-    lightTypeProp.setElements({ "Test1", "Test2" });
+    lightTypeProp.setElements({ "Ambient", "Directional", "Point", "Spot" });
+    lightTypeProp.onClick = [&](int i) { setType(LightType(i)); };
 }
 
 void light::update()
@@ -147,20 +148,24 @@ void light::setType(LightType type)
     isActiveShader = false;
     activeType = type;
 
+    cout << "Set Light Type to: ";
     switch (activeType)
     {
     case LightType::ambient:
         li.setAmbientColor(ambientColor);
+        cout << "Ambient" << endl;
         break;
 
     case LightType::directional:
         li.setDiffuseColor(diffuseColor);
         li.setSpecularColor(specularColor);
+        cout << "Directional" << endl;
         break;
 
     case LightType::point:
         li.setDiffuseColor(diffuseColor);
         li.setSpecularColor(specularColor);
+        cout << "Point" << endl;
         break;
 
     case LightType::spot:
@@ -168,6 +173,7 @@ void light::setType(LightType type)
         li.setSpecularColor(specularColor);
         li.setSpotConcentration(2);
         li.setSpotlightCutOff(30);
+        cout << "Spot" << endl;
         break;
 
     default:
