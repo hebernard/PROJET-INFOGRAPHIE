@@ -8,13 +8,14 @@ enum class LightType { ambient, directional, point, spot };
 
 class light : public object
 {
-public :
-
+public:
 	ofLight li;
 
-	light();
+	light(bool isSecondary);
 	void update();
 	void customDraw();
+
+	void drawProperties(int x, int y, int width);
 
 	ShaderType getIlluminationModel();
 	void setIlluminationModel(ShaderType model);
@@ -22,14 +23,9 @@ public :
 	LightType getType();
 	void setType(LightType type);
 
-	void hide();
-
 	float oscillate(float time, float frequency, float amplitude);
 
-private :
-
-	bool isEnabled;
-	bool hideLight;
+private:
 
 	float oscillation;
 	float oscillationFrequency;
@@ -61,6 +57,4 @@ private :
 	ofColor specularColor;
 
 	bool smoothLighting;
-
 };
-

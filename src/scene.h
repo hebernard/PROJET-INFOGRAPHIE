@@ -9,6 +9,7 @@
 #include "UI/properties/propertiesPanel.h"
 #include "components/3d/sphere.h"
 #include "components/2d/circle.h"
+#include "components/light.h"
 
 class scene
 {
@@ -22,7 +23,10 @@ public:
 		return instance;
 	}
 
-	void setupObjects() {
+	void setupObjects()
+	{
+		// Add the necessary light
+		addLight(false);
 
 		sphere* sp = new sphere(1);
 		sp->setPosition(glm::vec3(0, 1, 0));
@@ -57,9 +61,16 @@ public:
 		currentSelected = &obj;
 	}
 
-	void addObject(object* obj)
+	void addObject(object* obj, int index = -1)
 	{
-		objects.push_back(obj);
+		if (index == -1)
+		{
+			objects.push_back(obj);
+		}
+		else
+		{
+			objects.insert(objects.begin() + index, obj);
+		}
 		focusObject(*obj);
 		std::cout << "Added object to scene" << std::endl;
 	}
@@ -154,6 +165,23 @@ public:
 		cameras.push_back(cam);
 	}
 
+	void addLight(bool isSecondary)
+	{
+		light* li = new light(isSecondary);
+		li->canHaveMaterial = false;
+
+		// Add right after the last light
+		addObject(li, lightCount);
+
+		lightCount++;
+	}
+
+	void removeLight()
+	{
+		lightCount--;
+		deleteObjects();
+	}
+
 	void removeCamera()
 	{
 		if (cameraCount() > 1)
@@ -220,12 +248,11 @@ private:
 	{
 		for (auto i : objects) delete i;
 		for (auto c : cameras) delete c;
-		for (auto l : lights) delete l;
 	}
 
 	std::vector<object*> objects;
 	std::vector<camera*> cameras;
-	std::vector<light*> lights;
+	int lightCount = 0;
 
 	hierarchyPanel hierarchy;
 	propertiesPanel properties;

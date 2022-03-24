@@ -120,8 +120,11 @@ void propertiesPanel::draw(object& obj)
 	animateButton->update(rect.x + rect.width - animateButton->getWidth() - 15, rect.y + 10);
 	animateButton->draw();
 
-	materialButton->update(animateButton->getX() - materialButton->getWidth() - 15, rect.y + 10);
-	materialButton->draw();
+	if (obj.canHaveMaterial)
+	{
+		materialButton->update(animateButton->getX() - materialButton->getWidth() - 15, rect.y + 10);
+		materialButton->draw();
+	}
 
 	drawLine(rect.x, rect.y + 55, rect.width);
 

@@ -205,6 +205,7 @@
     <ClCompile Include="src\UI\hierarchy\hierarchyButton.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp" />
     <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp" />
+    <ClCompile Include="src\UI\hierarchy\lightHierarchyButton.cpp" />
     <ClCompile Include="src\UI\label.cpp" />
     <ClCompile Include="src\UI\mainTheme.cpp" />
     <ClCompile Include="src\UI\materials\materialPanel.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="src\UI\hierarchy\hierarchyButton.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h" />
     <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h" />
+    <ClInclude Include="src\UI\hierarchy\lightHierarchyButton.h" />
     <ClInclude Include="src\UI\label.h" />
     <ClInclude Include="src\UI\mainTheme.h" />
     <ClInclude Include="src\UI\materials\materialPanel.h" />

@@ -2,9 +2,9 @@
 
 #include "ofxDatGuiButton.h"
 #include "ofImage.h"
+#include "hierarchySmallButton.h"
 
 class object;
-class hierarchySmallButton;
 
 class hierarchyButtonTheme : public ofxDatGuiTheme
 {
@@ -20,14 +20,16 @@ public:
 class hierarchyButton : public ofxDatGuiButton
 {
 public:
-	hierarchyButton(object& obj, std::string iconPath, std::string text);
-	~hierarchyButton();
+	bool isInteractable = true;
 
-	void draw();
-	void update(int x, int y);
+	hierarchyButton(object& obj, std::string iconPath, std::string text);
+	virtual ~hierarchyButton();
+
+	virtual void draw();
+	virtual void update(int x, int y);
 	std::string getLabel();
 
-private:
+protected:
 	std::string m_text;
 	glm::vec2 textSize;
 	ofImage icon;
@@ -39,5 +41,8 @@ private:
 
 	void setTheme(const ofxDatGuiTheme* theme);
 	void onClick(ofxDatGuiButtonEvent e);
+
+	void drawMain();
+	void drawButtons();
 };
 

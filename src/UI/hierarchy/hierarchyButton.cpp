@@ -2,7 +2,6 @@
 #include "UI/label.h"
 #include "components/object.h"
 #include "scene.h"
-#include "hierarchySmallButton.h"
 #include "cursor.h"
 
 hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : 
@@ -56,21 +55,36 @@ void hierarchyButton::setTheme(const ofxDatGuiTheme* theme)
 
 void hierarchyButton::onClick(ofxDatGuiButtonEvent e)
 {
-	scene& s = s.getInstance();
-	s.focusObject(m_obj);
+	if (isInteractable)
+	{
+		scene& s = s.getInstance();
+		s.focusObject(m_obj);
+	}
 }
 
-void hierarchyButton::draw()
+void hierarchyButton::drawButtons()
+{
+	deleteButton->draw();
+	propertiesButton->draw();
+	visibleButton->draw();
+}
+
+void hierarchyButton::drawMain()
 {
 	ofPushStyle();
 	ofFill();
 
-	if (mMouseOver || m_obj.isSelected)
+	if (isInteractable && (mMouseOver || m_obj.isSelected))
 	{
 		if (!m_obj.isSelected) {
 			cursor::setTargetCursor();
 		}
 		ofSetColor(mainTheme::panelButtonHoverColor());
+		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());
+	}
+	else if (!isInteractable)
+	{
+		ofSetColor(mainTheme::panelColor());
 		ofDrawRectangle(x - 2, y, getWidth() + 4, getHeight());
 	}
 
@@ -82,10 +96,13 @@ void hierarchyButton::draw()
 
 	drawText(x + icon.getWidth() + 25 * 2, y + getHeight() / 2 + textSize.y / 2, m_text, 11, mainTheme::fontColor(), mainTheme::fontRegularPath);
 
-	deleteButton->draw();
-	propertiesButton->draw();
-	visibleButton->draw();
 	ofPopStyle();
+}
+
+void hierarchyButton::draw()
+{
+	drawMain();
+	drawButtons();
 }
 
 void hierarchyButton::update(int x, int y)

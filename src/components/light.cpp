@@ -1,11 +1,8 @@
 #include "light.h"
+#include "lightHierarchyButton.h"
 
-light::light() : object(new hierarchyButton(*this, "images/icons/light.png", "Light"))
+light::light(bool isSecondary) : object(new lightHierarchyButton(*this, "images/icons/light.png", "Light", isSecondary))
 {
-
-    isEnabled = true;
-    hideLight = false;
-
     oscillationFrequency = 7500;
     oscillationAmplitude = 32.0f;
 
@@ -29,11 +26,19 @@ light::light() : object(new hierarchyButton(*this, "images/icons/light.png", "Li
     ambientColor = ofColor(191, 191, 191);
     diffuseColor = ofColor(191, 191, 191);
     specularColor = ofColor(191, 191, 191);
-
 }
 
 void light::update()
 {
+    if (isVisible)
+    {
+        li.enable();
+    }
+    else
+    {
+        li.disable();
+    }
+
     // mise à jour d'une valeur numérique animée par un oscillateur
     float oscillation = oscillate(ofGetElapsedTimeMillis(), oscillationFrequency, oscillationAmplitude) + oscillationAmplitude;
 
@@ -103,40 +108,17 @@ void light::update()
         }
     }
     else {
-        switch (activeType)
-        {
-        case LightType::ambient:
-            li.setAmbientColor(ambientColor);
-            break;
-
-        case LightType::directional:
-            li.setDiffuseColor(diffuseColor);
-            li.setSpecularColor(specularColor);
-            break;
-
-        case LightType::point:
-            li.setDiffuseColor(diffuseColor);
-            li.setSpecularColor(specularColor);
-            break;
-
-        case LightType::spot:
-            li.setDiffuseColor(diffuseColor);
-            li.setSpecularColor(specularColor);
-            li.setSpotConcentration(2);
-            li.setSpotlightCutOff(30);
-            break;
-
-        default:
-            break;
-        }
+        setType(activeType);
     }
 }
 
 void light::customDraw()
 {
-    if (!hideLight) {
-        li.draw();
-    }
+    li.draw();
+}
+
+void light::drawProperties(int x, int y, int width)
+{
 }
 
 ShaderType light::getIlluminationModel()
@@ -160,39 +142,33 @@ void light::setType(LightType type)
     isActiveShader = false;
     activeType = type;
 
-    switch (type)
+    switch (activeType)
     {
     case LightType::ambient:
         li.setAmbientColor(ambientColor);
         break;
 
     case LightType::directional:
-        li.setAmbientColor(0);
-        li.setDirectional();
+        li.setDiffuseColor(diffuseColor);
+        li.setSpecularColor(specularColor);
         break;
 
     case LightType::point:
-        li.setAmbientColor(0);
-        li.setPointLight();
+        li.setDiffuseColor(diffuseColor);
+        li.setSpecularColor(specularColor);
         break;
 
     case LightType::spot:
-        li.setAmbientColor(0);
+        li.setDiffuseColor(diffuseColor);
+        li.setSpecularColor(specularColor);
         li.setSpotConcentration(2);
         li.setSpotlightCutOff(30);
-        li.setSpotlight();
         break;
 
     default:
         break;
     }
 }
-
-void light::hide()
-{
-    hideLight = !hideLight;
-}
-
 
 float light::oscillate(float time, float frequency, float amplitude)
 {

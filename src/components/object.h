@@ -21,6 +21,7 @@ public:
 	std::vector<keyframe> keyframes;
 	float animationMaxTime = 0;
 
+	bool canHaveMaterial = true;
 	ofTexture texture;
 	ofMaterial material;
 
