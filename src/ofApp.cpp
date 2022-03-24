@@ -34,6 +34,7 @@ void ofApp::update()
 void ofApp::draw()
 {
 	ofSetColor(ofColor::white);
+
 	if (!cursor::isCameraCursor() && !cursor::isDraggedCursor()) { cursor::setDefaultCursor(); }
 
 	ofEnableDepthTest();

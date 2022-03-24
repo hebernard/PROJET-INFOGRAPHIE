@@ -6,6 +6,7 @@ objectModel::objectModel(std::string path) : object(new hierarchyButton(*this, "
 	obj.setScaleNormalization(true);
 	obj.setRotation(0, 180, 1, 0, 0);
 	obj.setScale(0.1f, 0.1f, 0.1f);
+	obj.disableMaterials();
 
 	cout << "3D object loaded" << endl;
 }

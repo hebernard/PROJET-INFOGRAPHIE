@@ -13,11 +13,14 @@ colorPicker::colorPicker(ofColor& ref) : m_ref(ref)
 	hexRect.height = rgbRect.height;
 	hsbRect.width = rgbRect.width;
 	hsbRect.height = rgbRect.height;
+	gradientRect.width = 198;
 
 	rainbow.load("ofxbraitsch/ofxdatgui/picker-rainbow.png");
 	rainbow.resize(10, gradientRect.height);
 	rainbowRect.width = rainbow.getWidth();
 	rainbowRect.height = gradientRect.height;
+
+	pickerRect.width = rainbowRect.width + gradientRect.width;
 
 	// setup the vbo that draws the main gradient
 	gPoints.push_back(ofVec2f(0, 0));
@@ -75,7 +78,9 @@ void colorPicker::draw(int x, int y)
 		return;
 	}
 
-	rainbowRect.x = x - 310;
+	int offset = 10;
+
+	rainbowRect.x = x - pickerRect.width - offset * 2 - 10;
 	if (y + pickerRect.height + 100 > ofGetHeight())
 	{
 		rainbowRect.y = ofGetHeight() - pickerRect.height - 100;
@@ -87,12 +92,10 @@ void colorPicker::draw(int x, int y)
 
 	gradientRect.x = rainbowRect.x + rainbowRect.width;
 	gradientRect.y = rainbowRect.y;
-	gradientRect.width = 198;
 
 	pickerRect.x = rainbowRect.x;
 	pickerRect.y = rainbowRect.y;
-	pickerRect.width = rainbowRect.width + gradientRect.width;
-	drawPanel(pickerRect.x - 10, pickerRect.y - 10, pickerRect.width + 20, pickerRect.height + 20);
+	drawPanel(pickerRect.x - offset, pickerRect.y - offset, pickerRect.width + offset * 2, pickerRect.height + offset * 2);
 	ofSetColor(ofColor::white);
 	rainbow.draw(rainbowRect.x, rainbowRect.y);
 

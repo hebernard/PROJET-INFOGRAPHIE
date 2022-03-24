@@ -13,6 +13,12 @@ materialPanel::materialPanel() :
 
 materialPanel::~materialPanel()
 {
+	delete backButton;
+	delete ambientColor;
+	delete diffuseColor;
+	delete emissiveColor;
+	delete specularColor;
+	delete shininess;
 }
 
 void materialPanel::draw(object& obj)
@@ -29,6 +35,29 @@ void materialPanel::draw(object& obj)
 
 	int propX = rect.x + 15;
 	int propW = rect.width - 30;
+	int propY = rect.y + imgProp.getHeight();
+	int offset = 15;
 
-	imgProp.draw(obj.texture, propX, rect.y + imgProp.getHeight(), propW);
+	imgProp.draw(obj.texture, propX, propY, propW);
+
+	propY += imgProp.getHeight() + offset;
+	ambientColorProp.draw(propX, propY, propW);
+
+	propY += ambientColorProp.getHeight() + offset;
+	diffuseColorProp.draw(propX, propY, propW);
+
+	propY += diffuseColorProp.getHeight() + offset;
+	emissiveColorProp.draw(propX, propY, propW);
+
+	propY += emissiveColorProp.getHeight() + offset;
+	specularColorProp.draw(propX, propY, propW);
+
+	propY += specularColorProp.getHeight() + offset;
+	shininessProp.draw(propX, propY, propW);
+
+	obj.material.setAmbientColor(*ambientColor);
+	obj.material.setDiffuseColor(*diffuseColor);
+	obj.material.setEmissiveColor(*emissiveColor);
+	obj.material.setSpecularColor(*specularColor);
+	obj.material.setShininess(*shininess);
 }

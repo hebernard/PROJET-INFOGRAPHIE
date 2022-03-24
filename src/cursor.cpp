@@ -10,7 +10,10 @@ int cursor::offsetY = 10;
 void cursor::draw()
 {
 	if (!isDefault && cursorIcon.isAllocated()) {
+		ofPushStyle();
+		ofSetColor(255);
 		cursorIcon.draw(ofGetMouseX() - offsetX, ofGetMouseY() - offsetY);
+		ofPopStyle();
 	}
 }
 

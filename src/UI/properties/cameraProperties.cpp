@@ -122,7 +122,7 @@ void cameraProperties::draw()
 		backgroundPicker.show = true;
 	}
 
-	backgroundPicker.draw(rect.x + 80, backgroundCustom.getY());
+	backgroundPicker.draw(rect.x, backgroundCustom.getY());
 	if (backgroundCustom.isSelected)
 	{
 		ofSetBackgroundColor(mainTheme::sceneCustomBackgroundColor);

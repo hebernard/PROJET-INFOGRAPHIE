@@ -33,7 +33,6 @@ void cameraPropertiesButton::draw(int x, int y, int width)
 	ofSetColor(inside ? mainTheme::panelButtonHoverColor() : mainTheme::toolBarButtonHoverColor());
 	ofDrawRectRounded(rect, 14);
 
-	ofPopStyle();
 
 	drawText(rect.x + 15, rect.y + rect.height / 2 + 10, m_text, 10);
 
@@ -41,6 +40,7 @@ void cameraPropertiesButton::draw(int x, int y, int width)
 		case 0:
 			if (icon.isAllocated())
 			{
+				ofSetColor(255);
 				icon.draw(rect.x + 15, rect.y + 15);
 			}
 			break;
@@ -51,7 +51,7 @@ void cameraPropertiesButton::draw(int x, int y, int width)
 			ofPopStyle();
 			break;
 	}
-
+	ofPopStyle();
 }
 
 int cameraPropertiesButton::getY()

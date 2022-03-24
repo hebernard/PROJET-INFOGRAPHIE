@@ -83,7 +83,11 @@ public:
 			texture.bind();
 		}
 
+		material.begin();
+
 		customDraw();
+
+		material.end();
 
 		if (texture.isAllocated())
 		{
