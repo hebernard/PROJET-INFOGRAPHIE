@@ -1,7 +1,9 @@
 #include "light.h"
 #include "lightHierarchyButton.h"
 
-light::light(bool isSecondary) : object(new lightHierarchyButton(*this, "images/icons/light.png", "Light", isSecondary))
+light::light(bool isSecondary) : 
+    object(new lightHierarchyButton(*this, "images/icons/light.png", "Light", isSecondary)),
+    lightTypeProp(dropdownProperty("Light type"))
 {
     oscillationFrequency = 7500;
     oscillationAmplitude = 32.0f;
@@ -26,6 +28,8 @@ light::light(bool isSecondary) : object(new lightHierarchyButton(*this, "images/
     ambientColor = ofColor(191, 191, 191);
     diffuseColor = ofColor(191, 191, 191);
     specularColor = ofColor(191, 191, 191);
+
+    lightTypeProp.setElements({ "Test1", "Test2" });
 }
 
 void light::update()
@@ -119,6 +123,7 @@ void light::customDraw()
 
 void light::drawProperties(int x, int y, int width)
 {
+    lightTypeProp.draw(x, y, width);
 }
 
 ShaderType light::getIlluminationModel()

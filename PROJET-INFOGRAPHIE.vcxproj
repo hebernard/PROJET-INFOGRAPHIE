@@ -219,6 +219,7 @@
     <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
     <ClCompile Include="src\UI\properties\colorPicker.cpp" />
     <ClCompile Include="src\UI\properties\colorProperty.cpp" />
+    <ClCompile Include="src\UI\properties\dropdownProperty.cpp" />
     <ClCompile Include="src\UI\properties\imageProperty.cpp" />
     <ClCompile Include="src\UI\properties\inputProperty.cpp" />
     <ClCompile Include="src\UI\properties\propertiesPanel.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
     <ClInclude Include="src\UI\properties\colorPicker.h" />
     <ClInclude Include="src\UI\properties\colorProperty.h" />
+    <ClInclude Include="src\UI\properties\dropdownProperty.h" />
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
     <ClInclude Include="src\UI\properties\imageProperty.h" />
     <ClInclude Include="src\UI\properties\inputProperty.h" />

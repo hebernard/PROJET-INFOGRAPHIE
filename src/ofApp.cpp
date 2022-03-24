@@ -49,6 +49,15 @@ void ofApp::draw()
 	// UI must be drawn at the end & objects are added to the hierarchy
 	menu->draw();
 	s.drawHierarchyUI();
+
+	// Draw the force calls on top
+	while (!utils::drawOnTopQueue.empty())
+	{
+		Action action = std::move(utils::drawOnTopQueue.front());
+		utils::drawOnTopQueue.pop();
+		action();
+	}
+
 	cursor::draw();
 
 	// Give time for the components to check the mouse state before setting back to false

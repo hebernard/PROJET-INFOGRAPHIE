@@ -21,14 +21,7 @@ void inputProperty::draw(int x, int y, int width, int textOffset)
 
 	drawText(x, y + labelSize.y + 5, m_label, 11);
 
-	if (hovered || focused)
-	{
-		drawPanel(rect, mainTheme::panelButtonHoverColor());
-	}
-	else
-	{
-		drawPanel(rect);
-	}
+	drawInputPanel(rect, hovered, focused);
 
 	int offsetX = 12;
 	int offsetY = 15;

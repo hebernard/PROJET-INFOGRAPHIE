@@ -1,6 +1,6 @@
 #include "cameraPropertiesButton.h"
 #include "label.h"
-#include "utils.h"
+#include "panel.h"
 
 cameraPropertiesButton::cameraPropertiesButton(std::string text, std::string iconPath, bool isDefault, int type) : m_text(text), m_buttonType(type)
 {
@@ -22,16 +22,8 @@ void cameraPropertiesButton::draw(int x, int y, int width)
 
 	ofPushStyle();
 	bool inside = rect.inside(ofGetMouseX(), ofGetMouseY());
-	//if (inside && utils::mouseReleased){setSelected();}
 
-	if (isSelected)
-	{
-		ofSetColor(mainTheme::fontColor());
-		ofDrawRectRounded(rect.x - 1, rect.y - 1, rect.width + 2, rect.height + 2, 14);
-	}
-
-	ofSetColor(inside ? mainTheme::panelButtonHoverColor() : mainTheme::toolBarButtonHoverColor());
-	ofDrawRectRounded(rect, 14);
+	drawInputPanel(rect, inside, isSelected);
 
 	drawText(rect.x + 15, rect.y + rect.height / 2 + 10, m_text, 10);
 

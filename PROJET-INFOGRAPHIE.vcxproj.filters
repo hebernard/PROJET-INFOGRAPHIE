@@ -118,6 +118,7 @@
     <ClCompile Include="src\UI\materials\materialPanel.cpp" />
     <ClCompile Include="src\UI\properties\imageProperty.cpp" />
     <ClCompile Include="src\UI\hierarchy\lightHierarchyButton.cpp" />
+    <ClCompile Include="src\UI\properties\dropdownProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -495,6 +496,7 @@
     <ClInclude Include="src\UI\materials\materialPanel.h" />
     <ClInclude Include="src\UI\properties\imageProperty.h" />
     <ClInclude Include="src\UI\hierarchy\lightHierarchyButton.h" />
+    <ClInclude Include="src\UI\properties\dropdownProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

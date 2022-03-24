@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "object.h"
+#include "dropdownProperty.h"
 
 enum class ShaderType { none, color_fill, lambert, gouraud, phong, blinn_phong };
 enum class LightType { ambient, directional, point, spot };
@@ -57,4 +58,7 @@ private:
 	ofColor specularColor;
 
 	bool smoothLighting;
+
+	// Properties
+	dropdownProperty lightTypeProp;
 };
