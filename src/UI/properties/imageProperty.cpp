@@ -7,13 +7,11 @@ imageProperty::imageProperty(std::string label) : m_label(label)
 {
 	importBox.height = 75;
 	importBox.width = 150;
-
-	addIcon.load("images/icons/add_camera.png");
-	addIcon.resize(50, 50);
 }
 
 void imageProperty::draw(ofTexture& tex, int x, int y, int width)
 {
+	ofPushStyle();
 	bool hovered = importBox.inside(ofGetMouseX(), ofGetMouseY());
 
 	drawText(x, y + importBox.height - 5, m_label, 11);
@@ -21,34 +19,38 @@ void imageProperty::draw(ofTexture& tex, int x, int y, int width)
 	importBox.x = x + width - importBox.width;
 	importBox.y = y;
 
-	if (hovered)
+	if (hovered && utils::mousePressed)
 	{
-		drawPanel(importBox, mainTheme::panelButtonHoverColor());
-
-		if (utils::mousePressed)
-		{
-			importImage(tex);
-		}
-	}
-	else
-	{
-		drawPanel(importBox);
+		importImage(tex);
 	}
 
-	if (!tex.isAllocated() && addIcon.isAllocated())
+	if (tex.isAllocated())
 	{
-		addIcon.draw(importBox.x + importBox.width / 2 - addIcon.getWidth() / 2, importBox.y + importBox.height / 2 - addIcon.getHeight() / 2);
-	}
-	else if (tex.isAllocated())
-	{
+		ofSetColor(mainTheme::fontColor());
+		ofDrawRectangle(importBox.x - 1, importBox.y - 1, importBox.width + 2, importBox.height + 2);
+
 		ofPixels pixels;
 		tex.readToPixels(pixels);
 
 		preview.setFromPixels(pixels);
 		preview.resize(importBox.width, importBox.width / 2);
 
+		ofSetColor(255);
 		preview.draw(importBox.x, importBox.y);
 	}
+	else
+	{
+		ofSetColor(mainTheme::fontColor());
+		ofDrawRectRounded(importBox.x - 1, importBox.y - 1, importBox.width + 2, importBox.height + 2, 14);
+
+		ofSetColor(hovered ? mainTheme::panelButtonHoverColor() : mainTheme::toolBarButtonHoverColor());
+		ofDrawRectRounded(importBox, 14);
+	}
+
+	auto size = label::getSize("Click to import", 10);
+	drawText(importBox.x + importBox.width / 2 - size.x / 2, importBox.y + importBox.height - 5, "Click to import", 10);
+
+	ofPopStyle();
 }
 
 int imageProperty::getHeight()

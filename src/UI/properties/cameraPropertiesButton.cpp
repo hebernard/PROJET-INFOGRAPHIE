@@ -33,7 +33,6 @@ void cameraPropertiesButton::draw(int x, int y, int width)
 	ofSetColor(inside ? mainTheme::panelButtonHoverColor() : mainTheme::toolBarButtonHoverColor());
 	ofDrawRectRounded(rect, 14);
 
-
 	drawText(rect.x + 15, rect.y + rect.height / 2 + 10, m_text, 10);
 
 	switch (m_buttonType) {

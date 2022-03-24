@@ -14,7 +14,6 @@ private:
 
 	ofImage preview;
 	ofRectangle importBox;
-	ofImage addIcon;
 
 	void importImage(ofTexture& tex);
 };
