@@ -89,7 +89,7 @@ void hierarchyPanel::drawOpened(const vector<object*>& objects)
 	//draw hierarchy objects
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		objects.at(i)->drawHierarchy(rect.x, rect.y + 56 + ((i + 1) * 40));
+		objects.at(i)->drawHierarchy(rect.x, rect.y + 56 + ((i + 1) * 30));
 	}
 }
 

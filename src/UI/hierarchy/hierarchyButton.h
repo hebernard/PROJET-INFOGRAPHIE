@@ -12,7 +12,7 @@ public:
 	hierarchyButtonTheme()
 	{
 		layout.width = 300;
-		layout.height = 40;
+		layout.height = 30;
 		init();
 	}
 };
