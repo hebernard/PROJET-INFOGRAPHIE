@@ -34,6 +34,7 @@ public:
 
 		circle* circ = new circle(1.2f);
 		circ->setPosition(glm::vec3(0, 1, 0));
+		circ->filled = false;
 		addObject(circ);
 	}
 
@@ -185,6 +186,12 @@ public:
 	{
 		light* li = new light(lights.size());
 		li->canHaveMaterial = false;
+		if (li->id == 0)
+		{
+			// Setup for initial light
+			li->setPosition(5, 5, 5);
+			li->lookAt(glm::vec3(0, 0, 0));
+		}
 
 		// Add right after the last light
 		addObject(li, lights.size());
