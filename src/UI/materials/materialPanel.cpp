@@ -5,7 +5,12 @@
 
 materialPanel::materialPanel() :
 	backButton(new hierarchySmallButton("images/icons/back.png")),
-	imgProp(imageProperty("Texture"))
+	imgProp(imageProperty("Texture")),
+	ambientColor(new ofColor(refMat.getAmbientColor())),
+	diffuseColor(new ofColor(refMat.getDiffuseColor())),
+	emissiveColor(new ofColor(refMat.getEmissiveColor())),
+	specularColor(new ofColor(refMat.getSpecularColor())),
+	shininess(new float(refMat.getShininess()))
 {
 	rect.width = 300;
 	rect.y = 100;

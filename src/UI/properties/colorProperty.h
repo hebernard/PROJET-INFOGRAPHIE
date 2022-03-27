@@ -5,6 +5,8 @@
 class colorProperty
 {
 public:
+	bool interactable = true;
+
 	colorProperty(std::string label, ofColor& ref);
 
 	void draw(int x, int y, int width);

@@ -37,14 +37,11 @@ void ofApp::draw()
 
 	if (!cursor::isCameraCursor() && !cursor::isDraggedCursor()) { cursor::setDefaultCursor(); }
 
-	ofEnableDepthTest();
 	auto cameras = s.getCameras();
 	for (int i = 0; i < cameras.size(); i++)
 	{
 		cameras.at(i)->render(s, i);
 	}
-
-	ofDisableDepthTest();
 
 	// UI must be drawn at the end & objects are added to the hierarchy
 	menu->draw();

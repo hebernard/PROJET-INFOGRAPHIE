@@ -3,62 +3,29 @@
 #include "ofMain.h"
 #include "object.h"
 #include "dropdownProperty.h"
-
-enum class ShaderType { none, color_fill, lambert, gouraud, phong, blinn_phong };
-enum class LightType { ambient, directional, point, spot };
+#include "colorProperty.h"
 
 class light : public object
 {
 public:
+	int id;
 	ofLight li;
 
-	light(bool isSecondary);
-	void update();
+	light(int id);
 	void customDraw();
 
 	void drawProperties(int x, int y, int width);
 
-	ShaderType getIlluminationModel();
-	void setIlluminationModel(ShaderType model);
-
-	LightType getType();
-	void setType(LightType type);
-
-	float oscillate(float time, float frequency, float amplitude);
+	void setType(ofLightType type);
 
 private:
-
-	float oscillation;
-	float oscillationFrequency;
-	float oscillationAmplitude;
-
-	//Illumination Model
-	bool isActiveShader;
-	ShaderType activeShader;
-
-	ofShader* shader;
-	string shaderName;
-
-	ofShader shaderColorFill;
-	ofShader shaderLambert;
-	ofShader shaderGouraud;
-	ofShader shaderPhong;
-	ofShader shaderBlinnPhong;
-
-	glm::vec3 color;
-	glm::vec3 colorAmbient;
-	glm::vec3 colorDiffuse;
-	glm::vec3 colorSpecular;
-
-	//Light Type
-	LightType activeType;
-
-	ofColor ambientColor;
-	ofColor diffuseColor;
-	ofColor specularColor;
-
-	bool smoothLighting;
+	ofColor ambientColor = ofColor::white;
+	ofColor diffuseColor = ofColor::white;
+	ofColor specularColor = ofColor::white;
 
 	// Properties
 	dropdownProperty lightTypeProp;
+	colorProperty ambientColorProp;
+	colorProperty diffuseColorProp;
+	colorProperty specularColorProp;
 };

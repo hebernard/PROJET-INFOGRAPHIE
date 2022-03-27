@@ -1,176 +1,82 @@
 #include "light.h"
 #include "lightHierarchyButton.h"
+#include "utils.h"
 
-light::light(bool isSecondary) : 
-    object(new lightHierarchyButton(*this, "images/icons/light.png", "Light", isSecondary)),
-    lightTypeProp(dropdownProperty("Light type"))
+light::light(int id) :
+    object(new lightHierarchyButton(*this, "images/icons/light.png", "Light", id != 0)),
+    id(id),
+    lightTypeProp(dropdownProperty("Light type")),
+    ambientColorProp(colorProperty("Ambient", ambientColor)),
+    diffuseColorProp(colorProperty("Diffuse", diffuseColor)),
+    specularColorProp(colorProperty("Specular", specularColor))
 {
-    oscillationFrequency = 7500;
-    oscillationAmplitude = 32.0f;
+    lightTypeProp.setElements({ "Point", "Directional", "Spot", "Area" });
+    lightTypeProp.onClick = [&](int i) { setType(ofLightType(i)); };
 
-    // désactiver le matériau par défaut du modèle //teapot.disableMaterials();
-
-    shaderColorFill.load("shaders/color_fill_330_vs.glsl", "shaders/color_fill_330_fs.glsl");
-    shaderLambert.load("shaders/lambert_330_vs.glsl", "shaders/lambert_330_fs.glsl");
-    shaderGouraud.load("shaders/gouraud_330_vs.glsl", "shaders/gouraud_330_fs.glsl");
-    shaderPhong.load("shaders/phong_330_vs.glsl", "shaders/phong_330_fs.glsl");
-    shaderBlinnPhong.load("shaders/blinn_phong_330_vs.glsl", "shaders/blinn_phong_330_fs.glsl");
-    // shader actif au lancement de la scène
-    activeShader = ShaderType::none;
-
-    color = glm::vec3(1.0f, 1.0f, 1.0f);
-    colorAmbient = glm::vec3(0.1f, 0.1f, 0.1f);
-    colorDiffuse = glm::vec3(0.6f, 0.6f, 0.6f);
-    colorSpecular = glm::vec3(1.0f, 1.0f, 0.0f);
-
-    activeType = LightType::ambient;
-
-    ambientColor = ofColor(191, 191, 191);
-    diffuseColor = ofColor(191, 191, 191);
-    specularColor = ofColor(191, 191, 191);
-
-    lightTypeProp.setElements({ "Ambient", "Directional", "Point", "Spot" });
-    lightTypeProp.onClick = [&](int i) { setType(LightType(i)); };
-}
-
-void light::update()
-{
-    if (isVisible)
-    {
-        li.enable();
-    }
-    else
-    {
-        li.disable();
-    }
-
-    // mise à jour d'une valeur numérique animée par un oscillateur
-    float oscillation = oscillate(ofGetElapsedTimeMillis(), oscillationFrequency, oscillationAmplitude) + oscillationAmplitude;
-
-    // passer les attributs uniformes au shader de sommets
-    if (isActiveShader) {
-        switch (activeShader)
-        {
-        case ShaderType::none:
-            break;
-
-        case ShaderType::color_fill:
-            shaderName = "Color Fill";
-            shader = &shaderColorFill;
-            shader->begin();
-            shader->setUniform3f("color", color.r, color.g, color.b);
-            shader->end();
-            break;
-
-        case ShaderType::lambert:
-            shaderName = "Lambert";
-            shader = &shaderLambert;
-            shader->begin();
-            shader->setUniform3f("color_ambient", colorAmbient.r, colorAmbient.g, colorAmbient.b);
-            shader->setUniform3f("color_diffuse", colorDiffuse.r, colorDiffuse.g, colorDiffuse.b);
-            shader->setUniform3f("light_position", glm::vec4(li.getGlobalPosition(), 0.0f) * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
-            shader->end();
-            break;
-
-        case ShaderType::gouraud:
-            shaderName = "Gouraud";
-            shader = &shaderGouraud;
-            shader->begin();
-            shader->setUniform3f("color_ambient", colorAmbient.r, colorAmbient.g, colorAmbient.b);
-            shader->setUniform3f("color_diffuse", colorDiffuse.r, colorDiffuse.g, colorDiffuse.b);
-            shader->setUniform3f("color_specular", colorSpecular.r, colorSpecular.g, colorSpecular.b);
-            shader->setUniform1f("brightness", oscillation);
-            shader->setUniform3f("light_position", glm::vec4(li.getGlobalPosition(), 0.0f) * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
-            shader->end();
-            break;
-
-        case ShaderType::phong:
-            shaderName = "Phong";
-            shader = &shaderPhong;
-            shader->begin();
-            shader->setUniform3f("color_ambient", colorAmbient.r, colorAmbient.g, colorAmbient.b);
-            shader->setUniform3f("color_diffuse", colorDiffuse.r, colorDiffuse.g, colorDiffuse.b);
-            shader->setUniform3f("color_specular", colorSpecular.r, colorSpecular.g, colorSpecular.b);
-            shader->setUniform1f("brightness", oscillation);
-            shader->setUniform3f("light_position", glm::vec4(li.getGlobalPosition(), 0.0f) * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
-            shader->end();
-            break;
-
-        case ShaderType::blinn_phong:
-            shaderName = "Blinn-Phong";
-            shader = &shaderBlinnPhong;
-            shader->begin();
-            shader->setUniform3f("color_ambient", colorAmbient.r, colorAmbient.g, colorAmbient.b);
-            shader->setUniform3f("color_diffuse", colorDiffuse.r, colorDiffuse.g, colorDiffuse.b);
-            shader->setUniform3f("color_specular", colorSpecular.r, colorSpecular.g, colorSpecular.b);
-            shader->setUniform1f("brightness", oscillation);
-            shader->setUniform3f("light_position", glm::vec4(li.getGlobalPosition(), 0.0f) * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
-            shader->end();
-            break;
-
-        default:
-            break;
-        }
-    }
-    else {
-        setType(activeType);
-    }
+    setType(ofLightType::OF_LIGHT_POINT);
 }
 
 void light::customDraw()
 {
+    // dont forget to set position of orientation of ofLight
+    li.setPosition(getPosition());
+    li.setOrientation(getOrientationEuler());
+
+    if (li.getType() == ofLightType::OF_LIGHT_AREA)
+    {
+        li.setAreaLight(getScale().x, getScale().y);
+    }
+
+    // also dont forget to set color
+    li.setAmbientColor(ambientColor);
+    li.setDiffuseColor(diffuseColor);
+    li.setSpecularColor(specularColor);
+
     li.draw();
 }
 
 void light::drawProperties(int x, int y, int width)
 {
-    lightTypeProp.draw(x, y, width);
+    int offset = y;
+    lightTypeProp.draw(x, offset, width);
+    offset += 10 + lightTypeProp.getHeight();
+
+    ambientColorProp.draw(x, offset, width);
+    ambientColorProp.interactable = !lightTypeProp.focused;
+    offset += 10 + ambientColorProp.getHeight();
+
+    diffuseColorProp.draw(x, offset, width);
+    diffuseColorProp.interactable = !lightTypeProp.focused;
+    offset += 10 + diffuseColorProp.getHeight();
+
+    specularColorProp.draw(x, offset, width);
+    specularColorProp.interactable = !lightTypeProp.focused;
+    offset += 10 + specularColorProp.getHeight();
 }
 
-ShaderType light::getIlluminationModel()
+void light::setType(ofLightType type)
 {
-	return activeShader;
-}
-
-void light::setIlluminationModel(ShaderType model)
-{
-    isActiveShader = true;
-    activeShader = model;
-}
-
-LightType light::getType()
-{
-	return activeType;
-}
-
-void light::setType(LightType type)
-{
-    isActiveShader = false;
-    activeType = type;
-
     cout << "Set Light Type to: ";
-    switch (activeType)
+    switch (type)
     {
-    case LightType::ambient:
-        li.setAmbientColor(ambientColor);
+    case ofLightType::OF_LIGHT_AREA:
+        // This light is for effects like an emissive surface
+        li.setAreaLight(getScale().x, getScale().y);
         cout << "Ambient" << endl;
         break;
 
-    case LightType::directional:
-        li.setDiffuseColor(diffuseColor);
-        li.setSpecularColor(specularColor);
+    case ofLightType::OF_LIGHT_DIRECTIONAL:
+        li.setDirectional();
         cout << "Directional" << endl;
         break;
 
-    case LightType::point:
-        li.setDiffuseColor(diffuseColor);
-        li.setSpecularColor(specularColor);
+    case ofLightType::OF_LIGHT_POINT:
+        li.setPointLight();
         cout << "Point" << endl;
         break;
 
-    case LightType::spot:
-        li.setDiffuseColor(diffuseColor);
-        li.setSpecularColor(specularColor);
+    case ofLightType::OF_LIGHT_SPOT:
+        li.setSpotlight();
         li.setSpotConcentration(2);
         li.setSpotlightCutOff(30);
         cout << "Spot" << endl;
@@ -179,9 +85,4 @@ void light::setType(LightType type)
     default:
         break;
     }
-}
-
-float light::oscillate(float time, float frequency, float amplitude)
-{
-    return sinf(time * 2.0f * PI / frequency) * amplitude;
 }

@@ -27,7 +27,7 @@ void colorProperty::draw(int x, int y, int width)
 
 	picker.draw(x, colorRect.y);
 
-	if (utils::mousePressed)
+	if (interactable && utils::mousePressed)
 	{
 		if (mouseInside)
 		{

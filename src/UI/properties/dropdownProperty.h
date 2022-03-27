@@ -44,6 +44,8 @@ public:
 class dropdownProperty
 {
 public:
+	bool focused = false;
+
 	std::function<void(int)> onClick;
 
 	dropdownProperty(string label);
@@ -51,6 +53,8 @@ public:
 	void setElements(vector<string> el);
 
 	void draw(int x, int y, int w);
+
+	int getHeight();
 
 private:
 	vector<element> elements;
@@ -60,6 +64,4 @@ private:
 	ofRectangle rect, dropdownRect;
 
 	string current;
-
-	bool focused = false;
 };

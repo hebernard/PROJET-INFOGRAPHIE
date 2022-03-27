@@ -78,3 +78,8 @@ void dropdownProperty::draw(int x, int y, int w)
 	auto size = label::getSize(current, 10);
 	drawText(rect.x + rect.width / 2 - size.x / 2, rect.y + 13, current, 10);
 }
+
+int dropdownProperty::getHeight()
+{
+	return rect.height;
+}

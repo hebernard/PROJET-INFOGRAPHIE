@@ -10,7 +10,7 @@
 class object : public ofNode
 {
 public:
-	bool filled = false;
+	bool filled = true;
 	bool showBBox = true;
 	bool markedForDeletion;
 	bool isSelected;
@@ -77,24 +77,12 @@ public:
 		{
 			ofNoFill();
 		}
-		ofSetColor(color);
-
-		if (texture.isAllocated())
-		{
-			texture.bind();
-		}
-
+		//ofSetColor(color);
 		material.begin();
-
+		if (texture.isAllocated()) texture.bind();
 		customDraw();
-
+		if (texture.isAllocated()) texture.unbind();
 		material.end();
-
-		if (texture.isAllocated())
-		{
-			texture.unbind();
-		}
-
 		ofPopStyle();
 		ofPopMatrix();
 	}

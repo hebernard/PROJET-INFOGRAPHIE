@@ -1,24 +1,25 @@
 #include "lightHierarchyButton.h"
 #include "scene.h"
+#include "light.h"
 
 lightHierarchyButton::lightHierarchyButton(object& obj, std::string path, std::string label, bool isSecondary) : hierarchyButton(obj, path, label),
 	addLightButton(new hierarchySmallButton("images/icons/add_camera.png")),
 	secondary(isSecondary)
 {
-	// todo: visible button enables/disables light
 	// todo: change text/icon based on light type?
 
 	addLightButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		scene& s = s.getInstance();
-		s.addLight(true);
+		s.addLight();
 	});
 
 	deleteButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		obj.markedForDeletion = true;
 		scene& s = s.getInstance();
-		s.removeLight();
+		light& l = dynamic_cast<light&>(obj);
+		s.removeLight(l.id);
 	});
 }
 

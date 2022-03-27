@@ -19,14 +19,14 @@ public:
 
 private:
 	ofRectangle rect;
-
+	ofMaterial refMat;
 	imageProperty imgProp;
 
-	ofColor* ambientColor = new ofColor(255);
-	ofColor* diffuseColor = new ofColor(255);
-	ofColor* emissiveColor = new ofColor(255);
-	ofColor* specularColor = new ofColor(255);
-	float* shininess = new float(0);
+	ofColor* ambientColor;
+	ofColor* diffuseColor;
+	ofColor* emissiveColor;
+	ofColor* specularColor;
+	float* shininess;
 
 	colorProperty ambientColorProp{ "Ambient", *ambientColor };
 	colorProperty diffuseColorProp{ "Diffuse", *diffuseColor };

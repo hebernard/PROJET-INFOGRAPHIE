@@ -26,7 +26,7 @@ public:
 	void setupObjects()
 	{
 		// Add the necessary light
-		addLight(false);
+		addLight();
 
 		sphere* sp = new sphere(1);
 		sp->setPosition(glm::vec3(0, 1, 0));
@@ -88,6 +88,14 @@ public:
 
 	void drawObjects()
 	{
+		ofEnableLighting();
+		ofEnableDepthTest();
+
+		for (auto& l : lights)
+		{
+			l->li.enable();
+		}
+
 		for (size_t i = 0; i < objects.size(); i++)
 		{
 			auto obj = objects.at(i);
@@ -96,6 +104,14 @@ public:
 				obj->drawWithTransformations();
 			}
 		}
+
+		for (auto& l : lights)
+		{
+			l->li.disable();
+		}
+
+		ofDisableDepthTest();
+		ofDisableLighting();
 	}
 
 	void drawGrid()
@@ -165,20 +181,27 @@ public:
 		cameras.push_back(cam);
 	}
 
-	void addLight(bool isSecondary)
+	void addLight()
 	{
-		light* li = new light(isSecondary);
+		light* li = new light(lights.size());
 		li->canHaveMaterial = false;
 
 		// Add right after the last light
-		addObject(li, lightCount);
+		addObject(li, lights.size());
 
-		lightCount++;
+		lights.push_back(li);
 	}
 
-	void removeLight()
+	void removeLight(int id)
 	{
-		lightCount--;
+		for (int i = 0; i < lights.size(); i++)
+		{
+			if (lights[i]->id == id)
+			{
+				lights.erase(lights.begin() + i);
+			}
+		}
+
 		deleteObjects();
 	}
 
@@ -252,7 +275,7 @@ private:
 
 	std::vector<object*> objects;
 	std::vector<camera*> cameras;
-	int lightCount = 0;
+	std::vector<light*> lights;
 
 	hierarchyPanel hierarchy;
 	propertiesPanel properties;
