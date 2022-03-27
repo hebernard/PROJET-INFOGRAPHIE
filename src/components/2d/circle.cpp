@@ -7,6 +7,7 @@ circle::circle(float radius) :
 	resolutionInput("Resolution", m_resolution),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
+	canHaveMaterial = false;
 }
 
 void circle::customDraw()
@@ -20,6 +21,8 @@ void circle::drawProperties(int x, int y, int width)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);
+	colorPicker->draw(x, offset, width);
+	offset += 10 + colorPicker->getHeight();
 	radiusInput.draw(x, offset, width);
 	offset += 10 + radiusInput.getHeight();
 	resolutionInput.draw(x, offset, width);

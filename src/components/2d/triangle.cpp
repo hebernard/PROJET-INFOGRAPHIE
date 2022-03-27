@@ -7,6 +7,7 @@ triangle::triangle(int width, int height) :
 	heightInput("Height", m_height),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
+	canHaveMaterial = false;
 }
 
 void triangle::customDraw()
@@ -23,6 +24,8 @@ void triangle::drawProperties(int x, int y, int width)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);
+	colorPicker->draw(x, offset, width);
+	offset += 10 + colorPicker->getHeight();
 	widthInput.draw(x, offset, width);
 	offset += 10 + widthInput.getHeight();
 	heightInput.draw(x, offset, width);

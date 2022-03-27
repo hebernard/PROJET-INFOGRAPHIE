@@ -8,6 +8,7 @@ ellipse::ellipse(float width, float height)
 	resolutionInput("Resolution", m_resolution),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
+	canHaveMaterial = false;
 }
 
 void ellipse::customDraw()
@@ -21,6 +22,8 @@ void ellipse::drawProperties(int x, int y, int width)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);
+	colorPicker->draw(x, offset, width);
+	offset += 10 + colorPicker->getHeight();
 	widthInput.draw(x, offset, width);
 	offset += 10 + widthInput.getHeight();
 	heightInput.draw(x, offset, width);

@@ -15,6 +15,8 @@ image::image(std::string path) :
 	heightInput.forceUpdateValue(10000);
 
 	cout << "Image loaded" << endl;
+
+	canHaveMaterial = false;
 }
 
 void image::customDraw()

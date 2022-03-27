@@ -6,6 +6,7 @@ line::line(int length)
 	lengthInput("Length", m_length),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
+	canHaveMaterial = false;
 }
 
 void line::customDraw()

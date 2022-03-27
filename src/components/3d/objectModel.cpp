@@ -20,7 +20,7 @@ void objectModel::drawProperties(int x, int y, int width)
 {
 	//bboxCheckBox->draw(x, y, width);
 	//colorPicker->draw(x, y + bboxCheckBox->getHeight() + 10, width);
-	colorPicker->draw(x, y, width);
+	//colorPicker->draw(x, y, width);
 }
 
 glm::vec3 objectModel::getBBox()

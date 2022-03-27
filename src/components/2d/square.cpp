@@ -6,6 +6,7 @@ square::square(float size) :
 	sizeInput("Size", m_size),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
+	canHaveMaterial = false;
 }
 
 void square::customDraw()
@@ -18,6 +19,8 @@ void square::drawProperties(int x, int y, int width)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);
+	colorPicker->draw(x, offset, width);
+	offset += 10 + colorPicker->getHeight();
 	sizeInput.draw(x, offset, width);
 	offset += 10 + sizeInput.getHeight();
 	contourThicknessInput.draw(x, offset, width);

@@ -77,12 +77,21 @@ public:
 		{
 			ofNoFill();
 		}
-		//ofSetColor(color);
-		material.begin();
+
+		if (canHaveMaterial)
+		{
+			material.begin();
+		}
+		else
+		{
+			ofSetColor(color);
+		}
+
 		if (texture.isAllocated()) texture.bind();
 		customDraw();
 		if (texture.isAllocated()) texture.unbind();
-		material.end();
+
+		if (canHaveMaterial) material.end();
 		ofPopStyle();
 		ofPopMatrix();
 	}
@@ -99,8 +108,8 @@ public:
 		bboxCheckBox->draw(x, offset, width);
 		offset += bboxCheckBox->getHeight() + 10;
 		filledCheckBox->draw(x, offset, width);
-		offset += filledCheckBox->getHeight() + 10;
-		colorPicker->draw(x, offset, width);
+		//offset += filledCheckBox->getHeight() + 10;
+		//colorPicker->draw(x, offset, width);
 	}
 
 	virtual glm::vec3 getCenter()
@@ -130,7 +139,7 @@ protected:
 
 	int getPropertiesHeight()
 	{
-		return filledCheckBox->getHeight() + 10 + colorPicker->getHeight() + 10 + bboxCheckBox->getHeight() + 10;
+		return filledCheckBox->getHeight() + /*10 + colorPicker->getHeight()*/ + 10 + bboxCheckBox->getHeight() + 10;
 	}
 };
 
