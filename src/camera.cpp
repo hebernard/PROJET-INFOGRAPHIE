@@ -81,6 +81,10 @@ void camera::render(scene& s, int index)
 
 	s.drawObjects();
 
+	// debug target
+	//ofSetColor(ofColor::red);
+	//ofDrawSphere(target.getPosition(), 0.2f);
+
 	end();
 }
 
@@ -394,7 +398,9 @@ void camera::updateTranslation() {
 			bIsScrolling = false;
 			return;
 		}
-		move((getXAxis() * translate.x) + (getYAxis() * translate.y) + (getZAxis() * translate.z));
+		auto offset = (getXAxis() * translate.x) + (getYAxis() * translate.y);
+		move(offset + getZAxis() * translate.z);
+		setTarget(target.getPosition() + offset);
 	}
 	if (currentTransformType == TRANSFORM_TRANSLATE_XY ||
 		currentTransformType == TRANSFORM_TRANSLATE_Z ||
@@ -407,7 +413,9 @@ void camera::updateTranslation() {
 			if (bDoScale) {
 				mousePre = screenToWorld(glm::vec3((bIsScrolling ? mouseAtScroll : lastPressMouse), 0));
 			}
-			move(glm::vec3(lastPressAxisX * translate.x) + (lastPressAxisY * translate.y));
+			auto offset = glm::vec3(lastPressAxisX * translate.x) + (lastPressAxisY * translate.y);
+			move(offset);
+			setTarget(target.getPosition() + offset);
 			if (bDoScale) {
 				auto s = getScale() + translate.z;
 				setScale(CLAMP(s.x, 0, 10), CLAMP(s.y, 0, 10), CLAMP(s.z, 0, 10));
@@ -416,7 +424,9 @@ void camera::updateTranslation() {
 			}
 		}
 		else {
-			move(glm::vec3(lastPressAxisX * translate.x) + (lastPressAxisY * translate.y) + (lastPressAxisZ * translate.z));
+			auto offset = glm::vec3(lastPressAxisX * translate.x) + (lastPressAxisY * translate.y);
+			move(offset + (lastPressAxisZ * translate.z));
+			setTarget(target.getPosition() + offset);
 		}
 	}
 	if (bIsScrolling) {
