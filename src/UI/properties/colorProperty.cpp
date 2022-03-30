@@ -41,3 +41,8 @@ int colorProperty::getHeight()
 {
 	return colorRect.getHeight();
 }
+
+void colorProperty::forceUpdate()
+{
+	picker.forceUpdate();
+}

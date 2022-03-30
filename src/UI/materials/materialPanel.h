@@ -22,7 +22,6 @@ public:
 
 private:
 	object* ref;
-	int currentFilter = 0;
 
 	ofRectangle rect;
 	ofMaterial refMat;

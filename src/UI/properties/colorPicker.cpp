@@ -42,37 +42,23 @@ colorPicker::colorPicker(ofColor& ref) : m_ref(ref)
 	gColors.push_back(ofColor::white);  // top-left
 	vbo.setColorData(&gColors[0], 6, GL_DYNAMIC_DRAW);
 
-	// RGB
-	R = m_ref.r;
-	G = m_ref.g;
-	B = m_ref.b;
-
 	rInput = new inputProperty("R", R);
-	rInput->forceUpdateValue(255);
 	gInput = new inputProperty("G", G);
-	gInput->forceUpdateValue(255);
 	bInput = new inputProperty("B", B);
-	bInput->forceUpdateValue(255);
 
 	rInput->maxCharacters = 5;
 	gInput->maxCharacters = 5;
 	bInput->maxCharacters = 5;
 
-	// HSB
-	H = m_ref.getHue();
-	S = m_ref.getSaturation();
-	B = m_ref.getBrightness();
-
 	hInput = new inputProperty("H", H);
-	hInput->forceUpdateValue(255);
 	sInput = new inputProperty("S", S);
-	sInput->forceUpdateValue(255);
 	brInput = new inputProperty("B", Br);
-	brInput->forceUpdateValue(255);
 
 	hInput->maxCharacters = 5;
 	sInput->maxCharacters = 5;
 	brInput->maxCharacters = 5;
+
+	forceUpdate();
 }
 
 colorPicker::~colorPicker()
@@ -220,6 +206,31 @@ void colorPicker::draw(int x, int y)
 		ofDrawCircle(gradientPos, 10);
 	}
 	ofPopStyle();
+}
+
+void colorPicker::forceUpdate()
+{
+	// RGB
+	R = m_ref.r;
+	G = m_ref.g;
+	B = m_ref.b;
+
+	rInput->forceUpdateValue(255);
+	gInput->forceUpdateValue(255);
+	bInput->forceUpdateValue(255);
+
+	rInput->maxCharacters = 5;
+	gInput->maxCharacters = 5;
+	bInput->maxCharacters = 5;
+
+	// HSB
+	H = m_ref.getHue();
+	S = m_ref.getSaturation();
+	B = m_ref.getBrightness();
+
+	hInput->forceUpdateValue(255);
+	sInput->forceUpdateValue(255);
+	brInput->forceUpdateValue(255);
 }
 
 void colorPicker::updateGradient()

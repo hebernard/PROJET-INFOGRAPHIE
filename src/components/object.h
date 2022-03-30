@@ -21,9 +21,11 @@ public:
 	std::vector<keyframe> keyframes;
 	float animationMaxTime = 0;
 
+	// Material
 	bool canHaveMaterial = true;
 	ofMaterial material;
 	ofTexture originalTexture, filteredTexture;
+	int currentFilterIndex = 0;
 
 	object(hierarchyButton* btn) : 
 		button(btn), 

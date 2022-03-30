@@ -13,6 +13,8 @@ public:
 
 	void setPreview(ofPixels& pixels);
 
+	void resetPreview();
+
 private:
 	std::string m_label;
 

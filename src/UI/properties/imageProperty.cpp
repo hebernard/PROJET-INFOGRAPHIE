@@ -58,6 +58,11 @@ void imageProperty::setPreview(ofPixels& pixels)
 	preview.resize(importBox.width, importBox.width / 2);
 }
 
+void imageProperty::resetPreview()
+{
+	preview.clear();
+}
+
 void imageProperty::importImage()
 {
 	ofFileDialogResult openFileResult = ofSystemLoadDialog("Choisir un objet à importer");

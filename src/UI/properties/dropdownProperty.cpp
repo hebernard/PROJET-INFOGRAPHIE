@@ -57,17 +57,9 @@ void dropdownProperty::draw(int x, int y, int w)
 
 				if (elements[i].hovered && utils::mousePressed)
 				{
-					current = elements[i].label;
-					elements[i].selected = true;
-					onClick(i);
+					setSelected(i);
 
-					for (int j = 0; j < elements.size(); j++)
-					{
-						if (i != j)
-						{
-							elements[j].selected = false;
-						}
-					}
+					onClick(i);
 
 					focused = false;
 				}
@@ -82,4 +74,18 @@ void dropdownProperty::draw(int x, int y, int w)
 int dropdownProperty::getHeight()
 {
 	return rect.height;
+}
+
+void dropdownProperty::setSelected(int index)
+{
+	current = elements.at(index).label;
+
+	for (int i = 0; i < elements.size(); i++)
+	{
+		if (i != index)
+		{
+			elements[i].selected = false;
+		}
+	}
+	elements.at(index).selected = true;
 }

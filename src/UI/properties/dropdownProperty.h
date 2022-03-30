@@ -56,6 +56,8 @@ public:
 
 	int getHeight();
 
+	void setSelected(int index);
+
 private:
 	vector<element> elements;
 

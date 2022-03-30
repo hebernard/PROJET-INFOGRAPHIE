@@ -14,6 +14,8 @@ public:
 
 	void draw(int x, int y);
 
+	void forceUpdate();
+
 private:
 	ofColor& m_ref;
 	ofRectangle pickerRect, gradientRect, rainbowRect;

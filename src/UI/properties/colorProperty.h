@@ -13,6 +13,8 @@ public:
 
 	int getHeight();
 
+	void forceUpdate();
+
 private:
 	ofColor& m_ref;
 	std::string m_label;
