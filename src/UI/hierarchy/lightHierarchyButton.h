@@ -10,6 +10,9 @@ public:
 	void update(int x, int y);
 	void draw();
 
+	void setIcon(string path);
+	void setLabel(string label);
+
 private:
 	bool secondary;
 	hierarchySmallButton* addLightButton;

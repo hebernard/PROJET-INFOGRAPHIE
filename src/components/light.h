@@ -4,6 +4,7 @@
 #include "object.h"
 #include "dropdownProperty.h"
 #include "colorProperty.h"
+#include "lightHierarchyButton.h"
 
 class light : public object
 {
@@ -19,6 +20,8 @@ public:
 	void setType(ofLightType type);
 
 private:
+	lightHierarchyButton& lightButton;
+
 	ofColor ambientColor = ofColor::white;
 	ofColor diffuseColor = ofColor::white;
 	ofColor specularColor = ofColor::white;

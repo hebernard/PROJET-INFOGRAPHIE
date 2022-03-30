@@ -94,7 +94,10 @@ public:
 
 		for (auto& l : lights)
 		{
-			l->li.enable();
+			if (l->li.getType() != ofLightType::OF_LIGHT_AREA)
+			{
+				l->li.enable();
+			}
 		}
 
 		for (size_t i = 0; i < objects.size(); i++)
@@ -108,7 +111,10 @@ public:
 
 		for (auto& l : lights)
 		{
-			l->li.disable();
+			if (l->li.getType() != ofLightType::OF_LIGHT_AREA)
+			{
+				l->li.disable();
+			}
 		}
 
 		ofDisableDepthTest();

@@ -1,16 +1,16 @@
 #include "light.h"
-#include "lightHierarchyButton.h"
 #include "utils.h"
 
 light::light(int id) :
-    object(new lightHierarchyButton(*this, "images/icons/light.png", "Light", id != 0)),
+    object(new lightHierarchyButton(*this, "images/icons/point_light.png", "Point light", id != 0)),
     id(id),
     lightTypeProp(dropdownProperty("Light type")),
     ambientColorProp(colorProperty("Ambient", ambientColor)),
     diffuseColorProp(colorProperty("Diffuse", diffuseColor)),
-    specularColorProp(colorProperty("Specular", specularColor))
+    specularColorProp(colorProperty("Specular", specularColor)),
+    lightButton(dynamic_cast<lightHierarchyButton&>(*button))
 {
-    lightTypeProp.setElements({ "Point", "Directional", "Spot", "Area" });
+    lightTypeProp.setElements({ "Point", "Directional", "Spot", "Ambient" });
     lightTypeProp.onClick = [&](int i) { setType(ofLightType(i)); };
 
     setType(ofLightType::OF_LIGHT_POINT);
@@ -18,21 +18,24 @@ light::light(int id) :
 
 void light::customDraw()
 {
-    // dont forget to set position of orientation of ofLight
-    li.setPosition(getPosition());
-    li.setOrientation(getOrientationEuler());
-
     if (li.getType() == ofLightType::OF_LIGHT_AREA)
     {
-        li.setAreaLight(getScale().x, getScale().y);
+        ofSetGlobalAmbientColor(ambientColor);
     }
+    else
+    {
+        // dont forget to set position of orientation of ofLight
+        li.setPosition(getPosition());
+        li.setOrientation(getOrientationEuler());
 
-    // also dont forget to set color
-    li.setAmbientColor(ambientColor);
-    li.setDiffuseColor(diffuseColor);
-    li.setSpecularColor(specularColor);
+        ofSetGlobalAmbientColor(ofColor(0, 0, 0));
 
-    li.draw();
+        // also dont forget to set color
+        li.setAmbientColor(ambientColor);
+        li.setDiffuseColor(diffuseColor);
+        li.setSpecularColor(specularColor);
+        li.draw();
+    }
 }
 
 void light::drawProperties(int x, int y, int width)
@@ -45,13 +48,16 @@ void light::drawProperties(int x, int y, int width)
     ambientColorProp.interactable = !lightTypeProp.focused;
     offset += 10 + ambientColorProp.getHeight();
 
-    diffuseColorProp.draw(x, offset, width);
-    diffuseColorProp.interactable = !lightTypeProp.focused;
-    offset += 10 + diffuseColorProp.getHeight();
+    if (li.getType() != ofLightType::OF_LIGHT_AREA)
+    {
+        diffuseColorProp.draw(x, offset, width);
+        diffuseColorProp.interactable = !lightTypeProp.focused;
+        offset += 10 + diffuseColorProp.getHeight();
 
-    specularColorProp.draw(x, offset, width);
-    specularColorProp.interactable = !lightTypeProp.focused;
-    offset += 10 + specularColorProp.getHeight();
+        specularColorProp.draw(x, offset, width);
+        specularColorProp.interactable = !lightTypeProp.focused;
+        offset += 10 + specularColorProp.getHeight();
+    }
 }
 
 void light::setType(ofLightType type)
@@ -60,18 +66,23 @@ void light::setType(ofLightType type)
     switch (type)
     {
     case ofLightType::OF_LIGHT_AREA:
-        // This light is for effects like an emissive surface
-        li.setAreaLight(getScale().x, getScale().y);
+        lightButton.setIcon("images/icons/area_light.png");
+        lightButton.setLabel("Ambient");
+        li.setAreaLight(0, 0);
         cout << "Ambient" << endl;
         break;
 
     case ofLightType::OF_LIGHT_DIRECTIONAL:
         li.setDirectional();
+        lightButton.setIcon("images/icons/directional_light.png");
+        lightButton.setLabel("Directional");
         cout << "Directional" << endl;
         break;
 
     case ofLightType::OF_LIGHT_POINT:
         li.setPointLight();
+        lightButton.setIcon("images/icons/point_light.png");
+        lightButton.setLabel("Point");
         cout << "Point" << endl;
         break;
 
@@ -79,6 +90,8 @@ void light::setType(ofLightType type)
         li.setSpotlight();
         li.setSpotConcentration(2);
         li.setSpotlightCutOff(30);
+        lightButton.setIcon("images/icons/spot_light.png");
+        lightButton.setLabel("Spot");
         cout << "Spot" << endl;
         break;
 

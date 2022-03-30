@@ -6,8 +6,6 @@ lightHierarchyButton::lightHierarchyButton(object& obj, std::string path, std::s
 	addLightButton(new hierarchySmallButton("images/icons/add_camera.png")),
 	secondary(isSecondary)
 {
-	// todo: change text/icon based on light type?
-
 	addLightButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
 		scene& s = s.getInstance();
@@ -69,4 +67,18 @@ void lightHierarchyButton::draw()
 	{
 		addLightButton->draw();
 	}
+}
+
+void lightHierarchyButton::setIcon(string path)
+{
+	int w = icon.getWidth();
+	int h = icon.getHeight();
+	icon.clear();
+	icon.load(path);
+	icon.resize(w, h);
+}
+
+void lightHierarchyButton::setLabel(string label)
+{
+	m_text = label;
 }
