@@ -94,7 +94,7 @@ public:
 
 		for (auto& l : lights)
 		{
-			if (l->li.getType() != ofLightType::OF_LIGHT_AREA)
+			if (l->li.getType() != ofLightType::OF_LIGHT_AREA && l->isVisible)
 			{
 				l->li.enable();
 			}
@@ -111,7 +111,7 @@ public:
 
 		for (auto& l : lights)
 		{
-			if (l->li.getType() != ofLightType::OF_LIGHT_AREA)
+			if (l->li.getType() != ofLightType::OF_LIGHT_AREA && l->isVisible)
 			{
 				l->li.disable();
 			}

@@ -5,6 +5,7 @@
 #include "dropdownProperty.h"
 #include "colorProperty.h"
 #include "lightHierarchyButton.h"
+#include "inputProperty.h"
 
 class light : public object
 {
@@ -31,4 +32,10 @@ private:
 	colorProperty ambientColorProp;
 	colorProperty diffuseColorProp;
 	colorProperty specularColorProp;
+
+	float spotConcentration = 2;
+	inputProperty spotConcentrationProp;
+
+	float spotlightCutOff = 30;
+	inputProperty spotlightCutOffProp;
 };

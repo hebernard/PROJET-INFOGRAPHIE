@@ -8,10 +8,14 @@ light::light(int id) :
     ambientColorProp(colorProperty("Ambient", ambientColor)),
     diffuseColorProp(colorProperty("Diffuse", diffuseColor)),
     specularColorProp(colorProperty("Specular", specularColor)),
-    lightButton(dynamic_cast<lightHierarchyButton&>(*button))
+    lightButton(dynamic_cast<lightHierarchyButton&>(*button)),
+    spotConcentrationProp(inputProperty("Concentration", spotConcentration)),
+    spotlightCutOffProp(inputProperty("Cut Off", spotlightCutOff))
 {
     lightTypeProp.setElements({ "Point", "Directional", "Spot", "Ambient" });
     lightTypeProp.onClick = [&](int i) { setType(ofLightType(i)); };
+
+    setScale({0.1f, 0.1f, 0.1f});
 
     setType(ofLightType::OF_LIGHT_POINT);
 }
@@ -34,7 +38,16 @@ void light::customDraw()
         li.setAmbientColor(ambientColor);
         li.setDiffuseColor(diffuseColor);
         li.setSpecularColor(specularColor);
-        li.draw();
+
+        if (isSelected)
+        {
+            ofPushStyle();
+            ofDisableLighting();
+            ofNoFill();
+            li.draw();
+            ofEnableLighting();
+            ofPopStyle();
+        }
     }
 }
 
@@ -57,6 +70,18 @@ void light::drawProperties(int x, int y, int width)
         specularColorProp.draw(x, offset, width);
         specularColorProp.interactable = !lightTypeProp.focused;
         offset += 10 + specularColorProp.getHeight();
+    }
+
+    if (li.getType() == ofLightType::OF_LIGHT_SPOT)
+    {
+        spotConcentrationProp.draw(x, offset, width);
+        offset += 10 + spotConcentrationProp.getHeight();
+
+        spotlightCutOffProp.draw(x, offset, width);
+        offset += 10 + spotlightCutOffProp.getHeight();
+
+        li.setSpotConcentration(spotConcentration);
+        li.setSpotlightCutOff(spotlightCutOff);
     }
 }
 
