@@ -38,4 +38,13 @@ private:
 
 	float spotlightCutOff = 30;
 	inputProperty spotlightCutOffProp;
+
+	float constantAtt = 1.0f;
+	inputProperty constantAttProp;
+
+	float linearAtt = 0.0f;
+	inputProperty linearAttProp;
+
+	float quadraticAtt = 0.0f;
+	inputProperty quadraticAttProp;
 };

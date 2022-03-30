@@ -10,7 +10,10 @@ light::light(int id) :
     specularColorProp(colorProperty("Specular", specularColor)),
     lightButton(dynamic_cast<lightHierarchyButton&>(*button)),
     spotConcentrationProp(inputProperty("Concentration", spotConcentration)),
-    spotlightCutOffProp(inputProperty("Cut Off", spotlightCutOff))
+    spotlightCutOffProp(inputProperty("Cut Off", spotlightCutOff)),
+    constantAttProp(inputProperty("Constant Attenuation", constantAtt)),
+    linearAttProp(inputProperty("Linear Attenuation", linearAtt)),
+    quadraticAttProp(inputProperty("Quadratic Attenuation", quadraticAtt))
 {
     lightTypeProp.setElements({ "Point", "Directional", "Spot", "Ambient" });
     lightTypeProp.onClick = [&](int i) { setType(ofLightType(i)); };
@@ -49,6 +52,8 @@ void light::customDraw()
             ofPopStyle();
         }
     }
+
+    li.setAttenuation(constantAtt, linearAtt, quadraticAtt);
 }
 
 void light::drawProperties(int x, int y, int width)
@@ -71,6 +76,15 @@ void light::drawProperties(int x, int y, int width)
         specularColorProp.interactable = !lightTypeProp.focused;
         offset += 10 + specularColorProp.getHeight();
     }
+
+    constantAttProp.draw(x, offset, width);
+    offset += 10 + constantAttProp.getHeight();
+
+    linearAttProp.draw(x, offset, width);
+    offset += 10 + linearAttProp.getHeight();
+
+    quadraticAttProp.draw(x, offset, width);
+    offset += 10 + quadraticAttProp.getHeight();
 
     if (li.getType() == ofLightType::OF_LIGHT_SPOT)
     {
