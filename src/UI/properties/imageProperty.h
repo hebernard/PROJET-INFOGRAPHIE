@@ -4,10 +4,14 @@
 class imageProperty
 {
 public:
+	function<void(string)> onImageImport;
+
 	imageProperty(std::string label);
 
-	void draw(ofTexture& tex, int x, int y, int width);
+	void draw(int x, int y, int width);
 	int getHeight();
+
+	void setPreview(ofPixels& pixels);
 
 private:
 	std::string m_label;
@@ -15,6 +19,5 @@ private:
 	ofImage preview;
 	ofRectangle importBox;
 
-	void importImage(ofTexture& tex);
+	void importImage();
 };
-

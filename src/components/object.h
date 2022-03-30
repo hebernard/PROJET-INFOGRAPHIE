@@ -22,8 +22,8 @@ public:
 	float animationMaxTime = 0;
 
 	bool canHaveMaterial = true;
-	ofTexture texture;
 	ofMaterial material;
+	ofTexture originalTexture, filteredTexture;
 
 	object(hierarchyButton* btn) : 
 		button(btn), 
@@ -87,9 +87,9 @@ public:
 			ofSetColor(color);
 		}
 
-		if (texture.isAllocated()) texture.bind();
+		if (filteredTexture.isAllocated()) filteredTexture.bind();
 		customDraw();
-		if (texture.isAllocated()) texture.unbind();
+		if (filteredTexture.isAllocated()) filteredTexture.unbind();
 
 		if (canHaveMaterial) material.end();
 		ofPopStyle();

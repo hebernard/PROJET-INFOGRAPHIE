@@ -183,6 +183,7 @@
     <ClCompile Include="src\components\3d\objectModel.cpp" />
     <ClCompile Include="src\components\light.cpp" />
     <ClCompile Include="src\cursor.cpp" />
+    <ClCompile Include="src\filtering.cpp" />
     <ClCompile Include="src\imageExport.cpp" />
     <ClCompile Include="src\keyframe.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="src\components\3d\objectModel.h" />
     <ClInclude Include="src\components\light.h" />
     <ClInclude Include="src\cursor.h" />
+    <ClInclude Include="src\filtering.h" />
     <ClInclude Include="src\imageExport.h" />
     <ClInclude Include="src\keyframe.h" />
     <ClInclude Include="src\ofApp.h" />

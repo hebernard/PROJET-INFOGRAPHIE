@@ -38,6 +38,8 @@ propertiesPanel::propertiesPanel() :
 
 	materialButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
+		matPanel.setObject(*m_obj);
+
 		animationPanelVisible = false;
 		materialPanelVisible = true;
 	});
@@ -105,7 +107,7 @@ void propertiesPanel::draw(object& obj)
 
 	if (materialPanelVisible)
 	{
-		matPanel.draw(obj);
+		matPanel.draw();
 		// Dont draw the normal panel
 		return;
 	}

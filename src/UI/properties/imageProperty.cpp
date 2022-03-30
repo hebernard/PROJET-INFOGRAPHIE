@@ -9,7 +9,7 @@ imageProperty::imageProperty(std::string label) : m_label(label)
 	importBox.width = 150;
 }
 
-void imageProperty::draw(ofTexture& tex, int x, int y, int width)
+void imageProperty::draw(int x, int y, int width)
 {
 	ofPushStyle();
 	bool hovered = importBox.inside(ofGetMouseX(), ofGetMouseY());
@@ -21,19 +21,13 @@ void imageProperty::draw(ofTexture& tex, int x, int y, int width)
 
 	if (hovered && utils::mousePressed)
 	{
-		importImage(tex);
+		importImage();
 	}
 
-	if (tex.isAllocated())
+	if (preview.isAllocated())
 	{
 		ofSetColor(mainTheme::fontColor());
 		ofDrawRectangle(importBox.x - 1, importBox.y - 1, importBox.width + 2, importBox.height + 2);
-
-		ofPixels pixels;
-		tex.readToPixels(pixels);
-
-		preview.setFromPixels(pixels);
-		preview.resize(importBox.width, importBox.width / 2);
 
 		ofSetColor(255);
 		preview.draw(importBox.x, importBox.y);
@@ -58,7 +52,13 @@ int imageProperty::getHeight()
 	return importBox.height;
 }
 
-void imageProperty::importImage(ofTexture& tex)
+void imageProperty::setPreview(ofPixels& pixels)
+{
+	preview.setFromPixels(pixels);
+	preview.resize(importBox.width, importBox.width / 2);
+}
+
+void imageProperty::importImage()
 {
 	ofFileDialogResult openFileResult = ofSystemLoadDialog("Choisir un objet à importer");
 
@@ -72,7 +72,9 @@ void imageProperty::importImage(ofTexture& tex)
 
 			if (fileExtension == "JPG" || fileExtension == "PNG")
 			{
-				ofLoadImage(tex, file.path());
+				onImageImport(file.path());
+
+				setPreview(ofImage(file.path()).getPixels());
 			}
 			else
 			{

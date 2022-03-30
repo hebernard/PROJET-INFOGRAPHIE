@@ -4,6 +4,7 @@
 #include "imageProperty.h"
 #include "colorProperty.h"
 #include "inputProperty.h"
+#include "dropdownProperty.h"
 
 class hierarchySmallButton;
 
@@ -15,12 +16,18 @@ public:
 	materialPanel();
 	~materialPanel();
 
-	void draw(object& obj);
+	void draw();
+
+	void setObject(object& obj);
 
 private:
+	object* ref;
+	int currentFilter = 0;
+
 	ofRectangle rect;
 	ofMaterial refMat;
 	imageProperty imgProp;
+	dropdownProperty filterProp;
 
 	ofColor* ambientColor;
 	ofColor* diffuseColor;
@@ -28,10 +35,12 @@ private:
 	ofColor* specularColor;
 	float* shininess;
 
-	colorProperty ambientColorProp{ "Ambient", *ambientColor };
-	colorProperty diffuseColorProp{ "Diffuse", *diffuseColor };
-	colorProperty emissiveColorProp{ "Emissive", *emissiveColor };
-	colorProperty specularColorProp{ "Specular", *specularColor };
-	inputProperty shininessProp{ "Shininess", *shininess };
+	colorProperty ambientColorProp;
+	colorProperty diffuseColorProp;
+	colorProperty emissiveColorProp;
+	colorProperty specularColorProp;
+	inputProperty shininessProp;
+
+	void setFilter(int index);
 };
 

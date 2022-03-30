@@ -20,13 +20,9 @@ void colorProperty::draw(int x, int y, int width)
 
 	drawText(x, y + textSize.y, m_label, 11);
 
-	ofPushStyle();
-	bool mouseInside = colorRect.inside(mouseX, mouseY);
-	ofSetColor(m_ref);
-	ofDrawRectRounded(colorRect, 20);
-
 	picker.draw(x, colorRect.y);
 
+	bool mouseInside = colorRect.inside(mouseX, mouseY);
 	if (interactable && utils::mousePressed)
 	{
 		if (mouseInside)
@@ -35,6 +31,9 @@ void colorProperty::draw(int x, int y, int width)
 		}
 	}
 
+	ofPushStyle();
+	ofSetColor(m_ref);
+	ofDrawRectRounded(colorRect, 20);
 	ofPopStyle();
 }
 

@@ -43,18 +43,32 @@ colorPicker::colorPicker(ofColor& ref) : m_ref(ref)
 	vbo.setColorData(&gColors[0], 6, GL_DYNAMIC_DRAW);
 
 	// RGB
+	R = m_ref.r;
+	G = m_ref.g;
+	B = m_ref.b;
+
 	rInput = new inputProperty("R", R);
+	rInput->forceUpdateValue(255);
 	gInput = new inputProperty("G", G);
+	gInput->forceUpdateValue(255);
 	bInput = new inputProperty("B", B);
+	bInput->forceUpdateValue(255);
 
 	rInput->maxCharacters = 5;
 	gInput->maxCharacters = 5;
 	bInput->maxCharacters = 5;
 
 	// HSB
+	H = m_ref.getHue();
+	S = m_ref.getSaturation();
+	B = m_ref.getBrightness();
+
 	hInput = new inputProperty("H", H);
+	hInput->forceUpdateValue(255);
 	sInput = new inputProperty("S", S);
+	sInput->forceUpdateValue(255);
 	brInput = new inputProperty("B", Br);
+	brInput->forceUpdateValue(255);
 
 	hInput->maxCharacters = 5;
 	sInput->maxCharacters = 5;
