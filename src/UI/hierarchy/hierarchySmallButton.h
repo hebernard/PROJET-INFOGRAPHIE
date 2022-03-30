@@ -23,6 +23,8 @@ public:
 
 	void changeIcon(std::string path);
 
+	bool getIsHovered();
+
 private:
 	ofImage icon;
 

@@ -40,6 +40,11 @@ void hierarchySmallButton::changeIcon(std::string path)
 	icon.resize(22, 22);
 }
 
+bool hierarchySmallButton::getIsHovered()
+{
+	return mMouseOver;
+}
+
 void hierarchySmallButton::setTheme(const ofxDatGuiTheme* theme)
 {
 	setComponentStyle(theme);

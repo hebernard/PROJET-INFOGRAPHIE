@@ -2,11 +2,22 @@
 #include "label.h"
 #include "utils.h"
 #include "panel.h"
+#include "hierarchySmallButton.h"
 
-imageProperty::imageProperty(std::string label) : m_label(label)
+imageProperty::imageProperty(std::string label) : m_label(label), closeButton(new hierarchySmallButton("images/icons/delete.png"))
 {
 	importBox.height = 75;
 	importBox.width = 150;
+
+	closeButton->buttonEventCallback = [&](auto e)
+	{
+		onImageCleared();
+	};
+}
+
+imageProperty::~imageProperty()
+{
+	delete closeButton;
 }
 
 void imageProperty::draw(int x, int y, int width)
@@ -19,7 +30,9 @@ void imageProperty::draw(int x, int y, int width)
 	importBox.x = x + width - importBox.width;
 	importBox.y = y;
 
-	if (hovered && utils::mousePressed)
+	closeButton->update(importBox.x + importBox.width - closeButton->getWidth(), importBox.y);
+
+	if (hovered && utils::mousePressed && !closeButton->getIsHovered())
 	{
 		importImage();
 	}
@@ -31,6 +44,8 @@ void imageProperty::draw(int x, int y, int width)
 
 		ofSetColor(255);
 		preview.draw(importBox.x, importBox.y);
+
+		closeButton->draw();
 	}
 	else
 	{

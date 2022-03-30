@@ -31,6 +31,16 @@ materialPanel::materialPanel() :
 		}
 	};
 
+	imgProp.onImageCleared = [&]()
+	{
+		imgProp.resetPreview();
+		if (ref != nullptr)
+		{
+			ref->originalTexture.clear();
+			ref->filteredTexture.clear();
+		}
+	};
+
 	filterProp.setElements(getFilterTypes());
 	filterProp.onClick = [&](int index) { materialPanel::setFilter(index); };
 }
