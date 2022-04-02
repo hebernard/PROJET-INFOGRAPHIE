@@ -120,6 +120,9 @@
     <ClCompile Include="src\UI\hierarchy\lightHierarchyButton.cpp" />
     <ClCompile Include="src\UI\properties\dropdownProperty.cpp" />
     <ClCompile Include="src\filtering.cpp" />
+    <ClCompile Include="src\components\3d\bezierCurve.cpp">
+      <Filter>src\components\3d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -499,6 +502,9 @@
     <ClInclude Include="src\UI\hierarchy\lightHierarchyButton.h" />
     <ClInclude Include="src\UI\properties\dropdownProperty.h" />
     <ClInclude Include="src\filtering.h" />
+    <ClInclude Include="src\components\3d\bezierCurve.h">
+      <Filter>src\components\3d</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

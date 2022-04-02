@@ -180,6 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\3d\bezierCurve.cpp" />
     <ClCompile Include="src\components\3d\objectModel.cpp" />
     <ClCompile Include="src\components\light.cpp" />
     <ClCompile Include="src\cursor.cpp" />
@@ -235,6 +236,7 @@
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\3d\bezierCurve.h" />
     <ClInclude Include="src\components\3d\objectModel.h" />
     <ClInclude Include="src\components\light.h" />
     <ClInclude Include="src\cursor.h" />

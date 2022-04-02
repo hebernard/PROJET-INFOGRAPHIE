@@ -71,6 +71,7 @@ void ofApp::draw()
 		s.enableMouseInputs();
 	}
 	utils::isMouseOverUI = false;
+	utils::keyPressed = 0;
 }
 
 ofApp::~ofApp()
@@ -85,6 +86,11 @@ void ofApp::mousePressed(int x, int y, int button)
 	{
 		utils::mousePressed = true;
 	}
+}
+
+void ofApp::keyPressed(int key)
+{
+	utils::keyPressed = key;
 }
 
 void ofApp::mouseReleased(int x, int y, int button)

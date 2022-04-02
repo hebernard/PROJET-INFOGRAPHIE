@@ -12,6 +12,7 @@
 #include "components/2d/rectangle.h"
 #include "components/2d/square.h"
 #include "components/2d/triangle.h"
+#include "components/3d/bezierCurve.h"
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
 #include "components/3d/objectModel.h"
@@ -104,6 +105,19 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 		notifyDropdownClicked(-1);
 	});
 	dropdown2d->addButton(triangleButton);
+
+	//3D - Curve Button
+	dropdownButton* curveButton = new dropdownButton("images/icons/curve.png", "Curve");
+	curveButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+		{
+			bezierCurve* cu = new bezierCurve();
+
+			scene& s = s.getInstance();
+			s.addObject(cu);
+
+			notifyDropdownClicked(-1);
+		});
+	dropdown3d->addButton(curveButton);
 
 	//3D - Sphere Button
 	dropdownButton* sphereButton = new dropdownButton("images/icons/sphere.png", "Sphere");

@@ -13,6 +13,7 @@ public:
 	void update();
 	void draw();
 
+	void keyPressed(int key);
 	void mouseReleased(int x, int y, int button);
 
 private:
