@@ -73,7 +73,7 @@ public:
 	void update();
 	void draw();
 
-	void addSphere(sphere& s);
+	void addSphere(sphere* s);
 
 private:
 	bool isSetup = false;
@@ -89,10 +89,12 @@ private:
 	float time = 0;
 	int frameNum = 0;
 
-	int sphereCount = 8;
-	vector<sphere*> spheres;
+	const int NUM_SPHERES = 64;
+	std::vector<sphere*> spheres;
 
 	void addSphereToShader(string name, sphere& s);
+
+	int getNextAvailableIndex();
 
 	// UI
 	int width = 512;

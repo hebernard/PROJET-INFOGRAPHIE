@@ -4,7 +4,7 @@
 #include "utils.h"
 #include "scene.h"
 
-raytracingPanel::raytracingPanel() : resetButton("images/icons/resume.png"), playButton("images/icons/pause.png")
+raytracingPanel::raytracingPanel() : resetButton("images/icons/resume.png"), playButton("images/icons/pause.png"), spheres()
 {
 }
 
@@ -73,7 +73,7 @@ void raytracingPanel::setup()
 
 	// Add a default sphere
 	sphere* s = new sphere(16.5f, { 27.f, 16.5f, 47.f }, { 0.f, 0.f, 0.f }, { 1.f, 1.f, 1.f }, 1);
-	addSphere(*s);
+	addSphere(s);
 
 	// UI
 	resetButton.onButtonEvent([&](auto e)
@@ -123,10 +123,12 @@ void raytracingPanel::update()
 		multipass_shader.setUniform1f("time", time);
 		multipass_shader.setUniform1i("frame", frameNum);
 		multipass_shader.setUniform1i("MAXDEPTH", max_depth);
-		multipass_shader.setUniform1i("sphereCount", sphereCount);
-		for (int i = 0; i < spheres.size(); i++)
+		for (int i = 0; i < NUM_SPHERES; i++)
 		{
-			addSphereToShader("spheres[" + ofToString(i + sphereCount - 1) + "]", *spheres[i]);
+			if (i < spheres.size())
+			{
+				addSphereToShader("spheres[" + ofToString(i + 7) + "]", *spheres[i]);
+			}
 		}
 
 		if (renderRect.inside(ofGetMouseX(), ofGetMouseY()) && ofGetMousePressed())
@@ -181,13 +183,22 @@ void raytracingPanel::draw()
 	drawToolbar();
 }
 
-void raytracingPanel::addSphere(sphere& s)
+void raytracingPanel::addSphere(sphere* s)
 {
-	s.canBeAnimated = false;
-	s.canHaveMaterial = false;
+	s->canBeAnimated = false;
+	s->canHaveMaterial = false;
 
-	spheres.push_back(&s);
-	sphereCount++;
+	if (spheres.size() < NUM_SPHERES)
+	{
+		spheres.push_back(s);
+	}
+	else
+	{
+		spheres[getNextAvailableIndex()] = s;
+	}
+
+	time = 0;
+	frameNum = 0;
 }
 
 void raytracingPanel::addSphereToShader(string name, sphere& s)
@@ -197,7 +208,20 @@ void raytracingPanel::addSphereToShader(string name, sphere& s)
 	multipass_shader.setUniform3f(name + ".e", s.getEmission());
 	multipass_shader.setUniform3f(name + ".color", s.getRaytracingColor());
 	multipass_shader.setUniform1i(name + ".reflection", s.getReflection());
-	multipass_shader.setUniform1i(name + ".visible", s.isVisible);
+	multipass_shader.setUniform1i(name + ".visible", s.markedForDeletion ? false : s.isVisible);
+}
+
+int raytracingPanel::getNextAvailableIndex()
+{
+	for (int i = 0; i < spheres.size(); i++)
+	{
+		if (spheres[i]->markedForDeletion)
+		{
+			return i;
+		}
+	}
+
+	return spheres.size() - 1;
 }
 
 void raytracingPanel::play()
@@ -246,8 +270,13 @@ void raytracingPanel::drawHierarchy()
 	hierarchyIcon.draw(hierarchyRect.x + 15, hierarchyRect.y + 10);
 	ofPopStyle();
 
-	for (int i = 0; i < spheres.size(); i++)
+	for (int i = 0, j = 0; i < NUM_SPHERES; i++)
 	{
-		spheres[i]->drawHierarchy(hierarchyRect.x, hierarchyRect.y + 56 + (i * 30));
+		if (i < spheres.size() && !spheres[i]->markedForDeletion)
+		{
+			spheres[i]->drawHierarchy(hierarchyRect.x, hierarchyRect.y + 56 + (j * 30));
+
+			j++;
+		}
 	}
 }

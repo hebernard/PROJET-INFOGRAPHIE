@@ -29,10 +29,10 @@ private:
 
 	dropdown* dropdown2d;
 	dropdown* dropdown3d;
+	dropdown* raytracingDropdown;
 
 	menuBarButton* importButton;
 	menuBarButton* renderButton;
-	recButton* exportButton;
 	menuBarButtonAlt* themeButton;
 
 	void drawLogo();

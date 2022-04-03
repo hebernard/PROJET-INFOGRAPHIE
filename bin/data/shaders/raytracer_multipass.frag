@@ -25,7 +25,6 @@ uniform int frame;
 uniform float time;
 uniform vec2 resolution;
 uniform vec2 mouse;
-uniform int sphereCount;
 uniform Sphere spheres[NUM_SPHERES];
 uniform Sphere lightSourceVolume;
 uniform int MAXDEPTH;
@@ -57,7 +56,7 @@ int intersect(Ray r, out float t, out Sphere s, int avoid) {
 	int id = -1;
 	t = 1e5;
 	s = spheres[0];
-	for (int i = 0; i < sphereCount; ++i) {
+	for (int i = 0; i < NUM_SPHERES; ++i) {
 		Sphere S = spheres[i];
 		if (S.visible) {
 			float d = intersect(S, r);
