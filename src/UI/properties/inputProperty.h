@@ -11,9 +11,6 @@ public:
 	void draw(int x, int y, int width, int textOffset = 30);
 	int getHeight();
 
-	void keyPressed(ofKeyEventArgs& args);
-	void keyReleased(ofKeyEventArgs& args);
-
 	void forceUpdateValue(float maxValue);
 
 private:

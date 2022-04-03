@@ -1,6 +1,7 @@
 #include "inputProperty.h"
 #include "panel.h"
 #include "label.h"
+#include "utils.h"
 
 inputProperty::inputProperty(std::string label, float& ref) : m_label(label), m_ref(ref)
 {
@@ -8,8 +9,6 @@ inputProperty::inputProperty(std::string label, float& ref) : m_label(label), m_
 	rect.height = 20;
 	value = ofToString(ref);
 	valueSize = label::getSize(value, 10);
-
-	ofRegisterKeyEvents(this);
 }
 
 void inputProperty::draw(int x, int y, int width, int textOffset)
@@ -42,9 +41,35 @@ void inputProperty::draw(int x, int y, int width, int textOffset)
 		{
 			blinkTimer = 0;
 		}
+
+		if (utils::keyPressed != 0)
+		{
+			int key = utils::keyPressed;
+			if (key == '0' || key == '1' || key == '2' || key == '3' ||
+				key == '4' || key == '5' || key == '6' || key == '7' ||
+				key == '8' || key == '9' || key == '.')
+			{
+				if (value.size() < maxCharacters)
+				{
+					value += key;
+				}
+			}
+			else if (key == OF_KEY_BACKSPACE)
+			{
+				value = value.substr(0, value.size() - 1);
+			}
+			else if (key == OF_KEY_RETURN)
+			{
+				focused = false;
+				m_ref = getValue();
+			}
+
+			valueSize = label::getSize(value, 10);
+			blinkTimer = 0;
+		}
 	}
 
-	if (ofGetMousePressed())
+	if (utils::mousePressed)
 	{
 		focused = hovered;
 		if (!focused)
@@ -58,36 +83,6 @@ int inputProperty::getHeight()
 {
 	return rect.height;
 }
-
-void inputProperty::keyPressed(ofKeyEventArgs& args)
-{
-	if (focused)
-	{
-		if (args.key == '0' || args.key == '1' || args.key == '2' || args.key == '3' ||
-			args.key == '4' || args.key == '5' || args.key == '6' || args.key == '7' ||
-			args.key == '8' || args.key == '9' || args.key == '.')
-		{
-			if (value.size() < maxCharacters)
-			{
-				value += args.key;
-			}
-		}
-		else if (args.key == OF_KEY_BACKSPACE)
-		{
-			value = value.substr(0, value.size() - 1);
-		}
-		else if (args.key == OF_KEY_RETURN)
-		{
-			focused = false;
-			m_ref = getValue();
-		}
-
-		valueSize = label::getSize(value, 10);
-		blinkTimer = 0;
-	}
-}
-
-void inputProperty::keyReleased(ofKeyEventArgs& args) {}
 
 void inputProperty::forceUpdateValue(float maxValue)
 {
