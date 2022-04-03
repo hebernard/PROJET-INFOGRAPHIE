@@ -20,7 +20,6 @@ hierarchyPanel::~hierarchyPanel()
 
 void hierarchyPanel::setup()
 {
-
 	icon.load("images/icons/hierarchy.png");
 	icon.resize(24, 24);
 

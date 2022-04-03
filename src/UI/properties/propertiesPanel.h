@@ -11,6 +11,12 @@ class hierarchySmallButton;
 class propertiesPanel
 {
 public:
+    function<void()> onUpdate;
+
+    bool enableRotation = true;
+    bool enableScaling = true;
+    bool anchoredRight = true;
+
 	propertiesPanel();
     ~propertiesPanel();
 
@@ -26,13 +32,16 @@ public:
     void mouseEntered(ofMouseEventArgs& args);
     void mouseExited(ofMouseEventArgs& args);
 
+    void setPosition(int x, int y);
+    void setHeight(int h);
+
 private:
     object* m_obj;
     const int offsetX = 15;
     int propertyWidth;
-    const int translationSpeed = 5;
-    const int rotationSpeed = 30;
-    const int scaleSpeed = 1;
+    const float translationSpeed = 8;
+    const float rotationSpeed = 40;
+    const float scaleSpeed = 1.5f;
 
 	ofRectangle rect;
 	hierarchySmallButton* backButton;

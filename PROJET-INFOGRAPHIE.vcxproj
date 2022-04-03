@@ -233,6 +233,7 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp" />
     <ClCompile Include="src\UI\menuBar\recButton.cpp" />
+    <ClCompile Include="src\raytracing\UI\raytracingPanel.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +352,7 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h" />
     <ClInclude Include="src\UI\menuBar\recButton.h" />
+    <ClInclude Include="src\raytracing\UI\raytracingPanel.h" />
     <ClInclude Include="src\utils.h" />
   </ItemGroup>
   <ItemGroup>

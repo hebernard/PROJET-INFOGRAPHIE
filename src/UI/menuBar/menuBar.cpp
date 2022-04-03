@@ -19,7 +19,15 @@
 #include "panel.h"
 #include "utils.h"
 
-menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(new dropdown(0, "2D", *this)), dropdown3d(new dropdown(1, "3D", *this)), importButton(new menuBarButton("Import")), exportButton(new recButton("images/icons/rec.png")), themeButton(new menuBarButtonAlt(mainTheme::themePath()))
+menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
+	rect(),
+	logo(),
+	dropdown2d(new dropdown(0, "2D", *this)),
+	dropdown3d(new dropdown(1, "3D", *this)),
+	importButton(new menuBarButton("Import")),
+	renderButton(new menuBarButton("Render")),
+	exportButton(new recButton("images/icons/rec.png")),
+	themeButton(new menuBarButtonAlt(mainTheme::themePath()))
 {
 	rect.width = ofGetWidth();
 	rect.height = 70;
@@ -146,6 +154,13 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"), rect(), logo(), dropdown2d(n
 	dropdown3d->addButton(cubeButton);
 
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
+	renderButton->buttonEventCallback = [&](auto e)
+	{
+		scene& s = s.getInstance();
+		s.showRaytracingPanel = true;
+		s.raytracing.setup();
+	};
+
 	//exportButton->onButtonEvent(this, &menuBar::onExportButtonEvent);
 	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 }
@@ -156,6 +171,7 @@ menuBar::~menuBar()
 	delete dropdown3d;
 
 	delete importButton;
+	delete renderButton;
 	//delete exportButton;
 	delete themeButton;
 }
@@ -179,6 +195,7 @@ void menuBar::draw()
 	dropdown3d->draw();
 
 	importButton->draw();
+	renderButton->draw();
 	//exportButton->draw();
 	themeButton->draw();
 
@@ -197,11 +214,12 @@ void menuBar::update()
 	posX += dropdown2d->getWidth() + 5;
 	dropdown3d->setPosition(posX, posY);
 	dropdown3d->update();
-
 	posX += dropdown3d->getWidth() + 10;
-	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 
+	importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 	posX += importButton->getWidth() + 10;
+
+	renderButton->update(posX, importButton->getY());
 
 	/*
 	if (posX < ofGetWidth() / 2)

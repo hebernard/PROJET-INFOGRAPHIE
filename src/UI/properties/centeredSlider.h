@@ -8,30 +8,32 @@ class hierarchySmallButton;
 class centeredSlider
 {
 public:
-    glm::vec3 axis = glm::vec3(1, 0, 0);
-    float value = 0;
+    function<void(glm::vec3 axis, float value)> onUpdate;
+
     bool dragStarted = false;
+
     hierarchySmallButton* resetButton;
     hierarchySmallButton* lockedButton;
 
 	centeredSlider(std::string text, bool drawLockedButton = false);
     ~centeredSlider();
 
+    void update();
 	void draw(int x, int y, int width, glm::vec3 xyz);
-
-    void mouseDragged(ofMouseEventArgs& args);
-    void mouseReleased(ofMouseEventArgs& args);
 
     void setLocked(bool locked);
     bool getLocked();
 
+    int getHeight();
+
 private:
+    glm::vec3 axis = glm::vec3(1, 0, 0);
+    float value = 0;
+
     bool isLocked = false;
     bool drawLocked;
     int thumbX;
     int thumbRadius = 10;
-    int minX;
-    int maxX;
 
     int current = 0;
     ofColor axisColor = ofColor::red;

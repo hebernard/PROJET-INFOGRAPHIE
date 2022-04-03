@@ -5,9 +5,9 @@
 
 void ofApp::setup()
 {
-	ofDisableArbTex();
 	ofEnableAlphaBlending();
-	ofSetFrameRate(60);
+	ofDisableArbTex();
+	//ofSetFrameRate(60);
 
 	//setup darkTheme by default
 	mainTheme::darkTheme = true;
@@ -23,11 +23,15 @@ void ofApp::setup()
 
 	// setup dummyObjects by default
 	s.setupObjects();
-
 }
 
 void ofApp::update()
 {
+	if (s.showRaytracingPanel)
+	{
+		s.raytracing.update();
+	}
+
 	menu->update();
 }
 
@@ -37,10 +41,17 @@ void ofApp::draw()
 
 	if (!cursor::isCameraCursor() && !cursor::isDraggedCursor()) { cursor::setDefaultCursor(); }
 
-	auto cameras = s.getCameras();
-	for (int i = 0; i < cameras.size(); i++)
+	if (s.showRaytracingPanel)
 	{
-		cameras.at(i)->render(s, i);
+		s.raytracing.draw();
+	}
+	else
+	{
+		auto cameras = s.getCameras();
+		for (int i = 0; i < cameras.size(); i++)
+		{
+			cameras.at(i)->render(s, i);
+		}
 	}
 
 	// UI must be drawn at the end & objects are added to the hierarchy

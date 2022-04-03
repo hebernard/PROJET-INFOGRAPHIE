@@ -31,6 +31,7 @@ private:
 	dropdown* dropdown3d;
 
 	menuBarButton* importButton;
+	menuBarButton* renderButton;
 	recButton* exportButton;
 	menuBarButtonAlt* themeButton;
 

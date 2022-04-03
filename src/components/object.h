@@ -18,6 +18,8 @@ public:
 	bool isVisible;
 	ofColor color = ofColor::white;
 
+	// Animation
+	bool canBeAnimated = true;
 	std::vector<keyframe> keyframes;
 	float animationMaxTime = 0;
 

@@ -10,12 +10,16 @@
 #include "components/3d/sphere.h"
 #include "components/2d/circle.h"
 #include "components/light.h"
+#include "raytracing/UI/raytracingPanel.h"
 
 class scene
 {
 public:
 	object* currentSelected;
 	bool gridIsVisible = true;
+
+	bool showRaytracingPanel = false;
+	raytracingPanel raytracing;
 
 	static scene& getInstance()
 	{
@@ -50,9 +54,12 @@ public:
 			currentSelected->isSelected = false;
 		}
 
-		for (size_t i = 0; i < cameras.size(); i++)
+		if (!showRaytracingPanel)
 		{
-			cameras.at(i)->setTarget(obj.getCenter());
+			for (size_t i = 0; i < cameras.size(); i++)
+			{
+				cameras.at(i)->setTarget(obj.getCenter());
+			}
 		}
 
 		//camera->setDistance(5);
@@ -156,6 +163,11 @@ public:
 
 	void drawHierarchyUI()
 	{
+		if (showRaytracingPanel)
+		{
+			return;
+		}
+
 		if (currentSelected != nullptr && currentSelected->propertiesOpened)
 		{
 			properties.draw(*currentSelected);

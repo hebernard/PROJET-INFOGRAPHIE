@@ -123,6 +123,7 @@
     <ClCompile Include="src\components\3d\bezierCurve.cpp">
       <Filter>src\components\3d</Filter>
     </ClCompile>
+    <ClCompile Include="src\raytracing\UI\raytracingPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -505,6 +506,7 @@
     <ClInclude Include="src\components\3d\bezierCurve.h">
       <Filter>src\components\3d</Filter>
     </ClInclude>
+    <ClInclude Include="src\raytracing\UI\raytracingPanel.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

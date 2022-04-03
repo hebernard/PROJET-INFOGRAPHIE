@@ -18,7 +18,6 @@ propertiesPanel::propertiesPanel() :
 {
 	ofRegisterMouseEvents(this);
 	rect.width = 300;
-	rect.y = 100;
 	propertyWidth = rect.width - offsetX * 2;
 
 	backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -49,6 +48,11 @@ propertiesPanel::propertiesPanel() :
 		scene& s = s.getInstance();
 		s.currentSelected->setPosition(glm::vec3(0, 0, 0));
 		resetFocus();
+
+		if (onUpdate != 0)
+		{
+			onUpdate();
+		}
 	});
 
 	rotation.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -56,6 +60,11 @@ propertiesPanel::propertiesPanel() :
 		scene& s = s.getInstance();
 		s.currentSelected->setOrientation(glm::vec3(0, 0, 0));
 		resetFocus();
+
+		if (onUpdate != 0)
+		{
+			onUpdate();
+		}
 	});
 
 	scale.resetButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -63,6 +72,11 @@ propertiesPanel::propertiesPanel() :
 		scene& s = s.getInstance();
 		s.currentSelected->setScale(glm::vec3(1, 1, 1));
 		resetFocus();
+
+		if (onUpdate != 0)
+		{
+			onUpdate();
+		}
 	});
 
 	scale.lockedButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -79,6 +93,37 @@ propertiesPanel::propertiesPanel() :
 	{
 		materialPanelVisible = false;
 	});
+
+	position.onUpdate = [&](auto axis, float value)
+	{
+		m_obj->setPosition(m_obj->getPosition() + axis * value * ofGetLastFrameTime() * translationSpeed);
+
+		if (onUpdate != 0)
+		{
+			onUpdate();
+		}
+	};
+
+	rotation.onUpdate = [&](auto axis, float value)
+	{
+		m_obj->rotateDeg(value * ofGetLastFrameTime() * rotationSpeed, axis);
+
+		if (onUpdate != 0)
+		{
+			onUpdate();
+		}
+	};
+
+	scale.onUpdate = [&](auto axis, float value)
+	{
+		auto scaleAxis = scale.getLocked() ? glm::vec3(1, 1, 1) : axis;
+		m_obj->setScale(m_obj->getScale() + scaleAxis * value * ofGetLastFrameTime() * scaleSpeed);
+
+		if (onUpdate != 0)
+		{
+			onUpdate();
+		}
+	};
 }
 
 propertiesPanel::~propertiesPanel()
@@ -102,8 +147,16 @@ void propertiesPanel::draw(object& obj)
 		utils::isMouseOverUI = true;
 	}
 
-	rect.height = ofGetHeight() - 125;
-	rect.x = ofGetWidth() - rect.width - 20;
+	position.update();
+	rotation.update();
+	scale.update();
+
+	if (anchoredRight)
+	{
+		rect.height = ofGetHeight() - 125;
+		rect.x = ofGetWidth() - rect.width - 20;
+		rect.y = 100;
+	}
 
 	if (materialPanelVisible)
 	{
@@ -119,8 +172,11 @@ void propertiesPanel::draw(object& obj)
 	backButton->update(rect.x + 15, rect.y + 10);
 	backButton->draw();
 
-	animateButton->update(rect.x + rect.width - animateButton->getWidth() - 15, rect.y + 10);
-	animateButton->draw();
+	if (obj.canBeAnimated)
+	{
+		animateButton->update(rect.x + rect.width - animateButton->getWidth() - 15, rect.y + 10);
+		animateButton->draw();
+	}
 
 	if (obj.canHaveMaterial)
 	{
@@ -134,7 +190,18 @@ void propertiesPanel::draw(object& obj)
 
 	drawLine(rect.x + 30, rect.y + 310, rect.width - 60);
 
-	obj.drawProperties(rect.x + offsetX, rect.y + 330, propertyWidth);
+	int slidersMul = 3;
+	if (!enableScaling)
+	{
+		slidersMul--;
+	}
+	if (!enableRotation)
+	{
+		slidersMul--;
+	}
+
+	int y = rect.y + (slidersMul * position.getHeight()) + 90;
+	obj.drawProperties(rect.x + offsetX, y, propertyWidth);
 
 	if (animationPanelVisible)
 	{
@@ -144,21 +211,6 @@ void propertiesPanel::draw(object& obj)
 
 void propertiesPanel::mouseDragged(ofMouseEventArgs& args)
 {
-	if (!rotation.dragStarted && !scale.dragStarted)
-	{
-		position.mouseDragged(args);
-	}
-
-	if (!position.dragStarted && !scale.dragStarted)
-	{
-		rotation.mouseDragged(args);
-	}
-
-	if (!position.dragStarted && !rotation.dragStarted)
-	{
-		scale.mouseDragged(args);
-	}
-
 	animPanel.mouseDragged(args);
 }
 
@@ -171,23 +223,25 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 
 		animPanel.addKeyFrame(*m_obj);
 	}
-
-	position.mouseReleased(args);
-	rotation.mouseReleased(args);
-	scale.mouseReleased(args);
 }
 
 void propertiesPanel::drawTransformSliders(object& obj)
 {
-	position.draw(rect.x + offsetX, rect.y + 75, propertyWidth, obj.getPosition());
-	rotation.draw(rect.x + offsetX, rect.y + 155, propertyWidth, obj.getOrientationEuler());
-	scale.draw(rect.x + offsetX, rect.y + 235, propertyWidth, obj.getScale());
+	int y = rect.y + 75;
 
-	obj.setPosition(obj.getPosition() + position.axis * position.value * ofGetLastFrameTime() * translationSpeed);
-	obj.rotateDeg(rotation.value * ofGetLastFrameTime() * rotationSpeed, rotation.axis);
+	position.draw(rect.x + offsetX, y, propertyWidth, obj.getPosition());
+	y += position.getHeight();
 
-	auto scaleAxis = scale.getLocked() ? glm::vec3(1, 1, 1) : scale.axis;
-	obj.setScale(obj.getScale() + scaleAxis * scale.value * ofGetLastFrameTime() * scaleSpeed);
+	if (enableRotation)
+	{
+		rotation.draw(rect.x + offsetX, y, propertyWidth, obj.getOrientationEuler());
+		y += rotation.getHeight();
+	}
+
+	if (enableScaling)
+	{
+		scale.draw(rect.x + offsetX, y, propertyWidth, obj.getScale());
+	}
 }
 
 void propertiesPanel::drawLine(int x, int y, int width)
@@ -213,3 +267,14 @@ void propertiesPanel::mouseScrolled(ofMouseEventArgs& args)
 }
 void propertiesPanel::mouseEntered(ofMouseEventArgs& args) {}
 void propertiesPanel::mouseExited(ofMouseEventArgs& args) {}
+
+void propertiesPanel::setPosition(int x, int y)
+{
+	rect.x = x;
+	rect.y = y;
+}
+
+void propertiesPanel::setHeight(int h)
+{
+	rect.height = h;
+}

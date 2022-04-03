@@ -4,6 +4,7 @@
 #include "object.h"
 #include "hierarchySmallButton.h"
 #include "cursor.h"
+#include "utils.h"
 
 centeredSlider::centeredSlider(std::string text, bool drawLockedButton) : 
 	m_text(text),
@@ -15,6 +16,92 @@ centeredSlider::centeredSlider(std::string text, bool drawLockedButton) :
 	xyzRect.height = 20;
 
 	textSize = label::getSize(m_text, 12);
+}
+
+centeredSlider::~centeredSlider()
+{
+	delete resetButton;
+	delete lockedButton;
+}
+
+void centeredSlider::update()
+{
+	int mouseX = ofGetMouseX();
+	int mouseY = ofGetMouseY();
+
+	if (utils::mousePressed)
+	{
+		if (ofRectangle(slider.x, slider.y - thumbRadius, slider.width, thumbRadius * 2).inside(mouseX, mouseY))
+		{
+			dragStarted = true;
+		}
+	}
+	else if (utils::mouseReleased)
+	{
+		if (isLocked)
+		{
+			value = 0;
+			dragStarted = false;
+			return;
+		}
+
+		if (mouseX >= xyzRect.x &&
+			mouseX <= xyzRect.x + 25 &&
+			mouseY >= xyzRect.y &&
+			mouseY <= xyzRect.y + xyzRect.height)
+		{
+			current = 0;
+			axisColor = ofColor::red;
+			axis = glm::vec3(1, 0, 0);
+		}
+
+		if (mouseX >= xyzRect.x + 26 &&
+			mouseX <= xyzRect.x + 50 &&
+			mouseY >= xyzRect.y &&
+			mouseY <= xyzRect.y + xyzRect.height)
+		{
+			current = 1;
+			axisColor = ofColor::green;
+			axis = glm::vec3(0, 1, 0);
+		}
+
+		if (mouseX >= xyzRect.x + 51 &&
+			mouseX <= xyzRect.x + xyzRect.width &&
+			mouseY >= xyzRect.y &&
+			mouseY <= xyzRect.y + xyzRect.height)
+		{
+			current = 2;
+			axisColor = ofColor::blue;
+			axis = glm::vec3(0, 0, 1);
+		}
+
+		value = 0;
+		dragStarted = false;
+	}
+
+	if (dragStarted)
+	{
+		float min = slider.x;
+		float max = slider.x + slider.width;
+
+		thumbX = mouseX;
+		if (thumbX <= min)
+		{
+			thumbX = min;
+		}
+		if (thumbX >= max)
+		{
+			thumbX = max;
+		}
+
+		// Normalize between -1 and 1
+		value = (float)2 * (thumbX - min) / (max - min) - 1;
+
+		if (onUpdate != 0)
+		{
+			onUpdate(axis, value);
+		}
+	}
 }
 
 void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
@@ -47,80 +134,6 @@ void centeredSlider::draw(int x, int y, int width, glm::vec3 xyz)
 	ofPopStyle();
 }
 
-void centeredSlider::mouseDragged(ofMouseEventArgs& args)
-{
-	if (args.y >= xyzRect.y + 49 - thumbRadius && args.y <= xyzRect.y + 49 + thumbRadius &&
-		args.x >= xyzRect.x - 100 && args.x <= xyzRect.x - 100 + 240)
-	{
-		dragStarted = true;
-	}
-
-	if (dragStarted)
-	{
-		thumbX = args.x;
-		if (thumbX <= minX)
-		{
-			thumbX = minX;
-		}
-		if (thumbX >= maxX)
-		{
-			thumbX = maxX;
-		}
-
-		// Normalize between -1 and 1
-		value = (float) 2 * (thumbX - minX) / (maxX - minX) - 1;
-	}
-}
-
-void centeredSlider::mouseReleased(ofMouseEventArgs& args)
-{
-	if (isLocked)
-	{
-		value = 0;
-		dragStarted = false;
-		return;
-	}
-
-	if (args.x >= xyzRect.x &&
-		args.x <= xyzRect.x + 25 &&
-		args.y >= xyzRect.y &&
-		args.y <= xyzRect.y + xyzRect.height)
-	{
-		current = 0;
-		axisColor = ofColor::red;
-		axis = glm::vec3(1, 0, 0);
-	}
-
-	if (args.x >= xyzRect.x + 26 &&
-		args.x <= xyzRect.x + 50 &&
-		args.y >= xyzRect.y &&
-		args.y <= xyzRect.y + xyzRect.height)
-	{
-		current = 1;
-		axisColor = ofColor::green;
-		axis = glm::vec3(0, 1, 0);
-	}
-
-	if (args.x >= xyzRect.x + 51 &&
-		args.x <= xyzRect.x + xyzRect.width &&
-		args.y >= xyzRect.y &&
-		args.y <= xyzRect.y + xyzRect.height)
-	{
-		current = 2;
-		axisColor = ofColor::blue;
-		axis = glm::vec3(0, 0, 1);
-	}
-
-	value = 0;
-	dragStarted = false;
-}
-
-centeredSlider::~centeredSlider()
-{
-	delete resetButton;
-	delete lockedButton;
-}
-
 void centeredSlider::setLocked(bool locked)
 {
 	isLocked = locked;
@@ -130,6 +143,11 @@ void centeredSlider::setLocked(bool locked)
 bool centeredSlider::getLocked()
 {
 	return isLocked;
+}
+
+int centeredSlider::getHeight()
+{
+	return 80;
 }
 
 void centeredSlider::drawXYZRect(int x, int y)
@@ -167,12 +185,15 @@ void centeredSlider::drawXYZRect(int x, int y)
 
 void centeredSlider::drawSlider(int x, int y, int width)
 {
-	minX = x;
-	maxX = x + width;
-	int center = minX + width / 2;
+	slider.x = x;
+	slider.y = y;
+	slider.width = width;
+	slider.height = 4;
+
+	int center = slider.x + slider.width / 2;
 
 	ofSetColor(mainTheme::toolBarButtonHoverColor());
-	ofDrawRectRounded(minX, y, width, 4, 8);
+	ofDrawRectRounded(slider, 8);
 
 	if (!dragStarted)
 	{
@@ -180,8 +201,8 @@ void centeredSlider::drawSlider(int x, int y, int width)
 	}
 
 	ofSetColor(!isLocked ? axisColor : mainTheme::color3());
-	ofDrawRectRounded(center, y, thumbX - center, 4, 8);
-	ofDrawCircle(thumbX, y, thumbRadius);
+	ofDrawRectRounded(center, slider.y, thumbX - center, 4, 8);
+	ofDrawCircle(thumbX, slider.y, thumbRadius);
 }
 
 void centeredSlider::drawResetButton(int x, int y)
