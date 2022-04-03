@@ -6,9 +6,9 @@ sphere::sphere(float radius) : object(new hierarchyButton(*this, "images/icons/s
 	resolutionInput("Resolution", m_resolution),
 	contourThicknessInput("Contour Thickness", m_contourThickness),
 	m_emission(),
-	m_raytracingColor(),
 	m_reflection(),
-	m_raytracing(false)
+	m_raytracing(false),
+	raytracingTypeProp("Material type")
 {
 	cout << "Sphere added with " << radius << " radius" << endl;
 }
@@ -17,9 +17,17 @@ sphere::sphere(float radius, glm::vec3 p, glm::vec3 e, glm::vec3 c, int refl) : 
 {
 	setPosition(p);
 	m_emission = e;
-	m_raytracingColor = c;
+	color = ofColor(c.r * 255, c.g * 255, c.b * 255);
+	colorPicker->forceUpdate();
 	m_reflection = refl;
 	m_raytracing = true;
+
+	raytracingTypeProp.setElements({"Diffuse", "Specular", "Refraction"});
+	raytracingTypeProp.setSelected(refl);
+	raytracingTypeProp.onClick = [&](int index)
+	{
+		m_reflection = index;
+	};
 }
 
 void sphere::customDraw()
@@ -43,6 +51,14 @@ void sphere::drawProperties(int x, int y, int width)
 		contourThicknessInput.draw(x, offset, width);
 		offset += 10 + contourThicknessInput.getHeight();
 	}
+	else
+	{
+		colorPicker->draw(x, offset, width);
+		offset += 10 + colorPicker->getHeight();
+
+		raytracingTypeProp.draw(x, offset, width);
+		offset += 10 + raytracingTypeProp.getHeight();
+	}
 
 	radiusInput.draw(x, offset, width);
 }
@@ -60,11 +76,6 @@ float sphere::getRadius()
 glm::vec3 sphere::getEmission()
 {
 	return m_emission;
-}
-
-glm::vec3 sphere::getRaytracingColor()
-{
-	return m_raytracingColor;
 }
 
 int sphere::getReflection()

@@ -3,6 +3,7 @@
 #include "object.h"
 #include "inputProperty.h"
 #include "checkBoxProperty.h"
+#include "dropdownProperty.h"
 
 class sphere : public object
 {
@@ -16,13 +17,11 @@ public:
 
 	float getRadius();
 	glm::vec3 getEmission();
-	glm::vec3 getRaytracingColor();
 	int getReflection();
 
 private:
 	float m_radius;
 	glm::vec3 m_emission;
-	glm::vec3 m_raytracingColor;
 	int m_reflection;
 	bool m_raytracing;
 	float m_resolution = 20;
@@ -30,5 +29,7 @@ private:
 	inputProperty radiusInput;
 	inputProperty resolutionInput;
 	inputProperty contourThicknessInput;
+
+	dropdownProperty raytracingTypeProp;
 };
 

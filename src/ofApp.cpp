@@ -33,6 +33,8 @@ void ofApp::update()
 	}
 
 	menu->update();
+
+	utils::isMouseOverUI = false;
 }
 
 void ofApp::draw()
@@ -81,7 +83,6 @@ void ofApp::draw()
 	{
 		s.enableMouseInputs();
 	}
-	utils::isMouseOverUI = false;
 	utils::keyPressed = 0;
 }
 

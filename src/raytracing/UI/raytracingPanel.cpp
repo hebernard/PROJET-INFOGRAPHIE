@@ -131,7 +131,7 @@ void raytracingPanel::update()
 			}
 		}
 
-		if (renderRect.inside(ofGetMouseX(), ofGetMouseY()) && ofGetMousePressed())
+		if (renderRect.inside(ofGetMouseX(), ofGetMouseY()) && ofGetMousePressed() && !utils::isMouseOverUI)
 		{
 			int x = ofGetMouseX() - renderRect.x;
 			int y = ofGetMouseY() - renderRect.y;
@@ -206,7 +206,7 @@ void raytracingPanel::addSphereToShader(string name, sphere& s)
 	multipass_shader.setUniform1f(name + ".radius", s.getRadius());
 	multipass_shader.setUniform3f(name + ".position", s.getPosition());
 	multipass_shader.setUniform3f(name + ".e", s.getEmission());
-	multipass_shader.setUniform3f(name + ".color", s.getRaytracingColor());
+	multipass_shader.setUniform3f(name + ".color", s.color.r / 255.f, s.color.g / 255.f, s.color.b / 255.f);
 	multipass_shader.setUniform1i(name + ".reflection", s.getReflection());
 	multipass_shader.setUniform1i(name + ".visible", s.markedForDeletion ? false : s.isVisible);
 }
