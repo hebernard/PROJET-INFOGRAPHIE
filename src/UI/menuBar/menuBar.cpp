@@ -157,8 +157,21 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 	renderButton->buttonEventCallback = [&](auto e)
 	{
 		scene& s = s.getInstance();
-		s.showRaytracingPanel = true;
-		s.raytracing.setup();
+		s.showRaytracingPanel = !s.showRaytracingPanel;
+		if (s.showRaytracingPanel)
+		{
+			s.raytracing.setup();
+			renderButton->setLabel(" Scene");
+		}
+		else
+		{
+			renderButton->setLabel("Render");
+			s.raytracing.pause();
+			if (s.currentSelected != nullptr)
+			{
+				s.currentSelected->propertiesOpened = false;
+			}
+		}
 	};
 
 	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
@@ -207,14 +220,14 @@ void menuBar::draw()
 	{
 		dropdown2d->draw();
 		dropdown3d->draw();
-		importButton->draw();
-		renderButton->draw();
+		importButton->draw(10);
 	}
 	else
 	{
 		raytracingDropdown->draw();
 	}
 
+	renderButton->draw(13);
 	themeButton->draw();
 
 	ofPopStyle();
@@ -240,15 +253,15 @@ void menuBar::update()
 
 		importButton->update(posX, posY + dropdown2d->getHeight() / 2 - importButton->getHeight() / 2);
 		posX += importButton->getWidth() + 10;
-
-		renderButton->update(posX, importButton->getY());
 	}
 	else
 	{
 		raytracingDropdown->setPosition(posX, posY);
 		raytracingDropdown->update();
+		posX += raytracingDropdown->getWidth() + 10;
 	}
 
+	renderButton->update(posX, importButton->getY());
 	themeButton->update(ofGetWidth() - (themeButton->getWidth()*2), posY + dropdown2d->getHeight() / 2 - themeButton->getHeight() / 2);
 }
 

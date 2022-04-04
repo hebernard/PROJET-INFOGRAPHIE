@@ -70,6 +70,8 @@ public:
 	~raytracingPanel();
 	void setup();
 
+	void pause();
+
 	void update();
 	void draw();
 
@@ -105,7 +107,6 @@ private:
 	propertiesPanel propPanel;
 
 	void play();
-	void pause();
 
 	void drawToolbar();
 	void drawHierarchy();

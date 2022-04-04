@@ -20,8 +20,10 @@ class menuBarButton : public ofxDatGuiButton
 public:
 	menuBarButton(std::string text);
 
-	void draw();
+	void draw(int textOffset);
 	void update(int x, int y);
+
+	void setLabel(std::string text);
 
 private:
 	std::string m_text;

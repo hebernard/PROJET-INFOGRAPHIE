@@ -15,7 +15,7 @@ void menuBarButton::setTheme(const ofxDatGuiTheme* theme)
 	ofxDatGuiComponent::setWidth(theme->layout.width, theme->layout.labelWidth);
 }
 
-void menuBarButton::draw()
+void menuBarButton::draw(int textOffset)
 {
 	if (mFocused && mMouseDown)
 	{
@@ -33,11 +33,16 @@ void menuBarButton::draw()
 	}
 	ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
 
-	drawText(x + getWidth() / 2 - textSize.x / 2, y + textSize.y + 10, m_text, 11);
+	drawText(x + getWidth() / 2 - textSize.x / 2, y + textSize.y + textOffset, m_text, 11);
 }
 
 void menuBarButton::update(int x, int y)
 {
 	ofxDatGuiComponent::update();
 	setPosition(x, y);
+}
+
+void menuBarButton::setLabel(std::string text)
+{
+	m_text = text;
 }

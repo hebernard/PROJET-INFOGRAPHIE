@@ -17,6 +17,7 @@ void raytracingPanel::setup()
 {
 	if (isSetup)
 	{
+		play();
 		return;
 	}
 	isSetup = true;
