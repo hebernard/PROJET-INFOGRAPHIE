@@ -96,6 +96,8 @@ void terrain::drawProperties(int x, int y, int width)
 
 void terrain::generateMesh(int width, int height)
 {
+	if (width <= 0 || height <= 0) return;
+
 	auto heightMap = mapGen.generateHeightMap(width, height);
 	auto colorMap = mapGen.generateColorMap(heightMap);
 
@@ -104,9 +106,10 @@ void terrain::generateMesh(int width, int height)
 	float topLeftX = (width - 1) / -2.f;
 	float topLeftY = (height - 1) / 2.f;
 
-	for (int x = 0; x < width; x++)
+	int vertexIndex = 0;
+	for (int y = 0; y < height; y++)
 	{
-		for (int y = 0; y < height; y++)
+		for (int x = 0; x < width; x++)
 		{
 			float value = heightMap[x][y];
 			mesh.addVertex(ofPoint(topLeftX + x, topLeftY - y, value * value * amplitude));
@@ -114,13 +117,16 @@ void terrain::generateMesh(int width, int height)
 
 			if (x < width - 1 && y < height - 1)
 			{
-				mesh.addIndex(x + y * width);
-				mesh.addIndex((x + 1) + y * width);
-				mesh.addIndex(x + (y + 1) * width);
-				mesh.addIndex((x + 1) + y * width);
-				mesh.addIndex((x + 1) + (y + 1) * width);
-				mesh.addIndex(x + (y + 1) * width);
+				mesh.addIndex(vertexIndex);
+				mesh.addIndex(vertexIndex + width + 1);
+				mesh.addIndex(vertexIndex + width);
+
+				mesh.addIndex(vertexIndex + width + 1);
+				mesh.addIndex(vertexIndex);
+				mesh.addIndex(vertexIndex + 1);
 			}
+
+			vertexIndex++;
 		}
 	}
 
