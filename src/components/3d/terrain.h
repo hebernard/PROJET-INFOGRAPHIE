@@ -12,18 +12,10 @@ public:
 	void customDraw();
 	void drawProperties(int x, int y, int width);
 
-	void generateMesh(int width, int height);
-
 private:
-	ofMesh mesh;
-
 	mapGenerator mapGen;
 
 	menuBarButton generateButton, seedButton;
 	inputProperty widthProp, heightProp, amplitudeProp;
-
-	float width = 100;
-	float height = 100;
-	float amplitude = 30;
 };
 

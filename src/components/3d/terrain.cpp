@@ -4,9 +4,9 @@ terrain::terrain() :
 	object(new hierarchyButton(*this, "images/icons/terrain.png", "Terrain")),
 	generateButton("Update"),
 	seedButton("Generate new seed"),
-	widthProp(inputProperty("Width", width)),
-	heightProp(inputProperty("Height", height)),
-	amplitudeProp(inputProperty("Amplitude", amplitude))
+	widthProp(inputProperty("Width", mapGen.width)),
+	heightProp(inputProperty("Height", mapGen.height)),
+	amplitudeProp(inputProperty("Amplitude", mapGen.amplitude))
 {
 	canHaveMaterial = true;
 	canBeAnimated = false;
@@ -34,19 +34,18 @@ terrain::terrain() :
 	mapGen.addRegion(ofColor::fromHex(0x4a3102), 0.62f);
 	mapGen.addRegion(ofColor::fromHex(0x422c01), 0.92f);
 
-	mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 
-	generateMesh(width, height);
+	mapGen.generateMesh();
 
 	generateButton.onButtonEvent([&](auto e)
 	{
-		generateMesh(width, height);
+		mapGen.generateMesh();
 	});
 
 	seedButton.onButtonEvent([&](auto e)
 	{
 		mapGen.newSeed();
-		generateMesh(width, height);
+		mapGen.generateMesh();
 	});
 
 	widthProp.forceUpdateValue(500);
@@ -58,14 +57,7 @@ void terrain::customDraw()
 {
 	ofPushMatrix();
 	ofScale(0.5f);
-	if (filled)
-	{
-		mesh.drawFaces();
-	}
-	else
-	{
-		mesh.drawWireframe();
-	}
+	mapGen.draw(filled);
 	ofPopMatrix();
 }
 
@@ -91,44 +83,5 @@ void terrain::drawProperties(int x, int y, int width)
 
 	seedButton.setWidth(width);
 	seedButton.update(x, offset);
-	seedButton.draw(10);
-}
-
-void terrain::generateMesh(int width, int height)
-{
-	if (width <= 0 || height <= 0) return;
-
-	auto heightMap = mapGen.generateHeightMap(width, height);
-	auto colorMap = mapGen.generateColorMap(heightMap);
-
-	mesh.clear();
-
-	float topLeftX = (width - 1) / -2.f;
-	float topLeftY = (height - 1) / 2.f;
-
-	int vertexIndex = 0;
-	for (int y = 0; y < height; y++)
-	{
-		for (int x = 0; x < width; x++)
-		{
-			float value = heightMap[x][y];
-			mesh.addVertex(ofPoint(topLeftX + x, topLeftY - y, value * value * amplitude));
-			mesh.addColor(ofFloatColor(colorMap.getColor(x, y)));
-
-			if (x < width - 1 && y < height - 1)
-			{
-				mesh.addIndex(vertexIndex);
-				mesh.addIndex(vertexIndex + width + 1);
-				mesh.addIndex(vertexIndex + width);
-
-				mesh.addIndex(vertexIndex + width + 1);
-				mesh.addIndex(vertexIndex);
-				mesh.addIndex(vertexIndex + 1);
-			}
-
-			vertexIndex++;
-		}
-	}
-
-	mesh.flatNormals();
+	seedButton.draw(12);
 }

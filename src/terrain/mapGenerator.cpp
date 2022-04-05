@@ -8,6 +8,11 @@ void mapGenerator::addRegion(ofColor color, float height)
 	regions.push_back(region);
 }
 
+void mapGenerator::generateMesh()
+{
+	startThread();
+}
+
 vector<vector<float>> mapGenerator::generateHeightMap(int width, int height)
 {
 	ofSeedRandom(seed);
@@ -108,7 +113,60 @@ ofPixels mapGenerator::generateColorMap(vector<vector<float>> heightMap)
 	return pixels;
 }
 
+void mapGenerator::threadedFunction()
+{
+	if (width <= 0 || height <= 0) return;
+	mesh.clear();
+
+	auto heightMap = generateHeightMap(width, height);
+	auto colorMap = generateColorMap(heightMap);
+
+	float topLeftX = (width - 1) / -2.f;
+	float topLeftY = (height - 1) / 2.f;
+
+	int vertexIndex = 0;
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			float value = heightMap[x][y];
+			mesh.addVertex(ofPoint(topLeftX + x, topLeftY - y, value * value * amplitude));
+			mesh.addColor(ofFloatColor(colorMap.getColor(x, y)));
+
+			if (x < width - 1 && y < height - 1)
+			{
+				mesh.addIndex(vertexIndex);
+				mesh.addIndex(vertexIndex + width + 1);
+				mesh.addIndex(vertexIndex + width);
+
+				mesh.addIndex(vertexIndex + width + 1);
+				mesh.addIndex(vertexIndex);
+				mesh.addIndex(vertexIndex + 1);
+			}
+
+			vertexIndex++;
+		}
+	}
+
+	mesh.flatNormals();
+}
+
 void mapGenerator::newSeed()
 {
 	seed = ofRandom(1000000);
+}
+
+void mapGenerator::draw(bool filled)
+{
+	if (!isThreadRunning())
+	{
+		if (filled)
+		{
+			mesh.drawFaces();
+		}
+		else
+		{
+			mesh.drawWireframe();
+		}
+	}
 }
