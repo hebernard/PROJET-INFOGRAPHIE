@@ -175,16 +175,17 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 		if (s.showRaytracingPanel)
 		{
 			s.raytracing.setup();
-			renderButton->setLabel(" Scene");
+			renderButton->setLabel("Scene");
 		}
 		else
 		{
 			renderButton->setLabel("Render");
 			s.raytracing.pause();
-			if (s.currentSelected != nullptr)
-			{
-				s.currentSelected->propertiesOpened = false;
-			}
+		}
+
+		if (s.currentSelected != nullptr)
+		{
+			s.currentSelected->propertiesOpened = false;
 		}
 	};
 
