@@ -34,8 +34,9 @@ terrain::terrain() :
 	mapGen.addRegion(ofColor::fromHex(0x4a3102), 0.62f);
 	mapGen.addRegion(ofColor::fromHex(0x422c01), 0.92f);
 
-
 	mapGen.generateMesh();
+
+	generateButton.setLabel("Update (" + ofToString(mapGen.seed) + ")");
 
 	generateButton.onButtonEvent([&](auto e)
 	{
@@ -45,6 +46,7 @@ terrain::terrain() :
 	seedButton.onButtonEvent([&](auto e)
 	{
 		mapGen.newSeed();
+		generateButton.setLabel("Update (" + ofToString(mapGen.seed) + ")");
 		mapGen.generateMesh();
 	});
 
