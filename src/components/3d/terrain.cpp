@@ -15,17 +15,17 @@ terrain::terrain() :
 
 	// Adding the different colors for the heights
 	// Water
-	mapGen.addRegion(ofColor::fromHex(0x030cb3), 0.1f);
-	mapGen.addRegion(ofColor::fromHex(0x0411f4), 0.14f);
-	mapGen.addRegion(ofColor::fromHex(0x3e48fc), 0.18f);
+	mapGen.addRegion(ofColor::fromHex(0x030cb3), 0.15f);
+	mapGen.addRegion(ofColor::fromHex(0x0411f4), 0.18f);
+	mapGen.addRegion(ofColor::fromHex(0x3e48fc), 0.24f);
 
 	// Sand
-	mapGen.addRegion(ofColor::fromHex(0x937e3a), 0.2f);
-	mapGen.addRegion(ofColor::fromHex(0xab9343), 0.24f);
-	mapGen.addRegion(ofColor::fromHex(0xbca455), 0.28f);
+	mapGen.addRegion(ofColor::fromHex(0x937e3a), 0.26f);
+	mapGen.addRegion(ofColor::fromHex(0xab9343), 0.30f);
+	mapGen.addRegion(ofColor::fromHex(0xbca455), 0.34f);
 
 	// Grass
-	mapGen.addRegion(ofColor::fromHex(0x2a722d), 0.32f);
+	mapGen.addRegion(ofColor::fromHex(0x2a722d), 0.36f);
 	mapGen.addRegion(ofColor::fromHex(0x266629), 0.42f);
 	mapGen.addRegion(ofColor::fromHex(0x215b24), 0.46f);
 
@@ -101,38 +101,26 @@ void terrain::generateMesh(int width, int height)
 
 	mesh.clear();
 
+	float topLeftX = (width - 1) / -2.f;
+	float topLeftY = (height - 1) / 2.f;
+
 	for (int x = 0; x < width; x++)
 	{
 		for (int y = 0; y < height; y++)
 		{
-			mesh.addVertex(ofPoint(x - width / 2, y - height / 2));
-			mesh.addColor(ofFloatColor(colorMap.getColor(x, y)));
-		}
-	}
-
-	for (int x = 0; x < width - 1; x++)
-	{
-		for (int y = 0; y < height - 1; y++)
-		{
-			mesh.addIndex(x + y * width);
-			mesh.addIndex((x + 1) + y * width);
-			mesh.addIndex(x + (y + 1) * width);
-			mesh.addIndex((x + 1) + y * width);
-			mesh.addIndex((x + 1) + (y + 1) * width);
-			mesh.addIndex(x + (y + 1) * width);
-		}
-	}
-
-	int count = 0;
-	for (int x = 0; x < width; x++)
-	{
-		for (int y = 0; y < height; y++)
-		{
-			ofVec3f position = mesh.getVertex(count);
 			float value = heightMap[x][y];
-			position.z = value * value * amplitude;
-			mesh.setVertex(count, position);
-			count++;
+			mesh.addVertex(ofPoint(topLeftX + x, topLeftY - y, value * value * amplitude));
+			mesh.addColor(ofFloatColor(colorMap.getColor(x, y)));
+
+			if (x < width - 1 && y < height - 1)
+			{
+				mesh.addIndex(x + y * width);
+				mesh.addIndex((x + 1) + y * width);
+				mesh.addIndex(x + (y + 1) * width);
+				mesh.addIndex((x + 1) + y * width);
+				mesh.addIndex((x + 1) + (y + 1) * width);
+				mesh.addIndex(x + (y + 1) * width);
+			}
 		}
 	}
 
