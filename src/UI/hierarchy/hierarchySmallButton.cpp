@@ -45,6 +45,18 @@ bool hierarchySmallButton::getIsHovered()
 	return mMouseOver;
 }
 
+void hierarchySmallButton::onMouseRelease(ofPoint m)
+{
+	if (mMouseOver && mFocused)
+	{
+		ofxDatGuiButton::onMouseRelease(m);
+	}
+	else
+	{
+		ofxDatGuiComponent::onFocusLost();
+	}
+}
+
 void hierarchySmallButton::setTheme(const ofxDatGuiTheme* theme)
 {
 	setComponentStyle(theme);
