@@ -6,7 +6,8 @@ terrain::terrain() :
 	seedButton("Generate new seed"),
 	widthProp(inputProperty("Width", mapGen.width)),
 	heightProp(inputProperty("Height", mapGen.height)),
-	amplitudeProp(inputProperty("Amplitude", mapGen.amplitude))
+	amplitudeProp(inputProperty("Amplitude", mapGen.amplitude)),
+	scaleProp(inputProperty("Scale", mapGen.scale))
 {
 	canHaveMaterial = true;
 	canBeAnimated = false;
@@ -53,6 +54,7 @@ terrain::terrain() :
 	widthProp.forceUpdateValue(500);
 	heightProp.forceUpdateValue(500);
 	amplitudeProp.forceUpdateValue(500);
+	scaleProp.forceUpdateValue(500);
 }
 
 void terrain::customDraw()
@@ -77,6 +79,9 @@ void terrain::drawProperties(int x, int y, int width)
 
 	amplitudeProp.draw(x, offset, width);
 	offset += amplitudeProp.getHeight() + 10;
+
+	scaleProp.draw(x, offset, width);
+	offset += scaleProp.getHeight() + 10;
 
 	generateButton.setWidth(width);
 	generateButton.update(x, offset);

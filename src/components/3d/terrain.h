@@ -16,6 +16,6 @@ private:
 	mapGenerator mapGen;
 
 	menuBarButton generateButton, seedButton;
-	inputProperty widthProp, heightProp, amplitudeProp;
+	inputProperty widthProp, heightProp, amplitudeProp, scaleProp;
 };
 
