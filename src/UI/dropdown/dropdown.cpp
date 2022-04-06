@@ -77,3 +77,15 @@ void dropdown::addButton(dropdownButton* button)
 {
 	panel.addButton(button);
 }
+
+void dropdown::onMouseRelease(ofPoint m)
+{
+	if (mMouseOver && mFocused)
+	{
+		ofxDatGuiToggle::onMouseRelease(m);
+	}
+	else
+	{
+		ofxDatGuiComponent::onFocusLost();
+	}
+}

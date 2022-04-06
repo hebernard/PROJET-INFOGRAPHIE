@@ -68,3 +68,15 @@ void menuBarButtonAlt::updateIcon(std::string iconPath)
 	icon.load(iconPath);
 	icon.resize(22, 22);
 }
+
+void menuBarButtonAlt::onMouseRelease(ofPoint m)
+{
+	if (mMouseOver && mFocused)
+	{
+		ofxDatGuiButton::onMouseRelease(m);
+	}
+	else
+	{
+		ofxDatGuiComponent::onFocusLost();
+	}
+}

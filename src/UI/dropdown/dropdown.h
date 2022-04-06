@@ -28,6 +28,9 @@ public:
 
 	void addButton(dropdownButton* button);
 
+protected:
+	void onMouseRelease(ofPoint m);
+
 private:
 	int index;
 	bool opened;
