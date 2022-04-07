@@ -125,6 +125,10 @@
     <ClCompile Include="src\raytracing\ui\raytracingPanel.cpp" />
     <ClCompile Include="src\objects\3d\terrain.cpp" />
     <ClCompile Include="src\terrain\mapGenerator.cpp" />
+    <ClCompile Include="src\ui\properties\sliders\sliderProperty.cpp" />
+    <ClCompile Include="src\ui\properties\sliders\intSliderProperty.cpp" />
+    <ClCompile Include="src\ui\properties\sliders\sliderBase.cpp" />
+    <ClCompile Include="src\ui\properties\sliders\floatSliderProperty.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -509,6 +513,10 @@
     <ClInclude Include="src\raytracing\ui\raytracingPanel.h" />
     <ClInclude Include="src\objects\3d\terrain.h" />
     <ClInclude Include="src\terrain\mapGenerator.h" />
+    <ClInclude Include="src\ui\properties\sliders\sliderProperty.h" />
+    <ClInclude Include="src\ui\properties\sliders\intSliderProperty.h" />
+    <ClInclude Include="src\ui\properties\sliders\sliderBase.h" />
+    <ClInclude Include="src\ui\properties\sliders\floatSliderProperty.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -7,7 +7,7 @@ terrain::terrain() :
 	widthProp(inputProperty("Width", mapGen.width)),
 	heightProp(inputProperty("Height", mapGen.height)),
 	amplitudeProp(inputProperty("Amplitude", mapGen.amplitude)),
-	scaleProp(inputProperty("Scale", mapGen.scale))
+	scaleProp(sliderProperty("Scale", mapGen.scale, 0.f, 500.f))
 {
 	canHaveMaterial = true;
 	canBeAnimated = false;
@@ -54,7 +54,6 @@ terrain::terrain() :
 	widthProp.forceUpdateValue();
 	heightProp.forceUpdateValue();
 	amplitudeProp.forceUpdateValue();
-	scaleProp.forceUpdateValue();
 }
 
 void terrain::customDraw()

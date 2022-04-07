@@ -6,6 +6,7 @@
 #include "ui/properties/checkBoxProperty.h"
 #include "ui/properties/inputProperty.h"
 #include "ui/properties/colorProperty.h"
+#include "ui/properties/sliders/sliderProperty.h"
 #include "animation/keyframe.h"
 
 class object : public ofNode
