@@ -11,7 +11,9 @@ public:
 	void draw(int x, int y, int width, int textOffset = 30);
 	int getHeight();
 
-	void forceUpdateValue(float maxValue);
+	void forceUpdateValue();
+	void setMax(float max);
+	void setMin(float min);
 
 private:
 	bool hovered = false;
@@ -23,10 +25,13 @@ private:
 	std::string value;
 	glm::vec2 valueSize;
 	float& m_ref;
+	float max = 100000;
+	float min = 0;
 
 	// Lets make it blink cause we're that cool.
 	float blinkTimer = 0;
 	float blinkTime = 0.5f;
 
 	float getValue();
+	void setValue(float val);
 };

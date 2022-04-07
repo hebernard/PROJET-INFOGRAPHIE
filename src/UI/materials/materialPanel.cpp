@@ -134,7 +134,8 @@ void materialPanel::setObject(object& obj)
 	diffuseColorProp.forceUpdate();
 	emissiveColorProp.forceUpdate();
 	specularColorProp.forceUpdate();
-	shininessProp.forceUpdateValue(100);
+	shininessProp.setMax(100);
+	shininessProp.forceUpdateValue();
 
 	filterProp.setSelected(ref->currentFilterIndex);
 }

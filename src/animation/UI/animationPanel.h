@@ -4,7 +4,6 @@
 
 class hierarchySmallButton;
 class keyframe;
-class inputProperty;
 
 class animationPanel
 {
@@ -39,8 +38,6 @@ private:
 	bool isPlaying = false;
 
 	std::vector<keyframe> keyframes;
-
-	inputProperty* maxSecondsInput;
 
 	void drawPlayer();
 

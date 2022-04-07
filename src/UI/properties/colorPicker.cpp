@@ -47,16 +47,22 @@ colorPicker::colorPicker(ofColor& ref) : m_ref(ref)
 	bInput = new inputProperty("B", B);
 
 	rInput->maxCharacters = 5;
+	rInput->setMax(255);
 	gInput->maxCharacters = 5;
+	gInput->setMax(255);
 	bInput->maxCharacters = 5;
+	bInput->setMax(255);
 
 	hInput = new inputProperty("H", H);
 	sInput = new inputProperty("S", S);
 	brInput = new inputProperty("B", Br);
 
 	hInput->maxCharacters = 5;
+	hInput->setMax(255);
 	sInput->maxCharacters = 5;
+	sInput->setMax(255);
 	brInput->maxCharacters = 5;
+	brInput->setMax(255);
 
 	forceUpdate();
 }
@@ -156,9 +162,9 @@ void colorPicker::draw(int x, int y)
 			S = m_ref.getSaturation();
 			Br = m_ref.getBrightness();
 
-			hInput->forceUpdateValue(255);
-			sInput->forceUpdateValue(255);
-			brInput->forceUpdateValue(255);
+			hInput->forceUpdateValue();
+			sInput->forceUpdateValue();
+			brInput->forceUpdateValue();
 		}
 	}
 
@@ -215,9 +221,9 @@ void colorPicker::forceUpdate()
 	G = m_ref.g;
 	B = m_ref.b;
 
-	rInput->forceUpdateValue(255);
-	gInput->forceUpdateValue(255);
-	bInput->forceUpdateValue(255);
+	rInput->forceUpdateValue();
+	gInput->forceUpdateValue();
+	bInput->forceUpdateValue();
 
 	rInput->maxCharacters = 5;
 	gInput->maxCharacters = 5;
@@ -228,9 +234,9 @@ void colorPicker::forceUpdate()
 	S = m_ref.getSaturation();
 	B = m_ref.getBrightness();
 
-	hInput->forceUpdateValue(255);
-	sInput->forceUpdateValue(255);
-	brInput->forceUpdateValue(255);
+	hInput->forceUpdateValue();
+	sInput->forceUpdateValue();
+	brInput->forceUpdateValue();
 }
 
 void colorPicker::updateGradient()
@@ -266,9 +272,9 @@ void colorPicker::updateGradient()
 					G = gColor.g;
 					B = gColor.b;
 
-					rInput->forceUpdateValue(255);
-					gInput->forceUpdateValue(255);
-					bInput->forceUpdateValue(255);
+					rInput->forceUpdateValue();
+					gInput->forceUpdateValue();
+					bInput->forceUpdateValue();
 					break;
 					/*case HEX:
 						hex = gColor.getHex();
@@ -278,9 +284,9 @@ void colorPicker::updateGradient()
 					S = gColor.getSaturation();
 					Br = gColor.getBrightness();
 
-					hInput->forceUpdateValue(255);
-					sInput->forceUpdateValue(255);
-					brInput->forceUpdateValue(255);
+					hInput->forceUpdateValue();
+					sInput->forceUpdateValue();
+					brInput->forceUpdateValue();
 					break;
 				}
 			}

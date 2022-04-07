@@ -4,7 +4,6 @@
 #include "ui/label.h"
 #include "ui/hierarchy/hierarchySmallButton.h"
 #include "utils/utils.h"
-#include "ui/properties/inputProperty.h"
 
 animationPanel::animationPanel() : 
 	playButton(new hierarchySmallButton("images/icons/play.png")),
@@ -28,16 +27,12 @@ animationPanel::animationPanel() :
 			timer = keyframes.front().time * maxSeconds;
 		}
 	});
-
-	maxSecondsInput = new inputProperty("Max time", maxSeconds);
-	maxSecondsInput->maxCharacters = 3;
 }
 
 animationPanel::~animationPanel()
 {
 	delete playButton;
 	delete recordButton;
-	delete maxSecondsInput;
 }
 
 void animationPanel::draw(int endX)
@@ -66,8 +61,6 @@ void animationPanel::draw(int endX)
 
 	recordButton->update(playButton->getX() + playButton->getWidth() + 5, rect.y + 10);
 	recordButton->draw();
-
-	//maxSecondsInput->draw(rect.x + rect.width - 150, rect.y + 10, 140, 15);
 
 	drawPlayer();
 
@@ -115,8 +108,6 @@ void animationPanel::mouseScrolled(ofMouseEventArgs& args)
 		{
 			cursorPos = maxSeconds;
 		}
-
-		maxSecondsInput->forceUpdateValue(999);
 	}
 }
 
@@ -176,8 +167,6 @@ void animationPanel::load()
 		// just set to default value
 		maxSeconds = 10;
 	}
-
-	maxSecondsInput->forceUpdateValue(999);
 }
 
 void animationPanel::drawPlayer()

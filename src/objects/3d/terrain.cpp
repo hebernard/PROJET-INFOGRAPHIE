@@ -51,10 +51,10 @@ terrain::terrain() :
 		mapGen.generateMesh();
 	});
 
-	widthProp.forceUpdateValue(500);
-	heightProp.forceUpdateValue(500);
-	amplitudeProp.forceUpdateValue(500);
-	scaleProp.forceUpdateValue(500);
+	widthProp.forceUpdateValue();
+	heightProp.forceUpdateValue();
+	amplitudeProp.forceUpdateValue();
+	scaleProp.forceUpdateValue();
 }
 
 void terrain::customDraw()

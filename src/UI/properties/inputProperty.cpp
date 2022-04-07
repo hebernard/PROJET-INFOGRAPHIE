@@ -7,8 +7,8 @@ inputProperty::inputProperty(std::string label, float& ref) : m_label(label), m_
 {
 	labelSize = label::getSize(label, 11);
 	rect.height = 20;
-	value = ofToString(ref);
-	valueSize = label::getSize(value, 10);
+
+	setValue(ref);
 }
 
 void inputProperty::draw(int x, int y, int width, int textOffset)
@@ -62,6 +62,7 @@ void inputProperty::draw(int x, int y, int width, int textOffset)
 			{
 				focused = false;
 				m_ref = getValue();
+				forceUpdateValue();
 			}
 
 			valueSize = label::getSize(value, 10);
@@ -75,6 +76,7 @@ void inputProperty::draw(int x, int y, int width, int textOffset)
 		if (!focused)
 		{
 			m_ref = getValue();
+			forceUpdateValue();
 		}
 	}
 }
@@ -84,19 +86,35 @@ int inputProperty::getHeight()
 	return rect.height;
 }
 
-void inputProperty::forceUpdateValue(float maxValue)
+void inputProperty::forceUpdateValue()
 {
-	value = ofToString(CLAMP(m_ref, 0, maxValue)).substr(0, maxCharacters);
-	valueSize = label::getSize(value, 10);
+	setValue(m_ref);
+}
+
+void inputProperty::setMax(float max)
+{
+	this->max = max;
+}
+
+void inputProperty::setMin(float min)
+{
+	this->min = min;
 }
 
 float inputProperty::getValue()
 {
 	if (value.size() <= 0 || value[0] == '.')
 	{
-		value = "0";
-		valueSize = label::getSize(value, 10);
+		setValue(min);
 	}
 
 	return stof(value);
+}
+
+void inputProperty::setValue(float val)
+{
+	float clamped = CLAMP(val, min, max);
+
+	value = ofToString(clamped).substr(0, maxCharacters);
+	valueSize = label::getSize(value, 10);
 }

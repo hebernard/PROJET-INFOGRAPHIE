@@ -10,9 +10,9 @@ image::image(std::string path) :
 {
 	im.load(path);
 	width = im.getWidth() / 100;
-	widthInput.forceUpdateValue(10000);
+	widthInput.forceUpdateValue();
 	height = im.getHeight() / 100;
-	heightInput.forceUpdateValue(10000);
+	heightInput.forceUpdateValue();
 
 	cout << "Image loaded" << endl;
 
