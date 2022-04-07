@@ -4,9 +4,9 @@ terrain::terrain() :
 	object(new hierarchyButton(*this, "images/icons/terrain.png", "Terrain")),
 	generateButton("Update"),
 	seedButton("Generate new seed"),
-	widthProp(inputProperty("Width", mapGen.width)),
-	heightProp(inputProperty("Height", mapGen.height)),
-	amplitudeProp(inputProperty("Amplitude", mapGen.amplitude)),
+	widthProp(sliderProperty("Width", mapGen.width, 2, 1000)),
+	heightProp(sliderProperty("Height", mapGen.height, 2, 1000)),
+	amplitudeProp(sliderProperty("Amplitude", mapGen.amplitude, 1, 100)),
 	scaleProp(sliderProperty("Scale", mapGen.scale, 0.f, 500.f))
 {
 	canHaveMaterial = true;
@@ -50,10 +50,6 @@ terrain::terrain() :
 		generateButton.setLabel("Update (" + ofToString(mapGen.seed) + ")");
 		mapGen.generateMesh();
 	});
-
-	widthProp.forceUpdateValue();
-	heightProp.forceUpdateValue();
-	amplitudeProp.forceUpdateValue();
 }
 
 void terrain::customDraw()

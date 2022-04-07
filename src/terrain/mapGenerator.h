@@ -10,8 +10,8 @@ struct Region
 class mapGenerator : public ofThread
 {
 public:
-	float width = 100;
-	float height = 100;
+	int width = 100;
+	int height = 100;
 	float scale = 200.f;
 	int octaves = 5;
 	float persistance = 0.5f;
