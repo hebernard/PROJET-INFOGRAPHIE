@@ -25,6 +25,9 @@ public:
 
 	bool getIsHovered();
 
+protected:
+	void onMouseRelease(ofPoint m);
+
 private:
 	ofImage icon;
 

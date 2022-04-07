@@ -25,6 +25,9 @@ public:
 	void update(int x, int y);
 	void updateIcon(std::string iconPath);
 
+protected:
+	void onMouseRelease(ofPoint m);
+
 private:
 
 	ofImage icon;

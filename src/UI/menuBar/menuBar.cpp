@@ -16,6 +16,7 @@
 #include "components/3d/sphere.h"
 #include "components/3d/cube.h"
 #include "components/3d/objectModel.h"
+#include "components/3d/terrain.h"
 #include "panel.h"
 #include "utils.h"
 
@@ -153,6 +154,19 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 	});
 	dropdown3d->addButton(cubeButton);
 
+	//3D - Terrain Button
+	dropdownButton* terrainButton = new dropdownButton("images/icons/terrain.png", "Terrain");
+	terrainButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
+	{
+		terrain* ter = new terrain();
+
+		scene& s = s.getInstance();
+		s.addObject(ter);
+
+		notifyDropdownClicked(-1);
+	});
+	dropdown3d->addButton(terrainButton);
+
 	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
 	renderButton->buttonEventCallback = [&](auto e)
 	{
@@ -161,16 +175,17 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 		if (s.showRaytracingPanel)
 		{
 			s.raytracing.setup();
-			renderButton->setLabel(" Scene");
+			renderButton->setLabel("Scene");
 		}
 		else
 		{
 			renderButton->setLabel("Render");
 			s.raytracing.pause();
-			if (s.currentSelected != nullptr)
-			{
-				s.currentSelected->propertiesOpened = false;
-			}
+		}
+
+		if (s.currentSelected != nullptr)
+		{
+			s.currentSelected->propertiesOpened = false;
 		}
 	};
 

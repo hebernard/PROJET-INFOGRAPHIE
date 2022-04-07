@@ -45,4 +45,17 @@ void menuBarButton::update(int x, int y)
 void menuBarButton::setLabel(std::string text)
 {
 	m_text = text;
+	textSize = label::getSize(m_text, 11);
+}
+
+void menuBarButton::onMouseRelease(ofPoint m)
+{
+	if (mMouseOver && mFocused)
+	{
+		ofxDatGuiButton::onMouseRelease(m);
+	}
+	else
+	{
+		ofxDatGuiComponent::onFocusLost();
+	}
 }

@@ -25,6 +25,9 @@ public:
 
 	void setLabel(std::string text);
 
+protected:
+	void onMouseRelease(ofPoint m);
+
 private:
 	std::string m_text;
 	glm::vec2 textSize;

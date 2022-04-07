@@ -124,6 +124,8 @@
       <Filter>src\components\3d</Filter>
     </ClCompile>
     <ClCompile Include="src\raytracing\UI\raytracingPanel.cpp" />
+    <ClCompile Include="src\components\3d\terrain.cpp" />
+    <ClCompile Include="src\terrain\mapGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -507,6 +509,8 @@
       <Filter>src\components\3d</Filter>
     </ClInclude>
     <ClInclude Include="src\raytracing\UI\raytracingPanel.h" />
+    <ClInclude Include="src\components\3d\terrain.h" />
+    <ClInclude Include="src\terrain\mapGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
