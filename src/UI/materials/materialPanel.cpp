@@ -1,8 +1,8 @@
 #include "materialPanel.h"
-#include "hierarchySmallButton.h"
-#include "panel.h"
-#include "label.h"
-#include "filtering.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
+#include "ui/panel.h"
+#include "ui/label.h"
+#include "utils/filtering.h"
 
 materialPanel::materialPanel() :
 	backButton(new hierarchySmallButton("images/icons/back.png")),

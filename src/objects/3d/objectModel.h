@@ -1,5 +1,5 @@
 #pragma once
-#include "object.h"
+#include "objects/object.h"
 #include "ofxAssimpModelLoader.h"
 
 class objectModel : public object

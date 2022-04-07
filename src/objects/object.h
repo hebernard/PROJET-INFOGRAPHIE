@@ -1,11 +1,12 @@
 #pragma once
 
 #include "ofMain.h"
-#include "UI/hierarchy/hierarchyButton.h"
-#include "mainTheme.h"
-#include "checkBoxProperty.h"
-#include "colorProperty.h"
-#include "keyframe.h"
+#include "ui/hierarchy/hierarchyButton.h"
+#include "ui/mainTheme.h"
+#include "ui/properties/checkBoxProperty.h"
+#include "ui/properties/inputProperty.h"
+#include "ui/properties/colorProperty.h"
+#include "animation/keyframe.h"
 
 class object : public ofNode
 {

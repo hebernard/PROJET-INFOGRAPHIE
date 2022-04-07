@@ -1,5 +1,5 @@
 #include "light.h"
-#include "utils.h"
+#include "utils/utils.h"
 
 light::light(int id) :
     object(new lightHierarchyButton(*this, "images/icons/point_light.png", "Point light", id != 0)),

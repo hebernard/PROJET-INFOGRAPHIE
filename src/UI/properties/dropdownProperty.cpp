@@ -1,6 +1,6 @@
 #include "dropdownProperty.h"
-#include "utils.h"
-#include "panel.h"
+#include "utils/utils.h"
+#include "ui/panel.h"
 
 dropdownProperty::dropdownProperty(string label) : m_label(label)
 {

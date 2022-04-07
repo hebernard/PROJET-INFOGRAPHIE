@@ -1,9 +1,6 @@
 #pragma once
 
-#include "components/object.h"
-#include "inputProperty.h"
-#include "checkBoxProperty.h"
-#include "colorProperty.h"
+#include "objects/object.h"
 
 //--------------------------------------------------------------
 //-------------------  Bezier Curve  ---------------------------

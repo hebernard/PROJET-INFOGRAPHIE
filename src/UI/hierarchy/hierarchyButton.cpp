@@ -1,8 +1,8 @@
 #include "hierarchyButton.h"
-#include "UI/label.h"
-#include "components/object.h"
+#include "ui/label.h"
+#include "objects/object.h"
 #include "scene.h"
-#include "cursor.h"
+#include "utils/cursor.h"
 
 hierarchyButton::hierarchyButton(object& obj, std::string iconPath, std::string text) : 
 	ofxDatGuiButton("hierarchyButton"), 

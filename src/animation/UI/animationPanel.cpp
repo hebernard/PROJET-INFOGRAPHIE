@@ -1,10 +1,10 @@
 #include "animationPanel.h"
-#include "keyframe.h"
-#include "panel.h"
-#include "label.h"
-#include "hierarchySmallButton.h"
-#include "utils.h"
-#include "inputProperty.h"
+#include "animation/keyframe.h"
+#include "ui/panel.h"
+#include "ui/label.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
+#include "utils/utils.h"
+#include "ui/properties/inputProperty.h"
 
 animationPanel::animationPanel() : 
 	playButton(new hierarchySmallButton("images/icons/play.png")),

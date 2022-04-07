@@ -1,16 +1,15 @@
 #pragma once
 
 #include <vector>
-#include "components/object.h"
-#include "UI/hierarchy/hierarchyPanel.h"
+#include "objects/object.h"
+#include "objects/3d/sphere.h"
+#include "objects/2d/circle.h"
+#include "objects/light.h"
+#include "ui/hierarchy/hierarchyPanel.h"
+#include "ui/mainTheme.h"
+#include "ui/properties/propertiesPanel.h"
+#include "raytracing/ui/raytracingPanel.h"
 #include "camera.h"
-#include "light.h"
-#include "mainTheme.h"
-#include "UI/properties/propertiesPanel.h"
-#include "components/3d/sphere.h"
-#include "components/2d/circle.h"
-#include "components/light.h"
-#include "raytracing/UI/raytracingPanel.h"
 
 class scene
 {

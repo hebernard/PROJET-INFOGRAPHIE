@@ -1,7 +1,7 @@
 #include "ofApp.h"
-#include "mainTheme.h"
-#include "cursor.h"
-#include "utils.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
+#include "utils/utils.h"
 
 void ofApp::setup()
 {

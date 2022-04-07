@@ -1,7 +1,7 @@
 #include "inputProperty.h"
-#include "panel.h"
-#include "label.h"
-#include "utils.h"
+#include "ui/panel.h"
+#include "ui/label.h"
+#include "utils/utils.h"
 
 inputProperty::inputProperty(std::string label, float& ref) : m_label(label), m_ref(ref)
 {

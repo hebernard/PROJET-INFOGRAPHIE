@@ -1,12 +1,10 @@
 #pragma once
-#include "components/object.h"
-#include "inputProperty.h"
-#include "checkBoxProperty.h"
+#include "objects/object.h"
 
-class rectangle : public object
+class triangle : public object
 {
 public:
-	rectangle(float width, float height);
+	triangle(int width, int height);
 
 	void customDraw();
 	void drawProperties(int x, int y, int width);

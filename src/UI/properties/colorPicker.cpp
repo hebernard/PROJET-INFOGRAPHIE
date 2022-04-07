@@ -1,7 +1,7 @@
 #include "colorPicker.h"
-#include "label.h"
-#include "panel.h"
-#include "utils.h"
+#include "ui/label.h"
+#include "ui/panel.h"
+#include "utils/utils.h"
 
 colorPicker::colorPicker(ofColor& ref) : m_ref(ref)
 {

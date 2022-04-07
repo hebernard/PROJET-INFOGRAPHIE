@@ -1,6 +1,6 @@
 #include "checkBoxProperty.h"
-#include "label.h"
-#include "utils.h"
+#include "ui/label.h"
+#include "utils/utils.h"
 
 checkBoxProperty::checkBoxProperty(std::string label, bool& ref) : m_label(label), m_ref(ref)
 {

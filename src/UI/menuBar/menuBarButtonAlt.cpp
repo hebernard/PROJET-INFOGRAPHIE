@@ -1,7 +1,7 @@
 #include "menuBarButtonAlt.h"
-#include "label.h"
-#include "mainTheme.h"
-#include "cursor.h"
+#include "ui/label.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
 
 menuBarButtonAlt::menuBarButtonAlt(std::string iconPath) : ofxDatGuiButton("menuBarButtonAlt"), icon()
 {

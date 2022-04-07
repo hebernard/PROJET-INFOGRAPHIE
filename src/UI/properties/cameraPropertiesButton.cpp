@@ -1,6 +1,6 @@
 #include "cameraPropertiesButton.h"
-#include "label.h"
-#include "panel.h"
+#include "ui/label.h"
+#include "ui/panel.h"
 
 cameraPropertiesButton::cameraPropertiesButton(std::string text, std::string iconPath, bool isDefault, int type) : m_text(text), m_buttonType(type)
 {

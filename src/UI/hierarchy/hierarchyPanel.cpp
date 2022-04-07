@@ -1,11 +1,11 @@
 #include "hierarchyPanel.h"
 #include "scene.h"
 #include "ofRectangle.h"
-#include "UI/label.h"
-#include "components/object.h"
-#include "mainTheme.h"
-#include "panel.h"
-#include "utils.h"
+#include "ui/label.h"
+#include "objects/object.h"
+#include "ui/mainTheme.h"
+#include "ui/panel.h"
+#include "utils/utils.h"
 #include "cameraHierarchyButton.h"
 
 hierarchyPanel::hierarchyPanel() : icon()

@@ -4,7 +4,7 @@
 #include "ofGraphicsBaseTypes.h"
 #include <limits>
 #include "glm/gtx/vector_angle.hpp"
-#include "cursor.h"
+#include "utils/cursor.h"
 #include "scene.h"
 
 using namespace std;

@@ -1,8 +1,5 @@
 #pragma once
-
-#include "components/object.h"
-#include "inputProperty.h"
-#include "checkBoxProperty.h"
+#include "objects/object.h"
 
 class line : public object
 {

@@ -1,7 +1,7 @@
 #include "bezierCurve.h"
 #include "camera.h"
 #include "scene.h"
-#include "utils.h"
+#include "utils/utils.h"
 
 //-------------------------------------------------------------=
 //-------------------  Bezier Curve ---------------------------=

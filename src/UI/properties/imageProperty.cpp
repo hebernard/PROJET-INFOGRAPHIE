@@ -1,8 +1,8 @@
 #include "imageProperty.h"
-#include "label.h"
-#include "utils.h"
-#include "panel.h"
-#include "hierarchySmallButton.h"
+#include "ui/label.h"
+#include "utils/utils.h"
+#include "ui/panel.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
 
 imageProperty::imageProperty(std::string label) : m_label(label), closeButton(new hierarchySmallButton("images/icons/delete.png"))
 {

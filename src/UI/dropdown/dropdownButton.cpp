@@ -1,7 +1,7 @@
 #include "dropdownButton.h"
-#include "UI/label.h"
-#include "mainTheme.h"
-#include "cursor.h"
+#include "ui/label.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
 
 dropdownButton::dropdownButton(std::string iconPath, std::string text) : ofxDatGuiButton("dropdownButton"), m_text(text), icon()
 {

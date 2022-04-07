@@ -1,7 +1,7 @@
 #include "menuBarButton.h"
-#include "label.h"
-#include "mainTheme.h"
-#include "cursor.h"
+#include "ui/label.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
 
 menuBarButton::menuBarButton(std::string text) : ofxDatGuiButton(text), m_text(text)
 {

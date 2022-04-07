@@ -4,7 +4,7 @@
 #include "ofxDatGui.h"
 #include "scene.h"
 #include "camera.h"
-#include "UI/menuBar/menuBar.h"
+#include "ui/menuBar/menuBar.h"
 
 class ofApp : public ofBaseApp
 {

@@ -1,10 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "object.h"
-#include "imageProperty.h"
-#include "colorProperty.h"
-#include "inputProperty.h"
-#include "dropdownProperty.h"
+#include "objects/object.h"
+#include "ui/properties/imageProperty.h"
+#include "ui/properties/dropdownProperty.h"
 
 class hierarchySmallButton;
 

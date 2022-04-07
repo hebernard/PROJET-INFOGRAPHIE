@@ -10,31 +10,31 @@
     <ClCompile Include="src\camera.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\circle.cpp">
+    <ClCompile Include="src\objects\2d\circle.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\ellipse.cpp">
+    <ClCompile Include="src\objects\2d\ellipse.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\image.cpp">
+    <ClCompile Include="src\objects\2d\image.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\line.cpp">
+    <ClCompile Include="src\objects\2d\line.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\rectangle.cpp">
+    <ClCompile Include="src\objects\2d\rectangle.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\square.cpp">
+    <ClCompile Include="src\objects\2d\square.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\2d\triangle.cpp">
+    <ClCompile Include="src\objects\2d\triangle.cpp">
       <Filter>src\components\2d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\3d\cube.cpp">
+    <ClCompile Include="src\objects\3d\cube.cpp">
       <Filter>src\components\3d</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\3d\sphere.cpp">
+    <ClCompile Include="src\objects\3d\sphere.cpp">
       <Filter>src\components\3d</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
@@ -43,37 +43,37 @@
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\dropdown\dropdown.cpp">
+    <ClCompile Include="src\ui\dropdown\dropdown.cpp">
       <Filter>src\UI\dropdown</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\dropdown\dropdownButton.cpp">
+    <ClCompile Include="src\ui\dropdown\dropdownButton.cpp">
       <Filter>src\UI\dropdown</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\dropdown\dropdownPanel.cpp">
+    <ClCompile Include="src\ui\dropdown\dropdownPanel.cpp">
       <Filter>src\UI\dropdown</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\hierarchy\hierarchyButton.cpp">
+    <ClCompile Include="src\ui\hierarchy\hierarchyButton.cpp">
       <Filter>src\UI\hierarchy</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\hierarchy\hierarchyPanel.cpp">
+    <ClCompile Include="src\ui\hierarchy\hierarchyPanel.cpp">
       <Filter>src\UI\hierarchy</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\hierarchy\hierarchySmallButton.cpp">
+    <ClCompile Include="src\ui\hierarchy\hierarchySmallButton.cpp">
       <Filter>src\UI\hierarchy</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\label.cpp">
+    <ClCompile Include="src\ui\label.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\menuBar\menuBar.cpp">
+    <ClCompile Include="src\ui\menuBar\menuBar.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\menuBar\menuBarButton.cpp">
+    <ClCompile Include="src\ui\menuBar\menuBarButton.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\menuBar\menuBarButtonAlt.cpp">
+    <ClCompile Include="src\ui\menuBar\menuBarButtonAlt.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\properties\propertiesPanel.cpp">
+    <ClCompile Include="src\ui\properties\propertiesPanel.cpp">
       <Filter>src\UI\properties</Filter>
     </ClCompile>
     <ClCompile Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.cpp">
@@ -97,34 +97,33 @@
     <ClCompile Include="openFrameworks\addons\ofxDatGui-master\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui-master\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\panel.cpp" />
-    <ClCompile Include="src\UI\mainTheme.cpp" />
-    <ClCompile Include="src\components\3d\objectModel.cpp" />
-    <ClCompile Include="src\UI\menuBar\recButton.cpp" />
-    <ClCompile Include="src\cursor.cpp" />
-    <ClCompile Include="src\UI\properties\centeredSlider.cpp" />
-    <ClCompile Include="src\UI\properties\checkBoxProperty.cpp" />
-    <ClCompile Include="src\UI\properties\colorProperty.cpp" />
-    <ClCompile Include="src\utils.cpp" />
-    <ClCompile Include="src\UI\properties\inputProperty.cpp" />
-    <ClCompile Include="src\UI\hierarchy\cameraHierarchyButton.cpp" />
-    <ClCompile Include="src\UI\animation\animationPanel.cpp" />
-    <ClCompile Include="src\keyframe.cpp" />
-    <ClCompile Include="src\UI\properties\cameraProperties.cpp" />
-    <ClCompile Include="src\UI\properties\cameraPropertiesButton.cpp" />
-    <ClCompile Include="src\UI\properties\colorPicker.cpp" />
-    <ClCompile Include="src\imageExport.cpp" />
-    <ClCompile Include="src\components\light.cpp" />
-    <ClCompile Include="src\UI\materials\materialPanel.cpp" />
-    <ClCompile Include="src\UI\properties\imageProperty.cpp" />
-    <ClCompile Include="src\UI\hierarchy\lightHierarchyButton.cpp" />
-    <ClCompile Include="src\UI\properties\dropdownProperty.cpp" />
-    <ClCompile Include="src\filtering.cpp" />
-    <ClCompile Include="src\components\3d\bezierCurve.cpp">
+    <ClCompile Include="src\ui\panel.cpp" />
+    <ClCompile Include="src\ui\mainTheme.cpp" />
+    <ClCompile Include="src\objects\3d\objectModel.cpp" />
+    <ClCompile Include="src\utils\cursor.cpp" />
+    <ClCompile Include="src\ui\properties\centeredSlider.cpp" />
+    <ClCompile Include="src\ui\properties\checkBoxProperty.cpp" />
+    <ClCompile Include="src\ui\properties\colorProperty.cpp" />
+    <ClCompile Include="src\utils\utils.cpp" />
+    <ClCompile Include="src\ui\properties\inputProperty.cpp" />
+    <ClCompile Include="src\ui\hierarchy\cameraHierarchyButton.cpp" />
+    <ClCompile Include="src\animation\UI\animationPanel.cpp" />
+    <ClCompile Include="src\animation\keyframe.cpp" />
+    <ClCompile Include="src\ui\properties\cameraProperties.cpp" />
+    <ClCompile Include="src\ui\properties\cameraPropertiesButton.cpp" />
+    <ClCompile Include="src\ui\properties\colorPicker.cpp" />
+    <ClCompile Include="src\utils\imageExport.cpp" />
+    <ClCompile Include="src\objects\light.cpp" />
+    <ClCompile Include="src\ui\materials\materialPanel.cpp" />
+    <ClCompile Include="src\ui\properties\imageProperty.cpp" />
+    <ClCompile Include="src\ui\hierarchy\lightHierarchyButton.cpp" />
+    <ClCompile Include="src\ui\properties\dropdownProperty.cpp" />
+    <ClCompile Include="src\utils\filtering.cpp" />
+    <ClCompile Include="src\objects\3d\bezierCurve.cpp">
       <Filter>src\components\3d</Filter>
     </ClCompile>
-    <ClCompile Include="src\raytracing\UI\raytracingPanel.cpp" />
-    <ClCompile Include="src\components\3d\terrain.cpp" />
+    <ClCompile Include="src\raytracing\ui\raytracingPanel.cpp" />
+    <ClCompile Include="src\objects\3d\terrain.cpp" />
     <ClCompile Include="src\terrain\mapGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -211,34 +210,34 @@
     <ClInclude Include="src\camera.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\circle.h">
+    <ClInclude Include="src\objects\2d\circle.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\ellipse.h">
+    <ClInclude Include="src\objects\2d\ellipse.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\image.h">
+    <ClInclude Include="src\objects\2d\image.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\line.h">
+    <ClInclude Include="src\objects\2d\line.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\rectangle.h">
+    <ClInclude Include="src\objects\2d\rectangle.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\square.h">
+    <ClInclude Include="src\objects\2d\square.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\2d\triangle.h">
+    <ClInclude Include="src\objects\2d\triangle.h">
       <Filter>src\components\2d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\3d\cube.h">
+    <ClInclude Include="src\objects\3d\cube.h">
       <Filter>src\components\3d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\3d\sphere.h">
+    <ClInclude Include="src\objects\3d\sphere.h">
       <Filter>src\components\3d</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\object.h">
+    <ClInclude Include="src\objects\object.h">
       <Filter>src\components</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
@@ -247,37 +246,37 @@
     <ClInclude Include="src\scene.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\dropdown\dropdown.h">
+    <ClInclude Include="src\ui\dropdown\dropdown.h">
       <Filter>src\UI\dropdown</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\dropdown\dropdownButton.h">
+    <ClInclude Include="src\ui\dropdown\dropdownButton.h">
       <Filter>src\UI\dropdown</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\dropdown\dropdownPanel.h">
+    <ClInclude Include="src\ui\dropdown\dropdownPanel.h">
       <Filter>src\UI\dropdown</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\hierarchy\hierarchyButton.h">
+    <ClInclude Include="src\ui\hierarchy\hierarchyButton.h">
       <Filter>src\UI\hierarchy</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\hierarchy\hierarchyPanel.h">
+    <ClInclude Include="src\ui\hierarchy\hierarchyPanel.h">
       <Filter>src\UI\hierarchy</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\hierarchy\hierarchySmallButton.h">
+    <ClInclude Include="src\ui\hierarchy\hierarchySmallButton.h">
       <Filter>src\UI\hierarchy</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\label.h">
+    <ClInclude Include="src\ui\label.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\menuBar\menuBar.h">
+    <ClInclude Include="src\ui\menuBar\menuBar.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\menuBar\menuBarButton.h">
+    <ClInclude Include="src\ui\menuBar\menuBarButton.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\menuBar\menuBarButtonAlt.h">
+    <ClInclude Include="src\ui\menuBar\menuBarButtonAlt.h">
       <Filter>src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\properties\propertiesPanel.h">
+    <ClInclude Include="src\ui\properties\propertiesPanel.h">
       <Filter>src\UI\properties</Filter>
     </ClInclude>
     <ClInclude Include="openFrameworks\addons\ofxAssimpModelLoader\src\ofxAssimpAnimation.h">
@@ -481,35 +480,34 @@
     <ClInclude Include="openFrameworks\addons\ofxDatGui-master\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui-master\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\panel.h" />
-    <ClInclude Include="src\UI\mainTheme.h" />
-    <ClInclude Include="src\components\3d\objectModel.h" />
-    <ClInclude Include="src\UI\menuBar\recButton.h" />
-    <ClInclude Include="src\cursor.h" />
-    <ClInclude Include="src\UI\properties\centeredSlider.h" />
-    <ClInclude Include="src\UI\properties\checkBoxProperty.h" />
-    <ClInclude Include="src\UI\properties\colorProperty.h" />
-    <ClInclude Include="src\utils.h" />
-    <ClInclude Include="src\UI\properties\inputProperty.h" />
+    <ClInclude Include="src\ui\panel.h" />
+    <ClInclude Include="src\ui\mainTheme.h" />
+    <ClInclude Include="src\objects\3d\objectModel.h" />
+    <ClInclude Include="src\utils\cursor.h" />
+    <ClInclude Include="src\ui\properties\centeredSlider.h" />
+    <ClInclude Include="src\ui\properties\checkBoxProperty.h" />
+    <ClInclude Include="src\ui\properties\colorProperty.h" />
+    <ClInclude Include="src\utils\utils.h" />
+    <ClInclude Include="src\ui\properties\inputProperty.h" />
     <ClInclude Include="src\UI\properties\floatInputProperty.h" />
-    <ClInclude Include="src\UI\hierarchy\cameraHierarchyButton.h" />
-    <ClInclude Include="src\UI\animation\animationPanel.h" />
-    <ClInclude Include="src\keyframe.h" />
-    <ClInclude Include="src\UI\properties\cameraProperties.h" />
-    <ClInclude Include="src\UI\properties\cameraPropertiesButton.h" />
-    <ClInclude Include="src\UI\properties\colorPicker.h" />
-    <ClInclude Include="src\imageExport.h" />
-    <ClInclude Include="src\components\light.h" />
-    <ClInclude Include="src\UI\materials\materialPanel.h" />
-    <ClInclude Include="src\UI\properties\imageProperty.h" />
-    <ClInclude Include="src\UI\hierarchy\lightHierarchyButton.h" />
-    <ClInclude Include="src\UI\properties\dropdownProperty.h" />
-    <ClInclude Include="src\filtering.h" />
-    <ClInclude Include="src\components\3d\bezierCurve.h">
+    <ClInclude Include="src\ui\hierarchy\cameraHierarchyButton.h" />
+    <ClInclude Include="src\animation\UI\animationPanel.h" />
+    <ClInclude Include="src\animation\keyframe.h" />
+    <ClInclude Include="src\ui\properties\cameraProperties.h" />
+    <ClInclude Include="src\ui\properties\cameraPropertiesButton.h" />
+    <ClInclude Include="src\ui\properties\colorPicker.h" />
+    <ClInclude Include="src\utils\imageExport.h" />
+    <ClInclude Include="src\objects\light.h" />
+    <ClInclude Include="src\ui\materials\materialPanel.h" />
+    <ClInclude Include="src\ui\properties\imageProperty.h" />
+    <ClInclude Include="src\ui\hierarchy\lightHierarchyButton.h" />
+    <ClInclude Include="src\ui\properties\dropdownProperty.h" />
+    <ClInclude Include="src\utils\filtering.h" />
+    <ClInclude Include="src\objects\3d\bezierCurve.h">
       <Filter>src\components\3d</Filter>
     </ClInclude>
-    <ClInclude Include="src\raytracing\UI\raytracingPanel.h" />
-    <ClInclude Include="src\components\3d\terrain.h" />
+    <ClInclude Include="src\raytracing\ui\raytracingPanel.h" />
+    <ClInclude Include="src\objects\3d\terrain.h" />
     <ClInclude Include="src\terrain\mapGenerator.h" />
   </ItemGroup>
   <ItemGroup>

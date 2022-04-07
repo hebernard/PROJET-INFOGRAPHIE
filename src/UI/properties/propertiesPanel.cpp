@@ -1,12 +1,12 @@
 #include "propertiesPanel.h"
 #include "ofRectangle.h"
-#include "UI/label.h"
-#include "components/object.h"
-#include "UI/hierarchy/hierarchySmallButton.h"
+#include "ui/label.h"
+#include "objects/object.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
 #include "scene.h"
-#include "panel.h"
-#include "cursor.h"
-#include "utils.h"
+#include "ui/panel.h"
+#include "utils/cursor.h"
+#include "utils/utils.h"
 
 propertiesPanel::propertiesPanel() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),

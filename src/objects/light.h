@@ -2,10 +2,8 @@
 
 #include "ofMain.h"
 #include "object.h"
-#include "dropdownProperty.h"
-#include "colorProperty.h"
-#include "lightHierarchyButton.h"
-#include "inputProperty.h"
+#include "ui/hierarchy/lightHierarchyButton.h"
+#include "ui/properties/dropdownProperty.h"
 
 class light : public object
 {

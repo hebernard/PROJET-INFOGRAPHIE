@@ -1,6 +1,6 @@
 #include "cameraHierarchyButton.h"
 #include "hierarchyButton.h"
-#include "UI/label.h"
+#include "ui/label.h"
 #include "scene.h"
 
 cameraHierarchyButton::cameraHierarchyButton(std::string iconPath, std::string text) :

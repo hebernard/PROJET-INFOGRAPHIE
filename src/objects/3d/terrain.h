@@ -1,8 +1,7 @@
 #pragma once
-#include "object.h"
+#include "objects/object.h"
 #include "terrain/mapGenerator.h"
-#include "UI/menuBar/menuBarButton.h"
-#include "inputProperty.h"
+#include "ui/menuBar/menuBarButton.h"
 
 class terrain : public object
 {

@@ -1,6 +1,6 @@
 #include "lightHierarchyButton.h"
 #include "scene.h"
-#include "light.h"
+#include "objects/light.h"
 
 lightHierarchyButton::lightHierarchyButton(object& obj, std::string path, std::string label, bool isSecondary) : hierarchyButton(obj, path, label),
 	addLightButton(new hierarchySmallButton("images/icons/add_camera.png")),

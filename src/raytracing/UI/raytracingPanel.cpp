@@ -1,7 +1,7 @@
 #include "raytracingPanel.h"
-#include "panel.h"
-#include "label.h"
-#include "utils.h"
+#include "ui/panel.h"
+#include "ui/label.h"
+#include "utils/utils.h"
 #include "scene.h"
 
 raytracingPanel::raytracingPanel() : resetButton("images/icons/resume.png"), playButton("images/icons/pause.png"), spheres()

@@ -1,6 +1,6 @@
 #include "hierarchySmallButton.h"
-#include "mainTheme.h"
-#include "cursor.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
 
 hierarchySmallButton::hierarchySmallButton(std::string iconPath) : ofxDatGuiButton("hierarchySmallButton")
 {

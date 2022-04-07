@@ -1,7 +1,7 @@
 #include "dropdownPanel.h"
 #include "ofGraphics.h"
 #include "dropdownButton.h"
-#include "panel.h"
+#include "ui/panel.h"
 
 dropdownPanel::dropdownPanel() : rect(), buttons()
 {

@@ -1,6 +1,5 @@
 #pragma once
-
-#include "object.h"
+#include "objects/object.h"
 
 class image : public object
 {

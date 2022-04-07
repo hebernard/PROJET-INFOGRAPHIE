@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "object.h"
+#include "objects/object.h"
 
 class hierarchySmallButton;
 class keyframe;

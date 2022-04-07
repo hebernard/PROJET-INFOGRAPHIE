@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 #include "ofTrueTypeFont.h"
-#include "mainTheme.h"
+#include "ui/mainTheme.h"
 
 struct fontArgs
 {

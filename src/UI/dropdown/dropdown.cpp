@@ -1,9 +1,9 @@
 #include "dropdown.h"
-#include "../label.h"
-#include "UI/menuBar/menuBar.h"
+#include "ui/label.h"
+#include "ui/menuBar/menuBar.h"
 #include "dropdownButton.h"
-#include "mainTheme.h"
-#include "cursor.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
 
 dropdown::dropdown(int i, std::string text, menuBar& menu) : ofxDatGuiToggle("dropdown"), index(i), opened(false), m_text(text), downArrow(), panel(), m_menu(menu)
 {

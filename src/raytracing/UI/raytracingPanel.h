@@ -1,8 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "components/3d/sphere.h"
-#include "hierarchySmallButton.h"
-#include "propertiesPanel.h"
+#include "objects/3d/sphere.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
+#include "ui/properties/propertiesPanel.h"
 
 // Struct for doing PingPong quickly and easy
 //

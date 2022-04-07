@@ -1,10 +1,10 @@
 #include "centeredSlider.h"
-#include "label.h"
-#include "panel.h"
-#include "object.h"
-#include "hierarchySmallButton.h"
-#include "cursor.h"
-#include "utils.h"
+#include "ui/label.h"
+#include "ui/panel.h"
+#include "objects/object.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
+#include "utils/cursor.h"
+#include "utils/utils.h"
 
 centeredSlider::centeredSlider(std::string text, bool drawLockedButton) : 
 	m_text(text),

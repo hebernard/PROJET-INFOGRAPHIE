@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "cameraProperties.h"
+#include "ui/properties/cameraProperties.h"
 
 class object;
 class cameraHierarchyButton;

@@ -1,12 +1,11 @@
 #include "cameraProperties.h"
-#include "panel.h"
-#include "label.h"
-#include "hierarchySmallButton.h"
-#include "utils.h"
+#include "ui/panel.h"
+#include "ui/label.h"
+#include "ui/hierarchy/hierarchySmallButton.h"
+#include "utils/utils.h"
 #include "scene.h"
-#include "mainTheme.h"
-#include "scene.h"
-#include "cursor.h"
+#include "ui/mainTheme.h"
+#include "utils/cursor.h"
 
 cameraProperties::cameraProperties() : 
 	backButton(new hierarchySmallButton("images/icons/back.png")),

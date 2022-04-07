@@ -1,13 +1,10 @@
 #pragma once
+#include "objects/object.h"
 
-#include "object.h"
-#include "inputProperty.h"
-#include "checkBoxProperty.h"
-
-class cube : public object
+class ellipse : public object
 {
 public:
-	cube(float width, float height, float depth);
+	ellipse(float width, float height);
 
 	void customDraw();
 	void drawProperties(int x, int y, int width);
@@ -16,11 +13,11 @@ public:
 private:
 	float m_width;
 	float m_height;
-	float m_depth;
+	float m_resolution = 20;
 	float m_contourThickness = 1;
 	inputProperty widthInput;
 	inputProperty heightInput;
-	inputProperty depthInput;
+	inputProperty resolutionInput;
 	inputProperty contourThicknessInput;
 };
 

@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "cameraPropertiesButton.h"
 #include "colorPicker.h"
-#include "imageExport.h"
+#include "utils/imageExport.h"
 
 class hierarchySmallButton;
 

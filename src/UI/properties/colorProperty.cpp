@@ -1,7 +1,7 @@
 #include "colorProperty.h"
-#include "label.h"
-#include "panel.h"
-#include "utils.h"
+#include "ui/label.h"
+#include "ui/panel.h"
+#include "utils/utils.h"
 
 colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), m_ref(ref), picker(ref)
 {

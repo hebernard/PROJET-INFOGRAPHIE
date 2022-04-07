@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "label.h"
+#include "ui/label.h"
 
 class element
 {

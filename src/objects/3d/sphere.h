@@ -1,9 +1,7 @@
 #pragma once
 
-#include "object.h"
-#include "inputProperty.h"
-#include "checkBoxProperty.h"
-#include "dropdownProperty.h"
+#include "objects/object.h"
+#include "ui/properties/dropdownProperty.h"
 
 class sphere : public object
 {

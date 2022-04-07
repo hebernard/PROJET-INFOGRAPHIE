@@ -5,8 +5,8 @@
 #include "ofRectangle.h"
 #include "glm/gtc/quaternion.hpp"
 #include "ofMain.h"
-#include "UI/hierarchy/hierarchyButton.h"
-#include "components/object.h"
+#include "ui/hierarchy/hierarchyButton.h"
+#include "objects/object.h"
 
 class scene;
 

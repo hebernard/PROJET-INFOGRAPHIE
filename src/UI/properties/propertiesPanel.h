@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "centeredSlider.h"
-#include "animation/animationPanel.h"
+#include "animation/ui/animationPanel.h"
 #include "materials/materialPanel.h"
 
 class object;
