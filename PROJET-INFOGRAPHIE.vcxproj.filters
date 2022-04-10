@@ -114,7 +114,7 @@
     <ClCompile Include="src\ui\properties\colorPicker.cpp" />
     <ClCompile Include="src\utils\imageExport.cpp" />
     <ClCompile Include="src\objects\light.cpp" />
-    <ClCompile Include="src\ui\materials\materialPanel.cpp" />
+    <ClCompile Include="src\materials\ui\materialPanel.cpp" />
     <ClCompile Include="src\ui\properties\imageProperty.cpp" />
     <ClCompile Include="src\ui\hierarchy\lightHierarchyButton.cpp" />
     <ClCompile Include="src\ui\properties\dropdownProperty.cpp" />
@@ -503,7 +503,7 @@
     <ClInclude Include="src\ui\properties\colorPicker.h" />
     <ClInclude Include="src\utils\imageExport.h" />
     <ClInclude Include="src\objects\light.h" />
-    <ClInclude Include="src\ui\materials\materialPanel.h" />
+    <ClInclude Include="src\materials\ui\materialPanel.h" />
     <ClInclude Include="src\ui\properties\imageProperty.h" />
     <ClInclude Include="src\ui\hierarchy\lightHierarchyButton.h" />
     <ClInclude Include="src\ui\properties\dropdownProperty.h" />

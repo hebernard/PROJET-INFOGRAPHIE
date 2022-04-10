@@ -217,7 +217,7 @@
     <ClCompile Include="src\ui\hierarchy\lightHierarchyButton.cpp" />
     <ClCompile Include="src\ui\label.cpp" />
     <ClCompile Include="src\ui\mainTheme.cpp" />
-    <ClCompile Include="src\ui\materials\materialPanel.cpp" />
+    <ClCompile Include="src\materials\ui\materialPanel.cpp" />
     <ClCompile Include="src\ui\menuBar\menuBar.cpp" />
     <ClCompile Include="src\ui\menuBar\menuBarButton.cpp" />
     <ClCompile Include="src\ui\menuBar\menuBarButtonAlt.cpp" />
@@ -281,7 +281,7 @@
     <ClInclude Include="src\ui\hierarchy\lightHierarchyButton.h" />
     <ClInclude Include="src\ui\label.h" />
     <ClInclude Include="src\ui\mainTheme.h" />
-    <ClInclude Include="src\ui\materials\materialPanel.h" />
+    <ClInclude Include="src\materials\ui\materialPanel.h" />
     <ClInclude Include="src\ui\menuBar\menuBar.h" />
     <ClInclude Include="src\ui\menuBar\menuBarButton.h" />
     <ClInclude Include="src\ui\menuBar\menuBarButtonAlt.h" />
