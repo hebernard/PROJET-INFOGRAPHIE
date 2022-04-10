@@ -37,7 +37,7 @@ void sphere::customDraw()
 	ofDrawSphere(0, 0, 0, m_radius);
 }
 
-void sphere::drawProperties(int x, int y, int width)
+void sphere::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y;
 	if (!m_raytracing)

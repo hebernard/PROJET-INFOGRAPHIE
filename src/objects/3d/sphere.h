@@ -10,7 +10,7 @@ public:
 	sphere(float radius, glm::vec3 p, glm::vec3 e, glm::vec3 c, int refl);
 
 	void customDraw();
-	void drawProperties(int x, int y, int width);
+	void drawProperties(int x, int y, int width, int originX = 0, int originY = 0);
 	glm::vec3 getBBox();
 
 	float getRadius();

@@ -56,7 +56,7 @@ void light::customDraw()
     li.setAttenuation(constantAtt, linearAtt, quadraticAtt);
 }
 
-void light::drawProperties(int x, int y, int width)
+void light::drawProperties(int x, int y, int width, int originX, int originY)
 {
     int offset = y;
     lightTypeProp.draw(x, offset, width);

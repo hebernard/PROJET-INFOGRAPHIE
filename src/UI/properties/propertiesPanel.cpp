@@ -157,6 +157,7 @@ void propertiesPanel::draw(object& obj)
 		rect.x = ofGetWidth() - rect.width - 20;
 		rect.y = 100;
 	}
+	fbo.allocate(rect.width, rect.height - 55);
 
 	if (materialPanelVisible)
 	{
@@ -184,11 +185,9 @@ void propertiesPanel::draw(object& obj)
 		materialButton->draw();
 	}
 
-	drawLine(rect.x, rect.y + 55, rect.width);
-
+	fbo.begin();
+	ofClear(255, 255, 255, 0);
 	drawTransformSliders(obj);
-
-	drawLine(rect.x + 30, rect.y + 310, rect.width - 60);
 
 	int slidersMul = 3;
 	if (!enableScaling)
@@ -200,8 +199,12 @@ void propertiesPanel::draw(object& obj)
 		slidersMul--;
 	}
 
-	int y = rect.y + (slidersMul * position.getHeight()) + 90;
-	obj.drawProperties(rect.x + offsetX, y, propertyWidth);
+	int y = (slidersMul * position.getHeight()) + 35;
+	obj.drawProperties(offsetX, y, propertyWidth, rect.x, rect.y + 55);
+	fbo.end();
+
+	ofSetColor(255);
+	fbo.draw(rect.x, rect.y + 55);
 
 	if (animationPanelVisible)
 	{
@@ -227,30 +230,21 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 
 void propertiesPanel::drawTransformSliders(object& obj)
 {
-	int y = rect.y + 75;
+	int y = 20;
 
-	position.draw(rect.x + offsetX, y, propertyWidth, obj.getPosition());
+	position.draw(offsetX, y, propertyWidth, obj.getPosition());
 	y += position.getHeight();
 
 	if (enableRotation)
 	{
-		rotation.draw(rect.x + offsetX, y, propertyWidth, obj.getOrientationEuler());
+		rotation.draw(offsetX, y, propertyWidth, obj.getOrientationEuler());
 		y += rotation.getHeight();
 	}
 
 	if (enableScaling)
 	{
-		scale.draw(rect.x + offsetX, y, propertyWidth, obj.getScale());
+		scale.draw(offsetX, y, propertyWidth, obj.getScale());
 	}
-}
-
-void propertiesPanel::drawLine(int x, int y, int width)
-{
-	ofPushStyle();
-	ofSetColor(mainTheme::panelBorderColor());
-	ofSetLineWidth(2);
-	ofDrawLine(x, y, x + width, y);
-	ofPopStyle();
 }
 
 void propertiesPanel::resetFocus()

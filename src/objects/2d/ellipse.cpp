@@ -18,7 +18,7 @@ void ellipse::customDraw()
 	ofDrawEllipse(0, 0, 0, m_width, m_height);
 }
 
-void ellipse::drawProperties(int x, int y, int width)
+void ellipse::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);

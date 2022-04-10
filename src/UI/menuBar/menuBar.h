@@ -38,8 +38,7 @@ private:
 	void drawLogo();
 	void drawLine();
 
-	void onImportButtonEvent(ofxDatGuiButtonEvent e);
-	void onExportButtonEvent(ofxDatGuiButtonEvent e);
-	void onThemeButtonEvent(ofxDatGuiButtonEvent e);
+	void onImportButtonEvent();
+	void onThemeButtonEvent();
 };
 

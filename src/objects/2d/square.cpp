@@ -15,7 +15,7 @@ void square::customDraw()
 	ofDrawRectangle(-m_size/2, -m_size / 2, 0, m_size, m_size);
 }
 
-void square::drawProperties(int x, int y, int width)
+void square::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);

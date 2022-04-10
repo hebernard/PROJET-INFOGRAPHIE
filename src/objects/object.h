@@ -108,7 +108,7 @@ public:
 		button->draw();
 	}
 
-	virtual void drawProperties(int x, int y, int width)
+	virtual void drawProperties(int x, int y, int width, int originX = 0, int originY = 0)
 	{
 		int offset = y;
 		bboxCheckBox->draw(x, offset, width);

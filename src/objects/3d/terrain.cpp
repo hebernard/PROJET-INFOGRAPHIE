@@ -2,8 +2,8 @@
 
 terrain::terrain() : 
 	object(new hierarchyButton(*this, "images/icons/terrain.png", "Terrain")),
-	generateButton("Update"),
-	seedButton("Generate new seed"),
+	generateButton("Update", 10),
+	seedButton("Generate new seed", 12),
 	widthProp(sliderProperty("Width", mapGen.width, 2, 1000)),
 	heightProp(sliderProperty("Height", mapGen.height, 2, 1000)),
 	amplitudeProp(sliderProperty("Amplitude", mapGen.amplitude, 1, 100)),
@@ -39,17 +39,17 @@ terrain::terrain() :
 
 	generateButton.setLabel("Update (" + ofToString(mapGen.seed) + ")");
 
-	generateButton.onButtonEvent([&](auto e)
+	generateButton.onClick = [&]()
 	{
 		mapGen.generateMesh();
-	});
+	};
 
-	seedButton.onButtonEvent([&](auto e)
+	seedButton.onClick = [&]()
 	{
 		mapGen.newSeed();
 		generateButton.setLabel("Update (" + ofToString(mapGen.seed) + ")");
 		mapGen.generateMesh();
-	});
+	};
 }
 
 void terrain::customDraw()
@@ -60,7 +60,7 @@ void terrain::customDraw()
 	ofPopMatrix();
 }
 
-void terrain::drawProperties(int x, int y, int width)
+void terrain::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y;
 	filledCheckBox->draw(x, offset, width);
@@ -79,11 +79,11 @@ void terrain::drawProperties(int x, int y, int width)
 	offset += scaleProp.getHeight() + 10;
 
 	generateButton.setWidth(width);
-	generateButton.update(x, offset);
-	generateButton.draw(10);
+	generateButton.update(x, offset, originX, originY);
+	generateButton.draw();
 	offset += generateButton.getHeight() + 10;
 
 	seedButton.setWidth(width);
-	seedButton.update(x, offset);
-	seedButton.draw(12);
+	seedButton.update(x, offset, originX, originY);
+	seedButton.draw();
 }

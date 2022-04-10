@@ -30,7 +30,7 @@ void image::customDraw()
 	}
 }
 
-void image::drawProperties(int x, int y, int width)
+void image::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	// Dont call base class to not set filled property
 	int offset = y;

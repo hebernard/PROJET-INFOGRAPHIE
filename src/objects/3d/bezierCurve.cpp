@@ -125,7 +125,7 @@ void bezierCurve::customDraw()
 	ofEnableDepthTest();
 }
 
-void bezierCurve::drawProperties(int x, int y, int width)
+void bezierCurve::drawProperties(int x, int y, int width, int originX, int originY)
 {
 
 	int offset = y - 20;

@@ -21,7 +21,7 @@ glm::vec3 line::getBBox()
 	return glm::vec3(0, 0, 0);
 }
 
-void line::drawProperties(int x, int y, int width)
+void line::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	// Dont call base class to not set filled property
 	int offset = y;

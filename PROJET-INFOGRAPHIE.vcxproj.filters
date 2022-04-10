@@ -129,6 +129,7 @@
     <ClCompile Include="src\ui\properties\sliders\intSliderProperty.cpp" />
     <ClCompile Include="src\ui\properties\sliders\sliderBase.cpp" />
     <ClCompile Include="src\ui\properties\sliders\floatSliderProperty.cpp" />
+    <ClCompile Include="src\ui\uiComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -517,6 +518,7 @@
     <ClInclude Include="src\ui\properties\sliders\intSliderProperty.h" />
     <ClInclude Include="src\ui\properties\sliders\sliderBase.h" />
     <ClInclude Include="src\ui\properties\sliders\floatSliderProperty.h" />
+    <ClInclude Include="src\ui\uiComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -16,7 +16,7 @@ void cube::customDraw()
 	ofDrawBox(0, 0, 0, m_width, m_height, m_depth);
 }
 
-void cube::drawProperties(int x, int y, int width)
+void cube::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);

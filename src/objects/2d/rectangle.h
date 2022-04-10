@@ -7,7 +7,7 @@ public:
 	rectangle(float width, float height);
 
 	void customDraw();
-	void drawProperties(int x, int y, int width);
+	void drawProperties(int x, int y, int width, int originX = 0, int originY = 0);
 	glm::vec3 getBBox();
 
 private:

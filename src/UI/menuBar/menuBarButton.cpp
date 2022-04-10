@@ -3,26 +3,19 @@
 #include "ui/mainTheme.h"
 #include "utils/cursor.h"
 
-menuBarButton::menuBarButton(std::string text) : ofxDatGuiButton(text), m_text(text)
+menuBarButton::menuBarButton(std::string text, int textOffset) : uiComponent(80, 38), m_text(text), textOff(textOffset)
 {
-	setTheme(new menuBarButtonTheme());
 	textSize = label::getSize(text, 11);
 }
 
-void menuBarButton::setTheme(const ofxDatGuiTheme* theme)
+void menuBarButton::draw()
 {
-	setComponentStyle(theme);
-	ofxDatGuiComponent::setWidth(theme->layout.width, theme->layout.labelWidth);
-}
-
-void menuBarButton::draw(int textOffset)
-{
-	if (mFocused && mMouseDown)
+	if (isMouseDown)
 	{
 		cursor::setHandCursor();
 		ofSetColor(mainTheme::color3());
 	}
-	else if (mMouseOver)
+	else if (isMouseOver)
 	{
 		cursor::setHandCursor();
 		ofSetColor(mainTheme::color2());
@@ -31,31 +24,13 @@ void menuBarButton::draw(int textOffset)
 	{
 		ofSetColor(mainTheme::color1());
 	}
-	ofDrawRectRounded(x, y, getWidth(), getHeight(), 6);
+	ofDrawRectRounded(*rect, 6);
 
-	drawText(x + getWidth() / 2 - textSize.x / 2, y + textSize.y + textOffset, m_text, 11);
-}
-
-void menuBarButton::update(int x, int y)
-{
-	ofxDatGuiComponent::update();
-	setPosition(x, y);
+	drawText(getX() + getWidth() / 2 - textSize.x / 2, getY() + textSize.y + textOff, m_text, 11);
 }
 
 void menuBarButton::setLabel(std::string text)
 {
 	m_text = text;
 	textSize = label::getSize(m_text, 11);
-}
-
-void menuBarButton::onMouseRelease(ofPoint m)
-{
-	if (mMouseOver && mFocused)
-	{
-		ofxDatGuiButton::onMouseRelease(m);
-	}
-	else
-	{
-		ofxDatGuiComponent::onFocusLost();
-	}
 }

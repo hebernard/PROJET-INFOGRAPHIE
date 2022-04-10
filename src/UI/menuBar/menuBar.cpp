@@ -26,7 +26,7 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 	dropdown3d(new dropdown(1, "3D", *this)),
 	raytracingDropdown(new dropdown(2, "3D", *this)),
 	importButton(new menuBarButton("Import")),
-	renderButton(new menuBarButton("Render")),
+	renderButton(new menuBarButton("Render", 13)),
 	themeButton(new menuBarButtonAlt(mainTheme::themePath()))
 {
 	rect.width = ofGetWidth();
@@ -166,8 +166,9 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 	});
 	dropdown3d->addButton(terrainButton);
 
-	importButton->onButtonEvent(this, &menuBar::onImportButtonEvent);
-	renderButton->buttonEventCallback = [&](auto e)
+	importButton->onClick = [&]() { menuBar::onImportButtonEvent(); };
+
+	renderButton->onClick = [&]()
 	{
 		scene& s = s.getInstance();
 		s.showRaytracingPanel = !s.showRaytracingPanel;
@@ -188,7 +189,7 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 		}
 	};
 
-	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
+	//themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 
 	dropdownButton* r_sphereButton = new dropdownButton("images/icons/sphere.png", "Sphere");
 	r_sphereButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -234,14 +235,14 @@ void menuBar::draw()
 	{
 		dropdown2d->draw();
 		dropdown3d->draw();
-		importButton->draw(10);
+		importButton->draw();
 	}
 	else
 	{
 		raytracingDropdown->draw();
 	}
 
-	renderButton->draw(13);
+	renderButton->draw();
 	themeButton->draw();
 
 	ofPopStyle();
@@ -323,7 +324,7 @@ void menuBar::drawLine()
 	ofDrawLine(0, 71, ofGetWidth(), 71);
 }
 
-void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
+void menuBar::onImportButtonEvent()
 {
 	ofFileDialogResult openFileResult = ofSystemLoadDialog("Choisir un objet à importer");
 
@@ -350,7 +351,7 @@ void menuBar::onImportButtonEvent(ofxDatGuiButtonEvent e)
 	}
 }
 
-void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)
+void menuBar::onThemeButtonEvent()
 {
 	mainTheme::darkTheme = !mainTheme::darkTheme;
 	ofSetBackgroundColor(mainTheme::sceneBackgroundColor());

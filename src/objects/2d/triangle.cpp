@@ -20,7 +20,7 @@ void triangle::customDraw()
 	ofDrawTriangle(-m_width / 2.f, -m_height / 2.f, 0, 0, m_height / 2.f, 0, m_width / 2.f, -m_height / 2.f, 0);
 }
 
-void triangle::drawProperties(int x, int y, int width)
+void triangle::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);

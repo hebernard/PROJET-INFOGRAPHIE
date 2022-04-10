@@ -9,7 +9,7 @@ public:
 	terrain();
 
 	void customDraw();
-	void drawProperties(int x, int y, int width);
+	void drawProperties(int x, int y, int width, int originX = 0, int originY = 0);
 
 private:
 	mapGenerator mapGen;

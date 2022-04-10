@@ -16,7 +16,7 @@ void rectangle::customDraw()
 	ofDrawRectangle(-m_width / 2, -m_height / 2, 0, m_width, m_height);
 }
 
-void rectangle::drawProperties(int x, int y, int width)
+void rectangle::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);

@@ -16,7 +16,7 @@ void objectModel::customDraw()
 	obj.drawFaces();
 }
 
-void objectModel::drawProperties(int x, int y, int width)
+void objectModel::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	//bboxCheckBox->draw(x, y, width);
 	//colorPicker->draw(x, y + bboxCheckBox->getHeight() + 10, width);

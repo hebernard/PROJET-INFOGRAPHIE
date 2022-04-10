@@ -17,7 +17,7 @@ void circle::customDraw()
 	ofDrawCircle(0, 0, 0, m_radius);
 }
 
-void circle::drawProperties(int x, int y, int width)
+void circle::drawProperties(int x, int y, int width, int originX, int originY)
 {
 	int offset = y + getPropertiesHeight();
 	object::drawProperties(x, y, width);

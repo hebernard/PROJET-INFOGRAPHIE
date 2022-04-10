@@ -8,7 +8,7 @@ public:
 
 	void customDraw();
 	glm::vec3 getBBox();
-	void drawProperties(int x, int y, int width);
+	void drawProperties(int x, int y, int width, int originX = 0, int originY = 0);
 
 private:
 	float m_length;

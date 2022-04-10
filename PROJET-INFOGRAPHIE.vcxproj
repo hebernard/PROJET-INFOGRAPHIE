@@ -188,6 +188,7 @@
     <ClCompile Include="src\ui\properties\sliders\intSliderProperty.cpp" />
     <ClCompile Include="src\ui\properties\sliders\sliderBase.cpp" />
     <ClCompile Include="src\ui\properties\sliders\sliderProperty.cpp" />
+    <ClCompile Include="src\ui\uiComponent.cpp" />
     <ClCompile Include="src\utils\cursor.cpp" />
     <ClCompile Include="src\utils\filtering.cpp" />
     <ClCompile Include="src\utils\imageExport.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="src\ui\properties\sliders\intSliderProperty.h" />
     <ClInclude Include="src\ui\properties\sliders\sliderBase.h" />
     <ClInclude Include="src\ui\properties\sliders\sliderProperty.h" />
+    <ClInclude Include="src\ui\uiComponent.h" />
     <ClInclude Include="src\utils\cursor.h" />
     <ClInclude Include="src\utils\filtering.h" />
     <ClInclude Include="src\utils\imageExport.h" />
