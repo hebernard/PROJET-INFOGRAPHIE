@@ -157,7 +157,7 @@ void propertiesPanel::draw(object& obj)
 		rect.x = ofGetWidth() - rect.width - 20;
 		rect.y = 100;
 	}
-	fbo.allocate(rect.width, rect.height - 55);
+	//fbo.allocate(rect.width, rect.height - 55);
 
 	if (materialPanelVisible)
 	{
@@ -181,12 +181,12 @@ void propertiesPanel::draw(object& obj)
 
 	if (obj.canHaveMaterial)
 	{
-		materialButton->update(animateButton->getX() - materialButton->getWidth() - 15, rect.y + 10);
+		materialButton->update(rect.x + rect.width - animateButton->getWidth() - materialButton->getWidth() - 30, rect.y + 10);
 		materialButton->draw();
 	}
 
-	fbo.begin();
-	ofClear(255, 255, 255, 0);
+	//fbo.begin();
+	//ofClear(255, 255, 255, 0);
 	drawTransformSliders(obj);
 
 	int slidersMul = 3;
@@ -199,12 +199,13 @@ void propertiesPanel::draw(object& obj)
 		slidersMul--;
 	}
 
-	int y = (slidersMul * position.getHeight()) + 35;
-	obj.drawProperties(offsetX, y, propertyWidth, rect.x, rect.y + 55);
-	fbo.end();
+	int y = rect.y + (slidersMul * position.getHeight()) + 90;
+	obj.drawProperties(rect.x + offsetX, y, propertyWidth);
+	//obj.drawProperties(offsetX, y, propertyWidth, rect.x, rect.y + 55);
+	//fbo.end();
 
-	ofSetColor(255);
-	fbo.draw(rect.x, rect.y + 55);
+	//ofSetColor(255);
+	//fbo.draw(rect.x, rect.y + 55);
 
 	if (animationPanelVisible)
 	{
@@ -230,20 +231,24 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 
 void propertiesPanel::drawTransformSliders(object& obj)
 {
-	int y = 20;
+	int y = rect.y + 75;
+	//int y = 20;
 
-	position.draw(offsetX, y, propertyWidth, obj.getPosition());
+	position.draw(rect.x + offsetX, y, propertyWidth, obj.getPosition());
+	//position.draw(offsetX, y, propertyWidth, obj.getPosition());
 	y += position.getHeight();
 
 	if (enableRotation)
 	{
-		rotation.draw(offsetX, y, propertyWidth, obj.getOrientationEuler());
+		rotation.draw(rect.x + offsetX, y, propertyWidth, obj.getOrientationEuler());
+		//rotation.draw(offsetX, y, propertyWidth, obj.getOrientationEuler());
 		y += rotation.getHeight();
 	}
 
 	if (enableScaling)
 	{
-		scale.draw(offsetX, y, propertyWidth, obj.getScale());
+		scale.draw(rect.x + offsetX, y, propertyWidth, obj.getScale());
+		//scale.draw(offsetX, y, propertyWidth, obj.getScale());
 	}
 }
 

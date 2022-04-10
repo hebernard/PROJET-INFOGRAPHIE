@@ -56,7 +56,7 @@ private:
     bool materialPanelVisible = false;
     materialPanel matPanel;
 
-    ofFbo fbo;
+    //ofFbo fbo;
 
     void drawTransformSliders(object& obj);
     void resetFocus();
