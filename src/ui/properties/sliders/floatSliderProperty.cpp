@@ -1,7 +1,7 @@
 #include "floatSliderProperty.h"
 
-floatSliderProperty::floatSliderProperty(std::string label, float& ref, float min, float max) : 
-	sliderBase(label), 
+floatSliderProperty::floatSliderProperty(std::string label, float& ref, float min, float max, bool manualUpdate) :
+	sliderBase(label, manualUpdate), 
 	m_ref(ref),
 	min(min),
 	max(max)

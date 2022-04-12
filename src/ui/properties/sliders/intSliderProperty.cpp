@@ -1,7 +1,7 @@
 #include "intSliderProperty.h"
 
-intSliderProperty::intSliderProperty(std::string label, int& ref, int min, int max) : 
-	sliderBase(label), 
+intSliderProperty::intSliderProperty(std::string label, int& ref, int min, int max, bool manualUpdate) : 
+	sliderBase(label, manualUpdate), 
 	m_ref(ref),
 	min(min),
 	max(max)
