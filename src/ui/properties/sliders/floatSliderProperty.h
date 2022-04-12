@@ -4,6 +4,8 @@
 class floatSliderProperty : public sliderBase
 {
 public:
+	std::function<void(float)> onUpdate;
+
 	floatSliderProperty(std::string label, float& ref, float min, float max);
 
 protected:

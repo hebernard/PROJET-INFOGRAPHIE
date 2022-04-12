@@ -4,6 +4,8 @@
 class sliderBase
 {
 public:
+	bool manualUpdate = false;
+
 	sliderBase(std::string label);
 	virtual ~sliderBase();
 
