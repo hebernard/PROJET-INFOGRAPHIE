@@ -10,6 +10,7 @@ public:
 	static bool mouseReleased;
 	static bool rightMouseReleased;
 	static bool isMouseOverUI;
+	static bool isDropdownOpened;
 	static int keyPressed;
 
 	// Vector of functions

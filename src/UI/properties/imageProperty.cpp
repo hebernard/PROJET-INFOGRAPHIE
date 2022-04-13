@@ -23,7 +23,7 @@ imageProperty::~imageProperty()
 void imageProperty::draw(int x, int y, int width)
 {
 	ofPushStyle();
-	bool hovered = importBox.inside(ofGetMouseX(), ofGetMouseY());
+	bool hovered = !utils::isDropdownOpened && importBox.inside(ofGetMouseX(), ofGetMouseY());
 
 	drawText(x, y + importBox.height - 5, m_label, 11);
 

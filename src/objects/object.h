@@ -8,6 +8,8 @@
 #include "ui/properties/colorProperty.h"
 #include "ui/properties/sliders/sliderProperty.h"
 #include "animation/keyframe.h"
+#include "materials/materialBase.h"
+#include "materials/defaultMaterial.h"
 
 class object : public ofNode
 {
@@ -27,9 +29,7 @@ public:
 
 	// Material
 	bool canHaveMaterial = true;
-	ofMaterial material;
-	ofTexture originalTexture, filteredTexture;
-	int currentFilterIndex = 0;
+	materialBase* material = new defaultMaterial();
 
 	object(hierarchyButton* btn) : 
 		button(btn), 
@@ -49,6 +49,7 @@ public:
 		delete filledCheckBox;
 		delete colorPicker;
 		delete bboxCheckBox;
+		delete material;
 	}
 
 	virtual void customDraw()
@@ -86,18 +87,16 @@ public:
 
 		if (canHaveMaterial)
 		{
-			material.begin();
+			material->begin();
 		}
 		else
 		{
 			ofSetColor(color);
 		}
 
-		if (filteredTexture.isAllocated()) filteredTexture.bind();
 		customDraw();
-		if (filteredTexture.isAllocated()) filteredTexture.unbind();
 
-		if (canHaveMaterial) material.end();
+		if (canHaveMaterial) material->end();
 		ofPopStyle();
 		ofPopMatrix();
 	}

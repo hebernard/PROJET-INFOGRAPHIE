@@ -147,10 +147,6 @@ void propertiesPanel::draw(object& obj)
 		utils::isMouseOverUI = true;
 	}
 
-	position.update();
-	rotation.update();
-	scale.update();
-
 	if (anchoredRight)
 	{
 		rect.height = ofGetHeight() - 125;
@@ -231,6 +227,10 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 
 void propertiesPanel::drawTransformSliders(object& obj)
 {
+	position.update();
+	rotation.update();
+	scale.update();
+
 	int y = rect.y + 75;
 	//int y = 20;
 

@@ -18,21 +18,15 @@ defaultMaterial::defaultMaterial() : materialBase("Default"),
 {
 	imgProp.onImageImport = [&](string path)
 	{
-		if (ref != nullptr)
-		{
-			ofLoadImage(ref->originalTexture, path);
-			setFilter(ref->currentFilterIndex);
-		}
+		ofLoadImage(originalTexture, path);
+		setFilter(currentFilterIndex);
 	};
 
 	imgProp.onImageCleared = [&]()
 	{
 		imgProp.resetPreview();
-		if (ref != nullptr)
-		{
-			ref->originalTexture.clear();
-			ref->filteredTexture.clear();
-		}
+		originalTexture.clear();
+		filteredTexture.clear();
 	};
 
 	filterProp.setElements(getFilterTypes());
@@ -50,87 +44,68 @@ defaultMaterial::~defaultMaterial()
 
 void defaultMaterial::draw(int x, int y, int width)
 {
-	int propX = x + 15;
-	int propW = width - 30;
-	int propY = y + imgProp.getHeight();
+	int propY = y;
 	int offset = 15;
 
-	imgProp.draw(propX, propY, propW);
+	imgProp.draw(x, propY, width);
 	propY += imgProp.getHeight() + offset;
 
-	if (ref->originalTexture.isAllocated())
+	if (originalTexture.isAllocated())
 	{
 		ambientColorProp.interactable = !filterProp.focused;
 		diffuseColorProp.interactable = !filterProp.focused;
 		emissiveColorProp.interactable = !filterProp.focused;
 		specularColorProp.interactable = !filterProp.focused;
 
-		filterProp.draw(propX, propY, propW);
+		filterProp.draw(x, propY, width);
 		propY += filterProp.getHeight() + offset;
 	}
 
-	ambientColorProp.draw(propX, propY, propW);
+	ambientColorProp.draw(x, propY, width);
 	propY += ambientColorProp.getHeight() + offset;
 
-	diffuseColorProp.draw(propX, propY, propW);
+	diffuseColorProp.draw(x, propY, width);
 	propY += diffuseColorProp.getHeight() + offset;
 
-	emissiveColorProp.draw(propX, propY, propW);
+	emissiveColorProp.draw(x, propY, width);
 	propY += emissiveColorProp.getHeight() + offset;
 
-	specularColorProp.draw(propX, propY, propW);
+	specularColorProp.draw(x, propY, width);
 	propY += specularColorProp.getHeight() + offset;
 
-	shininessProp.draw(propX, propY, propW);
+	shininessProp.draw(x, propY, width);
 
-	ref->material.setAmbientColor(*ambientColor);
-	ref->material.setDiffuseColor(*diffuseColor);
-	ref->material.setEmissiveColor(*emissiveColor);
-	ref->material.setSpecularColor(*specularColor);
-	ref->material.setShininess(*shininess);
+	material.setAmbientColor(*ambientColor);
+	material.setDiffuseColor(*diffuseColor);
+	material.setEmissiveColor(*emissiveColor);
+	material.setSpecularColor(*specularColor);
+	material.setShininess(*shininess);
 }
 
-void defaultMaterial::setObject(object& obj)
+void defaultMaterial::begin()
 {
-	materialBase::setObject(obj);
-	// reset the preview upon changing objects
-	if (!obj.originalTexture.isAllocated())
+	material.begin();
+	if (filteredTexture.isAllocated())
 	{
-		imgProp.resetPreview();
+		filteredTexture.bind();
 	}
-	else
+}
+
+void defaultMaterial::end()
+{
+	if (filteredTexture.isAllocated())
 	{
-		ofPixels pixels;
-		obj.originalTexture.readToPixels(pixels);
-
-		imgProp.setPreview(pixels);
+		filteredTexture.unbind();
 	}
-
-	ambientColor->set(ref->material.getAmbientColor());
-	diffuseColor->set(ref->material.getDiffuseColor());
-	emissiveColor->set(ref->material.getEmissiveColor());
-	specularColor->set(ref->material.getSpecularColor());
-	*shininess = ref->material.getShininess();
-
-	ambientColorProp.forceUpdate();
-	diffuseColorProp.forceUpdate();
-	emissiveColorProp.forceUpdate();
-	specularColorProp.forceUpdate();
-	shininessProp.setMax(100);
-	shininessProp.forceUpdateValue();
-
-	filterProp.setSelected(ref->currentFilterIndex);
+	material.end();
 }
 
 void defaultMaterial::setFilter(int index)
 {
-	if (ref != nullptr)
+	currentFilterIndex = index;
+	ofTexture tex = applyFilter(originalTexture, filterType(index));
+	if (tex.isAllocated())
 	{
-		ref->currentFilterIndex = index;
-		ofTexture tex = applyFilter(ref->originalTexture, filterType(index));
-		if (tex.isAllocated())
-		{
-			ref->filteredTexture = tex;
-		}
+		filteredTexture = tex;
 	}
 }

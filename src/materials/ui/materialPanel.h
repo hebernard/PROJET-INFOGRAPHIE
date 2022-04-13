@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
-#include "materials/defaultMaterial.h"
+#include "ui/properties/dropdownProperty.h"
+#include "objects/object.h"
 
 class hierarchySmallButton;
 
@@ -18,6 +19,8 @@ public:
 
 private:
 	ofRectangle rect;
-	materialBase* mat;
+	object* ref;
+
+	dropdownProperty materialDropdown;
 };
 

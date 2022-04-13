@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "ofRectangle.h"
-#include "objects/object.h"
 
 class materialBase
 {
@@ -11,12 +10,10 @@ public:
 
 	virtual void draw(int x, int y, int width) = 0;
 
-	virtual void setObject(object& obj);
+	virtual void begin() = 0;
+	virtual void end() = 0;
 
 	std::string getName();
-
-protected:
-	object* ref;
 
 private:
 	std::string name;

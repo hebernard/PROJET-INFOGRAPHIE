@@ -4,6 +4,7 @@ bool utils::mousePressed;
 bool utils::mouseReleased;
 bool utils::rightMouseReleased;
 bool utils::isMouseOverUI;
+bool utils::isDropdownOpened;
 int utils::keyPressed;
 
 std::queue<Action> utils::drawOnTopQueue;
