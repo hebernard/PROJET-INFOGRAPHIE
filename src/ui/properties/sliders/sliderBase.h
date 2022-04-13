@@ -4,7 +4,7 @@
 class sliderBase
 {
 public:
-	sliderBase(std::string label);
+	sliderBase(std::string label, bool manualUpdate);
 	virtual ~sliderBase();
 
 	virtual void draw(int x, int y, int width);
@@ -13,6 +13,7 @@ public:
 
 protected:
 	float thumbPos = 0.f;
+	bool manualUpdate = false;
 
 	std::string value = "0";
 	std::string minS = "0";

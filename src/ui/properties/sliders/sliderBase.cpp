@@ -2,7 +2,7 @@
 #include "ui/label.h"
 #include "utils/utils.h"
 
-sliderBase::sliderBase(std::string label) : m_label(label)
+sliderBase::sliderBase(std::string label, bool manualUpdate) : m_label(label), manualUpdate(manualUpdate)
 {
 	textSize = label::getSize(label, FONT_SIZE);
 	rect.height = 4;

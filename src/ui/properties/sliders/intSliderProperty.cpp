@@ -1,7 +1,7 @@
 #include "intSliderProperty.h"
 
-intSliderProperty::intSliderProperty(std::string label, int& ref, int min, int max) : 
-	sliderBase(label), 
+intSliderProperty::intSliderProperty(std::string label, int& ref, int min, int max, bool manualUpdate) : 
+	sliderBase(label, manualUpdate), 
 	m_ref(ref),
 	min(min),
 	max(max)
@@ -16,7 +16,16 @@ intSliderProperty::intSliderProperty(std::string label, int& ref, int min, int m
 
 void intSliderProperty::onValueUpdate()
 {
-	m_ref = ofMap(thumbPos, 0, 1, min, max, true);
-	value = ofToString(m_ref);
+	int val = ofMap(thumbPos, 0, 1, min, max, true);
+	value = ofToString(val);
+
+	if (manualUpdate && onUpdate != 0)
+	{
+		onUpdate(val);
+	}
+	else
+	{
+		m_ref = val;
+	}
 }
 

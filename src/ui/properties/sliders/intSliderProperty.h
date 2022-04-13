@@ -4,7 +4,9 @@
 class intSliderProperty : public sliderBase
 {
 public:
-	intSliderProperty(std::string label, int& ref, int min, int max);
+	std::function<void(int)> onUpdate;
+
+	intSliderProperty(std::string label, int& ref, int min, int max, bool manualUpdate = false);
 
 protected:
 	void onValueUpdate();
