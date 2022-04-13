@@ -180,6 +180,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\materials\defaultMaterial.cpp" />
+    <ClCompile Include="src\materials\materialBase.cpp" />
     <ClCompile Include="src\objects\3d\bezierCurve.cpp" />
     <ClCompile Include="src\objects\3d\objectModel.cpp" />
     <ClCompile Include="src\objects\3d\terrain.cpp" />
@@ -243,6 +245,8 @@
     <ClCompile Include="src\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\materials\defaultMaterial.h" />
+    <ClInclude Include="src\materials\materialBase.h" />
     <ClInclude Include="src\objects\3d\bezierCurve.h" />
     <ClInclude Include="src\objects\3d\objectModel.h" />
     <ClInclude Include="src\objects\3d\terrain.h" />
