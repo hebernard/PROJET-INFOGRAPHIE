@@ -10,23 +10,37 @@
 bezierCurve::bezierCurve() 
 	: object(new hierarchyButton(*this, "images/icons/curve.png", "Curve")),
 	curveWidthInput("Curve Thickness", curveWidth),
-	curveResolutionInput("Curve Resolution", curveResolution),
+	curveResolutionSlider("Curve Resolution", curveResolution, 3, 50, true),
 	curveColorProperty("Curve Color", curveColor),
 	outlineVisibilityCheckbox("Outline & Control Points", outlineIsVisible),
 	outlineWidthInput("Outline Size", outlineWidth),
 	outlineColorProperty("Outline Color", outlineColor),
-	ctrlPointsRadiusInput("Control Points Size", ctrlPointsRadius)
+	ctrlPointsRadiusInput("Control Points Size", ctrlPointsRadius),
+	selectedPointSlider("Selected", false)
 {
 
 	canHaveMaterial = false;
 
 	// curve vertices init
-	for (index = 0; index <= curveResolution; ++index)
+	for (int index = 0; index <= curveResolution; ++index)
 		curveRenderer.addVertex(ofPoint());
 
 	// control points init
 	resetCtrlPoints();
 
+	selectedPointSlider.onUpdate = [&](auto axis, float value) {
+		selectedControlPoint->set(*selectedControlPoint + axis * value * ofGetLastFrameTime() * 2.0);
+		calculateBezier();
+	};
+
+	selectedPointSlider.resetButton->buttonEventCallback = [&](auto e) {
+		resetCtrlPoints();
+	};
+
+	curveResolutionSlider.onUpdate = [&](float value) {
+		setCurveResolution(value);
+		cout << "LOG" + ofToString(value) << endl;
+	};
 }
 
 bezierCurve::~bezierCurve()
@@ -37,35 +51,9 @@ bezierCurve::~bezierCurve()
 
 void bezierCurve::customDraw()
 {
-	ofDisableDepthTest();
-
-
-		/*
-			if (utils::mousePressed && isSelected) {
-
-		ofVec3f mousePoint = ofVec3f(ofGetMouseX(), ofGetMouseY(), 0);
-		ofVec3f tmpPoint;
-		scene& s = s.getInstance();
-		std::vector<camera*> cams = s.getCameras();
-
-		for (auto& c : cams) {
-			for (int i = 0; i < nbCtrlPoints; ++i) {
-
-				tmpPoint = c->worldToScreen(controlPoints.at(i));
-				cout << "Point Position to Sreen :" + ofToString(tmpPoint) << endl;
-				float dist = mousePoint.distance(tmpPoint);
-				cout << "Distance :" + ofToString(dist) << endl;
-
-				if (dist < getControlPointsRadius() + 10)
-					selectedIndex = i;
-
-			}
-		}
-
-			}
-
-				setSelected(selectedIndex);
-		*/
+	if (isSelected) {
+		ofDisableDepthTest();
+	}
 
 	if (utils::keyPressed == OF_KEY_LEFT && isSelected && selectedIndex > 0) {
 		selectedIndex--;
@@ -87,8 +75,8 @@ void bezierCurve::customDraw()
 
 		ofSetColor(outlineColor);
 		ofSetLineWidth(outlineWidth);
-		for (index = 0; index < nbCtrlPoints - 1; ++index) {
-			ofDrawLine(controlPoints.at(index).x, controlPoints.at(index).y, controlPoints.at(index + 1).x, controlPoints.at(index + 1).y);
+		for (int index = 0; index < nbCtrlPoints - 1; ++index) {
+			ofDrawLine(controlPoints.at(index), controlPoints.at(index + 1));
 		}
 
 	}
@@ -106,7 +94,7 @@ void bezierCurve::customDraw()
 	if (outlineIsVisible && isSelected) {
 
 		ofSetColor(ctrlPointsColor);
-		for (index = 0; index < nbCtrlPoints; ++index) {
+		for (int index = 0; index < nbCtrlPoints; ++index) {
 			if (index == nbCtrlPoints - 1 || index == 0) {
 				ofDrawSphere(controlPoints.at(index), ctrlPointsRadius * 1.3);
 			}
@@ -122,7 +110,11 @@ void bezierCurve::customDraw()
 		ofDrawSphere(selectedControlPoint->x, selectedControlPoint->y, selectedControlPoint->z, ctrlPointsRadius * 1.5);
 	}
 
-	ofEnableDepthTest();
+
+	if (isSelected) {
+		ofEnableDepthTest();
+	}
+
 }
 
 void bezierCurve::drawProperties(int x, int y, int width, int originX, int originY)
@@ -133,9 +125,9 @@ void bezierCurve::drawProperties(int x, int y, int width, int originX, int origi
 	offset += 10 + curveColorProperty.getHeight();
 	curveWidthInput.draw(x, offset, width);
 	offset += 10 + curveWidthInput.getHeight();
-	curveResolutionInput.draw(x, offset, width);
+	curveResolutionSlider.draw(x, offset, width);
 
-	offset += 10 + curveResolutionInput.getHeight();
+	offset += 10 + curveResolutionSlider.getHeight();
 	outlineVisibilityCheckbox.draw(x, offset, width);
 	offset += 10 + outlineVisibilityCheckbox.getHeight();
 	outlineWidthInput.draw(x, offset, width);
@@ -145,6 +137,9 @@ void bezierCurve::drawProperties(int x, int y, int width, int originX, int origi
 	offset += 10 + outlineColorProperty.getHeight();
 	ctrlPointsRadiusInput.draw(x, offset, width);
 
+	selectedPointSlider.update();
+	offset += 20 + ctrlPointsRadiusInput.getHeight();
+	selectedPointSlider.draw(x, offset, width, *selectedControlPoint);
 }
 
 void bezierCurve::addCtrlPoint()
@@ -152,23 +147,7 @@ void bezierCurve::addCtrlPoint()
 	if (nbCtrlPoints < maxControlPoints) {
 
 		nbCtrlPoints++;
-
-		/*
-		ofVec3f point1 = controlPoints.at(selectedIndex);
-		float distanceRatio = curveDistance / (nbCtrlPoints - 1);
-		point1.x += distanceRatio;
-
-		controlPoints.insert(controlPoints.begin() + selectedIndex + 1 , point1);
-
-		calculateBezier();
-		
-		*/
-		
 		resetCtrlPoints();
-
-		if (selectedIndex > controlPoints.size() - 1) {
-			selectedIndex = controlPoints.size() - 1;
-		}
 	}
 }
 
@@ -176,29 +155,23 @@ void bezierCurve::deleteCtrlPoint()
 {
 	if (nbCtrlPoints > 3) {
 
+		if (selectedIndex == nbCtrlPoints - 1) 
+			selectedIndex--;
+		
 		nbCtrlPoints--;
 		resetCtrlPoints();
-		if (selectedIndex > controlPoints.size() - 1) {
-			selectedIndex = controlPoints.size() - 1;
-		}
 	}
-}
-
-void bezierCurve::setSelected(int index)
-{
-	selectedIndex = index;
-	//selectedControlPoint = &controlPoints[selectedIndex];
 }
 
 void bezierCurve::resetCtrlPoints()
 {
-	float distanceRatio = curveDistance / (nbCtrlPoints - 1);
-	float distance = 0 - curveDistance / 2;
+	float distanceRatio = (float)curveDistance / (nbCtrlPoints - 1);
+	float distance = 0.f - curveDistance / 2;
 
 	controlPoints.clear();
 
 	// initialisation des points de contrôles
-	for (index = 0; index < nbCtrlPoints; ++index) {
+	for (int index = 0; index < nbCtrlPoints; ++index) {
 
 		if (index == 0 || index == nbCtrlPoints - 1) {
 			controlPoints.push_back(ofPoint(distance, 0, 0));
@@ -215,7 +188,7 @@ void bezierCurve::resetCtrlPoints()
 
 void bezierCurve::calculateBezier()
 {
-	for (index = 0; index <= curveResolution; ++index) {
+	for (int index = 0; index <= curveResolution; ++index) {
 
 		float t = (index / (float)curveResolution);
 		int n = controlPoints.size() - 1;
@@ -254,7 +227,7 @@ void bezierCurve::setCurveResolution(int resolution)
 {
 	curveResolution = resolution;
 	curveRenderer.clear();
-	for (index = 0; index <= curveResolution; ++index)
+	for (int index = 0; index <= curveResolution; ++index)
 		curveRenderer.addVertex(ofPoint());
 	calculateBezier();
 }
