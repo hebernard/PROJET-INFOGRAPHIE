@@ -4,6 +4,7 @@
 #include "ui/label.h"
 #include "utils/filtering.h"
 #include "materials/defaultMaterial.h"
+#include "materials/pbrMaterial.h"
 
 materialPanel::materialPanel() :
 	backButton(new hierarchySmallButton("images/icons/back.png")),
@@ -20,6 +21,10 @@ materialPanel::materialPanel() :
 			if (index == 0)
 			{
 				ref->material = new defaultMaterial();
+			}
+			else if (index == 1)
+			{
+				ref->material = new pbrMaterial();
 			}
 		}
 	};

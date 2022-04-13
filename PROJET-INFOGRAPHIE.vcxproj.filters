@@ -132,6 +132,7 @@
     <ClCompile Include="src\ui\uiComponent.cpp" />
     <ClCompile Include="src\materials\materialBase.cpp" />
     <ClCompile Include="src\materials\defaultMaterial.cpp" />
+    <ClCompile Include="src\materials\pbrMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -523,6 +524,7 @@
     <ClInclude Include="src\ui\uiComponent.h" />
     <ClInclude Include="src\materials\materialBase.h" />
     <ClInclude Include="src\materials\defaultMaterial.h" />
+    <ClInclude Include="src\materials\pbrMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
