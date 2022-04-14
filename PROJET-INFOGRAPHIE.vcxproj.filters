@@ -133,6 +133,7 @@
     <ClCompile Include="src\materials\materialBase.cpp" />
     <ClCompile Include="src\materials\defaultMaterial.cpp" />
     <ClCompile Include="src\materials\pbrMaterial.cpp" />
+    <ClCompile Include="src\objects\3d\bezierSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -525,6 +526,7 @@
     <ClInclude Include="src\materials\materialBase.h" />
     <ClInclude Include="src\materials\defaultMaterial.h" />
     <ClInclude Include="src\materials\pbrMaterial.h" />
+    <ClInclude Include="src\objects\3d\bezierSurface.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
