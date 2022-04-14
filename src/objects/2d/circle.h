@@ -1,5 +1,6 @@
 #pragma once
 #include "objects/object.h"
+#include "ui/properties/sliders/sliderProperty.h"
 
 class circle : public object
 {
@@ -12,10 +13,10 @@ public:
 
 private:
 	float m_radius;
-	float m_resolution = 20;
+	int m_resolution = 20;
 	float m_contourThickness = 1;
 	inputProperty radiusInput;
-	inputProperty resolutionInput;
+	sliderProperty resolutionInput;
 	inputProperty contourThicknessInput;
 
 };

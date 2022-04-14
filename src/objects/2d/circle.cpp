@@ -4,7 +4,7 @@ circle::circle(float radius) :
 	object(new hierarchyButton(*this, "images/icons/circle.png", "Circle")), 
 	m_radius(radius), 
 	radiusInput("Radius", m_radius),
-	resolutionInput("Resolution", m_resolution),
+	resolutionInput("Resolution", m_resolution, 3, 50),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
 	canHaveMaterial = false;
