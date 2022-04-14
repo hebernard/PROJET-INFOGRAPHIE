@@ -8,17 +8,19 @@
 #include "utils/cursor.h"
 #include "utils/utils.h"
 
-propertiesPanel::propertiesPanel() : 
+propertiesPanel::propertiesPanel() :
 	backButton(new hierarchySmallButton("images/icons/back.png")),
 	animateButton(new hierarchySmallButton("images/icons/animation.png")),
 	materialButton(new hierarchySmallButton("images/icons/material.png")),
 	position(centeredSlider("Position")),
 	rotation(centeredSlider("Rotation")),
-	scale(centeredSlider("Scale", true))
+	scale(centeredSlider("Scale", true)),
+	transformGroup("Transform")
 {
 	ofRegisterMouseEvents(this);
 	rect.width = 300;
 	propertyWidth = rect.width - offsetX * 2;
+	transformGroup.setWidth(propertyWidth);
 
 	backButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
 	{
@@ -152,8 +154,8 @@ void propertiesPanel::draw(object& obj)
 		rect.height = ofGetHeight() - 125;
 		rect.x = ofGetWidth() - rect.width - 20;
 		rect.y = 100;
+		propertyY = rect.y + 50;
 	}
-	//fbo.allocate(rect.width, rect.height - 55);
 
 	if (materialPanelVisible)
 	{
@@ -181,11 +183,9 @@ void propertiesPanel::draw(object& obj)
 		materialButton->draw();
 	}
 
-	//fbo.begin();
-	//ofClear(255, 255, 255, 0);
 	drawTransformSliders(obj);
 
-	int slidersMul = 3;
+	/*int slidersMul = 3;
 	if (!enableScaling)
 	{
 		slidersMul--;
@@ -193,15 +193,11 @@ void propertiesPanel::draw(object& obj)
 	if (!enableRotation)
 	{
 		slidersMul--;
-	}
+	}*/
 
-	int y = rect.y + (slidersMul * position.getHeight()) + 90;
+	//int y = rect.y + (slidersMul * position.getHeight()) + 90;
+	int y = propertyY + transformGroup.getRealHeight() + 10;
 	obj.drawProperties(rect.x + offsetX, y, propertyWidth);
-	//obj.drawProperties(offsetX, y, propertyWidth, rect.x, rect.y + 55);
-	//fbo.end();
-
-	//ofSetColor(255);
-	//fbo.draw(rect.x, rect.y + 55);
 
 	if (animationPanelVisible)
 	{
@@ -227,29 +223,33 @@ void propertiesPanel::mouseReleased(ofMouseEventArgs& args)
 
 void propertiesPanel::drawTransformSliders(object& obj)
 {
-	position.update();
-	rotation.update();
-	scale.update();
-
-	int y = rect.y + 75;
-	//int y = 20;
-
-	position.draw(rect.x + offsetX, y, propertyWidth, obj.getPosition());
-	//position.draw(offsetX, y, propertyWidth, obj.getPosition());
-	y += position.getHeight();
-
-	if (enableRotation)
+	transformGroup.update(rect.x + offsetX, propertyY);
+	transformGroup.drawOnToggled = [&](int x, int y)
 	{
-		rotation.draw(rect.x + offsetX, y, propertyWidth, obj.getOrientationEuler());
-		//rotation.draw(offsetX, y, propertyWidth, obj.getOrientationEuler());
-		y += rotation.getHeight();
-	}
+		position.update();
+		rotation.update();
+		scale.update();
 
-	if (enableScaling)
-	{
-		scale.draw(rect.x + offsetX, y, propertyWidth, obj.getScale());
-		//scale.draw(offsetX, y, propertyWidth, obj.getScale());
-	}
+		float fullHeight = 0;
+		position.draw(x, y + fullHeight, propertyWidth, obj.getPosition());
+		fullHeight += position.getHeight();
+
+		if (enableRotation)
+		{
+			rotation.draw(x, y + fullHeight, propertyWidth, obj.getOrientationEuler());
+			fullHeight += rotation.getHeight();
+		}
+
+		if (enableScaling)
+		{
+			scale.draw(x, y + fullHeight, propertyWidth, obj.getScale());
+			fullHeight += scale.getHeight();
+		}
+
+		transformGroup.setFullHeight(fullHeight);
+	};
+
+	transformGroup.draw();
 }
 
 void propertiesPanel::resetFocus()
@@ -271,6 +271,7 @@ void propertiesPanel::setPosition(int x, int y)
 {
 	rect.x = x;
 	rect.y = y;
+	propertyY = rect.y + 50;
 }
 
 void propertiesPanel::setHeight(int h)

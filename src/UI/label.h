@@ -35,3 +35,4 @@ private:
 };
 
 void drawText(int x, int y, std::string text, int fontSize, ofColor color = mainTheme::fontColor(), std::string path = mainTheme::fontMediumPath);
+void drawTextCentered(int x, int y, int rectHeight, std::string text, int fontSize, ofColor color = mainTheme::fontColor(), std::string path = mainTheme::fontMediumPath);

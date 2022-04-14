@@ -13,6 +13,16 @@ void drawText(int x, int y, std::string text, int fontSize, ofColor color, std::
 	ofPopStyle();
 }
 
+void drawTextCentered(int x, int y, int rectHeight, std::string text, int fontSize, ofColor color, std::string path)
+{
+	auto font = label::getFont(path, fontSize);
+
+	ofPushStyle();
+	ofSetColor(color);
+	font->drawString(text, x, y + rectHeight - font->getLineHeight() / 2);
+	ofPopStyle();
+}
+
 ofTrueTypeFont* label::getFont(std::string path, int fontSize)
 {
 	for (size_t i = 0; i < label::fonts.size(); i++)

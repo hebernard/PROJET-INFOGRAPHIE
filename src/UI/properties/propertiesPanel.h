@@ -4,6 +4,7 @@
 #include "centeredSlider.h"
 #include "animation/ui/animationPanel.h"
 #include "materials/ui/materialPanel.h"
+#include "groupProperty.h"
 
 class object;
 class hierarchySmallButton;
@@ -39,6 +40,7 @@ private:
     object* m_obj;
     const int offsetX = 15;
     int propertyWidth;
+    int propertyY;
     const float translationSpeed = 8;
     const float rotationSpeed = 40;
     const float scaleSpeed = 1.5f;
@@ -51,6 +53,7 @@ private:
     bool animationPanelVisible = false;
     animationPanel animPanel;
 
+    groupProperty transformGroup;
 	centeredSlider position, rotation, scale;
 
     bool materialPanelVisible = false;

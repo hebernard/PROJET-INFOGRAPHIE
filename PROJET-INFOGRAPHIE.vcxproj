@@ -188,6 +188,7 @@
     <ClCompile Include="src\objects\3d\objectModel.cpp" />
     <ClCompile Include="src\objects\3d\terrain.cpp" />
     <ClCompile Include="src\objects\light.cpp" />
+    <ClCompile Include="src\ui\properties\groupProperty.cpp" />
     <ClCompile Include="src\ui\properties\sliders\floatSliderProperty.cpp" />
     <ClCompile Include="src\ui\properties\sliders\intSliderProperty.cpp" />
     <ClCompile Include="src\ui\properties\sliders\sliderBase.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="src\objects\3d\objectModel.h" />
     <ClInclude Include="src\objects\3d\terrain.h" />
     <ClInclude Include="src\objects\light.h" />
+    <ClInclude Include="src\ui\properties\groupProperty.h" />
     <ClInclude Include="src\ui\properties\sliders\floatSliderProperty.h" />
     <ClInclude Include="src\ui\properties\sliders\intSliderProperty.h" />
     <ClInclude Include="src\ui\properties\sliders\sliderBase.h" />
