@@ -189,7 +189,7 @@ menuBar::menuBar() : ofxDatGuiComponent("menuBar"),
 		}
 	};
 
-	//themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
+	themeButton->onButtonEvent(this, &menuBar::onThemeButtonEvent);
 
 	dropdownButton* r_sphereButton = new dropdownButton("images/icons/sphere.png", "Sphere");
 	r_sphereButton->onButtonEvent([&](ofxDatGuiButtonEvent e)
@@ -351,7 +351,7 @@ void menuBar::onImportButtonEvent()
 	}
 }
 
-void menuBar::onThemeButtonEvent()
+void menuBar::onThemeButtonEvent(ofxDatGuiButtonEvent e)
 {
 	mainTheme::darkTheme = !mainTheme::darkTheme;
 	ofSetBackgroundColor(mainTheme::sceneBackgroundColor());
