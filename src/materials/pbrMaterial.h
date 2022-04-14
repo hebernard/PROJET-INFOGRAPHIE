@@ -20,6 +20,7 @@ public:
 	void end();
 
 private:
+	bool began = false;
 	ofShader shader;
 
 	groupProperty textureGroup;

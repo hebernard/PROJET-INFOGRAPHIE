@@ -122,6 +122,12 @@ void pbrMaterial::draw(int x, int y, int width)
 
 void pbrMaterial::begin()
 {
+	if (began)
+	{
+		return;
+	}
+
+	began = true;
 	shader.begin();
 	if (diffuseTex.isAllocated())
 	{
@@ -162,5 +168,9 @@ void pbrMaterial::begin()
 
 void pbrMaterial::end()
 {
-	shader.end();
+	if (began)
+	{
+		shader.end();
+		began = false;
+	}
 }

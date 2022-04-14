@@ -168,7 +168,7 @@ void bezierSurface::drawOutlines()
 
 void bezierSurface::drawProperties(int x, int y, int width, int originX, int originY)
 {
-    int offset = y - 20;
+    int offset = y;
     surfaceVisibilityCheckbox.draw(x, offset, width);
     offset += 10 + surfaceVisibilityCheckbox.getHeight();
     surfaceWidthSlider.draw(x, offset, width);
