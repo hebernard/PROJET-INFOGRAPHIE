@@ -9,11 +9,12 @@ light::light(int id) :
     diffuseColorProp(colorProperty("Diffuse", diffuseColor)),
     specularColorProp(colorProperty("Specular", specularColor)),
     lightButton(dynamic_cast<lightHierarchyButton&>(*button)),
-    spotConcentrationProp(inputProperty("Concentration", spotConcentration)),
-    spotlightCutOffProp(inputProperty("Cut Off", spotlightCutOff)),
-    constantAttProp(inputProperty("Constant Attenuation", constantAtt)),
-    linearAttProp(inputProperty("Linear Attenuation", linearAtt)),
-    quadraticAttProp(inputProperty("Quadratic Attenuation", quadraticAtt))
+    spotConcentrationProp("Concentration", spotConcentration, 0.f, 30.f),
+    spotlightCutOffProp("Cut Off", spotlightCutOff, 0.f, 100.f),
+    constantAttProp("Constant Attenuation", constantAtt, 0.f, 1.f),
+    linearAttProp("Linear Attenuation", linearAtt, 0.f, 1.f),
+    quadraticAttProp("Quadratic Attenuation", quadraticAtt, 0.f, 0.2f),
+    spotlightGroup("Spotlight Properties")
 {
     canHaveMaterial = false;
     lightTypeProp.setElements({ "Point", "Directional", "Spot", "Ambient" });
@@ -89,14 +90,19 @@ void light::drawProperties(int x, int y, int width, int originX, int originY)
 
     if (li.getType() == ofLightType::OF_LIGHT_SPOT)
     {
-        spotConcentrationProp.draw(x, offset, width);
-        offset += 10 + spotConcentrationProp.getHeight();
+        spotlightGroup.update(x, offset);
+        spotlightGroup.setWidth(width);
 
-        spotlightCutOffProp.draw(x, offset, width);
-        offset += 10 + spotlightCutOffProp.getHeight();
+        spotlightGroup.drawOnToggled = [&](int x, int y)
+        {
+            spotConcentrationProp.draw(x, y, width);
+            spotlightCutOffProp.draw(x, y + 10 + spotConcentrationProp.getHeight(), width);
+        };
 
         li.setSpotConcentration(spotConcentration);
         li.setSpotlightCutOff(spotlightCutOff);
+
+        spotlightGroup.draw();
     }
 }
 

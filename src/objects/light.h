@@ -4,6 +4,8 @@
 #include "object.h"
 #include "ui/hierarchy/lightHierarchyButton.h"
 #include "ui/properties/dropdownProperty.h"
+#include "ui/properties/sliders/sliderProperty.h"
+#include "ui/properties/groupProperty.h"
 
 class light : public object
 {
@@ -31,18 +33,19 @@ private:
 	colorProperty diffuseColorProp;
 	colorProperty specularColorProp;
 
+	groupProperty spotlightGroup;
 	float spotConcentration = 2;
-	inputProperty spotConcentrationProp;
+	sliderProperty spotConcentrationProp;
 
 	float spotlightCutOff = 30;
-	inputProperty spotlightCutOffProp;
+	sliderProperty spotlightCutOffProp;
 
 	float constantAtt = 1.0f;
-	inputProperty constantAttProp;
+	sliderProperty constantAttProp;
 
 	float linearAtt = 0.0f;
-	inputProperty linearAttProp;
+	sliderProperty linearAttProp;
 
 	float quadraticAtt = 0.0f;
-	inputProperty quadraticAttProp;
+	sliderProperty quadraticAttProp;
 };
