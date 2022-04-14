@@ -21,10 +21,12 @@ materialPanel::materialPanel() :
 			if (index == 0)
 			{
 				ref->material = new defaultMaterial();
+				ref->matIndex = 0;
 			}
 			else if (index == 1)
 			{
 				ref->material = new pbrMaterial();
+				ref->matIndex = 1;
 			}
 		}
 	};
@@ -67,4 +69,5 @@ void materialPanel::draw()
 void materialPanel::setObject(object& obj)
 {
 	ref = &obj;
+	materialDropdown.setSelected(ref->matIndex);
 }

@@ -144,7 +144,7 @@ void pbrMaterial::begin()
 	shader.setUniform3f("light_color", ambientColor.r / 255.0f, ambientColor.g / 255.0f, ambientColor.b / 255.0f);
 	shader.setUniform3f("light_position", glm::vec4(firstLight->getPosition(), 0.0f) * ofGetCurrentMatrix(OF_MATRIX_MODELVIEW));
 
-	shader.setUniform1i("tone_mapping_toggle", false);
+	shader.setUniform1i("tone_mapping_toggle", true);
 	shader.setUniform1f("tone_mapping_exposure", 1.0f);
 	shader.setUniform1f("tone_mapping_gamma", gamma);
 	shader.setUniform3f("material_fresnel_ior", 0.04f, 0.04f, 0.04f);

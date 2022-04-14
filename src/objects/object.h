@@ -30,6 +30,7 @@ public:
 	// Material
 	bool canHaveMaterial = true;
 	materialBase* material = new defaultMaterial();
+	int matIndex = 0;
 
 	object(hierarchyButton* btn) : 
 		button(btn), 
