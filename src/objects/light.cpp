@@ -15,6 +15,7 @@ light::light(int id) :
     linearAttProp(inputProperty("Linear Attenuation", linearAtt)),
     quadraticAttProp(inputProperty("Quadratic Attenuation", quadraticAtt))
 {
+    canHaveMaterial = false;
     lightTypeProp.setElements({ "Point", "Directional", "Spot", "Ambient" });
     lightTypeProp.onClick = [&](int i) { setType(ofLightType(i)); };
 

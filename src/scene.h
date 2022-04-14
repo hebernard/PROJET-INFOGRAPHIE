@@ -202,7 +202,6 @@ public:
 	void addLight()
 	{
 		light* li = new light(lights.size());
-		li->canHaveMaterial = false;
 		if (li->id == 0)
 		{
 			// Setup for initial light
@@ -287,6 +286,11 @@ public:
 		{
 			cameras.at(i)->resetView();
 		}
+	}
+
+	light& getFirstLight()
+	{
+		return *lights.at(0);
 	}
 
 private:

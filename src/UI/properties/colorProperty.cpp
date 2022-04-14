@@ -7,6 +7,8 @@ colorProperty::colorProperty(std::string label, ofColor& ref) : m_label(label), 
 {
 	textSize = label::getSize(label, 12);
 	colorRect.height = 20;
+
+	forceUpdate();
 }
 
 void colorProperty::draw(int x, int y, int width)
