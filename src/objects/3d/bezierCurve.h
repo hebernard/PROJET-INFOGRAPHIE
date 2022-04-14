@@ -1,6 +1,8 @@
 #pragma once
 
 #include "objects/object.h"
+#include "UI/properties/centeredSlider.h"
+#include "UI/properties/sliders/sliderProperty.h"
 
 //--------------------------------------------------------------
 //-------------------  Bezier Curve  ---------------------------
@@ -14,7 +16,6 @@ public:
 	~bezierCurve();
 
 	void customDraw();
-	//glm::vec3 getBBox();
 	void drawProperties(int x, int y, int width, int originX = 0, int originY = 0);
 
 	void calculateBezier();
@@ -26,24 +27,21 @@ public:
 	void deleteCtrlPoint();
 	void resetCtrlPoints();
 
-	void setSelected(int index);
-
 private :
 
 	//Ref
-	int index;
 	ofVec3f position;
 
 	//Curve line
 	bool curveIsVisible = true;
 	float curveWidth = 1.0f;
-	float curveResolution = 100;
+	int curveResolution = 100;
 	ofColor curveColor = ofColor(0, 255, 0);
 	int curveDistance = 5;
 	ofPolyline curveRenderer;
 
 	inputProperty curveWidthInput;
-	inputProperty curveResolutionInput;
+	sliderProperty curveResolutionSlider;
 	colorProperty curveColorProperty;
 
 	//Curve outline & Properties
@@ -65,6 +63,8 @@ private :
 	int nbCtrlPoints = 3;
 	int maxControlPoints = 12;
 	int selectedIndex = 1;
+
+	centeredSlider selectedPointSlider;
 
 	ofVec3f* selectedControlPoint;
 	std::vector<ofVec3f> controlPoints;

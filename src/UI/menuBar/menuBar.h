@@ -39,6 +39,6 @@ private:
 	void drawLine();
 
 	void onImportButtonEvent();
-	void onThemeButtonEvent();
+	void onThemeButtonEvent(ofxDatGuiButtonEvent e);
 };
 
