@@ -123,7 +123,7 @@ void bezierSurface::customDraw()
         surface.drawWireframe();
     }
 
-    material.end();
+    material->end();
 
     //---  Draw Controls  -------------------------------------
 
