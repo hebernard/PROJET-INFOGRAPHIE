@@ -50,6 +50,12 @@ public:
 
 		if (currentSelected != nullptr)
 		{
+			if (currentSelected->propertiesOpened)
+			{
+				properties.animationPanelVisible = false;
+				properties.materialPanelVisible = false;
+				currentSelected->propertiesOpened = false;
+			}
 			currentSelected->isSelected = false;
 		}
 

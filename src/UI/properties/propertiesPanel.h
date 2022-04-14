@@ -17,6 +17,8 @@ public:
     bool enableRotation = true;
     bool enableScaling = true;
     bool anchoredRight = true;
+    bool materialPanelVisible = false;
+    bool animationPanelVisible = false;
 
 	propertiesPanel();
     ~propertiesPanel();
@@ -50,16 +52,12 @@ private:
 	hierarchySmallButton* animateButton;
 	hierarchySmallButton* materialButton;
 
-    bool animationPanelVisible = false;
     animationPanel animPanel;
 
     groupProperty transformGroup;
 	centeredSlider position, rotation, scale;
 
-    bool materialPanelVisible = false;
     materialPanel matPanel;
-
-    //ofFbo fbo;
 
     void drawTransformSliders(object& obj);
     void resetFocus();
