@@ -21,13 +21,14 @@ void uiComponent::update(int x, int y, int originX, int originY)
 	rect->x = x;
 	rect->y = y;
 
+	if (utils::isDropdownOpened)
+	{
+		return;
+	}
+
 	int mX = ofGetMouseX() - originX;
 	int mY = ofGetMouseY() - originY;
 
-	/*int rX = ofMap(mX, getLeft(), getRight(), 0, getWidth());
-	int rY = ofMap(mY, getTop(), getBottom(), 0, getHeight());
-
-	isMouseOver = ofRectangle(0, 0, getWidth(), getHeight()).inside(rX, rY);*/
 	isMouseOver = rect->inside(mX, mY);
 	isMouseDown = isMouseOver && utils::mousePressed;
 

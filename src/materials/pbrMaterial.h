@@ -4,6 +4,7 @@
 #include "ui/properties/imageProperty.h"
 #include "ui/properties/colorProperty.h"
 #include "ui/properties/sliders/sliderProperty.h"
+#include "ui/properties/groupProperty.h"
 #include "objects/light.h"
 
 class pbrMaterial : public materialBase
@@ -21,6 +22,7 @@ public:
 private:
 	ofShader shader;
 
+	groupProperty textureGroup;
 	imageProperty diffuseProp, metallicProp, roughnessProp, occlusionProp;
 	ofImage diffuseTex, metallicTex, roughnessTex, occlusionTex;
 

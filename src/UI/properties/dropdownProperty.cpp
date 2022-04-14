@@ -30,7 +30,7 @@ void dropdownProperty::draw(int x, int y, int w)
 	if (hovered && utils::mousePressed)
 	{
 		focused = !focused;
-		utils::isDropdownOpened = true;
+		utils::isDropdownOpened = focused;
 	}
 	
 	rect.x = x + labelSize.x + 30;

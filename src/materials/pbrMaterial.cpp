@@ -6,6 +6,7 @@ pbrMaterial::pbrMaterial() : materialBase("PBR"), shader(),
 	metallicProp("Metallic Map"),
 	roughnessProp("Roughness Map"),
 	occlusionProp("Occlusion Map"),
+	textureGroup("Textures"),
 	ambientColorProp("Ambient", ambientColor),
 	diffuseColorProp("Diffuse", diffuseColor),
 	specularColorProp("Specular", specularColor),
@@ -72,19 +73,28 @@ pbrMaterial::~pbrMaterial()
 
 void pbrMaterial::draw(int x, int y, int width)
 {
-	float propY = y;
+	textureGroup.update(x, y);
+	textureGroup.setWidth(width);
+	textureGroup.drawOnToggled = [&](int x, int y)
+	{
+		float fullHeight = 0;
+		diffuseProp.draw(x, y + fullHeight, width);
+		fullHeight += diffuseProp.getHeight() + 10;
 
-	diffuseProp.draw(x, propY, width);
-	propY += diffuseProp.getHeight() + 10;
+		metallicProp.draw(x, y + fullHeight, width);
+		fullHeight += metallicProp.getHeight() + 10;
 
-	metallicProp.draw(x, propY, width);
-	propY += metallicProp.getHeight() + 10;
+		roughnessProp.draw(x, y + fullHeight, width);
+		fullHeight += roughnessProp.getHeight() + 10;
 
-	roughnessProp.draw(x, propY, width);
-	propY += roughnessProp.getHeight() + 10;
+		occlusionProp.draw(x, y + fullHeight, width);
+		fullHeight += occlusionProp.getHeight() + 20;
 
-	occlusionProp.draw(x, propY, width);
-	propY += occlusionProp.getHeight() + 10;
+		textureGroup.setFullHeight(fullHeight);
+	};
+	textureGroup.draw();
+
+	float propY = y + textureGroup.getRealHeight();
 
 	/*ambientColorProp.draw(x, propY, width);
 	propY += ambientColorProp.getHeight() + 10;
