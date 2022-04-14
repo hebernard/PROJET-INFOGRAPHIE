@@ -2,6 +2,7 @@
 
 #include "objects/object.h"
 #include "ui/properties/dropdownProperty.h"
+#include "ui/properties/sliders/sliderProperty.h"
 
 class sphere : public object
 {
@@ -22,10 +23,10 @@ private:
 	glm::vec3 m_emission;
 	int m_reflection;
 	bool m_raytracing;
-	float m_resolution = 20;
+	int m_resolution = 20;
 	float m_contourThickness = 1;
 	inputProperty radiusInput;
-	inputProperty resolutionInput;
+	sliderProperty resolutionInput;
 	inputProperty contourThicknessInput;
 
 	dropdownProperty raytracingTypeProp;

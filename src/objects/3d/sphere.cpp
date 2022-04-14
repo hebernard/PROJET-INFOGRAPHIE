@@ -3,7 +3,7 @@
 sphere::sphere(float radius) : object(new hierarchyButton(*this, "images/icons/sphere.png", "Sphere")),
 	m_radius(radius),
 	radiusInput("Radius", m_radius),
-	resolutionInput("Resolution", m_resolution),
+	resolutionInput("Resolution", m_resolution, 3, 50),
 	contourThicknessInput("Contour Thickness", m_contourThickness),
 	m_emission(),
 	m_reflection(),

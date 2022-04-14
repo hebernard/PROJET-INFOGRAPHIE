@@ -5,7 +5,7 @@ ellipse::ellipse(float width, float height)
 	m_width(width), m_height(height), 
 	widthInput("Width", m_width),
 	heightInput("Height", m_height),
-	resolutionInput("Resolution", m_resolution),
+	resolutionInput("Resolution", m_resolution, 3, 50),
 	contourThicknessInput("Contour Thickness", m_contourThickness)
 {
 	canHaveMaterial = false;

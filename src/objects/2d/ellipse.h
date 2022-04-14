@@ -1,5 +1,6 @@
 #pragma once
 #include "objects/object.h"
+#include "ui/properties/sliders/sliderProperty.h"
 
 class ellipse : public object
 {
@@ -13,11 +14,11 @@ public:
 private:
 	float m_width;
 	float m_height;
-	float m_resolution = 20;
+	int m_resolution = 20;
 	float m_contourThickness = 1;
 	inputProperty widthInput;
 	inputProperty heightInput;
-	inputProperty resolutionInput;
+	sliderProperty resolutionInput;
 	inputProperty contourThicknessInput;
 };
 
