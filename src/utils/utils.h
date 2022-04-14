@@ -11,6 +11,7 @@ public:
 	static bool rightMouseReleased;
 	static bool isMouseOverUI;
 	static int keyPressed;
+	static bool onChange;
 
 	// Vector of functions
 	static std::queue<Action> drawOnTopQueue;

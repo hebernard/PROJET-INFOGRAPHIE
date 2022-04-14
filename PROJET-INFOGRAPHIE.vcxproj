@@ -181,6 +181,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\objects\3d\bezierCurve.cpp" />
+    <ClCompile Include="src\objects\3d\bezierSurface.cpp" />
     <ClCompile Include="src\objects\3d\objectModel.cpp" />
     <ClCompile Include="src\objects\3d\terrain.cpp" />
     <ClCompile Include="src\objects\light.cpp" />
@@ -244,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\objects\3d\bezierCurve.h" />
+    <ClInclude Include="src\objects\3d\bezierSurface.h" />
     <ClInclude Include="src\objects\3d\objectModel.h" />
     <ClInclude Include="src\objects\3d\terrain.h" />
     <ClInclude Include="src\objects\light.h" />
