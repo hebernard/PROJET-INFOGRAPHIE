@@ -120,7 +120,7 @@ void bezierCurve::customDraw()
 void bezierCurve::drawProperties(int x, int y, int width, int originX, int originY)
 {
 
-	int offset = y - 20;
+	int offset = y;
 	curveColorProperty.draw(x, offset, width);
 	offset += 10 + curveColorProperty.getHeight();
 	curveWidthInput.draw(x, offset, width);

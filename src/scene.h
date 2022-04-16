@@ -50,12 +50,6 @@ public:
 
 		if (currentSelected != nullptr)
 		{
-			if (currentSelected->propertiesOpened)
-			{
-				properties.animationPanelVisible = false;
-				properties.materialPanelVisible = false;
-				currentSelected->propertiesOpened = false;
-			}
 			currentSelected->isSelected = false;
 		}
 
@@ -84,7 +78,8 @@ public:
 		{
 			objects.insert(objects.begin() + index, obj);
 		}
-		focusObject(*obj);
+
+		//focusObject(*obj);
 		std::cout << "Added object to scene" << std::endl;
 	}
 
