@@ -32,7 +32,7 @@ private:
 	ofColor diffuseColor = ofColor(255);
 	ofColor specularColor = ofColor(255);
 
-	float brightness = 1.f;
+	float brightness = 0.5f;
 	float metallic = 0.5f;
 	float roughness = 0.5f;
 	float occlusion = 1.f;
@@ -40,7 +40,7 @@ private:
 
 	light* firstLight;
 
-	float gamma = 2.2f;
+	float gamma = 3.5f;
 	sliderProperty gammaSlider;
 };
 
