@@ -55,6 +55,9 @@ void bezierCurve::customDraw()
 		ofDisableDepthTest();
 	}
 
+	if (utils::mousePressed && !utils::isMouseOverUI && isSelected) {
+		findPoint(ofGetMouseX(), ofGetMouseY());
+	}
 	if (utils::keyPressed == OF_KEY_LEFT && isSelected && selectedIndex > 0) {
 		selectedIndex--;
 	}
@@ -140,6 +143,43 @@ void bezierCurve::drawProperties(int x, int y, int width, int originX, int origi
 	selectedPointSlider.update();
 	offset += 20 + ctrlPointsRadiusInput.getHeight();
 	selectedPointSlider.draw(x, offset, width, *selectedControlPoint);
+}
+
+void bezierCurve::findPoint(int mouseX, int mouseY)
+{
+	ofPoint screenPoint = ofVec3f(mouseX, mouseY, 0);
+	ofPoint worldPoint;
+	//worldPoint = c->screenToWorld(screenPoint);
+	//distance = ofDist(inputs[i][j].x, inputs[i][j].y, mouseX, mouseY);
+	
+	float distance = 0;
+	float nearest = -1;
+
+	scene& s = s.getInstance();
+	std::vector<camera*> cams = s.getCameras();
+
+
+	for (auto& c : cams) {
+		for (int i = 0; i <= controlPoints.size() - 1; i++) {
+
+			worldPoint = c->worldToScreen(controlPoints.at(i));
+
+			//cout << "Screen : " << screenPoint << endl;
+			//cout << "World : " << worldPoint << endl;
+
+			distance = ofDist(worldPoint.x, worldPoint.y, screenPoint.x, screenPoint.y);
+			//cout << "Distance :" + ofToString(distance) << endl;
+
+			if (nearest == -1)
+				nearest = distance;
+			if (distance < 20 && distance < nearest) {
+				selectedIndex = i;
+				nearest = distance;
+			}
+
+		}
+	}
+
 }
 
 void bezierCurve::addCtrlPoint()

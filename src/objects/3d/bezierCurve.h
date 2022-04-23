@@ -18,6 +18,8 @@ public:
 	void customDraw();
 	void drawProperties(int x, int y, int width, int originX = 0, int originY = 0);
 
+	void findPoint(int mouseX, int mouseY);
+
 	void calculateBezier();
 	int combinations(int n, int k);
 
